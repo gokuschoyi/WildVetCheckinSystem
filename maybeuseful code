@@ -1,0 +1,38 @@
+try{
+$con = new PDO('mysql: host = localhost;dbname = wildvetcheckinsystem',"root","");
+                $con->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+                $result = $con->query("SELECT checkinID FROM clientinfo WHERE email = '$email'");
+                $result->setFetchMode(PDO::FETCH_ASSOC);
+                $result2 = $result->fetch();
+                $result3 = $result2['checkinID'];
+}
+catch(PDOException $e) {
+                echo 'ERROR: ' . $e->getMessage();
+               }
+
+
+$sql = "SELECT checkinID FROM clientinfo WHERE email = 'alexjones@gmail.com'";
+                $results = mysqli_query($conn,$sql);
+                if($results->num_rows >0){
+                    printf("empty not working maybe.<br/>");}
+                    else{
+                        $resultf = $row["checkinID"];
+                        printf($row["checkinID"]);
+                    }
+                $stmt2 = $conn->prepare("INSERT INTO petinfo (checkinID) VALUES (?)");
+                $stmt2->bind_param("i",$resultf);
+                $stmt2->execute();
+
+
+                {$_SESSION['email']}
+
+                '".mysql_real_escape_string($email)."'
+
+
+                .$_SESSION['email']
+
+                "INSERT INTO petinfo (checkinID) SELECT checkinID FROM clientinfo WHERE email = ".$_SESSION['email'];
+
+                $sql = "UPDATE petinfo P, clientinfo C
+                    SET P.checkinID = C.checkinID
+                    WHERE C.email = "".$_SESSION['email']";
