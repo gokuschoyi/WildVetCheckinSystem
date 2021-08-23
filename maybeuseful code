@@ -80,3 +80,66 @@ WHERE P.petId = (
     <option value="Ms">Ms</option>
     <option value="Dr">Dr</option>
 </select>
+
+
+<div style="background: url('11027 (2).jpg') center no-repeat;">
+    <div class="row">
+        <div class="col d-flex d-lg-flex justify-content-center align-items-center justify-content-lg-center align-items-lg-center" style="height: 50px;"><input class="form-control-sm d-lg-flex justify-content-lg-center align-items-lg-center" type="text" placeholder="Pet Name" style="border-radius: 13px;width: 240px;border-width: 1px;border-color: rgb(231,173,169);" name="petName" required autocomplete="on" /></div>
+    </div>
+    <div class="row">
+        <div class="col d-flex d-lg-flex justify-content-center align-items-center justify-content-lg-center align-items-lg-center" style="height: 50px;"><select class="form-select-sm d-lg-flex justify-content-lg-center align-items-lg-center" style="width: 240px;height: 33px;border-radius: 13px;border-width: 1px;border-color: rgb(231,173,169);opacity: 0.85;" name="petType" required>
+                <option value="No Pet Selected" selected>Select type of pet</option>
+                <option value="Canine">Canine</option>
+                <option value="Feline">Feline</option>
+                <option value="Reptile">Reptile</option>
+                <option value="Avian">Avian</option>
+                <option value="Amphibian">Amphibian</option>
+                <option value="Rabbit">Rabbit</option>
+                <option value="Rodent">Rodent</option>
+                <option value="Ferret">Ferret</option>
+            </select></div>
+    </div>
+    <div class="row">
+        <div class="col d-flex d-lg-flex justify-content-center align-items-center justify-content-lg-center align-items-lg-center" style="height: 50px;"><input class="form-control-sm d-lg-flex justify-content-lg-center align-items-lg-center" type="text" placeholder="Breed" style="border-radius: 13px;width: 240px;border-width: 1px;border-color: rgb(231,173,169);" name="breed" required autocomplete="on" /></div>
+    </div>
+    <div class="row">
+        <div class="col d-flex d-lg-flex justify-content-center align-items-center justify-content-lg-center align-items-lg-center" style="height: 50px;"><select class="form-select-sm d-lg-flex justify-content-lg-center align-items-lg-center" style="width: 240px;border-radius: 13px;height: 31px;border-color: rgb(231,173,169);opacity: .85;" name="sex" required>
+                <option value="None Selected" selected>Select sex</option>
+                <option value="Male  Entire">Male Entire</option>
+                <option value="Male Neutered">Male Neutered</option>
+                <option value="Female Entire">Female Entire</option>
+                <option value="Female Spayed">Female Spayed</option>
+                <option value>Unknown</option>
+            </select></div>
+    </div>
+    <div class="row">
+        <div class="col d-flex d-lg-flex justify-content-center align-items-center justify-content-lg-center align-items-lg-center" style="height: 50px;"><input class="form-control-sm d-lg-flex justify-content-lg-center align-items-lg-center" type="text" placeholder="Color" style="border-radius: 13px;width: 240px;border-width: 1px;border-color: rgb(231,173,169);" name="color" required autocomplete="on" /></div>
+    </div>
+    <div class="row">
+        <div class="col d-flex d-lg-flex justify-content-center align-items-center justify-content-lg-center align-items-lg-center" style="height: 50px;"><input class="form-control-sm d-lg-flex justify-content-lg-center align-items-lg-center" type="text" placeholder="Age" style="border-radius: 13px;width: 240px;border-width: 1px;border-color: rgb(231,173,169);" name="color" required autocomplete="on" /></div>
+    </div>
+    <div class="row">
+        <div class="col d-flex d-lg-flex justify-content-center align-items-center justify-content-lg-center align-items-lg-center" style="height: 50px;"><input class="form-control-sm d-lg-flex justify-content-lg-center align-items-lg-center" type="text" placeholder="Weight" style="border-radius: 13px;width: 240px;border-width: 1px;border-color: rgb(231,173,169);" name="weight" required autocomplete="on" /></div>
+    </div>
+    <div class="row">
+        <div class="col d-flex d-lg-flex justify-content-center align-items-center justify-content-lg-center align-items-lg-center" style="height: 50px;"><input class="form-control-sm d-lg-flex justify-content-lg-center align-items-lg-center" type="text" placeholder="Microchip" style="border-radius: 13px;width: 240px;border-width: 1px;border-color: rgb(231,173,169);" name="microchip" required autocomplete="on" /></div>
+    </div>
+    <div class="row">
+        <div class="col d-flex d-lg-flex justify-content-center align-items-center justify-content-lg-center align-items-lg-center" style="height: 50px;"><input class="form-control-sm" type="text" placeholder="Insurance" style="border-radius: 13px;width: 240px;border-width: 1px;border-color: rgb(231,173,169);" name="insurance" required autocomplete="on" /></div>
+    </div>
+    <div class="row">
+        <div class="col d-flex d-lg-flex justify-content-center align-items-center justify-content-lg-center align-items-lg-center" style="height: 50px;"><input class="form-control-sm d-lg-flex justify-content-lg-center align-items-lg-center" type="text" placeholder="Medication" style="border-radius: 13px;border-color: rgb(231,173,169);width: 240px;" name="medication" required autocomplete="on" /></div>
+    </div>
+    <div class="row">
+        <div class="col d-flex d-lg-flex justify-content-center align-items-center justify-content-lg-center align-items-lg-center" style="height: 50px;"><input class="form-control-sm d-lg-flex justify-content-lg-center align-items-lg-center" type="text" placeholder="Parasite Control" style="border-radius: 13px;width: 240px;border-width: 1px;border-color: rgb(231,173,169);" name="parasiteControl" required autocomplete="on" /></div>
+    </div>
+    <div class="row">
+        <div class="col d-flex d-lg-flex justify-content-center align-items-center" style="height: 50px;"><input class="form-control-sm d-lg-flex justify-content-lg-center align-items-lg-center" type="date" style="border-radius: 13px;width: 240px;border-width: 1px;border-color: rgb(231,173,169);opacity: 0.85;" name="lastGiven" required /></div>
+    </div>
+    <div class="row">
+        <div class="col d-flex d-lg-flex justify-content-center align-items-center justify-content-lg-center align-items-lg-center" style="height: 34px;"><button class="btn btn-primary btn-sm font-monospace d-flex justify-content-center align-items-center" type="submit" style="border-radius: 30px;background: rgb(157,126,207);height: 35px;width: 148px;">Submit Details</button></div>
+    </div>
+    <div class="row">
+        <div class="col d-flex d-lg-flex justify-content-center align-items-center justify-content-lg-center align-items-lg-center" style="height: 50px;"><button class="btn btn-primary btn-sm font-monospace d-xl-flex justify-content-xl-center align-items-xl-center" type="button" style="border-radius: 30px;background: rgb(157,126,207);">Go Back</button></div>
+    </div>
+</div>
