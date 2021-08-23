@@ -1,8 +1,4 @@
-<?php session_start();
-    if(isset($_POST['search'])){
-        $_SESSION['enteredEmail'] = $_POST['enteredEmail'];
-                     }
-?>
+<?php session_start();?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -85,35 +81,38 @@
                 <div class="container" style="opacity: 1;">
                     <p class="lead text-center  d-flex d-lg-flex justify-content-center align-items-center justify-content-lg-center align-items-lg-center" style="opacity: 1;background: transparent;height: 145px;font-family: 'Courier Prime', monospace;font-size: 16px;color: rgb(33, 37, 41);"><strong>If you have checked in before using this App, enter your email and click the submit button.</strong><br></p>
                 </div>
-                <div class="row">
-                    <div class="col d-flex d-xl-flex justify-content-center align-items-center justify-content-xl-center align-items-xl-center" style="height: 50px;"><input class="form-control-sm d-xl-flex justify-content-xl-center align-items-xl-center" type="email" placeholder="Enter your email" style="border-radius: 30px;width: 228px;" name=" enteredEmail" required=""></div>
-                </div>
-                <div class="row">
-                    <div class="col d-flex d-xl-flex justify-content-center align-items-center justify-content-xl-center align-items-xl-center" style="height: 50px;"><button id = "checkinemail" class="btn btn-primary font-monospace d-xl-flex justify-content-xl-center align-items-xl-center" type="submit" name = "searchEmail" style="border-radius: 30px;height: 38px;background: rgb(160,120,227);">Submit</button>
-                        <script type="text/javascript">
-                            document.getElementById("checkinemail").onclick = function () {
-                                location.href = "clientInfoEmail.php";
-                            };
-                        </script>
-                    
-                    
+                <form action="clientInfoEmail.php" method="POST"> >
+                    <div class="row">
+                        <div class="col d-flex d-xl-flex justify-content-center align-items-center justify-content-xl-center align-items-xl-center" style="height: 50px;"><input class="form-control-sm d-xl-flex justify-content-xl-center align-items-xl-center" type="email" placeholder="Enter your email" style="border-radius: 30px;width: 228px;" name=" enteredEmail" required=""></div>
                     </div>
-                </div>
+                    <div class="row">
+                        <div class="col d-flex d-xl-flex justify-content-center align-items-center justify-content-xl-center align-items-xl-center" style="height: 50px;"><button id="checkinemail" class="btn btn-primary font-monospace d-xl-flex justify-content-xl-center align-items-xl-center" type="submit" name="searchEmail" style="border-radius: 30px;height: 38px;background: rgb(160,120,227);">Submit</button>
+                    <?php
+                    if (isset($_POST['searchEmail'])) {
+                        $_SESSION["entEmail"] = $_POST['enteredEmail'];
+                        }
+                        
+                    ?>
+                        
+                </form>
+
             </div>
         </div>
-        <div class="card" style="background: transparent;">
-            <div class="card-body" style="background: transparent;">
-                <h3 class="font-monospace d-flex d-lg-flex justify-content-center align-items-center justify-content-lg-center align-items-lg-center card-title" style="opacity: 0.90;height: 45px;"><strong>Check-In</strong><br></h3>
-                <p class="lead text-center d-flex justify-content-center align-items-center" style="background: transparent;color: rgb(33,37,41);font-size: 16px;height: 145px;font-family: 'Courier Prime', monospace;"><strong>If you are using the check-in app for the first time, click the Check-In button below</strong><br></p>
-                <div class="col d-flex d-xl-flex justify-content-center align-items-center justify-content-xl-center align-items-xl-center" style="height: 100px;"><button id = "checkin" class="btn btn-primary font-monospace d-md-flex justify-content-md-center align-items-md-center" type="submit" style="border-radius: 30px;background: rgb(160,120,227);">Check-In</button>
-                    <script type="text/javascript">
-                        document.getElementById("checkin").onclick = function () {
-                            location.href = "clientInfo.php";
-                        };
-                    </script>
-                </div>
+    </div>
+    </div>
+    <div class="card" style="background: transparent;">
+        <div class="card-body" style="background: transparent;">
+            <h3 class="font-monospace d-flex d-lg-flex justify-content-center align-items-center justify-content-lg-center align-items-lg-center card-title" style="opacity: 0.90;height: 45px;"><strong>Check-In</strong><br></h3>
+            <p class="lead text-center d-flex justify-content-center align-items-center" style="background: transparent;color: rgb(33,37,41);font-size: 16px;height: 145px;font-family: 'Courier Prime', monospace;"><strong>If you are using the check-in app for the first time, click the Check-In button below</strong><br></p>
+            <div class="col d-flex d-xl-flex justify-content-center align-items-center justify-content-xl-center align-items-xl-center" style="height: 100px;"><button id="checkin" class="btn btn-primary font-monospace d-md-flex justify-content-md-center align-items-md-center" type="submit" style="border-radius: 30px;background: rgb(160,120,227);">Check-In</button>
+                <script type="text/javascript">
+                    document.getElementById("checkin").onclick = function() {
+                        location.href = "clientInfo.php";
+                    };
+                </script>
             </div>
         </div>
+    </div>
     </div>
     <div class="row">
         <div class="col" style="height: 60px;">
@@ -130,8 +129,12 @@
             </ul>
             <p class="copyright" style="color: rgb(40,33,33);">The Wild Vet© 2021</p>
         </footer>
+        
     </div>
     <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+<?php 
+echo $_SESSION['entEmail'];
+?>
 </body>
 
 </html>

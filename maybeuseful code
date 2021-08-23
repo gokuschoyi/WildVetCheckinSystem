@@ -31,8 +31,52 @@ $sql = "SELECT checkinID FROM clientinfo WHERE email = 'alexjones@gmail.com'";
 
                 .$_SESSION['email']
 
-                "INSERT INTO petinfo (checkinID) SELECT checkinID FROM clientinfo WHERE email = ".$_SESSION['email'];
+                "INSERT INTO petinfo (petId) SELECT clientId FROM clientinfo WHERE email = '$emailR'";
 
-                $sql = "UPDATE petinfo P, clientinfo C
-                    SET P.checkinID = C.checkinID
-                    WHERE C.email = "".$_SESSION['email']";
+                $sql = "UPDATE petinfo P, clientinfo C SET P.checkinID = C.checkinID WHERE C.email = "".$_SESSION['email']";
+
+                UPDATE petinfo SET petinfo.petId = clientinfo.clientId FROM clientinfo WHERE clientinfo.email = 'alexjones@gmail.com' ;
+
+                UPDATE petinfo P, clientinfo C SET P.petId = C.clientId WHERE C.email = 'gopinath@gmail.com' ORDER BY C.clientId DESC LIMIT 1;
+
+                UPDATE petinfo
+                    SET petId = (
+                    SELECT clientiD
+                    FROM clientinfo
+                    WHERE clientinfo.email = 'yadu@gmail.com');
+
+UPDATE petinfo
+SET petId = (
+    SELECT * clientId
+    ORDER BY clientId DESC
+    FROM clientinfo
+    WHERE clientinfo.email = 'yadu@gmail.com');
+
+    UPDATE petinfo P
+SET P.petId = C.clientId
+WHERE P.petId = (
+    SELECT * C.clientId
+    FROM clientinfo
+    WHERE clientinfo.email = 'yadu@gmail.com'
+    ORDER BY C.clientId DESC
+    LIMIT 1
+    );
+
+//Date generation
+
+                    function generateDate(){
+    var currentTime = new Date();                
+    var curdate = currentTime.getDate();
+    document.getElementbyId("dateHidden").value = curdate;
+    return true;
+}
+
+
+<select class="form-select-sm" style="width: 240px;height: 31px;border-radius: 13px;opacity: 0.85;border-color: rgb(231,173,169);" name="title" required>
+    <option value="None Selected" selected>Select your Title</option>
+    <option value="Mrs">Mrs</option>
+    <option value="Mr">Mr</option>
+    <option value="Miss">Miss</option>
+    <option value="Ms">Ms</option>
+    <option value="Dr">Dr</option>
+</select>

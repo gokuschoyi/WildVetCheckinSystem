@@ -1,4 +1,8 @@
-<?php session_start();?>
+<?php session_start();
+    $_SESSION["emailToId"] = "gokulscchoyi";
+    
+    echo $_SESSION["emailToId"];
+    ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -74,7 +78,7 @@
             </div>
         </div>
     </nav>
-    <div style="background: url(&quot;assets/img/11027%20(2).jpg&quot;) center no-repeat;">
+    <div style="background: url(&quot;assets/img/11027%20(2).jpg&quot;) center no-repeat">
     <form action = "submitPetInfo.php" method="POST" id="petDetails">
         <div class="row">
             <div class="col d-flex d-lg-flex justify-content-center align-items-center justify-content-lg-center align-items-lg-center" style="height: 50px;"><input class="form-control-sm d-lg-flex justify-content-lg-center align-items-lg-center" type="text" placeholder="Pet Name" style="border-radius: 13px;width: 240px;border-width: 1px;border-color: rgb(231,173,169);" name="petName" required="" autocomplete="on"></div>
@@ -127,7 +131,7 @@
             <div class="col d-flex d-lg-flex justify-content-center align-items-center justify-content-lg-center align-items-lg-center" style="height: 50px;"><input class="form-control-sm d-lg-flex justify-content-lg-center align-items-lg-center" type="text" placeholder="Parasite Control (Yes/No)" style="border-radius: 13px;width: 240px;border-width: 1px;border-color: rgb(231,173,169);" name="parasiteControl" required="" autocomplete="on"></div>
         </div>
         <div class="row">
-            <div class="col d-flex d-lg-flex justify-content-center align-items-center" style="height: 50px;"><input class="form-control-sm d-lg-flex justify-content-lg-center align-items-lg-center" type="mcDate" placeholder = "YYYY-MM-DD" style="border-radius: 13px;width: 240px;border-width: 1px;border-color: rgb(231,173,169);opacity: 0.85;" name="mcDate" required=""></div>
+            <div class="col d-flex d-lg-flex justify-content-center align-items-center" style="height: 50px;"><input class="form-control-sm d-lg-flex justify-content-lg-center align-items-lg-center" type="date"  style="border-radius: 13px;width: 240px;border-width: 1px;border-color: rgb(231,173,169);opacity: 0.85;" name="mcDate" required=""></div>
         </div>
         <div class="row">
             <div class="col d-flex d-lg-flex justify-content-center align-items-center justify-content-lg-center align-items-lg-center" style="height: 34px;"><button id = "petDetails" class="btn btn-primary btn-sm font-monospace d-flex justify-content-center align-items-center" type="submit" form = "petDetails" value = "Submit" style="border-radius: 30px;background: rgb(157,126,207);height: 35px;width: 148px;">Submit Details</button></div>

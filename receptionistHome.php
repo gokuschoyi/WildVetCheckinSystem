@@ -58,6 +58,46 @@
     <link rel="stylesheet" href="assets/css/Login-Form-Clean.css">
     <link rel="stylesheet" href="assets/css/Navigation-Clean.css">
     <link rel="stylesheet" href="assets/css/styles.css">
+
+    <style>
+        td{
+            text-align: center;
+            }
+        </style>
+        <meta charset="UTH-8">
+        <title>testing</title>
+        
+        <script type="text/javascript" charset="utf8" src="https://code.jquery.com/jquery-3.5.1.js"></script>
+        <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js"></script>
+        <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/select/1.3.3/js/dataTables.select.min.js"></script>
+        <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.25/js/dataTables.bootstrap5.min.js"></script>
+        
+
+        <link rel ="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.25/css/jquery.dataTables.min.css">
+        <link rel = "stylesheet" type = "test/css" href = "https://cdn.datatables.net/select/1.3.3/css/select.dataTables.min.css">
+        <link rel = "stylesheet" type = "test/css" href = "https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.0.1/css/bootstrap.min.css">
+        <link rel = "stylesheet" type = "test/css" href = "https://cdn.datatables.net/1.10.25/css/dataTables.bootstrap5.min.css">
+
+        <script>
+            $(document).ready(function() {
+            var table = $('#clients').DataTable( {
+               
+               "scrollY": "200px",
+                "paging": false
+                } );
+
+               $('a.toggle-vis').on( 'click', function (e) {
+                 e.preventDefault();
+
+                // Get the column API object
+                var column = table.column( $(this).attr('data-column') );
+
+               // Toggle the visibility
+               column.visible( ! column.visible() );
+                } );
+           } );
+   </script>
+
 </head>
 
 <body style="background: rgb(255, 255, 255);">
@@ -74,7 +114,48 @@
     </nav>
     <div class="container" style="background: url(&quot;assets/img/11027%20(2).jpg&quot;) center / contain;height: 600px;">
         <h2 class="display-5 font-monospace text-center d-lg-flex justify-content-lg-center align-items-lg-center" style="height: 79px;">All Clients</h2>
-        <div></div>
+        <div class ="container" style = "margin-top: 20px width: 100%;">
+            <div class = "row">
+                <div class = " width:100%">
+                <div border: 1px solid #c3c3c3; display: flex; flex-wrap: wrap; align-content: center;>
+                     Toggle column: <a class="toggle-vis" data-column="0">Name</a> - <a class="toggle-vis" data-column="1">Mobile</a> - <a class="toggle-vis" data-column="2">Email</a> - <a class="toggle-vis" data-column="3">Pet Name</a> - <a class="toggle-vis" data-column="4">Pet Type</a> - <a class="toggle-vis" data-column="5">Breed</a>
+                </div>
+                    <table id = "clients" class = "display" style ="width : 100%">
+                        <thead>
+                            <tr>
+                                <th>Client Name</th>
+                                <th>Mobile</th>
+                                <th>Email</th>
+                                <th>Pet Name</th>
+                                <th>Pet Type</th>
+                                <th>Breed</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php
+                            $conn = new mysqli('localhost', 'root','','wildvetcheckinsystem');
+                            $sql = $conn-> query(query: 'SELECT clientinfo.clientId, clientinfo.firstName, clientinfo.mobileNo, clientinfo.email ,petinfo.petName, petinfo.petType, petinfo.breed FROM clientinfo JOIN petinfo ON clientinfo.clientId=petinfo.petId');
+                            while( $data = $sql-> fetch_array()){
+                                echo '
+                                <tr>
+                                    <td> '.$data['firstName'].'</td>
+                                    <td> '.$data['mobileNo'].'</td>
+                                    <td> '.$data['email'].'</td>
+                                    <td> '.$data['petName'].'</td>
+                                    <td> '.$data['petType'].'</td>
+                                    <td> '.$data['breed'].'</td>
+                                </tr>
+                                ';
+                            }
+                            ?>
+
+                        </tbody>
+
+                    </table>
+            </div>
+        </div>
+
+
     </div>
     <script src="assets/bootstrap/js/bootstrap.min.js"></script>
 </body>

@@ -1,9 +1,4 @@
-<?php session_start();
-    if(isset($_POST['email'])){
-        $_SESSION['email'] = $_POST['email'];
-                     }
-?>
-
+<?php session_start();?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -117,11 +112,17 @@
         </div>
         <div class="row">
             <div class="col d-flex d-lg-flex justify-content-center align-items-center justify-content-lg-center align-items-lg-center" style="height: 100px;"><button id = "petdetails"class="btn btn-primary btn-sm font-monospace d-flex align-items-center" type="submit" name = "toPet" style="border-radius: 30px;background: rgb(157,126,207);height: 45px;width: 148px;opacity: 0.92;">Proceed to Pet Details</button>
-            
+            <?php 
+        if(isset($_POST['toPet'])){ 
+            $_SESSION["emailToId"] = $_POST['email'];
+            }
+            ?>
             </div>
         </div>
     </div>
     
+    
+
 </form>
 
     <div class="container">

@@ -14,11 +14,11 @@ if($conn->connect_error){
     die('Connection to DB failed : '.$conn->connect_error);
 }
 else{
-    $stmt = $conn->prepare("INSERT INTO clientinfo (title, firstName, surName, mobileNo, othContact, email, clientAddress, suburb, postcode) 
-    VALUES (?,?,?,?,?,?,?,?,?)");
-    $stmt->bind_param("sssiisssi",$title, $firstName, $surName, $mobileNo,
-                                  $othContact, $email, $clientAddress, $suburb,
-                                  $postcode);
+    $date = date('Y/m/d');
+    
+    $stmt = $conn->prepare("INSERT INTO clientinfo (title, firstName, surName, mobileNo, othContact, email, clientAddress, suburb, postcode, checkinDate) 
+    VALUES (?,?,?,?,?,?,?,?,?,?)");
+    $stmt->bind_param("sssiisssis", $title, $firstName, $surName, $mobileNo, $othContact, $email, $clientAddress, $suburb, $postcode, $date);
     $stmt->execute();
     echo " Client Info saved to db...";
     header("Location: petInfo.php");
