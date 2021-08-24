@@ -122,10 +122,24 @@
                 }
             }
         ?>
-
+        <?php
+        $query_run = mysqli_query($conn,$query);
+        $count = $query_run->num_rows;
+        if($count<=0)
+        {
+            ?>
+            <div class="container d-flex d-xl-flex justify-content-center align-items-center justify-content-xl-center align-items-xl-center" style = "height:150px;"><img src="assets/img/report.png" style="height: 80px;"></div>
+                <div class="row">
+                    <div class="col d-flex d-xl-flex justify-content-center align-items-center justify-content-xl-center align-items-xl-center" style = "height : 320px;">
+                        <p class="font-monospace text-center d-flex d-md-flex justify-content-center align-items-center justify-content-md-center align-items-md-center" style="font-size: 26px;color: rgb(109,134,163);width: 550px;">The Email you have entered does not esist in our database. Kindly go back to the check-In page and Check-in as  new client. Thank You.</p>
+                    </div>
+                </div> 
+                <?php
+        }
+            ?>
         <div class="container">
             <footer class="footer-basic" style="background: transparent;">
-            <div class="d-xl-flex justify-content-xl-center align-items-xl-center social"><a class="d-xl-flex justify-content-xl-center align-items-xl-center" href="https://www.instagram.com/thewildvetclinic/"><i class="icon ion-social-instagram"></i></a><a href="https://www.facebook.com/thewildvetclinic/"><i class="icon ion-social-facebook"></i></a></div>
+            <div class="d-xl-flex justify-content-xl-center align-items-xl-center social"><a class="d-xl-flex justify-content-xl-center align-items-xl-center" href="https://www.instagram.com/thewildvetclinic/"><i class="icon ion-social-instagram "></i></a><a href="https://www.facebook.com/thewildvetclinic/"><i class="icon ion-social-facebook"></i></a></div>
                 <ul class="list-inline">
                     <li class="list-inline-item"><a href="services.html">Services</a></li>
                     <li class="list-inline-item"><a href="contactUs.html">Contact-Us</a></li>
