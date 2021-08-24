@@ -88,9 +88,9 @@
                     <div class="row">
                         <div class="col d-flex d-xl-flex justify-content-center align-items-center justify-content-xl-center align-items-xl-center" style="height: 50px;"><button id="checkinemail" class="btn btn-primary font-monospace d-xl-flex justify-content-xl-center align-items-xl-center" type="submit" name="searchEmail" style="border-radius: 30px;height: 38px;background: rgb(160,120,227);">Submit</button>
                     <?php
-                    if (isset($_POST['searchEmail'])) {
+                   /* if (isset($_POST['searchEmail'])) {
                         $_SESSION["entEmail"] = $_POST['enteredEmail'];
-                        }
+                        }*/
                         
                     ?>
                         

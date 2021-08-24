@@ -1,5 +1,5 @@
 <?php session_start();
-    $_SESSION["emailToId"] = "gokulscchoyi";
+    //$_SESSION["emailToId"] = "gokulscchoyi";
     
     echo $_SESSION["emailToId"];
     ?>
