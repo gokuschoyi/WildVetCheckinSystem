@@ -9,7 +9,7 @@ $clientAddress = $_POST['address'];
 $suburb = $_POST['suburb'];
 $postcode = $_POST['postcode'];
 
-$_SESSION["emailToId"] = $email;
+//$_SESSION["emailToId"] = $email;
 $conn = new mysqli('localhost','root','','wildvetcheckinsystem');
 if($conn->connect_error){
     die('Connection to DB failed : '.$conn->connect_error);

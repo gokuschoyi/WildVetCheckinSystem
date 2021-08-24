@@ -1,6 +1,35 @@
-<?php session_start();?>
+<?php session_start();
+if (isset($_POST['toPet'])) {
+    $title = $_POST['title'];
+    $firstName = $_POST['firstName'];
+    $surName = $_POST['surName'];
+    $mobileNo = $_POST['mobileNo'];
+    $othContact = $_POST['othContact'];
+    $email = $_POST['email'];
+    $clientAddress = $_POST['address'];
+    $suburb = $_POST['suburb'];
+    $postcode = $_POST['postcode'];
+    $_SESSION['idEmail'] = $_POST['email'];
+    $conn = new mysqli('localhost', 'root', '', 'wildvetcheckinsystem');
+    if ($conn->connect_error) {
+        die('Connection to DB failed : ' . $conn->connect_error);
+    }
+    else 
+    {
+        $date = date('Y/m/d');
+
+        $stmt = $conn->prepare("INSERT INTO clientinfo (title, firstName, surName, mobileNo, othContact, email, clientAddress, suburb, postcode, checkinDate) 
+                VALUES (?,?,?,?,?,?,?,?,?,?)");
+        $stmt->bind_param("sssiisssis", $title, $firstName, $surName, $mobileNo, $othContact, $email, $clientAddress, $suburb, $postcode, $date);
+        $stmt->execute();
+
+        header("Location: petInfo.php");
+    }
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
@@ -73,57 +102,53 @@
             </div>
         </div>
     </nav>
-    
-    <form action = "submitClientInfo.php" method = "POST">
-    <div>
-        <div class="row">
-            <div class="col d-flex d-lg-flex justify-content-center align-items-center justify-content-lg-center align-items-lg-center" style="height: 50px;border-radius: 13px;border-color: rgb(231,173,169);"><select class="form-select-sm" style="width: 240px;height: 31px;border-radius: 13px;opacity: 0.85;border-color: rgb(231,173,169);" name="title" required="">
-                    <option value="None Selected" selected="">Select your Title</option>
-                    <option value="Mrs">Mrs</option>
-                    <option value="Mr">Mr</option>
-                    <option value="Miss">Miss</option>
-                    <option value="Ms">Ms</option>
-                    <option value="Dr">Dr</option>
-                </select></div>
-        </div>
-        <div class="row">
-            <div class="col d-flex d-lg-flex justify-content-center align-items-center justify-content-lg-center align-items-lg-center" style="height: 50px;"><input class="form-control-sm" type="text" placeholder="First Name" data-placeholder="First Name" style="border-radius: 13px;width: 240px;opacity: 0.85;" name="firstName" required="" pattern="^[a-zA-Z0-9.-]*$" ></div>
-        </div>
-        <div class="row">
-            <div class="col d-flex d-lg-flex justify-content-center align-items-center justify-content-lg-center align-items-lg-center" style="height: 50px;"><input class="form-control-sm" type="text" placeholder="Surname" style="border-radius: 13px;width: 240px;opacity: 0.85;border-width: 1px;border-color: rgb(231,173,169);" name="surName" required="" pattern="^[a-zA-Z0-9.-]*$" ></div>
-        </div>
-        <div class="row">
-            <div class="col d-flex d-lg-flex justify-content-center align-items-center justify-content-lg-center align-items-lg-center" style="height: 50px;"><input class="form-control-sm" type="tel" placeholder="Mobile Number" style="border-radius: 13px;width: 240px;opacity: 0.85;border-width: 1px;border-color: rgb(231,173,169);" name="mobileNo" required="" maxlength="10" minlength="10"></div>
-        </div>
-        <div class="row">
-            <div class="col d-flex d-lg-flex justify-content-center align-items-center justify-content-lg-center align-items-lg-center" style="height: 50px;"><input class="form-control-sm" type="tel" placeholder="Other Contact" style="border-radius: 13px;width: 240px;opacity: 0.85;border-width: 1px;border-color: rgb(231,173,169);" name="othContact" minlength="10" maxlength="10" autocomplete="on"></div>
-        </div>
-        <div class="row">
-            <div class="col d-flex d-lg-flex justify-content-center align-items-center justify-content-lg-center align-items-lg-center" style="height: 50px;"><input class="form-control-sm" type="email" placeholder="Email address" style="border-radius: 13px;width: 240px;opacity: 0.85;border-width: 1px;border-color: rgb(231,173,169);" name="email" required="" ></div>
-        </div>
-        <div class="row">
-            <div class="col d-flex d-lg-flex justify-content-center align-items-center justify-content-lg-center align-items-lg-center" style="height: 50px;"><input class="form-control-sm" type="text" placeholder="Home Address" style="border-radius: 13px;border-color: rgb(231,173,169);width: 240px;opacity: 0.85;" name="address" required="" ></div>
-        </div>
-        <div class="row">
-            <div class="col d-flex d-lg-flex justify-content-center align-items-center justify-content-lg-center align-items-lg-center" style="height: 50px;"><input class="form-control-sm" type="text" placeholder="Suburb" style="border-radius: 13px;width: 240px;opacity: 0.85;border-width: 1px;border-color: rgb(231,173,169);" name="suburb" required="" ></div>
-        </div>
-        <div class="row">
-            <div class="col d-flex d-lg-flex justify-content-center align-items-center justify-content-lg-center align-items-lg-center" style="height: 50px;"><input class="form-control-sm" type="text" placeholder="Postcode" style="border-radius: 13px;width: 240px;opacity: 0.85;border-width: 1px;border-color: rgb(231,173,169);" name="postcode" required=""></div>
-        </div>
-        <div class="row">
-            <div class="col d-flex d-lg-flex justify-content-center align-items-center justify-content-lg-center align-items-lg-center" style="height: 100px;"><button id = "petdetails"class="btn btn-primary btn-sm font-monospace d-flex align-items-center" type="submit" name = "toPet" style="border-radius: 30px;background: rgb(157,126,207);height: 45px;width: 148px;opacity: 0.92;">Proceed to Pet Details</button>
-            <?php 
-        /*if(isset($_POST['toPet'])){ 
+    <form action="<?php echo htmlentities($_SERVER['PHP_SELF']); ?>" method="POST">
+        <div>
+            <div class="row">
+                <div class="col d-flex d-lg-flex justify-content-center align-items-center justify-content-lg-center align-items-lg-center" style="height: 50px;border-radius: 13px;border-color: rgb(231,173,169);"><select class="form-select-sm" style="width: 240px;height: 31px;border-radius: 13px;opacity: 0.85;border-color: rgb(231,173,169);" name="title" required="">
+                        <option value="None Selected" selected="">Select your Title</option>
+                        <option value="Mrs">Mrs</option>
+                        <option value="Mr">Mr</option>
+                        <option value="Miss">Miss</option>
+                        <option value="Ms">Ms</option>
+                        <option value="Dr">Dr</option>
+                    </select></div>
+            </div>
+            <div class="row">
+                <div class="col d-flex d-lg-flex justify-content-center align-items-center justify-content-lg-center align-items-lg-center" style="height: 50px;"><input class="form-control-sm" type="text" placeholder="First Name" data-placeholder="First Name" style="border-radius: 13px;width: 240px;opacity: 0.85;" name="firstName" required="" pattern="^[a-zA-Z0-9.-]*$"></div>
+            </div>
+            <div class="row">
+                <div class="col d-flex d-lg-flex justify-content-center align-items-center justify-content-lg-center align-items-lg-center" style="height: 50px;"><input class="form-control-sm" type="text" placeholder="Surname" style="border-radius: 13px;width: 240px;opacity: 0.85;border-width: 1px;border-color: rgb(231,173,169);" name="surName" required="" pattern="^[a-zA-Z0-9.-]*$"></div>
+            </div>
+            <div class="row">
+                <div class="col d-flex d-lg-flex justify-content-center align-items-center justify-content-lg-center align-items-lg-center" style="height: 50px;"><input class="form-control-sm" type="tel" placeholder="Mobile Number" style="border-radius: 13px;width: 240px;opacity: 0.85;border-width: 1px;border-color: rgb(231,173,169);" name="mobileNo" required="" maxlength="10" minlength="10"></div>
+            </div>
+            <div class="row">
+                <div class="col d-flex d-lg-flex justify-content-center align-items-center justify-content-lg-center align-items-lg-center" style="height: 50px;"><input class="form-control-sm" type="tel" placeholder="Other Contact" style="border-radius: 13px;width: 240px;opacity: 0.85;border-width: 1px;border-color: rgb(231,173,169);" name="othContact" minlength="10" maxlength="10" autocomplete="on"></div>
+            </div>
+            <div class="row">
+                <div class="col d-flex d-lg-flex justify-content-center align-items-center justify-content-lg-center align-items-lg-center" style="height: 50px;"><input class="form-control-sm" type="email" placeholder="Email address" style="border-radius: 13px;width: 240px;opacity: 0.85;border-width: 1px;border-color: rgb(231,173,169);" name="email" required=""></div>
+            </div>
+            <div class="row">
+                <div class="col d-flex d-lg-flex justify-content-center align-items-center justify-content-lg-center align-items-lg-center" style="height: 50px;"><input class="form-control-sm" type="text" placeholder="Home Address" style="border-radius: 13px;border-color: rgb(231,173,169);width: 240px;opacity: 0.85;" name="address" required=""></div>
+            </div>
+            <div class="row">
+                <div class="col d-flex d-lg-flex justify-content-center align-items-center justify-content-lg-center align-items-lg-center" style="height: 50px;"><input class="form-control-sm" type="text" placeholder="Suburb" style="border-radius: 13px;width: 240px;opacity: 0.85;border-width: 1px;border-color: rgb(231,173,169);" name="suburb" required=""></div>
+            </div>
+            <div class="row">
+                <div class="col d-flex d-lg-flex justify-content-center align-items-center justify-content-lg-center align-items-lg-center" style="height: 50px;"><input class="form-control-sm" type="text" placeholder="Postcode" style="border-radius: 13px;width: 240px;opacity: 0.85;border-width: 1px;border-color: rgb(231,173,169);" name="postcode" required=""></div>
+            </div>
+            <div class="row">
+                <div class="col d-flex d-lg-flex justify-content-center align-items-center justify-content-lg-center align-items-lg-center" style="height: 100px;"><button id="petdetails" class="btn btn-primary btn-sm font-monospace d-flex align-items-center" type="submit" name="toPet" style="border-radius: 30px;background: rgb(157,126,207);height: 45px;width: 148px;opacity: 0.92;">Proceed to Pet Details</button>
+                    <?php
+                    /*if(isset($_POST['toPet'])){ 
             $_SESSION["emailToId"] = $_POST['email'];
             }*/
-            ?>
+                    ?>
+                </div>
             </div>
         </div>
-    </div>
-    
-    
-
-</form>
+    </form>
 
     <div class="container">
         <footer class="footer-basic" style="background: transparent;">

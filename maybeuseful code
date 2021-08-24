@@ -143,3 +143,25 @@ WHERE P.petId = (
         <div class="col d-flex d-lg-flex justify-content-center align-items-center justify-content-lg-center align-items-lg-center" style="height: 50px;"><button class="btn btn-primary btn-sm font-monospace d-xl-flex justify-content-xl-center align-items-xl-center" type="button" style="border-radius: 30px;background: rgb(157,126,207);">Go Back</button></div>
     </div>
 </div>
+
+
+
+else{
+                    <div class="container d-flex d-xl-flex justify-content-center align-items-center justify-content-xl-center align-items-xl-center"><img src="assets/img/check.png" style="height: 130px;"></div>
+                        <div class="row">
+                            <div class="col d-flex d-xl-flex justify-content-center align-items-center justify-content-xl-center align-items-xl-center">
+                            <p class="font-monospace text-center d-flex d-md-flex justify-content-center align-items-center justify-content-md-center align-items-md-center" style="font-size: 25px;color: rgb(109,134,163);width: 550px;">The Email you have entered does not esist in our database. Kindly go back to the check-In page and Check-in as  new client. Thank You.</p>
+                        </div>
+                    </div>
+                }
+            }
+
+
+            <div class="row">
+                <div class="col d-flex d-lg-flex justify-content-center align-items-center justify-content-lg-center align-items-lg-center" style="height: 100px;">
+                <button formaction = "submitClientInfo.php" id = "petdetails"class="btn btn-primary btn-sm font-monospace d-flex align-items-center" type="submit" name = "toPet" style="border-radius: 30px;background: rgb(157,126,207);height: 45px;width: 148px;opacity: 0.92;">Proceed to Pet Details</button>
+                <button formaction = "petInfo.php" id = "petdetails"class="btn btn-primary btn-sm font-monospace d-flex align-items-center" type="submit" name = "toPet" style="border-radius: 30px;background: rgb(157,126,207);height: 45px;width: 148px;opacity: 0.92;">Proceed to Pet Details</button>    
+                <input type="submit" value="Default Action">
+            </div>
+            </div>
+        </div>
