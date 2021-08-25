@@ -165,3 +165,15 @@ else{
             </div>
             </div>
         </div>
+
+
+        $query = "UPDATE petinfo P, clientinfo C SET P.petKey = C.clientId WHERE C.email = '$_SESSION[idEmail]' ORDER BY C.clientId DESC LIMIT 1";
+        $query_run = mysqli_query($conn,$query);
+
+
+         while($row = mysqli_fetch_array($query_run, MYSQLI_ASSOC)) {
+            $ID = $row['petKey']; 
+        }
+
+        //prepared statement update later
+        $name = $mysqli->real_escape_string($_POST['name']);

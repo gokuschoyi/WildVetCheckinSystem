@@ -1,5 +1,7 @@
 <?php session_start();
 echo $_SESSION['idEmail'];
+echo $_SESSION['ID'];
+echo $_SESSION['first'];
 ?>
 <!DOCTYPE html>
 <html lang="en">

@@ -1,5 +1,6 @@
 <?php session_start();
 echo $_SESSION["idEmail"];
+//print "testing".$ID."<br>";
 if (isset($_POST['submit'])){
     $petName = $_POST['petName'];
     $petType = $_POST['petType'];
@@ -13,7 +14,7 @@ if (isset($_POST['submit'])){
     $medication = $_POST['medication'];
     $parasiteControl = $_POST['parasiteControl'];
     $mcDate =  date('Y-m-d', strtotime($_POST['mcDate']));
-
+    $ID='';
     //$_SESSION['idEmail'] = $_POST['email'];
     
     $conn = new mysqli('localhost', 'root', '', 'wildvetcheckinsystem');
@@ -29,7 +30,33 @@ if (isset($_POST['submit'])){
         $query = "UPDATE petinfo P, clientinfo C SET P.petKey = C.clientId WHERE C.email = '$_SESSION[idEmail]' ORDER BY C.clientId DESC LIMIT 1";
         $query_run = mysqli_query($conn,$query);
 
-        header("Location: thankYou.php");
+        $Query2 = "SELECT petKey FROM petinfo WHERE petKey = (SELECT clientID FROM clientinfo WHERE email = '$_SESSION[idEmail]' ORDER BY clientId DESC LIMIT 1) ";
+        $query_run2 = mysqli_query($conn,$Query2);
+
+        while($row = mysqli_fetch_row($query_run2)) {
+            $_SESSION['ID'] = $row[0]; 
+
+        $query3 = $conn->prepare("SELECT * FROM petinfo INNER JOIN clientinfo WHERE clientinfo.clientId='$_SESSION[ID]'"); 
+        $query3->execute();
+        $query_run3 = $query3->get_result();
+        while($row = $query_run3->fetch_assoc()){
+            $_SESSION['first'] = "$row[microchip]";
+            $title = "$row[title]";
+            $firstName = "$row[firstName]";
+            $surName = "$row[surName]";
+            $mobileNo = "$row[mobileNo]";
+            $othContact = "$row[othContact]";
+            $email = "$row[email].";
+            $clientAddress = "$row[clientAddress]";
+            $suburb = "$row[suburb]";
+            $postcode = "$row[postcode]";
+            $checkinDate = "$row[checkinDate]";
+            $checkinTime = "$row[checkinTime]";
+            $_SESSION['first'] = $checkinTime;
+        }
+        
+
+        header("Location: thankYou.php");}
     }  
 }
 ?>
