@@ -1,6 +1,8 @@
 <?php session_start();
+include_once('vendor\tecnickcom\tcpdf\tcpdf.php');
+include_once('vendor\autoload.php');
+include_once('vendor\calcinai\php-imagick\src\Imagick.php');
 echo $_SESSION["idEmail"];
-//print "testing".$ID."<br>";
 if (isset($_POST['submit'])){
     $petName = $_POST['petName'];
     $petType = $_POST['petType'];
@@ -35,12 +37,12 @@ if (isset($_POST['submit'])){
 
         while($row = mysqli_fetch_row($query_run2)) {
             $_SESSION['ID'] = $row[0]; 
-
+            $pdfID = $_SESSION['ID'];
         $query3 = $conn->prepare("SELECT * FROM petinfo INNER JOIN clientinfo WHERE clientinfo.clientId='$_SESSION[ID]'"); 
         $query3->execute();
         $query_run3 = $query3->get_result();
+
         while($row = $query_run3->fetch_assoc()){
-            $_SESSION['first'] = "$row[microchip]";
             $title = "$row[title]";
             $firstName = "$row[firstName]";
             $surName = "$row[surName]";
@@ -55,7 +57,221 @@ if (isset($_POST['submit'])){
             $_SESSION['first'] = $checkinTime;
         }
         
+        $html = '
+            <style>
+            table, tr, td {
+            padding: 15px;
+            }
+            </style>
+            <table style="background-color: #222222; color: #fff">
+            <tbody>
+            <tr>
+            
+            <td><h1>CHECK-IN ID<strong> #'.$pdfID.'</strong></h1><br/>
+            <strong style="font-size:14px;">Check-In Date: '.$checkinDate.'</strong>
+            </td>
 
+            <td><h1></h1></td>
+
+            <td align="left"><br/>
+            THE WILD VET<br/>
+            22 A, Bridge Street,<br/>
+            Australia, NSW, 2037.<br/>
+            | <strong>1300 9453 838</strong> | <br/> <strong>reception@thewildvet.com.au</strong>
+            </td>
+            
+            </tr>
+            </tbody>
+            </table>
+        ';
+
+        $html .= '
+            <table>
+            <tbody>
+            <tr>
+            <td align = "center"><h1><strong>WILD VET CHECK-IN SYSTEM</strong></h1><br/></td></tr>
+            </tbody>
+            </table>
+        ';
+
+        $html .= '
+            <table>
+            <tbody>
+            <tr>
+            <td align="center"><strong style="font-size:16px;">Client Details</strong><br/>
+            '.$title.' '.$firstName.' '.$surName.'<br/>
+            '.$clientAddress.'<br/>
+            '.$suburb.' '.$postcode.'
+            </td>
+
+
+
+            <td align="center"><strong style="font-size:16px; width = 100px">Contact Details</strong><br/>
+            Phone No : '.$mobileNo.'<br/>
+            Other Contact : '.$othContact.'<br/>
+            Email : '.$email.'<br/>
+            </td>
+            </tr>
+            </tbody>
+            </table>
+        ';
+
+        $html .= '
+            <table style="width:100%" align = "center">
+            <tbody>
+            <tr>
+            <td style="text-decoration: underline;"><strong style="font-size:16px;">Pet Details</strong></td>
+            </tr>
+            </tbody>
+            </table>
+
+            <table style="width:100%" align = "center">
+            <tbody>
+            <tr>
+            <td><strong = "font-size:14px;">Pet Name : '.$petName.'</strong><br/>
+            <strong = "font-size:14px;">Pet Type : '.$petType.'</strong></td>
+            </tr>
+            </tbody>
+            </table>
+
+            <table style="width:100%" align = "center">
+            <tbody>
+            <tr colspan="4" style="font-weight:bold;">
+            <th style="border-top: 1px solid #222">Breed</th>
+            <th style="border-top: 1px solid #222">Sex</th>
+            <th style="border-top: 1px solid #222">Color</th>
+            <th style="border-top: 1px solid #222">Age</th>
+            <th style="border-top: 1px solid #222">Weight</th>
+            </tr>
+            </tbody>
+            </table>
+
+            <table "width:100%" align = "center">
+            <tbody>
+            <tr>
+            <td style="border-bottom: 1px solid #222">'.$breed.'</td>
+            <td style="border-bottom: 1px solid #222">'.$sex.'</td>
+            <td style="border-bottom: 1px solid #222">'.$color.'</td>
+            <td style="border-bottom: 1px solid #222">'.$age.'</td>
+            <td style="border-bottom: 1px solid #222">'.$petWeight.'</td>
+            </tr>
+            </tbody>
+            </table>
+
+            <table "width:100%" align = "center">
+            <tbody>
+            <tr style="font-weight:bold;">
+            <th>Microchip</th>
+            <th>Insurance</th>
+            <th>Medication</th>
+            <th>Parasite Control</th>
+            <th>MC Date</th>
+            </tr>
+            </tbody>
+            </table>
+
+            <table "width:100%" align = "center">
+            <tbody>
+            <tr>
+            <td style="border-bottom: 1px solid #222">'.$microchip.'</td>
+            <td style="border-bottom: 1px solid #222">'.$insurance.'</td>
+            <td style="border-bottom: 1px solid #222">'.$medication.'</td>
+            <td style="border-bottom: 1px solid #222">'.$parasiteControl.'</td>
+            <td style="border-bottom: 1px solid #222">'.$mcDate.'</td>
+            </tr>
+            </tbody>
+            </table>
+        ';
+
+        $html .= '
+        <table>
+        <tbody>
+        <tr>
+        <td style = "height:50px;"align="center"><strong style="font-size:16px;">Thank you for checkin in with us. See you soon.</strong></td>
+        </tr>
+        </tbody>
+        </table>
+        
+        ';
+
+        $html .= '
+        <table>
+        <tbody>
+        <tr>
+        <td style = "height:40px;"align="center" "text-decoration: underline;"><strong style="font-size:16px;">Opening Hours</strong></td>
+        </tr>
+        </tbody>
+        </table>
+
+        <table "width:100%" align = "center">
+        <tbody>
+        <tr>
+        <td style="text-decoration: underline;">Mon-Fri : 08:00 am - 07:00 pm</td>
+        </tr>
+        </tbody>
+        </table>
+
+        <table align = "center">
+        <tbody>
+        <tr>
+        <td style="text-decoration: underline;">Saturday : 09:00 am - 05:00 pm</td>
+        </tr>
+        </tbody>
+        </table>
+
+        <table "width:100%" align = "center">
+        <tbody>
+        <tr>
+        <td style="text-decoration: underline;">Sunday : 09:00 am - 12:00 pm</td>
+        </tr>
+        </tbody>
+        </table>
+        
+        ';
+
+        $html .= '
+        <table>
+        <tbody>
+        <tr height = "40px";>
+        </tr>
+        </tbody>
+        </table>
+
+        <table>
+        <tbody>
+        <tr>
+        <td style="border-top: 1px solid #222" align="center"><strong style="font-size:42px;">THE WILD VET</strong></td>
+        </tr>
+        </tbody>
+        </table>
+
+        <table>
+        <tbody>
+        <tr>
+        <td align="center"><strong style="font-size:14px;">EXOTICS & SMALL ANIMAL VETERINARIAN</strong></td>
+        </tr>
+        </tbody>
+        </table>
+        
+        ';
+
+        
+
+        $pdf = new TCPDF(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false, true);
+        $pdf->SetMargins(-1, 0, -1);
+        $pdf->setPrintHeader(false);
+	    $pdf->setPrintFooter(false);
+        $pdf->SetAutoPageBreak(TRUE, PDF_MARGIN_BOTTOM);
+        $pdf->setImageScale(PDF_IMAGE_SCALE_RATIO);
+        $pdf->setFontSubsetting(true);
+        $fontname = TCPDF_FONTS::addTTFfont('ubuntu.ttf', 'TrueTypeUnicode', '', 96);
+        $fontbold = TCPDF_FONTS::addTTFfont('ubuntuB.ttf', 'TrueTypeUnicode', '', 96);
+        $pdf->SetFont($fontname, '', 10);
+        $pdf->AddPage();
+        $pdf->writeHTMLCell(0, 0, '', '', $html, 0, 0, 0, true, '', true);
+        $pdf_name = ''.$pdfID.'.pdf';
+        $pdf->Output(dirname(__FILE__).'/invoice/'.$pdf_name.'', 'F');
+        echo 'PDF saved. <a href="invoice/'.$pdf_name.'">View</a>';
         header("Location: thankYou.php");}
     }  
 }
@@ -211,6 +427,7 @@ if (isset($_POST['submit'])){
         </footer>
     </div>
     <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+   
 </body>
 
 </html>

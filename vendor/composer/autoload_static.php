@@ -20,6 +20,16 @@ class ComposerStaticInitc16d2a3ffc296b32d739be4886329534
         ),
     );
 
+    public static $prefixesPsr0 = array (
+        'I' => 
+        array (
+            'Imagick' => 
+            array (
+                0 => __DIR__ . '/..' . '/calcinai/php-imagick/src',
+            ),
+        ),
+    );
+
     public static $classMap = array (
         'Composer\\InstalledVersions' => __DIR__ . '/..' . '/composer/InstalledVersions.php',
         'Datamatrix' => __DIR__ . '/..' . '/tecnickcom/tcpdf/include/barcodes/datamatrix.php',
@@ -44,6 +54,7 @@ class ComposerStaticInitc16d2a3ffc296b32d739be4886329534
         return \Closure::bind(function () use ($loader) {
             $loader->prefixLengthsPsr4 = ComposerStaticInitc16d2a3ffc296b32d739be4886329534::$prefixLengthsPsr4;
             $loader->prefixDirsPsr4 = ComposerStaticInitc16d2a3ffc296b32d739be4886329534::$prefixDirsPsr4;
+            $loader->prefixesPsr0 = ComposerStaticInitc16d2a3ffc296b32d739be4886329534::$prefixesPsr0;
             $loader->classMap = ComposerStaticInitc16d2a3ffc296b32d739be4886329534::$classMap;
 
         }, null, ClassLoader::class);

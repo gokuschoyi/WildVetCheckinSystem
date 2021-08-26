@@ -177,3 +177,15 @@ else{
 
         //prepared statement update later
         $name = $mysqli->real_escape_string($_POST['name']);
+
+
+
+        $html .= '
+        <table "width:100%" align = "center">
+        <tbody>
+        <tr><strong = "font-size:18px;">THE WILD VET CHECK-IN SYSTEM</strong></tr><br/>
+        <tr><strong = "font-size:14px;">EXOTICS & SMALL ANIMAL VETERINARIAN</strong></tr>
+        </tbody>
+        </table>
+        
+        ';

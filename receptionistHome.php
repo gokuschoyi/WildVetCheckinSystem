@@ -134,7 +134,7 @@
                         <tbody>
                             <?php
                             $conn = new mysqli('localhost', 'root','','wildvetcheckinsystem');
-                            $sql = $conn-> query(query: 'SELECT clientinfo.clientId, clientinfo.firstName, clientinfo.mobileNo, clientinfo.email ,petinfo.petName, petinfo.petType, petinfo.breed FROM clientinfo JOIN petinfo ON clientinfo.clientId=petinfo.petId');
+                            $sql = $conn-> query(query: 'SELECT clientinfo.clientId, clientinfo.firstName, clientinfo.mobileNo, clientinfo.email ,petinfo.petName, petinfo.petType, petinfo.breed FROM clientinfo JOIN petinfo ON clientinfo.clientId=petinfo.petKey');
                             while( $data = $sql-> fetch_array()){
                                 echo '
                                 <tr>
