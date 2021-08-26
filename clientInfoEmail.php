@@ -1,5 +1,6 @@
 <?php session_start();
     $_SESSION["entEmail"] = $_POST['enteredEmail'];
+    $_SESSION["idEmail"] = $_SESSION["entEmail"];
     
     echo $_SESSION["entEmail"];
 ?>

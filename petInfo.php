@@ -1,7 +1,7 @@
 <?php session_start();
 include_once('vendor\tecnickcom\tcpdf\tcpdf.php');
 include_once('vendor\autoload.php');
-include_once('vendor\calcinai\php-imagick\src\Imagick.php');
+require 'vendor\autoload.php';
 echo $_SESSION["idEmail"];
 if (isset($_POST['submit'])){
     $petName = $_POST['petName'];
