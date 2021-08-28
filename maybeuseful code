@@ -217,3 +217,76 @@ else{
         else
         echo ' Mail sent Success';
             $mail->smtpClose();
+
+
+            <section class="login-clean" style="background: url(&quot;assets/img/SL_060521_43530_37.jpg&quot;);">
+        <h2 class="font-monospace text-center">Receptionist Login</h2>
+        <form method="post">
+            <h2 class="visually-hidden">Login Form</h2>
+            <div class="illustration"><img src="assets/img/logo.png" style="height: 202px;"></div>
+            <div class="mb-3"><input class="form-control" type="email" name="email" placeholder="Email"></div>
+            <div class="mb-3"><input class="form-control" type="password" name="password" placeholder="Password"></div>
+            <div class="mb-3"><button class="btn btn-primary d-block w-100" type="submit" style="background: var(--bs-purple);">Log In</button></div><a class="forgot" href="#">Forgot your email or password?</a>
+        </form>
+    </section>
+
+
+    <script>
+
+        Array.prototype.contains = function(v) {
+            for(var i = 0; i < this.length; i++) {
+                if(this[i] === v) return true;
+            }
+            return false;
+        };
+
+        var offices =null;
+        
+
+        $(document).ready(function() {
+            offices = new Array();
+            $.each($(offices, function (i, item){
+            if(!offices.contains(item.petType)){
+                offices.push(item.petType);
+            }
+            });
+
+           
+            var table = $('#clients').DataTable( {
+                columnDefs:[{targets:[0,1,3,4,5], type:"dom-text", render:function(data, type, row, meta){
+            return "<input type='text' value='" +  data + "'>";}},
+            {targets:[2], render : 
+         function(data){return createSelect(data);}}           
+                   ]
+            });
+            "scrollY": "420px",
+            "paging": true
+        });
+
+        
+
+        function createSelect(selItem){
+            var sel = "<select><option>Select City</option>" ;
+            for(var i = 0; i < offices.length; ++i){
+                if(offices[i] == selItem){
+                    sel += "<option selected value = '"+offices[0]+"' >" + offices[i] + "</option>";
+                }
+                else{
+                    sel += "<option  value = '"+offices[0]+"' >" + offices[i] + "</option>";
+                }
+            }
+            sel += "</select>";
+            return sel;
+        }
+
+            $('a.toggle-vis').on( 'click', function (e) {
+                e.preventDefault();
+
+            // Get the column API object
+            var column = table.column( $(this).attr('data-column') );
+
+            // Toggle the visibility
+            column.visible( ! column.visible() );
+            } );
+        } );
+    </script>
