@@ -189,3 +189,31 @@ else{
         </table>
         
         ';
+
+
+
+
+        $mail = new PHPMailer();
+        $mail->IsSMTP();
+        $mail-> Host ="smtp.gmail.com";
+        $mail->SMTPAuth = "True";
+        $mail->Username = ('thewildvetcheckin@gmail');
+        $mail->Password = ('123@wildvet');
+        $mail->SMTPSecure ="tls";
+        $mail->Port = '587';
+
+        $mail->setFrom("thewildvetcheckin@gmail.com","Wild Vet Check-In");
+        $mail->addAddress('gokulsangamitrachoyi@gmail.com','Gokul');
+
+        $mail->isHTML(true);
+
+        $mail->Subject = ("Checkin Information"); 
+        $mail->Body = "<p>Thank you for checking in with us. Attached is a pdf document containig your information. See you soon.</p>";
+     
+        if(!$mail->send()){
+        echo 'something went wrong';
+        echo'Mailer Error : ' .$mail->ErrorInfo;
+        }
+        else
+        echo ' Mail sent Success';
+            $mail->smtpClose();

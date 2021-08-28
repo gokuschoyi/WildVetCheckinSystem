@@ -82,7 +82,7 @@
             $conn = new mysqli('localhost','root','','wildvetcheckinsystem');
             if(isset($_SESSION["entEmail"]))
             {
-                $query = "SELECT * FROM clientinfo where email = '$_SESSION[entEmail]' LIMIT 1 ";//change to prepared statement
+                $query = "SELECT * FROM clientinfo where email = '$_SESSION[entEmail]' ORDER BY clientId DESC LIMIT 1 ";//change to prepared statement
                 $query_run = mysqli_query($conn,$query);
                 while($row = mysqli_fetch_array($query_run))
                 {

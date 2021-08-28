@@ -1,7 +1,9 @@
 <?php session_start();
+use PHPMailer\PHPMailer\PHPMailer;
+require 'vendor\autoload.php';
+
 include_once('vendor\tecnickcom\tcpdf\tcpdf.php');
 include_once('vendor\autoload.php');
-require 'vendor\autoload.php';
 echo $_SESSION["idEmail"];
 if (isset($_POST['submit'])){
     $petName = $_POST['petName'];
@@ -25,14 +27,14 @@ if (isset($_POST['submit'])){
     } 
     else
     {
-        $stmt = $conn->prepare("INSERT INTO petinfo (petName, petType, breed, sex, color, age, petWeight, microchip, insurance, medication, parasiteControl, mcDate) VALUES (?,?,?,?,?,?,?,?,?,?,?,?)");
+        $stmt = $conn->prepare("INSERT INTO petinfo (petName, petType, breed, sex, color, age, petWeight, microchip, insurance, medication, parasiteControl, mcDate, petKey) VALUES (?,?,?,?,?,?,?,?,?,?,?,?, (SELECT clientId FROM clientinfo WHERE email = '$_SESSION[idEmail]' ORDER BY clientId DESC LIMIT 1))");
         $stmt->bind_param("sssssiisssss", $petName, $petType, $breed, $sex, $color, $age, $petWeight, $microchip, $insurance, $medication, $parasiteControl, $mcDate);
         $stmt->execute();
         
-        $query = "UPDATE petinfo P, clientinfo C SET P.petKey = C.clientId WHERE C.email = '$_SESSION[idEmail]' ORDER BY C.clientId DESC LIMIT 1";
-        $query_run = mysqli_query($conn,$query);
+        //$query = "UPDATE petinfo P, clientinfo C SET P.petKey = C.clientId WHERE C.email = '$_SESSION[idEmail]' ORDER BY C.clientId DESC LIMIT 1";
+        //$query_run = mysqli_query($conn,$query);
 
-        $Query2 = "SELECT petKey FROM petinfo WHERE petKey = (SELECT clientID FROM clientinfo WHERE email = '$_SESSION[idEmail]' ORDER BY clientId DESC LIMIT 1) ";
+        $Query2 = "SELECT petKey FROM petinfo WHERE petKey = (SELECT clientId FROM clientinfo WHERE email = '$_SESSION[idEmail]' ORDER BY clientId DESC LIMIT 1) ";
         $query_run2 = mysqli_query($conn,$Query2);
 
         while($row = mysqli_fetch_row($query_run2)) {
@@ -272,7 +274,35 @@ if (isset($_POST['submit'])){
         $pdf_name = ''.$pdfID.'.pdf';
         $pdf->Output(dirname(__FILE__).'/invoice/'.$pdf_name.'', 'F');
         echo 'PDF saved. <a href="invoice/'.$pdf_name.'">View</a>';
-        header("Location: thankYou.php");}
+
+        $mail = new PHPMailer();
+        $mail->IsSMTP();
+        $mail-> Host ='smtp.gmail.com';
+        $mail->SMTPAuth = true;
+        $mail->Username = 'thewildvetcheckin@gmail.com';
+        $mail->Password = '123@wildvet';
+        $mail->SMTPSecure ='tls';
+        $mail->Port = '587';
+
+        $mail->setFrom('thewildvetcheckin@gmail.com','Wild Vet Reception');
+        $mail->addAddress('gokulsangamitrachoyi@gmail.com','Gokul');
+
+        $mail->isHTML(true);
+
+        $mail->Subject = "Checkin Information"; 
+        $mail->Body = "<p>Thank you for checking in with us. Attached is a pdf document containig your information. See you soon.</p>";
+     
+        if(!$mail->send()){
+        echo 'something went wrong';
+        echo'Mailer Error : ' .$mail->ErrorInfo;
+        }
+        //email attachment remaining
+        else
+        echo ' Mail sent Success';
+            $mail->smtpClose();
+
+        header("Location: thankYou.php");
+    }
     }  
 }
 ?>
