@@ -1,4 +1,5 @@
 <?php session_start();
+date_default_timezone_set('Australia/ACT'); 
 if (isset($_POST['toPet'])) {
     $title = $_POST['title'];
     $firstName = $_POST['firstName'];
@@ -16,8 +17,7 @@ if (isset($_POST['toPet'])) {
     }
     else 
     {
-        date_default_timezone_set('Australia/ACT');   
-        $date = date('Y/m/d');
+        $date = date("Y-m-d");
 
         $stmt = $conn->prepare("INSERT INTO clientinfo (title, firstName, surName, mobileNo, othContact, email, clientAddress, suburb, postcode, checkinDate) 
                 VALUES (?,?,?,?,?,?,?,?,?,?)");

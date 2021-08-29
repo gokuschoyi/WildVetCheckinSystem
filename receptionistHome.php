@@ -88,15 +88,7 @@
 
             $('a.toggle-vis').on( 'click', function (e) {
                 e.preventDefault();
-
-            // Get the column API object
-            var column = table.column( $(this).attr('data-column') );
-
-            // Toggle the visibility
-            column.visible( ! column.visible() );
-            } );
-        } );
-    </script>
+    
 
 </head>
 <body style="background: rgb(255, 255, 255);">

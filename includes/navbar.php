@@ -37,8 +37,10 @@
     <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
         <div class="bg-white py-2 collapse-inner rounded">
             <!--<h6 class="collapse-header">Custom Components:</h6>-->
-            <a class="collapse-item" href="buttons.html">Today</a>
-            <a class="collapse-item" href="cards.html">All Clients</a>
+            <a class="collapse-item" href="rToday.php">Today</a>
+            <a class="collapse-item" href="rAllclients.php">All Clients</a>
+            <a class="collapse-item" href="rSendsnippet.php">Send Snippets</a>
+            <a class="collapse-item" href="rEdit.php">Edit/View</a>
         </div>
     </div>
 </li>
@@ -54,10 +56,10 @@
         data-parent="#accordionSidebar">
         <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header">Custom Utilities:</h6>
+            <a class="collapse-item" href="utilities-border.html">Add Doctors</a>
+            <a class="collapse-item" href="utilities-animation.html">Edit Doctor</a>
+            <a class="collapse-item" href="utilities-other.html">Edit Profile</a>
             <a class="collapse-item" href="utilities-color.html">Colors</a>
-            <a class="collapse-item" href="utilities-border.html">Borders</a>
-            <a class="collapse-item" href="utilities-animation.html">Animations</a>
-            <a class="collapse-item" href="utilities-other.html">Other</a>
         </div>
     </div>
 </li>

@@ -290,3 +290,6 @@ else{
             } );
         } );
     </script>
+
+
+    SELECT clientinfo.clientId, clientinfo.title, clientinfo.firstName, clientinfo.surName, clientinfo.mobileNo, clientinfo.email ,petinfo.petName, petinfo.petType, petinfo.breed FROM clientinfo JOIN petinfo WHERE (clientinfo.checkinDate = "2021-29-08")
