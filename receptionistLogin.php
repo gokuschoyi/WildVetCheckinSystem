@@ -1,6 +1,6 @@
 <?php
-if (isset($_POST['submit'])){
-    header("Location: receptionistHome.php");
+if (isset($_POST['rLogin'])){
+    header("Location: testdash.php");
 
 }
 ?>
@@ -67,7 +67,7 @@ if (isset($_POST['submit'])){
 
 <body style="background: url(&quot;assets/img/6677.jpg&quot;) center no-repeat;">
     <nav class="navbar navbar-light navbar-expand-md navigation-clean" style="height: 150px;background: #f8ddf5;">
-        <div class="container"><a class="navbar-brand font-monospace" href="#" style="font-size: 35px;">The Wild Vet</a><button data-bs-toggle="collapse" class="navbar-toggler" data-bs-target="#navcol-1"><span class="visually-hidden">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
+        <div class="container"><a class="navbar-brand font-monospace" href="index.php" style="font-size: 35px;">The Wild Vet</a><button data-bs-toggle="collapse" class="navbar-toggler" data-bs-target="#navcol-1"><span class="visually-hidden">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
             <div class="collapse navbar-collapse" id="navcol-1">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item"><a class="nav-link font-monospace" href="clientCheckin.html">Check-In Page</a></li>
@@ -78,17 +78,16 @@ if (isset($_POST['submit'])){
         </div>
     </nav>
     <h4 class="font-monospace text-center d-flex d-lg-flex justify-content-center align-items-center justify-content-lg-center align-items-lg-center" style="height: 133px;font-weight: bold;opacity: 0.85;font-size: 28.376px;">Receptionist Login</h4>
-    <div class="d-xl-flex justify-content-xl-center align-items-xl-start" style="height: 580px;">
-        <form method="post" style="background: transparent;border-radius: 26px;width: 240px;">
-            <h2 class="visually-hidden">Login Form</h2>
-            <div class="d-xl-flex justify-content-xl-center align-items-xl-center illustration" style="height: 190px;"><img src="assets/img/password.png" style="width: 80px;"></div>
-            <div class="mb-3"><input class="form-control" type="email" name="email" placeholder="Email"></div>
-            <div class="mb-3"><input class="form-control" type="password" name="password" placeholder="Password"></div>
-            <div class="d-xl-flex justify-content-xl-center align-items-xl-center mb-3"><button class="btn btn-primary d-block w-100" name = "submit" type="submit">Log In</button></div>
-            <a class="d-xl-flex justify-content-xl-center align-items-xl-center forgot" href="#">Forgot your email or password?</a>
-        </form>
-
-    </div>
+    <div class="d-flex d-lg-flex d-xl-flex justify-content-center align-items-start justify-content-sm-center align-items-sm-center justify-content-md-center align-items-md-center justify-content-lg-center align-items-lg-center justify-content-xl-center align-items-xl-center" style="height: 580px;">
+    <form method="post" style="background: transparent;border-radius: 26px;width: 240px;">
+        <h2 class="visually-hidden">Login Form</h2>
+        <div class="d-flex d-lg-flex d-xl-flex justify-content-center align-items-center justify-content-sm-center align-items-sm-center justify-content-md-center align-items-md-center justify-content-lg-center align-items-lg-center justify-content-xl-center align-items-xl-center illustration" style="height: 190px;"><img class="d-flex justify-content-center align-items-center" src="assets\img\password.png" style="width: 80px;" /></div>
+        <div class="mb-3"><input type="email" class="form-control" name="email" placeholder="Email" /></div>
+        <div class="mb-3"><input type="password" class="form-control" name="password" placeholder="Password" /></div>
+        <div class="d-xl-flex justify-content-xl-center align-items-xl-center mb-3"><button class="btn btn-primary d-block w-100" type="submit" name = "rLogin">Log In</button></div>
+        <a class="d-flex d-sm-flex d-md-flex d-lg-flex d-xl-flex justify-content-center align-items-center justify-content-sm-center align-items-sm-center justify-content-md-center align-items-md-center justify-content-lg-center align-items-lg-center justify-content-xl-center align-items-xl-center forgot" href="#">Forgot your email or password?</a>
+    </form>
+</div>
     <footer class="footer-basic" style="height: 200px;">
         <div class="social" style="height: 60px;"><a href="#"><i class="icon ion-social-instagram"></i></a><a href="#"><i class="icon ion-social-snapchat"></i></a><a href="#"><i class="icon ion-social-twitter"></i></a><a href="#"><i class="icon ion-social-facebook"></i></a></div>
         <ul class="list-inline">

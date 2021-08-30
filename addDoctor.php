@@ -1,9 +1,10 @@
 <?php
+session_start();
 include('includes\header.php');
 include('includes\navbar.php');
 
 ?>
-    
+
         <!-- Content Wrapper -->
         <div id="content-wrapper" class="d-flex flex-column">
 
@@ -102,7 +103,7 @@ include('includes\navbar.php');
 
                     <!-- Page Heading -->
                     <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                        <h1 class="h3 mb-0 text-gray-800">ALL CLIENTS</h1>
+                        <h1 class="h3 mb-0 text-gray-800">ADD DOCTOR</h1>
                         <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
                                 class="fas fa-download fa-sm text-white-50"></i> Generate Report</a>
                     </div>
@@ -110,22 +111,78 @@ include('includes\navbar.php');
                     <!-- Content Row -->
                     <div class="row">
 
-                        <!-- Earnings (Monthly) Card Example -->
-                        <div class="col-xl-3 col-md-6 mb-4">
+                    <div class="col-xl-4 col-md-6 mb-4">
                             <div class="card border-left-primary shadow h-100 py-2">
                                 <div class="card-body">
                                     <div class="row no-gutters align-items-center">
                                         <div class="col mr-2">
                                             <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
-                                                CLIENTS (All)</div>
+                                                </div>
+                                                <div class="modal fade" id="addadminprofile" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                    <div class="modal-dialog" role="document">
+                                                    <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h5 class="modal-title" id="exampleModalLabel">Add Admin Data</h5>
+                                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                        <span aria-hidden="true">&times;</span>
+                                                        </button>
+                                                        </div>
+                                                        <form action="docCode.php" method="POST">
+
+                                                            <div class="modal-body">
+
+                                                            <div class="form-group">
+                                                                <label> Firstname </label>
+                                                                <input type="text" name="firstname" class="form-control" placeholder="Enter First Name">
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label> Lasttname </label>
+                                                                <input type="text" name="lastname" class="form-control" placeholder="Enter Last Name">
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label>Email</label>
+                                                                <input type="email" name="email" class="form-control checking_email" placeholder="Enter Email">
+                                                                <small class="error_email" style="color: red;"></small>
+                                                            </div>
+                                                            </div>
+                                                            <div class="modal-footer">
+                                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                                                <button type="submit" name="registerbtn" class="btn btn-primary">Save</button>
+                                                            </div>
+                                                        </form>
+                                                        
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addadminprofile">Add Doctor Profile</button>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800"></div>
+                                        </div>
+                                    <div class="col-auto">
+                                        <i class="fas fa-calendar fa-2x text-gray-300"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                        <!-- Earnings (Monthly) Card Example -->
+                        <div class="col-xl-4 col-md-6 mb-4">
+                            <div class="card border-left-primary shadow h-100 py-2">
+                                <div class="card-body">
+                                    <div class="row no-gutters align-items-center">
+                                        <div class="col mr-2">
+                                            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+                                                DOCTORS ADDED</div>
                                                 <?php
+                                                
                                                 $conn = new mysqli('localhost', 'root','','wildvetcheckinsystem');
-                                                $query = 'SELECT COUNT(clientId) FROM clientinfo JOIN petinfo ON clientinfo.clientId = petinfo.petKey';
-                                                $stmt = $conn->prepare($query);
-                                                $stmt->execute();
-                                                $row =$stmt->get_result()->fetch_row();
+                                                $query = $conn->prepare("SELECT COUNT(docId) FROM doctor ");
+                                                
+                                                $query->execute();
+                                                $stmt = $query->get_result()->fetch_row();
+                                                
                                                 ?>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800"><?php echo $row[0]?></div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800"><?php echo $stmt[0]?></div>
                                         </div>
                                         <div class="col-auto">
                                             <i class="fas fa-calendar fa-2x text-gray-300"></i>
@@ -133,37 +190,69 @@ include('includes\navbar.php');
                                     </div>
                                 </div>
                             </div>
-                        </div>   
-                    </div>
+                        </div>
 
-                    <div  class ="table-responsive" >
+                    <!-- Earnings (Monthly) Card Example -->
+                    <div class="col-xl-4 col-md-6 mb-4">
+                        <div class="card border-left-success shadow h-100 py-2">
+                            <div class="card-body">
+                                <div class="row no-gutters align-items-center">
+                                    <div class="col mr-2">
+                                        <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
+                                            DOCTORS REGISTERED</div>
+                                            <?php
+                                            $conn = new mysqli('localhost', 'root','','wildvetcheckinsystem');
+                                            $query = 'SELECT COUNT(clientId) FROM clientinfo JOIN petinfo ON clientinfo.clientId = petinfo.petKey';
+                                            $stmt = $conn->prepare($query);
+                                            $stmt->execute();
+                                            $row =$stmt->get_result()->fetch_row();
+                                            ?>
+                                        <div class="h5 mb-0 font-weight-bold text-gray-800"><?php echo $row[0]?></div>
+                                    </div>
+                                    <div class="col-auto">
+                                        <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Content Row -->
+                </div>
+                <div class = "card-body">
+                <?php
+                    if (isset($_SESSION['status'])){
+                        echo '<h2>'.$_SESSION['status'].'</h2>';
+                        unset($_SESSION['status']);
+                    }
+                ?>        
+            </div>
+                <div class="row">
+                <!-- FORM for adding doctor -->
+                <div  class ="table-responsive" >
                         <table id = "clients" class = "display" style ="width : 100%">
                             <thead>
                                 <tr>
-                                    <th>Client Name</th>
-                                    <th>Mobile</th>
+                                    <th>Doctor ID</th>
+                                    <th>First Name</th>
+                                    <th>Last Name</th>
                                     <th>Email</th>
-                                    <th>Pet Name</th>
-                                    <th>Pet Type</th>
-                                    <th>Breed</th>
+                                    <th>Password</th>
                                     <th>EDIT DETAILS</th>
                                     <th>DELETE RECORD</th>
-                                   
                                 </tr>
                             </thead>
                             <tbody>
                                 <?php
                                 $conn = new mysqli('localhost', 'root','','wildvetcheckinsystem');
-                                $sql = $conn-> query(query: 'SELECT clientinfo.clientId, clientinfo.title, clientinfo.firstName, clientinfo.surName, clientinfo.mobileNo, clientinfo.email ,petinfo.petName, petinfo.petType, petinfo.breed FROM clientinfo JOIN petinfo ON clientinfo.clientId=petinfo.petKey');
+                                $sql = $conn-> query(query: 'SELECT docId, dFname, dLname, dEmail, dPassword  FROM doctor');
                                 while( $data = $sql-> fetch_array()){
                                     echo '
                                     <tr>
-                                        <td> '.$data['title'].' '.$data['firstName'].' '.$data['surName'].'</td>
-                                        <td> '.$data['mobileNo'].'</td>
-                                        <td> '.$data['email'].'</td>
-                                        <td> '.$data['petName'].'</td>
-                                        <td> '.$data['petType'].'</td>
-                                        <td> '.$data['breed'].'</td>
+                                        <td> '.$data['docId'].' </td>
+                                        <td> '.$data['dFname'].'</td>
+                                        <td> '.$data['dLname'].'</td>
+                                        <td> '.$data['dEmail'].'</td>
+                                        <td> '.$data['dPassword'].'</td>
                                         <td> <button type = "submit" class = " btn btn-success">EDIT</button> </td>
                                         <td> <button type = "submit" class = " btn btn-success">DELETE</button> </td>
                                     </tr>
@@ -173,15 +262,14 @@ include('includes\navbar.php');
 
                             </tbody>
                         </table>
-                    </div>
-                    <!-- Content Row -->
-                </div>
-                <!-- /.container-fluid -->
+            </div>
+            </div>
+            <!-- /.container-fluid -->
             </div>
             <!-- End of Main Content -->
     <?php 
-    include('includes\scripts.php');
-    include('includes\footer.php');
+    include('includes/scripts.php');
+    include('includes/footer.php');
     ?>
 
     

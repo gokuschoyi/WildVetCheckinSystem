@@ -38,9 +38,9 @@
         <div class="bg-white py-2 collapse-inner rounded">
             <!--<h6 class="collapse-header">Custom Components:</h6>-->
             <a class="collapse-item" href="rToday.php">Today</a>
-            <a class="collapse-item" href="rAllclients.php">All Clients</a>
             <a class="collapse-item" href="rSendsnippet.php">Send Snippets</a>
             <a class="collapse-item" href="rEdit.php">Edit/View</a>
+            <a class="collapse-item" href="rAllclients.php">All Clients</a>
         </div>
     </div>
 </li>
@@ -56,9 +56,9 @@
         data-parent="#accordionSidebar">
         <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header">Custom Utilities:</h6>
-            <a class="collapse-item" href="utilities-border.html">Add Doctors</a>
-            <a class="collapse-item" href="utilities-animation.html">Edit Doctor</a>
             <a class="collapse-item" href="utilities-other.html">Edit Profile</a>
+            <a class="collapse-item" href="addDoctor.php">Add Doctors</a>
+            <a class="collapse-item" href="utilities-animation.html">Edit Doctor</a>
             <a class="collapse-item" href="utilities-color.html">Colors</a>
         </div>
     </div>
@@ -137,7 +137,7 @@
                 <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
                 <div class="modal-footer">
                     <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                    <a class="btn btn-primary" href="login.html">Logout</a>
+                    <a class="btn btn-primary" href="receptionistLogin.php">Logout</a>
                 </div>
             </div>
         </div>

@@ -150,7 +150,7 @@ include('includes\navbar.php');
                                     <th>Pet Type</th>
                                     <th>Breed</th>
                                     <th>EDIT DETAILS</th>
-                                    <th>DELETE RECORD</th>
+                                    <th>ASSIGN DOCTOR</th>
                                    
                                 </tr>
                             </thead>
@@ -174,8 +174,14 @@ include('includes\navbar.php');
                                         <td> '.$data['petName'].'</td>
                                         <td> '.$data['petType'].'</td>
                                         <td> '.$data['breed'].'</td>
-                                        <td> <button type = "submit" class = " btn btn-success">EDIT</button> </td>
-                                        <td> <button type = "submit" class = " btn btn-success">DELETE</button> </td>
+                                        <td> 
+                                            <form action = "client_edit.php" method = "POST">
+                                            <input type = "hidden" name = "cid" value ='.$data['clientId'].'>
+                                            <input type = "hidden" name = "cname" value ='.$data['firstName'].'>
+                                        <button type = "submit" name = "edituser" class = " btn btn-success">Edit</button> 
+                                        </form>
+                                        </td>
+                                        <td> <button type = "submit" class = " btn btn-success">Select Doctor</button> </td>
                                     </tr>
                                     ';
                                 }

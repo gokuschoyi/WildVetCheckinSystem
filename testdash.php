@@ -118,7 +118,17 @@ include('includes/navbar.php');
                                         <div class="col mr-2">
                                             <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
                                                 CLIENTS (Today)</div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800">$40,000</div>
+                                                <?php
+                                                date_default_timezone_set('Australia/ACT');
+                                                $date = date("Y-m-d");
+                                                $conn = new mysqli('localhost', 'root','','wildvetcheckinsystem');
+                                                $query = $conn->prepare("SELECT COUNT(checkinDate) FROM clientinfo WHERE checkinDate = ?");
+                                                $query->bind_param("s",$date);
+                                                $query->execute();
+                                                $stmt = $query->get_result()->fetch_row();
+                                                
+                                                ?>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800"><?php echo $stmt[0]?></div>
                                         </div>
                                         <div class="col-auto">
                                             <i class="fas fa-calendar fa-2x text-gray-300"></i>
@@ -135,8 +145,15 @@ include('includes/navbar.php');
                                     <div class="row no-gutters align-items-center">
                                         <div class="col mr-2">
                                             <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
-                                                Earnings (Annual)</div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800">$215,000</div>
+                                                CLIENTS (ALL)</div>
+                                                <?php
+                                                $conn = new mysqli('localhost', 'root','','wildvetcheckinsystem');
+                                                $query = 'SELECT COUNT(clientId) FROM clientinfo JOIN petinfo ON clientinfo.clientId = petinfo.petKey';
+                                                $stmt = $conn->prepare($query);
+                                                $stmt->execute();
+                                                $row =$stmt->get_result()->fetch_row();
+                                                ?>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800"><?php echo $row[0]?></div>
                                         </div>
                                         <div class="col-auto">
                                             <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
