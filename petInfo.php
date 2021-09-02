@@ -6,6 +6,7 @@ include_once('vendor\tecnickcom\tcpdf\tcpdf.php');
 include_once('vendor\autoload.php');
 echo $_SESSION["idEmail"];
 if (isset($_POST['submit'])){
+    $reason = $_POST['reason'];
     $petName = $_POST['petName'];
     $petType = $_POST['petType'];
     $breed = $_POST['breed'];
@@ -27,8 +28,8 @@ if (isset($_POST['submit'])){
     } 
     else
     {
-        $stmt = $conn->prepare("INSERT INTO petinfo (petName, petType, breed, sex, color, age, petWeight, microchip, insurance, medication, parasiteControl, mcDate, petKey) VALUES (?,?,?,?,?,?,?,?,?,?,?,?, (SELECT clientId FROM clientinfo WHERE email = '$_SESSION[idEmail]' ORDER BY clientId DESC LIMIT 1))");
-        $stmt->bind_param("sssssiisssss", $petName, $petType, $breed, $sex, $color, $age, $petWeight, $microchip, $insurance, $medication, $parasiteControl, $mcDate);
+        $stmt = $conn->prepare("INSERT INTO petinfo (reason,petName, petType, breed, sex, color, age, petWeight, microchip, insurance, medication, parasiteControl, mcDate, petKey) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?, (SELECT clientId FROM clientinfo WHERE email = '$_SESSION[idEmail]' ORDER BY clientId DESC LIMIT 1))");
+        $stmt->bind_param("ssssssiisssss",$reason, $petName, $petType, $breed, $sex, $color, $age, $petWeight, $microchip, $insurance, $medication, $parasiteControl, $mcDate);
         $stmt->execute();
         
         //$query = "UPDATE petinfo P, clientinfo C SET P.petKey = C.clientId WHERE C.email = '$_SESSION[idEmail]' ORDER BY C.clientId DESC LIMIT 1";
@@ -393,8 +394,25 @@ if (isset($_POST['submit'])){
             </div>
         </div>
     </nav>
-    <div style="background: url(&quot;assets/img/11027%20(2).jpg&quot;) center no-repeat">
+    <div style="background: url(&quot;assets/img/11027%20(2).jpg&quot;)  center no-repeat;height :788px;">
         <form action="<?php echo htmlentities($_SERVER['PHP_SELF']); ?>" method="POST" id ="petDetails">
+            <div class="row">
+                    <div class="col d-flex d-lg-flex justify-content-center align-items-center justify-content-lg-center align-items-lg-center" style="height: 50px;"><select class="form-select-sm d-lg-flex justify-content-lg-center align-items-lg-center" style="width: 240px;height: 33px;border-radius: 13px;border-width: 1px;border-color: rgb(231,173,169);opacity: 0.85;" name="reason" required="">
+                            <option value="general" selected="">Reason for Visit</option>
+                            <option value="Health Check">Health Check</option>
+                            <option value="Nail Clipping">Nail Clipping</option>
+                            <option value="Microcipping">Microcipping</option>
+                            <option value="Dentstry">Dentstry</option>
+                            <option value="New puppies/kittens">New puppies/kittens</option>
+                            <option value="Laboratory Testing">Laboratory Testing</option>
+                            <option value="Surgery">Surgery</option>
+                            <option value="Hospitalization">Hospitalization</option>
+                            <option value="Parasite Prevention">Parasite Prevention</option>
+                            <option value="Medicine">Medicine</option>
+                            <option value="Behavioural Advice">Behavioural Advice</option>
+                            <option value="Nutritional Advice">Nutritional Advice</option>
+                        </select></div>
+                </div>
             <div class="row">
                 <div class="col d-flex d-lg-flex justify-content-center align-items-center justify-content-lg-center align-items-lg-center" style="height: 50px;"><input class="form-control-sm d-lg-flex justify-content-lg-center align-items-lg-center" type="text" placeholder="Pet Name" style="border-radius: 13px;width: 240px;border-width: 1px;border-color: rgb(231,173,169);" name="petName" required="" autocomplete="on"></div>
             </div>
@@ -434,16 +452,28 @@ if (isset($_POST['submit'])){
                 <div class="col d-flex d-lg-flex justify-content-center align-items-center justify-content-lg-center align-items-lg-center" style="height: 50px;"><input class="form-control-sm d-lg-flex justify-content-lg-center align-items-lg-center" type="text" placeholder="Weight (Kg)" style="border-radius: 13px;width: 240px;border-width: 1px;border-color: rgb(231,173,169);" name="petWeight" required="" autocomplete="on"></div>
             </div>
             <div class="row">
-                <div class="col d-flex d-lg-flex justify-content-center align-items-center justify-content-lg-center align-items-lg-center" style="height: 50px;"><input class="form-control-sm d-lg-flex justify-content-lg-center align-items-lg-center" type="text" placeholder="Microchip (Yes/No)" style="border-radius: 13px;width: 240px;border-width: 1px;border-color: rgb(231,173,169);" name="microchip" required="" autocomplete="on"></div>
+                <div class="col d-flex d-lg-flex justify-content-center align-items-center justify-content-lg-center align-items-lg-center" style="height: 50px;"><select class="form-select-sm d-lg-flex justify-content-lg-center align-items-lg-center" style="width: 240px;border-radius: 13px;height: 31px;border-color: rgb(231,173,169);opacity: .85;" name="microchip" required="">
+                        <option value="None Selected" selected="">Microchip</option>
+                        <option value="Yes">Yes</option>
+                        <option value="No">No</option>
+                    </select></div>
             </div>
             <div class="row">
-                <div class="col d-flex d-lg-flex justify-content-center align-items-center justify-content-lg-center align-items-lg-center" style="height: 50px;"><input class="form-control-sm" type="text" placeholder="Insurance (Yes/No)" style="border-radius: 13px;width: 240px;border-width: 1px;border-color: rgb(231,173,169);" name="insurance" required="" autocomplete="on"></div>
+                <div class="col d-flex d-lg-flex justify-content-center align-items-center justify-content-lg-center align-items-lg-center" style="height: 50px;"><select class="form-select-sm d-lg-flex justify-content-lg-center align-items-lg-center" style="width: 240px;border-radius: 13px;height: 31px;border-color: rgb(231,173,169);opacity: .85;" name="insurance" required="">
+                        <option value="None Selected" selected="">Insurance</option>
+                        <option value="Yes">Yes</option>
+                        <option value="No">No</option>
+                    </select></div>
             </div>
             <div class="row">
                 <div class="col d-flex d-lg-flex justify-content-center align-items-center justify-content-lg-center align-items-lg-center" style="height: 50px;"><input class="form-control-sm d-lg-flex justify-content-lg-center align-items-lg-center" type="text" placeholder="Medication (If Any)" style="border-radius: 13px;border-color: rgb(231,173,169);width: 240px;" name="medication" required="" autocomplete="on"></div>
             </div>
             <div class="row">
-                <div class="col d-flex d-lg-flex justify-content-center align-items-center justify-content-lg-center align-items-lg-center" style="height: 50px;"><input class="form-control-sm d-lg-flex justify-content-lg-center align-items-lg-center" type="text" placeholder="Parasite Control (Yes/No)" style="border-radius: 13px;width: 240px;border-width: 1px;border-color: rgb(231,173,169);" name="parasiteControl" required="" autocomplete="on"></div>
+                <div class="col d-flex d-lg-flex justify-content-center align-items-center justify-content-lg-center align-items-lg-center" style="height: 50px;"><select class="form-select-sm d-lg-flex justify-content-lg-center align-items-lg-center" style="width: 240px;border-radius: 13px;height: 31px;border-color: rgb(231,173,169);opacity: .85;" name="parasiteControl" required="">
+                        <option value="None Selected" selected="">Parasite Control</option>
+                        <option value="Yes">Yes</option>
+                        <option value="No">No</option>
+                    </select></div>
             </div>
             <div class="row">
                 <div class="col d-flex d-lg-flex justify-content-center align-items-center" style="height: 50px;"><input class="form-control-sm d-lg-flex justify-content-lg-center align-items-lg-center" type="date" style="border-radius: 13px;width: 240px;border-width: 1px;border-color: rgb(231,173,169);opacity: 0.85;" name="mcDate" required=""></div>
@@ -455,7 +485,7 @@ if (isset($_POST['submit'])){
                 <div class="col d-flex d-lg-flex justify-content-center align-items-center justify-content-lg-center align-items-lg-center" style="height: 50px;"><button onclick="parent.location='clientInfo.php'" id="goBack" class="btn btn-primary btn-sm font-monospace d-xl-flex justify-content-xl-center align-items-xl-center" type="button" style="border-radius: 30px;background: rgb(157,126,207);">Go Back</button>
                 </div>
             </div>
-    </div>
+        </div>
     </form>
     <div class="container">
         <footer class="footer-basic" style="background: transparent;">
