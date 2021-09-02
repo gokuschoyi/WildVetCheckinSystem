@@ -40,24 +40,29 @@ if (isset($_POST['submit'])){
         while($row = mysqli_fetch_row($query_run2)) {
             $_SESSION['ID'] = $row[0]; 
             $pdfID = $_SESSION['ID'];
-        $query3 = $conn->prepare("SELECT * FROM petinfo INNER JOIN clientinfo WHERE clientinfo.clientId='$_SESSION[ID]'"); 
-        $query3->execute();
-        $query_run3 = $query3->get_result();
+            $newsletter = "No";
+            $stmt2 = $conn->prepare("UPDATE clientinfo SET newsletter = ? WHERE clientid = ?");
+            $stmt2->bind_param("si",$newsletter, $pdfID);
+            $stmt2->execute();
 
-        while($row = $query_run3->fetch_assoc()){
-            $title = "$row[title]";
-            $firstName = "$row[firstName]";
-            $surName = "$row[surName]";
-            $mobileNo = "$row[mobileNo]";
-            $othContact = "$row[othContact]";
-            $email = "$row[email].";
-            $clientAddress = "$row[clientAddress]";
-            $suburb = "$row[suburb]";
-            $postcode = "$row[postcode]";
-            $checkinDate = "$row[checkinDate]";
-            $checkinTime = "$row[checkinTime]";
-            $_SESSION['first'] = $checkinTime;
-        }
+            $query3 = $conn->prepare("SELECT * FROM petinfo INNER JOIN clientinfo WHERE clientinfo.clientId='$_SESSION[ID]'"); 
+            $query3->execute();
+            $query_run3 = $query3->get_result();
+
+            while($row = $query_run3->fetch_assoc()){
+                $title = "$row[title]";
+                $firstName = "$row[firstName]";
+                $surName = "$row[surName]";
+                $mobileNo = "$row[mobileNo]";
+                $othContact = "$row[othContact]";
+                $email = "$row[email].";
+                $clientAddress = "$row[clientAddress]";
+                $suburb = "$row[suburb]";
+                $postcode = "$row[postcode]";
+                $checkinDate = "$row[checkinDate]";
+                $checkinTime = "$row[checkinTime]";
+                $_SESSION['first'] = $checkinTime;
+            }
         
         $html = '
             <style>
@@ -186,74 +191,74 @@ if (isset($_POST['submit'])){
         ';
 
         $html .= '
-        <table>
-        <tbody>
-        <tr>
-        <td style = "height:50px;"align="center"><strong style="font-size:16px;">Thank you for checkin in with us. See you soon.</strong></td>
-        </tr>
-        </tbody>
-        </table>
+            <table>
+            <tbody>
+            <tr>
+            <td style = "height:50px;"align="center"><strong style="font-size:16px;">Thank you for checkin in with us. See you soon.</strong></td>
+            </tr>
+            </tbody>
+            </table>
         
         ';
 
         $html .= '
-        <table>
-        <tbody>
-        <tr>
-        <td style = "height:40px;"align="center" "text-decoration: underline;"><strong style="font-size:16px;">Opening Hours</strong></td>
-        </tr>
-        </tbody>
-        </table>
+            <table>
+            <tbody>
+            <tr>
+            <td style = "height:40px;"align="center" "text-decoration: underline;"><strong style="font-size:16px;">Opening Hours</strong></td>
+            </tr>
+            </tbody>
+            </table>
 
-        <table "width:100%" align = "center">
-        <tbody>
-        <tr>
-        <td style="text-decoration: underline;">Mon-Fri : 08:00 am - 07:00 pm</td>
-        </tr>
-        </tbody>
-        </table>
+            <table "width:100%" align = "center">
+            <tbody>
+            <tr>
+            <td style="text-decoration: underline;">Mon-Fri : 08:00 am - 07:00 pm</td>
+            </tr>
+            </tbody>
+            </table>
 
-        <table align = "center">
-        <tbody>
-        <tr>
-        <td style="text-decoration: underline;">Saturday : 09:00 am - 05:00 pm</td>
-        </tr>
-        </tbody>
-        </table>
+            <table align = "center">
+            <tbody>
+            <tr>
+            <td style="text-decoration: underline;">Saturday : 09:00 am - 05:00 pm</td>
+            </tr>
+            </tbody>
+            </table>
 
-        <table "width:100%" align = "center">
-        <tbody>
-        <tr>
-        <td style="text-decoration: underline;">Sunday : 09:00 am - 12:00 pm</td>
-        </tr>
-        </tbody>
-        </table>
+            <table "width:100%" align = "center">
+            <tbody>
+            <tr>
+            <td style="text-decoration: underline;">Sunday : 09:00 am - 12:00 pm</td>
+            </tr>
+            </tbody>
+            </table>
         
         ';
 
         $html .= '
-        <table>
-        <tbody>
-        <tr height = "40px";>
-        </tr>
-        </tbody>
-        </table>
+            <table>
+            <tbody>
+            <tr height = "40px";>
+            </tr>
+            </tbody>
+            </table>
 
-        <table>
-        <tbody>
-        <tr>
-        <td style="border-top: 1px solid #222" align="center"><strong style="font-size:42px;">THE WILD VET</strong></td>
-        </tr>
-        </tbody>
-        </table>
+            <table>
+            <tbody>
+            <tr>
+            <td style="border-top: 1px solid #222" align="center"><strong style="font-size:42px;">THE WILD VET</strong></td>
+            </tr>
+            </tbody>
+            </table>
 
-        <table>
-        <tbody>
-        <tr>
-        <td align="center"><strong style="font-size:14px;">EXOTICS & SMALL ANIMAL VETERINARIAN</strong></td>
-        </tr>
-        </tbody>
-        </table>
+            <table>
+            <tbody>
+            <tr>
+            <td align="center"><strong style="font-size:14px;">EXOTICS & SMALL ANIMAL VETERINARIAN</strong></td>
+            </tr>
+            </tbody>
+            </table>
         
         ';
 

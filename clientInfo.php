@@ -17,13 +17,11 @@ if (isset($_POST['toPet'])) {
     }
     else 
     {
+        date_default_timezone_set('Australia/ACT');
         $date = date("Y-m-d");
-
-        $stmt = $conn->prepare("INSERT INTO clientinfo (title, firstName, surName, mobileNo, othContact, email, clientAddress, suburb, postcode, checkinDate) 
-                VALUES (?,?,?,?,?,?,?,?,?,?)");
+        $stmt = $conn->prepare("INSERT INTO clientinfo (title, firstName, surName, mobileNo, othContact, email, clientAddress, suburb, postcode, checkinDate) VALUES (?,?,?,?,?,?,?,?,?,?)");
         $stmt->bind_param("sssiisssis", $title, $firstName, $surName, $mobileNo, $othContact, $email, $clientAddress, $suburb, $postcode, $date);
         $stmt->execute();
-
         header("Location: petInfo.php");
     }
 }

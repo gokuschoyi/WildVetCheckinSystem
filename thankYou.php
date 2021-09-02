@@ -1,7 +1,15 @@
 <?php session_start();
 echo $_SESSION['idEmail'];
 echo $_SESSION['ID'];
+$id = $_SESSION['ID'];
 echo $_SESSION['first'];
+$newsletter = "Yes";
+    if(isset($_POST['newsletter'])){
+        $conn = new mysqli('localhost', 'root', '', 'wildvetcheckinsystem');
+        $stmt = $conn->prepare("UPDATE clientinfo SET newsletter = ? WHERE clientid = ?");
+        $stmt->bind_param("si",$newsletter,$id);
+        $stmt->execute();
+    }                                      
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -83,6 +91,25 @@ echo $_SESSION['first'];
             <p class="font-monospace text-center d-flex d-md-flex justify-content-center align-items-center justify-content-md-center align-items-md-center" style="font-size: 25px;color: rgb(109,134,163);width: 550px;">Thank you for checking in with us. We have sent you an email confirming your details. If any of the information provided is wrong do not hesitate to contact us. Hope to see you soon</p>
         </div>
     </div>
+
+    <div class="row justify-content-center">
+        <div class="col-xl-3 col-md-6 mb-4">
+            <div class="card border-left-primary shadow h-100 py-2">
+                <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                        <div class="col mr-2">
+                            <form method = "POST">
+                            <div class="font-monospace text-xs  text-uppercase mb-1 text-center" style="color: rgb(109,134,163);font-size: 18px;">WILD VET NEWSLETTER</div>  
+                            <div class="font-monospace h6 mb-0 font-weight-bold text-gray-800 text-center ">Would you like to subscribe to our newsletter to stay informed on the latest news </div>
+                            <div class="col d-flex d-lg-flex justify-content-center align-items-center justify-content-lg-center align-items-lg-center" style="height: 50px;"><button type = "submit" name = "newsletter" class = " btn btn-success" style="border-radius: 30px;" >YES</button></div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>   
+    </div>
+
     <div class="container">
         <footer class="footer-basic" style="background: transparent;">
             <div class="d-xl-flex justify-content-xl-center align-items-xl-center social"><a class="d-xl-flex justify-content-xl-center align-items-xl-center" href="https://www.instagram.com/thewildvetclinic/"><i class="icon ion-social-instagram"></i></a><a href="https://www.facebook.com/thewildvetclinic/"><i class="icon ion-social-facebook"></i></a></div>

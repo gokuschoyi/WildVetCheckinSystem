@@ -57,8 +57,7 @@
         <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header">Custom Utilities:</h6>
             <a class="collapse-item" href="utilities-other.html">Edit Profile</a>
-            <a class="collapse-item" href="addDoctor.php">Add Doctors</a>
-            <a class="collapse-item" href="utilities-animation.html">Edit Doctor</a>
+            <a class="collapse-item" href="addDoctor.php">Add/Edit Doctors</a>
             <a class="collapse-item" href="utilities-color.html">Colors</a>
         </div>
     </div>

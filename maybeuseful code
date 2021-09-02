@@ -332,3 +332,6 @@ if(($row['dFname'] ===$firstname) && ($row['dEmail'] === $dEmail))
 
                         All clients code correction needed
                         SELECT DISTINCT COUNT(clientId) FROM clientinfo JOIN petinfo ON clientinfo.clientId = petinfo.petKey
+
+
+                        <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js"></script>
