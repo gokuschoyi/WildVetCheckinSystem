@@ -41,9 +41,16 @@ if (isset($_POST['submit'])){
             $_SESSION['ID'] = $row[0]; 
             $pdfID = $_SESSION['ID'];
             $newsletter = "No";
+
             $stmt2 = $conn->prepare("UPDATE clientinfo SET newsletter = ? WHERE clientid = ?");
             $stmt2->bind_param("si",$newsletter, $pdfID);
             $stmt2->execute();
+
+            date_default_timezone_set('Australia/ACT');
+            $date = date("Y-m-d");
+            $stmt = $conn->prepare("UPDATE clientinfo SET checkinDate = ? WHERE clientid = ?");
+            $stmt->bind_param("si",$date, $pdfID);
+            $stmt->execute();
 
             $query3 = $conn->prepare("SELECT * FROM petinfo INNER JOIN clientinfo WHERE clientinfo.clientId='$_SESSION[ID]'"); 
             $query3->execute();
