@@ -5,6 +5,7 @@ if(isset($_POST['registerbtn']))
     $firstname = $_POST['firstname'];
     $lastname = $_POST['lastname'];
     $email = $_POST['email'];
+    $registered = "No";
     
     $conn = new mysqli('localhost', 'root', '', 'wildvetcheckinsystem');
     $email_query = $conn->prepare("SELECT * FROM doctor WHERE demail = ? ");
@@ -19,8 +20,8 @@ if(isset($_POST['registerbtn']))
     }
     else
     {   
-        $query = $conn->prepare("INSERT INTO doctor (dFname, dLname, dEmail)VALUES(?,?,?)");
-        $query->bind_param("sss", $firstname,$lastname,$email);
+        $query = $conn->prepare("INSERT INTO doctor (dFname, dLname, dEmail, registered)VALUES(?,?,?,?)");
+        $query->bind_param("ssss", $firstname,$lastname,$email,$registered);
         $query -> execute();
         
         

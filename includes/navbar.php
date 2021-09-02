@@ -39,8 +39,8 @@
             <!--<h6 class="collapse-header">Custom Components:</h6>-->
             <a class="collapse-item" href="rToday.php">Today</a>
             <a class="collapse-item" href="rSendsnippet.php">Send Snippets</a>
-            <a class="collapse-item" href="rEdit.php">Edit/View</a>
             <a class="collapse-item" href="rAllclients.php">All Clients</a>
+            <a class="collapse-item" href="rMailing.php">Mailing List</a>
         </div>
     </div>
 </li>

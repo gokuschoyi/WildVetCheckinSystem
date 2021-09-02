@@ -202,7 +202,7 @@ include('includes\navbar.php');
                                             DOCTORS REGISTERED</div>
                                             <?php
                                             $conn = new mysqli('localhost', 'root','','wildvetcheckinsystem');
-                                            $query = 'SELECT COUNT(clientId) FROM clientinfo JOIN petinfo ON clientinfo.clientId = petinfo.petKey';
+                                            $query = 'SELECT COUNT(registered) FROM doctor WHERE registered = "yes"';
                                             $stmt = $conn->prepare($query);
                                             $stmt->execute();
                                             $row =$stmt->get_result()->fetch_row();
@@ -237,6 +237,7 @@ include('includes\navbar.php');
                                     <th>Last Name</th>
                                     <th>Email</th>
                                     <th>Password</th>
+                                    <th>Registered</th>
                                     <th>EDIT DETAILS</th>
                                     <th>DELETE RECORD</th>
                                 </tr>
@@ -244,7 +245,7 @@ include('includes\navbar.php');
                             <tbody>
                                 <?php
                                 $conn = new mysqli('localhost', 'root','','wildvetcheckinsystem');
-                                $sql = $conn-> query(query: 'SELECT docId, dFname, dLname, dEmail, dPassword  FROM doctor');
+                                $sql = $conn-> query(query: 'SELECT docId, dFname, dLname, dEmail, dPassword, registered  FROM doctor');
                                 while( $data = $sql-> fetch_array()){
                                     echo '
                                     <tr>
@@ -253,8 +254,19 @@ include('includes\navbar.php');
                                         <td> '.$data['dLname'].'</td>
                                         <td> '.$data['dEmail'].'</td>
                                         <td> '.$data['dPassword'].'</td>
-                                        <td> <button type = "submit" class = " btn btn-success">EDIT</button> </td>
-                                        <td> <button type = "submit" class = " btn btn-success">DELETE</button> </td>
+                                        <td> '.$data['registered'].'</td>
+                                        <td> 
+                                            <form action = "doc_edit.php" method = "POST">
+                                            <input type = "hidden" name = "did" value ='.$data['docId'].'>
+                                        <button type = "submit" name = "editdoc" class = " btn btn-success">Edit</button> 
+                                        </form>
+                                        </td>
+                                        <td> 
+                                            <form action = "doc_delete.php" method = "POST">
+                                            <input type = "hidden" name = "did" value ='.$data['docId'].'>
+                                        <button type = "submit" name = "deletedoc" class = " btn btn-danger">DELETE</button> 
+                                        </form>
+                                        </td>
                                     </tr>
                                     ';
                                 }

@@ -154,7 +154,7 @@ $conn = new mysqli('localhost', 'root','','wildvetcheckinsystem');
                 $stmt = $query->get_result()->fetch_row();
             ?>
 
-    <form method = "POST" action = "client_update.php">
+    <form method = "POST" action = "client_updateall.php">
     <input type = "hidden" name = "cidd" value = "<?php echo $stmt[0]?>">
         <div class = "container-fluid">
                 <div class="row">
@@ -177,7 +177,7 @@ $conn = new mysqli('localhost', 'root','','wildvetcheckinsystem');
                                     <div class="row no-gutters align-items-center">
                                     <div class="col mr-2">
                                         <div class="text-xs font-weight-bold text-primary text-uppercase mb-1" style="font-size:1.2vw;">Other Contact</div>
-                                        <div class="h5 mb-0 font-weight-bold text-gray-800"><input type = "text" name = "otherContact" value = "<?php echo $stmt[5]?>" class = "form-control" placeholder=" Mobile Number" ></div>
+                                        <div class="h5 mb-0 font-weight-bold text-gray-800"><input type = "text" name = "otherContact" value = "<?php echo $stmt[5]?>" class = "form-control" placeholder="Other Contact" ></div>
                                     </div>
                                 </div>
                             </div>
@@ -190,7 +190,7 @@ $conn = new mysqli('localhost', 'root','','wildvetcheckinsystem');
                                     <div class="row no-gutters align-items-center">
                                     <div class="col mr-2">
                                         <div class="text-xs font-weight-bold text-primary text-uppercase mb-1" style="font-size:1.2vw;">Email</div>
-                                        <div class="h5 mb-0 font-weight-bold text-gray-800"><input type = "text" name = "email" value = "<?php echo $stmt[6]?>" class = "form-control" placeholder=" Mobile Number" ></div>
+                                        <div class="h5 mb-0 font-weight-bold text-gray-800"><input type = "text" name = "email" value = "<?php echo $stmt[6]?>" class = "form-control" placeholder="Email" ></div>
                                     </div>
                                 </div>
                             </div>
@@ -234,7 +234,7 @@ $conn = new mysqli('localhost', 'root','','wildvetcheckinsystem');
                                     <div class="row no-gutters align-items-center">
                                     <div class="col mr-2">
                                         <div class="text-xs font-weight-bold text-primary text-uppercase mb-1" style="font-size:1.2vw;">Postcode</div>
-                                        <div class="h5 mb-0 font-weight-bold text-gray-800"><input type = "text" name = "postcode" value = "<?php echo $stmt[9]?>" class = "form-control" placeholder="PostCode" ></div>
+                                        <div class="h5 mb-0 font-weight-bold text-gray-800"><input type = "text" name = "postcode" value = "<?php echo $stmt[9]?>" class = "form-control" placeholder="Postcode" ></div>
                                     </div>
                                 </div>
                             </div>
@@ -297,7 +297,7 @@ $conn = new mysqli('localhost', 'root','','wildvetcheckinsystem');
                                     <div class="row no-gutters align-items-center">
                                     <div class="col mr-2">
                                         <div class="text-xs font-weight-bold text-primary text-uppercase mb-1" style="font-size:1.2vw;">Sex</div>
-                                        <div class="h5 mb-0 font-weight-bold text-gray-800"><input type = "text" name = "sex" value = "<?php echo $stmt[16]?>" class = "form-control" placeholder="Sex" ></div>
+                                        <div class="h5 mb-0 font-weight-bold text-gray-800"><input type = "text" name = "sex" value = "<?php echo $stmt[16]?>" class = "form-control" placeholder="Sexr" ></div>
                                     </div>
                                 </div>
                             </div>

@@ -1,33 +1,7 @@
 <?php
 session_start();
 if(isset($_POST['docRegister'])){
-    $firstname = $_POST['dFname'];
-    $username = $_POST['username'];
-    $dEmail = $_POST['dEmail'];
-    $dPassword = $_POST['dPassword'];
-    $dCpassword = $_POST['dCpassword'];
-    $_SESSION['message']= $_POST['username'];
-    $conn = new mysqli('localhost', 'root', '', 'wildvetcheckinsystem');
-    if ($conn->connect_error) {
-        die('Connection to DB failed : ' . $conn->connect_error);
-    } 
-    else{
-    $query = $conn->prepare("SELECT * FROM doctor WHERE dEmail = ?");
-    $query->bind_param("s",$dEmail);
-    $query->execute();
-    $result = $query->get_result();
-        while( $row = $result->fetch_assoc()){
-            $qname = $row[0];
-            $qemail = $row[1];
-            
-        
-        }
-       
-        header("Location: verifyDoc.php");
-        
-    }
-
-    
+        header("Location: verifyDoc.php"); 
 }
 ?>
 <!DOCTYPE html>

@@ -120,7 +120,7 @@ include('includes\navbar.php');
                                                 CLIENTS (All)</div>
                                                 <?php
                                                 $conn = new mysqli('localhost', 'root','','wildvetcheckinsystem');
-                                                $query = 'SELECT COUNT(clientId) FROM clientinfo JOIN petinfo ON clientinfo.clientId = petinfo.petKey';
+                                                $query = 'SELECT  COUNT(DISTINCT clientId) FROM clientinfo JOIN petinfo ON clientinfo.clientId = petinfo.petKey';
                                                 $stmt = $conn->prepare($query);
                                                 $stmt->execute();
                                                 $row =$stmt->get_result()->fetch_row();
@@ -137,9 +137,10 @@ include('includes\navbar.php');
                     </div>
 
                     <div  class ="table-responsive" >
-                        <table id = "clients" class = "display" style ="width : 100%">
+                        <table id = "allclients" class = "display" style ="width : 100%">
                             <thead>
                                 <tr>
+                                    <th>C ID</th>
                                     <th>Client Name</th>
                                     <th>Mobile</th>
                                     <th>Email</th>
@@ -154,18 +155,30 @@ include('includes\navbar.php');
                             <tbody>
                                 <?php
                                 $conn = new mysqli('localhost', 'root','','wildvetcheckinsystem');
-                                $sql = $conn-> query(query: 'SELECT clientinfo.clientId, clientinfo.title, clientinfo.firstName, clientinfo.surName, clientinfo.mobileNo, clientinfo.email ,petinfo.petName, petinfo.petType, petinfo.breed FROM clientinfo JOIN petinfo ON clientinfo.clientId=petinfo.petKey');
+                                $sql = $conn-> query(query: 'SELECT DISTINCT clientinfo.clientId, clientinfo.title, clientinfo.firstName, clientinfo.surName, clientinfo.mobileNo, clientinfo.email ,petinfo.petName, petinfo.petType, petinfo.breed FROM clientinfo JOIN petinfo ON clientinfo.clientId=petinfo.petKey');
                                 while( $data = $sql-> fetch_array()){
                                     echo '
                                     <tr>
+                                        <td> '.$data['clientId'].'</td>
                                         <td> '.$data['title'].' '.$data['firstName'].' '.$data['surName'].'</td>
                                         <td> '.$data['mobileNo'].'</td>
                                         <td> '.$data['email'].'</td>
                                         <td> '.$data['petName'].'</td>
                                         <td> '.$data['petType'].'</td>
                                         <td> '.$data['breed'].'</td>
-                                        <td> <button type = "submit" class = " btn btn-success">EDIT</button> </td>
-                                        <td> <button type = "submit" class = " btn btn-success">DELETE</button> </td>
+                                        <td>
+                                            <form action = "client_editall.php" method = "POST">
+                                            <input type = "hidden" name = "cid" value ='.$data['clientId'].'>
+                                            <input type = "hidden" name = "cname" value ='.$data['firstName'].'>
+                                            <button type = "submit" name = "edituser" class = " btn btn-success">Edit</button> 
+                                        </form>
+                                        </td>
+                                        <td> 
+                                            <form action = "client_delete.php" method = "POST">
+                                            <input type = "hidden" name = "cid" value ='.$data['clientId'].'>
+                                            <button type = "submit" name = "deleteuser" class = " btn btn-success">DELETE</button> 
+                                        </form>
+                                        </td>
                                     </tr>
                                     ';
                                 }

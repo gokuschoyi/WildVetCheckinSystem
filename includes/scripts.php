@@ -26,7 +26,17 @@
             "dom": '<"row"<"col-6"<"d-flex justify-content-left justify-content-left"<""l>>><"col-6"<"d-flex justify-content-end"<""f>>>>tp<"ml-4"i>',
             "scrollY": "420px",
             "scrollX": true,
-            "paging": true
+            "paging": true,
+
+            "columnDefs": [
+            {
+                "targets": [ 0 ],
+                "visible": false,
+                "searchable": true
+            }
+            ],
+            
+            "order": [[ 0, "desc" ]]
             } );
 
             $('a.toggle-vis').on( 'click', function (e) {
@@ -39,4 +49,33 @@
             column.visible( ! column.visible() );
             } );
         } );
+
+        $(document).ready(function() {
+        var table = $('#allclients').DataTable( {
+            "dom": '<"row"<"col-6"<"d-flex justify-content-left justify-content-left"<""l>>><"col-6"<"d-flex justify-content-end"<""f>>>>tp<"ml-4"i>',
+            "scrollY": "420px",
+            "scrollX": true,
+            "paging": true,
+
+            "columnDefs": [
+            {
+                "targets": [ 0 ],
+                "visible": true,
+                "searchable": true
+            }
+            ],
+            "order": [[ 0, "desc" ]]
+            } ); 
+
+            $('a.toggle-vis').on( 'click', function (e) {
+                e.preventDefault();
+
+            // Get the column API object
+            var column = table.column( $(this).attr('data-column') );
+
+            // Toggle the visibility
+            column.visible( ! column.visible() );
+            } );
+        } );
+
     </script>

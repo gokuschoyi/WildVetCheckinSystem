@@ -143,6 +143,7 @@ include('includes\navbar.php');
                         <table id = "clients" class = "display" style ="width : 100%">
                             <thead>
                                 <tr>
+                                    <th>Cid</th>
                                     <th>Client Name</th>
                                     <th>Mobile</th>
                                     <th>Email</th>
@@ -161,13 +162,14 @@ include('includes\navbar.php');
                                 $conn = new mysqli('localhost', 'root','','wildvetcheckinsystem');
 
                                 $query = $conn->prepare("SELECT  DISTINCT clientinfo.clientId, clientinfo.title, clientinfo.firstName, clientinfo.surName, clientinfo.checkinDate, clientinfo.mobileNo, clientinfo.email ,petinfo.petKey, petinfo.petName, petinfo.petType, petinfo.breed 
-                                FROM clientinfo JOIN petinfo ON clientinfo.clientId=petinfo.petKey WHERE clientinfo.checkinDate = ?");
+                                FROM clientinfo JOIN petinfo ON clientinfo.clientId=petinfo.petKey WHERE clientinfo.checkinDate = ? ORDER BY clientinfo.clientId DESC");
                                 $query->bind_param("s",$date);
                                 $query->execute();
                                 $result = $query->get_result();
                                 while( $data = $result-> fetch_assoc()){
                                     echo '
                                     <tr>
+                                        <td> '.$data['clientId'].'</td>
                                         <td> '.$data['title'].' '.$data['firstName'].' '.$data['surName'].'</td>
                                         <td> '.$data['mobileNo'].'</td>
                                         <td> '.$data['email'].'</td>

@@ -148,7 +148,7 @@ include('includes/navbar.php');
                                                 CLIENTS (ALL)</div>
                                                 <?php
                                                 $conn = new mysqli('localhost', 'root','','wildvetcheckinsystem');
-                                                $query = 'SELECT COUNT(clientId) FROM clientinfo JOIN petinfo ON clientinfo.clientId = petinfo.petKey';
+                                                $query = 'SELECT  COUNT(DISTINCT clientId) FROM clientinfo JOIN petinfo ON clientinfo.clientId = petinfo.petKey';
                                                 $stmt = $conn->prepare($query);
                                                 $stmt->execute();
                                                 $row =$stmt->get_result()->fetch_row();

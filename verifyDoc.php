@@ -1,6 +1,46 @@
 <?php
 session_start();
-$_SESSION['message']= $_POST['username'];
+    $firstname = $_POST['dFname'];
+    $username = $_POST['username'];
+    $dEmail = $_POST['dEmail'];
+    $dPassword = $_POST['dPassword'];
+    $dCpassword = $_POST['dCpassword'];
+   
+    $conn = new mysqli('localhost', 'root', '', 'wildvetcheckinsystem');
+    if ($conn->connect_error) {
+        die('Connection to DB failed : ' . $conn->connect_error);
+    } 
+    else{
+    $_SESSION['message']="";
+    $buttonFlag = false;
+    $query = $conn->prepare("SELECT * FROM doctor WHERE dEmail = '$dEmail'");
+    //$query->bind_param("s",$dEmail);
+    $query->execute();
+    $result = $query->get_result();
+        while( $row = $result->fetch_assoc()){
+            $qname = "$row[dFname]";
+            $qemail = "$row[dEmail]";
+            $qid = "$row[docId]";
+            $registered = "Yes";
+            if(($firstname == $qname) && ($dEmail == $qemail))
+            {
+                if($dPassword == $dCpassword){
+                $query = $conn->prepare("UPDATE doctor SET username = ?,dPassword = ?, registered = ? WHERE docId = ?");
+                $query->bind_param("sssi",$username, $dPassword, $registered, $qid);
+                $query->execute();
+                $_SESSION['message']= "Thank you for registering. You can now Log-In.";
+                $buttonFlag = true;
+                }
+                else{
+                $_SESSION['message']="Passwords do not match re-enter and try again. ";
+                }    
+            }
+            else{
+                $_SESSION['message']="The email and Name does not exist in our records. Contact Admin.";
+
+            }
+        }
+    }
     ?>
 
 <!DOCTYPE html>
@@ -82,7 +122,18 @@ $_SESSION['message']= $_POST['username'];
     <div class="d-sm-flex d-lg-flex d-xl-flex justify-content-sm-center align-items-sm-center justify-content-lg-center align-items-lg-center justify-content-xl-center align-items-xl-center" style="height: 210px;">
         <p class="font-monospace text-center d-flex d-md-flex justify-content-center align-items-center justify-content-md-center align-items-md-center" style="font-size: 25px;color: rgb(163,109,112);width: 397px;height: 179px;"><?php echo $_SESSION['message'] ?></p>
     </div>
-    <div class="d-xl-flex justify-content-xl-center align-items-xl-center" style="height: 170px;"><button class="btn btn-success" type="button">Log-In</button></div>
+    <div class="d-xl-flex justify-content-xl-center align-items-xl-center" style="height: 170px;">
+    <?php 
+    if($buttonFlag == true){
+         echo '<form action = "doctorLogin.php" method = "POST">
+         <button class="btn btn-success" type="submit" name = "login">Log-In</button></form>';
+         $buttonFlag = false;
+        }
+    else {
+        echo '<form action = "doctorRegister.php" method = "POST">
+         <button class="btn btn-success" type="submit" name = "goback">GO BACK</button></form>';   
+        }
+         ?></div>
     <div class="container">
         <footer class="footer-basic" style="background: transparent;height: 200px;">
             <div class="d-xl-flex justify-content-xl-center align-items-xl-center social"><a class="d-xl-flex justify-content-xl-center align-items-xl-center" href="https://www.instagram.com/thewildvetclinic/"><i class="icon ion-social-instagram"></i></a><a href="https://www.facebook.com/thewildvetclinic/"><i class="icon ion-social-facebook"></i></a></div>
