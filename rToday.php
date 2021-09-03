@@ -139,7 +139,7 @@ include('includes\navbar.php');
                         </div>   
                     </div>
 
-                    <div  class ="table-responsive" >
+                    <div  class ="table-responsive table table-striped table-bordered table-hover" >
                         <table id = "clients" class = "display" style ="width : 100%">
                             <thead>
                                 <tr>
@@ -180,7 +180,7 @@ include('includes\navbar.php');
                                             <form action = "client_edit.php" method = "POST">
                                             <input type = "hidden" name = "cid" value ='.$data['clientId'].'>
                                             <input type = "hidden" name = "cname" value ='.$data['firstName'].'>
-                                        <button type = "submit" name = "edituser" class = " btn btn-success">Edit</button> 
+                                        <button type = "submit" name = "edituser" class = " btn btn-success">View/Edit</button> 
                                         </form>
                                         </td>
                                         <td> <button type = "submit" class = " btn btn-success">Select Doctor</button> </td>

@@ -102,7 +102,7 @@ include('includes\navbar.php');
 
                     <!-- Page Heading -->
                     <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                        <h1 class="h3 mb-0 text-gray-800">MAILING LIST</h1>
+                        <h1 class="h3 mb-0 text-gray-800">SEND SNIPPETS <?php date_default_timezone_set('Australia/ACT');  echo date("j/M/y") ?> </h1>
                         <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
                                 class="fas fa-download fa-sm text-white-50"></i> Generate Report</a>
                     </div>
@@ -117,19 +117,21 @@ include('includes\navbar.php');
                                     <div class="row no-gutters align-items-center">
                                         <div class="col mr-2">
                                             <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
-                                                TOTAL</div>
+                                                Remaining</div>
                                                 <?php
-                                                $value = "Yes";
+                                                date_default_timezone_set('Australia/ACT');
+                                                $date = date("Y-m-d");
                                                 $conn = new mysqli('localhost', 'root','','wildvetcheckinsystem');
-                                                $query = $conn->prepare("SELECT COUNT(newsletter) FROM clientinfo WHERE newsletter = ?");
-                                                $query->bind_param("s",$value);
+                                                $query = $conn->prepare("SELECT COUNT(checkinDate) FROM clientinfo WHERE checkinDate = ?");
+                                                $query->bind_param("s",$date);
                                                 $query->execute();
                                                 $stmt = $query->get_result()->fetch_row();
+                                                
                                                 ?>
                                             <div class="h5 mb-0 font-weight-bold text-gray-800"><?php echo $stmt[0]?></div>
                                         </div>
                                         <div class="col-auto">
-                                            <i class="fas fa-inbox fa-2x text-gray-300"></i>
+                                            <i class="fas fa-calendar fa-2x text-gray-300"></i>
                                         </div>
                                     </div>
                                 </div>
@@ -143,17 +145,26 @@ include('includes\navbar.php');
                                 <tr>
                                     <th>Cid</th>
                                     <th>Client Name</th>
-                                    <th>Mobile</th>
-                                    <th>Email</th>
+                                    
+                                    <th>Reason</th>
+                                    <th>Pet Name</th>
+                                    <th>Age</th>
+                                    <th>Pet Type</th>
+                                    <th>Breed</th>
+                                    <th>SELECT</th>
+                                    
+                                   
                                 </tr>
                             </thead>
                             <tbody>
                                 <?php
-                                $value = "Yes";
+                                date_default_timezone_set('Australia/ACT');
+                                $date = date("Y-m-d");
                                 $conn = new mysqli('localhost', 'root','','wildvetcheckinsystem');
-                                $query = $conn->prepare("SELECT  clientinfo.clientId, clientinfo.title, clientinfo.firstName, clientinfo.surName,  clientinfo.mobileNo, clientinfo.email, clientinfo.newsletter
-                                FROM clientinfo  WHERE clientinfo.newsletter = ?");
-                                $query->bind_param("s",$value);
+
+                                $query = $conn->prepare("SELECT  DISTINCT clientinfo.clientId, clientinfo.title, clientinfo.firstName, clientinfo.surName, clientinfo.checkinDate, petinfo.reason, petinfo.petKey, petinfo.petName, petinfo.petType, petinfo.breed, petinfo.age
+                                FROM clientinfo JOIN petinfo ON clientinfo.clientId=petinfo.petKey WHERE clientinfo.checkinDate = ? ORDER BY clientinfo.clientId DESC");
+                                $query->bind_param("s",$date);
                                 $query->execute();
                                 $result = $query->get_result();
                                 while( $data = $result-> fetch_assoc()){
@@ -161,8 +172,20 @@ include('includes\navbar.php');
                                     <tr>
                                         <td> '.$data['clientId'].'</td>
                                         <td> '.$data['title'].' '.$data['firstName'].' '.$data['surName'].'</td>
-                                        <td> '.$data['mobileNo'].'</td>
-                                        <td> '.$data['email'].'</td>
+                                        
+                                        <td> '.$data['reason'].'</td>
+                                        <td> '.$data['petName'].'</td>
+                                        <td> '.$data['age'].'</td>
+                                        <td> '.$data['petType'].'</td>
+                                        <td> '.$data['breed'].'</td>
+                                        <td> 
+                                            <form action = "rFetch_links.php" method = "POST">
+                                            <input type = "hidden" name = "cid" value ='.$data['clientId'].'>
+                                            <input type = "hidden" name = "cname" value ='.$data['firstName'].'>
+                                        <button type = "submit" name = "selectarticle" class = " btn btn-success">SELECT ARTICLES</button> 
+                                        </form>
+                                        </td>
+                                        
                                     </tr>
                                     ';
                                 }

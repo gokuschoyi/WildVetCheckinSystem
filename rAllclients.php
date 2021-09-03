@@ -136,7 +136,7 @@ include('includes\navbar.php');
                         </div>   
                     </div>
 
-                    <div  class ="table-responsive" >
+                    <div  class ="table-responsive table table-striped table-bordered table-hover" >
                         <table id = "allclients" class = "display" style ="width : 100%">
                             <thead>
                                 <tr>

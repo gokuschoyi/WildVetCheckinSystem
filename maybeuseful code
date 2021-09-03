@@ -335,3 +335,5 @@ if(($row['dFname'] ===$firstname) && ($row['dEmail'] === $dEmail))
 
 
                         <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js"></script>
+
+                        SELECT reason, petName, petType, breed, sex, age, petWeight FROM petinfo WHERE petKey = ?

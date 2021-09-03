@@ -228,7 +228,7 @@ include('includes\navbar.php');
             </div>
                 <div class="row">
                 <!-- FORM for adding doctor -->
-                <div  class ="table-responsive" >
+                <div  class ="table-responsive table table-striped table-bordered table-hover" >
                         <table id = "clients" class = "display" style ="width : 100%">
                             <thead>
                                 <tr>
