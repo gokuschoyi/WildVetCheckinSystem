@@ -119,25 +119,20 @@ include('includes\navbar.php');
                                             <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
                                                 Remaining</div>
                                                 <?php
-                                                date_default_timezone_set('Australia/ACT');
-                                                $date = date("Y-m-d");
+                                                $snippet = "No";
                                                 $conn = new mysqli('localhost', 'root','','wildvetcheckinsystem');
-                                                $query = $conn->prepare("SELECT COUNT(checkinDate) FROM clientinfo WHERE checkinDate = ?");
-                                                $query->bind_param("s",$date);
+                                                $query = $conn->prepare("SELECT COUNT(snippet) FROM clientinfo WHERE snippet = ?");
+                                                $query->bind_param("s",$snippet);
                                                 $query->execute();
                                                 $stmt = $query->get_result()->fetch_row();
-                                                
                                                 ?>
                                             <div class="h5 mb-0 font-weight-bold text-gray-800"><?php echo $stmt[0]?></div>
                                         </div>
-                                        <div class="col-auto">
-                                            <i class="fas fa-calendar fa-2x text-gray-300"></i>
-                                        </div>
+                                        <div class="col-auto"><i class="fas fa-calendar fa-2x text-gray-300"></i></div>
                                     </div>
                                 </div>
                             </div>
                         </div>   
-                    </div>
 
                     <div  class ="table-responsive table table-striped table-bordered table-hover" >
                         <table id = "clients" class = "display" style ="width : 100%">
@@ -158,13 +153,12 @@ include('includes\navbar.php');
                             </thead>
                             <tbody>
                                 <?php
-                                date_default_timezone_set('Australia/ACT');
-                                $date = date("Y-m-d");
+                                $snippet ="No";
                                 $conn = new mysqli('localhost', 'root','','wildvetcheckinsystem');
 
                                 $query = $conn->prepare("SELECT  DISTINCT clientinfo.clientId, clientinfo.title, clientinfo.firstName, clientinfo.surName, clientinfo.checkinDate, petinfo.reason, petinfo.petKey, petinfo.petName, petinfo.petType, petinfo.breed, petinfo.age
-                                FROM clientinfo JOIN petinfo ON clientinfo.clientId=petinfo.petKey WHERE clientinfo.checkinDate = ? ORDER BY clientinfo.clientId DESC");
-                                $query->bind_param("s",$date);
+                                FROM clientinfo JOIN petinfo ON clientinfo.clientId=petinfo.petKey WHERE clientinfo.snippet = ? ORDER BY clientinfo.clientId DESC");
+                                $query->bind_param("s",$snippet);
                                 $query->execute();
                                 $result = $query->get_result();
                                 while( $data = $result-> fetch_assoc()){

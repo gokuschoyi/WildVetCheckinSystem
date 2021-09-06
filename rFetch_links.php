@@ -1,6 +1,7 @@
 <?php
 include('includes\header.php');
 include('includes\navbar.php');
+include('simple_html_dom.php');
 $conn = new mysqli('localhost', 'root','','wildvetcheckinsystem');
     if(isset($_POST['selectarticle']))
     {
@@ -107,7 +108,7 @@ $conn = new mysqli('localhost', 'root','','wildvetcheckinsystem');
                 $cid = $_POST['cid'];  
             }
             ?>
-                <h1 class="h3 mb-0 text-gray-800">SELECT ARTICLE : <?php   echo $id ?> </h1>
+                <h1 class="h3 mb-0 text-gray-800">CLIENT ID : <?php   echo $id ?> </h1>
                 <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
                     class="fas fa-download fa-sm text-white-50"></i> Generate Report</a>
             </div>
@@ -132,13 +133,34 @@ $conn = new mysqli('localhost', 'root','','wildvetcheckinsystem');
                                         ?>
                                     <div class="h5 mb-0 font-weight-bold text-gray-800"><?php echo $stmt[0], $space,$stmt[1], $space, $stmt[2]?></div>
                                 </div>
-                                <div class="col-auto">
-                                    <i class="fas fa-calendar fa-2x text-gray-300"></i>
-                                </div>
+                                <div class="col-auto"><i class="fas fa-calendar fa-2x text-gray-300"></i></div>
                             </div>
                         </div>
                     </div>
-                </div>   
+                </div>
+
+                <div class="col-xl-4 col-md-6 mb-4">
+                    <div class="card border-left-primary shadow h-100 py-2">
+                        <div class="card-body">
+                            <div class="row no-gutters align-items-center">
+                                <div class="col mr-2">
+                                    <div class="text-xs font-weight-bold text-primary text-uppercase mb-1"style="font-size:1.2vw;">
+                                        REASON FOR VISIT</div>
+                                        <?php
+                                        $conn = new mysqli('localhost', 'root','','wildvetcheckinsystem');
+                                        $query = $conn->prepare("SELECT reason from petinfo where petKey = ?");
+                                        $query->bind_param("s",$cid);
+                                        $query->execute();
+                                        $stmt = $query->get_result()->fetch_row();
+                                        ?>
+                                    <div class="h5 mb-0 font-weight-bold text-gray-800"><?php echo $stmt[0]?></div>
+                                </div>
+                                <div class="col-auto"><i class="fas fa-comment fa-2x text-gray-300"></i></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                   
             </div>
         </div>
         <?php
@@ -154,7 +176,7 @@ $conn = new mysqli('localhost', 'root','','wildvetcheckinsystem');
                 $stmt = $query->get_result()->fetch_row();
             ?>
 
-    <form method = "POST" action = "rFetch_url.php">
+    <form method = "POST" action = "">
         <input type = "hidden" name = "petkey" value = "<?php echo $stmt[7]?>">
         <div class = "container-fluid">
                 <div class="row">
@@ -248,11 +270,6 @@ $conn = new mysqli('localhost', 'root','','wildvetcheckinsystem');
             <div class="row justify-content-center">
                 <div class="col-xl-4 col-md-6 mb-4">
                     <div class="card border-left-primary shadow h-100 py-2 align-items-center">  
-                        <div class="h5 mb-0 font-weight-bold text-gray-800  justify-content-center"><button type = "submit" name = "search" class = " btn btn-success">Fetch Articles</button></div>
-                    </div>
-                </div>
-                <div class="col-xl-4 col-md-6 mb-4">
-                    <div class="card border-left-primary shadow h-100 py-2 align-items-center">  
                         <div class="h5 mb-0 font-weight-bold text-gray-800  justify-content-center"><button type = "button" class = " btn btn-success" onclick="location.href='rSendsnippet.php'";>GO BACK</button></div>   
                     </div>
                 </div>
@@ -264,29 +281,60 @@ $conn = new mysqli('localhost', 'root','','wildvetcheckinsystem');
             <thead>
                 <tr>
                     <th>Select</th>
-                    <th>title</th>
-                    <th>Mobile</th>
-                    <th>Email</th>    
+                    <th>Links</th>
+                       
                 </tr>
             </thead>
             <tbody>
                 <?php
-                date_default_timezone_set('Australia/ACT');
-                $date = date("Y-m-d");
-                $conn = new mysqli('localhost', 'root','','wildvetcheckinsystem');
 
-                $query = $conn->prepare("SELECT  DISTINCT clientinfo.clientId, clientinfo.title, clientinfo.firstName, clientinfo.surName, clientinfo.checkinDate, clientinfo.mobileNo, clientinfo.email ,petinfo.petKey, petinfo.petName, petinfo.petType, petinfo.breed 
-                FROM clientinfo JOIN petinfo ON clientinfo.clientId=petinfo.petKey WHERE clientinfo.checkinDate = ? ORDER BY clientinfo.clientId DESC");
-                $query->bind_param("s",$date);
-                $query->execute();
-                $result = $query->get_result();
-                while( $data = $result-> fetch_assoc()){
+
+                function returnLinks($searchQ){
+                    $array = array();
+                    $search = 'https://www.google.co.in/search?q=';
+                    $searchF = $search.$searchQ;
+                    $html = file_get_contents($searchF);
+                    $htmlDom = new DOMDocument;
+                    @$htmlDom->loadHTML($html);
+                    $links = $htmlDom->getElementsByTagName('a');
+                    //$extractedLinks = array();
+                    foreach($links as $link){
+                        $linkHref = $link->getAttribute('href');
+                    if(strlen(trim($linkHref)) == 0){
+                        continue;
+                        }
+                        if($linkHref[1] == 'u'){
+                            $count = 0;
+                            $cutRes = "";
+                            while($linkHref[$count] != '&'){
+                                $count++;
+                                $cutRes = substr($linkHref, 7, $count-7);
+                                }
+                            array_push($array,$cutRes);
+                            }
+                        }
+                    return $array;
+                    }
+                    https://www.google.com/search?q=female+entire+rajapalaya+dentestry
+                    function makeSearchString($type, $breed, $sex, $age, $reason){
+                        $search = $sex."+".$breed."+".$reason;
+                        return $search;
+                    }
+                    $ctype = $stmt[3];
+                    $cbreed = $stmt[4];
+                    $csex = str_replace(' ','+', $stmt[5]);
+                    $cage = $stmt[6];
+                    $creason = $stmt[1];
+
+                    $searchQuery = makeSearchString($ctype,$cbreed, $csex, $cage, $creason);
+                    $data = array();
+                    $data =  returnLinks($searchQuery);
+                        foreach($data as $d){
                     echo '
                     <tr>
                         <td> <input type = "checkbox"></td>
-                        <td> '.$data['title'].' '.$data['firstName'].' '.$data['surName'].'</td>
-                        <td> '.$data['mobileNo'].'</td>
-                        <td> '.$data['email'].'</td>
+                        <td> '. $d . '</td>
+                        
                     </tr>
                     ';
                 }

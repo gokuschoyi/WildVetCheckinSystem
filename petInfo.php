@@ -436,7 +436,7 @@ if (isset($_POST['submit'])){
             <div class="row">
                 <div class="col d-flex d-lg-flex justify-content-center align-items-center justify-content-lg-center align-items-lg-center" style="height: 50px;"><select class="form-select-sm d-lg-flex justify-content-lg-center align-items-lg-center" style="width: 240px;border-radius: 13px;height: 31px;border-color: rgb(231,173,169);opacity: .85;" name="sex" required="">
                         <option value="None Selected" selected="">Select sex</option>
-                        <option value="Male  Entire">Male Entire</option>
+                        <option value="Male Entire">Male Entire</option>
                         <option value="Male Neutered">Male Neutered</option>
                         <option value="Female Entire">Female Entire</option>
                         <option value="Female Spayed">Female Spayed</option>

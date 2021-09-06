@@ -337,3 +337,80 @@ if(($row['dFname'] ===$firstname) && ($row['dEmail'] === $dEmail))
                         <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js"></script>
 
                         SELECT reason, petName, petType, breed, sex, age, petWeight FROM petinfo WHERE petKey = ?
+
+
+                        <?php
+include('simple_html_dom.php');
+function returnLinks(){
+$array = array();
+    if(isset($_POST['search'])){
+       $curl = curl_init();
+       curl_setopt($curl, CURLOPT_URL, 'https://www.google.com/search?q=2+year+old+labrador');
+       curl_setopt($curl, CURLOPT_FOLLOWLOCATION, true);
+       curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+       $result = curl_exec($curl);
+        curl_close($curl);
+        //echo $result;
+
+        $domResult = new simple_html_dom();
+        $domResult->load($result);
+
+        foreach($domResult->find('a[href^=/url?]') as $link)
+        array_push($array,$link->plaintext);
+        
+            }
+            foreach($array as $lnk)
+
+            echo $lnk. '<br>';
+            //var_dump($array);
+        }
+        echo returnLinks();
+?>
+
+
+
+
+<?php
+    include('simple_html_dom.php');
+    
+    
+
+    // send a curl get request to get the html input
+    
+    $ch = curl_init();
+    
+    curl_setopt($ch, CURLOPT_URL, "https://www.google.com/search?q=dom+element+weith+div");
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+    
+    $html = curl_exec($ch);
+    
+    // find all heading (h2) elements on the page
+    
+    $dom = new DOMDocument();
+    
+    @ $dom->loadHTML($html);
+    
+    // find all links in the article
+    $html = file_get_html('https://www.google.com/search?q=dom+element+weith+div');
+    echo '<br><br>Links in the article<br><br>';
+    
+    $ret = $html->find('*[id]');
+    echo $ret[3];
+    foreach($html->find('a[href^=/url?]') as $)
+       echo $element->href . '<br>';
+    //echo $ret[3];
+    //$links = $ret->getElementsByTagName('a');
+    
+    $fh = fopen("links.txt", "w");
+
+    foreach($links as $link) {
+        $link_text = $link->textContent;
+        $link_href = $link->getAttribute('href');
+        echo $link_text . ' - Link: ' . $link_href;
+    
+        fwrite($fh, $link_text . ' - Link: ' . $link_href . "\n");
+    }
+    
+    fclose($fh);
+
+?>
