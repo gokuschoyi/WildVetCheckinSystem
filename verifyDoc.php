@@ -92,7 +92,8 @@ session_start();
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Andada&amp;display=swap">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Andika&amp;display=swap">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Averia+Serif+Libre&amp;display=swap">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Courier+Prime:400,400i,700,700i&amp;subset=latin-ext&amp;display=swap">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css?family=Courier+Prime:400,400i,700,700i&amp;subset=latin-ext&amp;display=swap">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=GFS+Neohellenic&amp;display=swap">
     <link rel="stylesheet" href="assets/fonts/ionicons.min.css">
     <link rel="stylesheet" href="assets/css/Features-Blue.css">
@@ -105,8 +106,13 @@ session_start();
 </head>
 
 <body>
-    <nav class="navbar navbar-light navbar-expand-md d-flex justify-content-center align-items-center navigation-clean" style="height: 180px;">
-        <div class="container"><a class="navbar-brand font-monospace d-lg-flex justify-content-lg-center align-items-lg-center" href="index.php" style="font-size: 35px;">Wild Vet</a><button data-bs-toggle="collapse" class="navbar-toggler" data-bs-target="#navcol-1"><span class="visually-hidden">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
+    <nav class="navbar navbar-light navbar-expand-md d-flex justify-content-center align-items-center navigation-clean"
+        style="height: 180px;">
+        <div class="container"><a
+                class="navbar-brand font-monospace d-lg-flex justify-content-lg-center align-items-lg-center"
+                href="index.php" style="font-size: 35px;">Wild Vet</a><button data-bs-toggle="collapse"
+                class="navbar-toggler" data-bs-target="#navcol-1"><span class="visually-hidden">Toggle
+                    navigation</span><span class="navbar-toggler-icon"></span></button>
             <div class="collapse navbar-collapse" id="navcol-1">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item"><a class="nav-link font-monospace" href="services.html">Services</a></li>
@@ -117,13 +123,17 @@ session_start();
         </div>
     </nav>
     <div class="row">
-        <div class="col d-xl-flex justify-content-xl-center align-items-xl-center"><img src="assets/img/check.png" style="width: 100px;"></div>
+        <div class="col d-xl-flex justify-content-xl-center align-items-xl-center"><img src="assets/img/check.png"
+                style="width: 100px;"></div>
     </div>
-    <div class="d-sm-flex d-lg-flex d-xl-flex justify-content-sm-center align-items-sm-center justify-content-lg-center align-items-lg-center justify-content-xl-center align-items-xl-center" style="height: 210px;">
-        <p class="font-monospace text-center d-flex d-md-flex justify-content-center align-items-center justify-content-md-center align-items-md-center" style="font-size: 25px;color: rgb(163,109,112);width: 397px;height: 179px;"><?php echo $_SESSION['message'] ?></p>
+    <div class="d-sm-flex d-lg-flex d-xl-flex justify-content-sm-center align-items-sm-center justify-content-lg-center align-items-lg-center justify-content-xl-center align-items-xl-center"
+        style="height: 210px;">
+        <p class="font-monospace text-center d-flex d-md-flex justify-content-center align-items-center justify-content-md-center align-items-md-center"
+            style="font-size: 25px;color: rgb(163,109,112);width: 397px;height: 179px;">
+            <?php echo $_SESSION['message'] ?></p>
     </div>
     <div class="d-xl-flex justify-content-xl-center align-items-xl-center" style="height: 170px;">
-    <?php 
+        <?php 
     if($buttonFlag == true){
          echo '<form action = "doctorLogin.php" method = "POST">
          <button class="btn btn-success" type="submit" name = "login">Log-In</button></form>';
@@ -136,9 +146,12 @@ session_start();
          ?></div>
     <div class="container">
         <footer class="footer-basic" style="background: transparent;height: 200px;">
-            <div class="d-xl-flex justify-content-xl-center align-items-xl-center social"><a class="d-xl-flex justify-content-xl-center align-items-xl-center" href="https://www.instagram.com/thewildvetclinic/"><i class="icon ion-social-instagram"></i></a><a href="https://www.facebook.com/thewildvetclinic/"><i class="icon ion-social-facebook"></i></a></div>
+            <div class="d-xl-flex justify-content-xl-center align-items-xl-center social"><a
+                    class="d-xl-flex justify-content-xl-center align-items-xl-center"
+                    href="https://www.instagram.com/thewildvetclinic/"><i class="icon ion-social-instagram"></i></a><a
+                    href="https://www.facebook.com/thewildvetclinic/"><i class="icon ion-social-facebook"></i></a></div>
             <ul class="list-inline">
-                
+
                 <li class="list-inline-item"><a href="contactUs.html">Contact Us</a></li>
                 <li class="list-inline-item"><a href="services.html">F.A.Q</a></li>
             </ul>
@@ -148,4 +161,5 @@ session_start();
     <script src="assets/bootstrap/js/bootstrap.min.js"></script>
 </body>
 <?php session_destroy(); ?>
+
 </html>

@@ -37,4 +37,6 @@ function searchString(){
     echo $str4;
 
 }
+
 ?>
+
