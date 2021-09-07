@@ -192,11 +192,10 @@ include('includes\navbar.php');
                                     <input type="hidden" name="cid" value=<?php echo $data[0] ?>>
                                     <input type="hidden" name="cname" value=<?php echo $data[2] ?>>
                                     <button type="submit" name="edituser" class=" btn btn-success">View/Edit</button>
-                                </form>
-
+                                </form>    
                             </td>
-                            <td>
-                                <div class="modal fade" id="assigndoc" tabindex="-1" role="dialog"
+                            <td><?php $idvalue = $data[0]; ?>
+                                <div class="modal fade" id="message<?php echo $data[0];?>" tabindex="-1" role="dialog"
                                     aria-labelledby="assignDoc" aria-hidden="true">
                                     <div class="modal-dialog" role="document">
                                         <div class="modal-content">
@@ -206,10 +205,10 @@ include('includes\navbar.php');
                                                     aria-label="Close"><span aria-hidden="true">&times;</span></button>
                                             </div>
                                             <form action="assignDoc.php" method="POST">
+                                            <input  name="cidd" value=<?php echo $data[0] ?>>
                                                 <div class="modal-body">
                                                     <div class="form-group">
                                                         <label> DOCTOR </label>
-                                                        <input type="hidden" name="cid" value=<?php echo $data[0] ?>>
                                                         <select id=select name = "option" class="form-control">
                                                             <?php echo $options;?>
                                                         </select>
@@ -226,7 +225,7 @@ include('includes\navbar.php');
                                     </div>
                                 </div>
                                 <button type="button" class="btn btn-primary" data-toggle="modal"
-                                    data-target="#assigndoc">ASSIGN DOCTOR</button>
+                                    data-target="#message<?php echo $data[0];?>">ASSIGN DOCTOR</button>
                             </td>
                         </tr>
                         <?php   

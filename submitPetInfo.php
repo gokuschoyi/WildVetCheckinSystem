@@ -32,8 +32,3 @@ $mcDate =  date('Y-m-d',strtotime($_POST['mcDate']));
         session_destroy();
         header("Location: thankYou.php");
 ?>
-
-
-
-                     
-                 

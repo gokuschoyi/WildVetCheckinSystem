@@ -34,4 +34,4 @@ $conn = new mysqli('localhost', 'root','','wildvetcheckinsystem');
         header("Location: rAllclients.php");
     }
             
-?> 
+?>

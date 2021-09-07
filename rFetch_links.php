@@ -23,8 +23,7 @@ $conn = new mysqli('localhost', 'root','','wildvetcheckinsystem');
             </button>
 
             <!-- Topbar Search -->
-            <form
-                class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
+            <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
                 <div class="input-group">
                     <input type="text" class="form-control bg-light border-0 small" placeholder="Quick Search..."
                         aria-label="Search" aria-describedby="basic-addon2">
@@ -51,8 +50,7 @@ $conn = new mysqli('localhost', 'root','','wildvetcheckinsystem');
                         <form class="form-inline mr-auto w-100 navbar-search">
                             <div class="input-group">
                                 <input type="text" class="form-control bg-light border-0 small"
-                                    placeholder="Quick Search..." aria-label="Search"
-                                    aria-describedby="basic-addon2">
+                                    placeholder="Quick Search..." aria-label="Search" aria-describedby="basic-addon2">
                                 <div class="input-group-append">
                                     <button class="btn btn-primary" type="button">
                                         <i class="fas fa-search fa-sm"></i>
@@ -67,11 +65,10 @@ $conn = new mysqli('localhost', 'root','','wildvetcheckinsystem');
 
                 <!-- Nav Item - User Information -->
                 <li class="nav-item dropdown no-arrow">
-                    <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
-                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown"
+                        aria-haspopup="true" aria-expanded="false">
                         <span class="mr-2 d-none d-lg-inline text-gray-600 small">Douglas McGee</span>
-                        <img class="img-profile rounded-circle"
-                            src="img/undraw_profile.svg">
+                        <img class="img-profile rounded-circle" src="img/undraw_profile.svg">
                     </a>
                     <!-- Dropdown - User Information -->
                     <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
@@ -102,7 +99,7 @@ $conn = new mysqli('localhost', 'root','','wildvetcheckinsystem');
         <div class="container-fluid">
             <!-- Page Heading -->
             <div class="d-sm-flex align-items-center justify-content-between mb-4">
-            <?php
+                <?php
             if(isset($_POST['selectarticle']))
             {
                 $cid = $_POST['cid'];  
@@ -110,7 +107,7 @@ $conn = new mysqli('localhost', 'root','','wildvetcheckinsystem');
             ?>
                 <h1 class="h3 mb-0 text-gray-800">CLIENT ID : <?php   echo $id ?> </h1>
                 <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
-                    class="fas fa-download fa-sm text-white-50"></i> Generate Report</a>
+                        class="fas fa-download fa-sm text-white-50"></i> Generate Report</a>
             </div>
             <!-- Content Row -->
             <div class="row">
@@ -121,9 +118,10 @@ $conn = new mysqli('localhost', 'root','','wildvetcheckinsystem');
                         <div class="card-body">
                             <div class="row no-gutters align-items-center">
                                 <div class="col mr-2">
-                                    <div class="text-xs font-weight-bold text-primary text-uppercase mb-1"style="font-size:1.2vw;">
+                                    <div class="text-xs font-weight-bold text-primary text-uppercase mb-1"
+                                        style="font-size:1.2vw;">
                                         CLIENT NAME</div>
-                                        <?php
+                                    <?php
                                         $space = " ";
                                         $conn = new mysqli('localhost', 'root','','wildvetcheckinsystem');
                                         $query = $conn->prepare("SELECT title, firstName, surName FROM clientinfo WHERE clientId = ?");
@@ -131,7 +129,8 @@ $conn = new mysqli('localhost', 'root','','wildvetcheckinsystem');
                                         $query->execute();
                                         $stmt = $query->get_result()->fetch_row();
                                         ?>
-                                    <div class="h5 mb-0 font-weight-bold text-gray-800"><?php echo $stmt[0], $space,$stmt[1], $space, $stmt[2]?></div>
+                                    <div class="h5 mb-0 font-weight-bold text-gray-800">
+                                        <?php echo $stmt[0], $space,$stmt[1], $space, $stmt[2]?></div>
                                 </div>
                                 <div class="col-auto"><i class="fas fa-calendar fa-2x text-gray-300"></i></div>
                             </div>
@@ -144,9 +143,10 @@ $conn = new mysqli('localhost', 'root','','wildvetcheckinsystem');
                         <div class="card-body">
                             <div class="row no-gutters align-items-center">
                                 <div class="col mr-2">
-                                    <div class="text-xs font-weight-bold text-primary text-uppercase mb-1"style="font-size:1.2vw;">
+                                    <div class="text-xs font-weight-bold text-primary text-uppercase mb-1"
+                                        style="font-size:1.2vw;">
                                         REASON FOR VISIT</div>
-                                        <?php
+                                    <?php
                                         $conn = new mysqli('localhost', 'root','','wildvetcheckinsystem');
                                         $query = $conn->prepare("SELECT reason from petinfo where petKey = ?");
                                         $query->bind_param("s",$cid);
@@ -160,7 +160,7 @@ $conn = new mysqli('localhost', 'root','','wildvetcheckinsystem');
                         </div>
                     </div>
                 </div>
-                   
+
             </div>
         </div>
         <?php
@@ -176,117 +176,137 @@ $conn = new mysqli('localhost', 'root','','wildvetcheckinsystem');
                 $stmt = $query->get_result()->fetch_row();
             ?>
 
-    <form method = "POST" action = "">
-        <input type = "hidden" name = "petkey" value = "<?php echo $stmt[7]?>">
-        <div class = "container-fluid">
+        <form method="POST" action="">
+            <input type="hidden" name="petkey" value="<?php echo $stmt[7]?>">
+            <div class="container-fluid">
                 <div class="row">
                     <div class="col-xl-4 col-md-6 mb-4">
-                            <div class="card border-left-primary shadow h-100 py-2">
-                                <div class="card-body">
-                                    <div class="row no-gutters align-items-center">
+                        <div class="card border-left-primary shadow h-100 py-2">
+                            <div class="card-body">
+                                <div class="row no-gutters align-items-center">
                                     <div class="col mr-2">
-                                        <div class="text-xs font-weight-bold text-primary text-uppercase mb-1" style="font-size:1.2vw;">Pet Name</div>
-                                        <div class="h5 mb-0 font-weight-bold text-gray-800"><input type = "text" name = "petname" value = "<?php echo $stmt[2]?>" class = "form-control" placeholder="First Name" ></div>
+                                        <div class="text-xs font-weight-bold text-primary text-uppercase mb-1"
+                                            style="font-size:1.2vw;">Pet Name</div>
+                                        <div class="h5 mb-0 font-weight-bold text-gray-800"><input type="text"
+                                                name="petname" value="<?php echo $stmt[2]?>" class="form-control"
+                                                placeholder="First Name"></div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>  
-                
-                    <div class="col-xl-4 col-md-6 mb-4">
-                            <div class="card border-left-primary shadow h-100 py-2">
-                                <div class="card-body">
-                                    <div class="row no-gutters align-items-center">
-                                    <div class="col mr-2">
-                                        <div class="text-xs font-weight-bold text-primary text-uppercase mb-1" style="font-size:1.2vw;">Pet Type</div>
-                                        <div class="h5 mb-0 font-weight-bold text-gray-800"><input type = "text" name = "pettype" value = "<?php echo $stmt[3]?>" class = "form-control" placeholder="Last Name" ></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>   
-                    
-                    <div class="col-xl-4 col-md-6 mb-4">
-                            <div class="card border-left-primary shadow h-100 py-2">
-                                <div class="card-body">
-                                    <div class="row no-gutters align-items-center">
-                                    <div class="col mr-2">
-                                        <div class="text-xs font-weight-bold text-primary text-uppercase mb-1" style="font-size:1.2vw;">Breed</div>
-                                        <div class="h5 mb-0 font-weight-bold text-gray-800"><input type = "text" name = "breed" value = "<?php echo $stmt[4]?>" class = "form-control" placeholder="email" ></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>   
-                    
-                </div>
-        </div>
+                    </div>
 
-        <div class = "container-fluid">
+                    <div class="col-xl-4 col-md-6 mb-4">
+                        <div class="card border-left-primary shadow h-100 py-2">
+                            <div class="card-body">
+                                <div class="row no-gutters align-items-center">
+                                    <div class="col mr-2">
+                                        <div class="text-xs font-weight-bold text-primary text-uppercase mb-1"
+                                            style="font-size:1.2vw;">Pet Type</div>
+                                        <div class="h5 mb-0 font-weight-bold text-gray-800"><input type="text"
+                                                name="pettype" value="<?php echo $stmt[3]?>" class="form-control"
+                                                placeholder="Last Name"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-xl-4 col-md-6 mb-4">
+                        <div class="card border-left-primary shadow h-100 py-2">
+                            <div class="card-body">
+                                <div class="row no-gutters align-items-center">
+                                    <div class="col mr-2">
+                                        <div class="text-xs font-weight-bold text-primary text-uppercase mb-1"
+                                            style="font-size:1.2vw;">Breed</div>
+                                        <div class="h5 mb-0 font-weight-bold text-gray-800"><input type="text"
+                                                name="breed" value="<?php echo $stmt[4]?>" class="form-control"
+                                                placeholder="email"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="container-fluid">
                 <div class="row">
                     <div class="col-xl-4 col-md-6 mb-4">
-                            <div class="card border-left-primary shadow h-100 py-2">
-                                <div class="card-body">
-                                    <div class="row no-gutters align-items-center">
+                        <div class="card border-left-primary shadow h-100 py-2">
+                            <div class="card-body">
+                                <div class="row no-gutters align-items-center">
                                     <div class="col mr-2">
-                                        <div class="text-xs font-weight-bold text-primary text-uppercase mb-1" style="font-size:1.2vw;">Sex</div>
-                                        <div class="h5 mb-0 font-weight-bold text-gray-800"><input type = "text" name = "sex" value = "<?php echo $stmt[5]?>" class = "form-control" placeholder="Username" ></div>
+                                        <div class="text-xs font-weight-bold text-primary text-uppercase mb-1"
+                                            style="font-size:1.2vw;">Sex</div>
+                                        <div class="h5 mb-0 font-weight-bold text-gray-800"><input type="text"
+                                                name="sex" value="<?php echo $stmt[5]?>" class="form-control"
+                                                placeholder="Username"></div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>   
-                
+                    </div>
+
                     <div class="col-xl-4 col-md-6 mb-4">
-                            <div class="card border-left-primary shadow h-100 py-2">
-                                <div class="card-body">
-                                    <div class="row no-gutters align-items-center">
+                        <div class="card border-left-primary shadow h-100 py-2">
+                            <div class="card-body">
+                                <div class="row no-gutters align-items-center">
                                     <div class="col mr-2">
-                                        <div class="text-xs font-weight-bold text-primary text-uppercase mb-1" style="font-size:1.2vw;">Age</div>
-                                        <div class="h5 mb-0 font-weight-bold text-gray-800"><input type = "text" name = "age" value = "<?php echo $stmt[6]?>" class = "form-control" placeholder="Password" ></div>
+                                        <div class="text-xs font-weight-bold text-primary text-uppercase mb-1"
+                                            style="font-size:1.2vw;">Age</div>
+                                        <div class="h5 mb-0 font-weight-bold text-gray-800"><input type="text"
+                                                name="age" value="<?php echo $stmt[6]?>" class="form-control"
+                                                placeholder="Password"></div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>   
-                    
+                    </div>
+
                     <div class="col-xl-4 col-md-6 mb-4">
-                            <div class="card border-left-primary shadow h-100 py-2">
-                                <div class="card-body">
-                                    <div class="row no-gutters align-items-center">
+                        <div class="card border-left-primary shadow h-100 py-2">
+                            <div class="card-body">
+                                <div class="row no-gutters align-items-center">
                                     <div class="col mr-2">
-                                        <div class="text-xs font-weight-bold text-primary text-uppercase mb-1" style="font-size:1.2vw;">Pet Weight</div>
-                                        <div class="h5 mb-0 font-weight-bold text-gray-800"><input type = "text" name = "petweight" value = "<?php echo $stmt[7]?>" class = "form-control" placeholder="Registered" ></div>
+                                        <div class="text-xs font-weight-bold text-primary text-uppercase mb-1"
+                                            style="font-size:1.2vw;">Pet Weight</div>
+                                        <div class="h5 mb-0 font-weight-bold text-gray-800"><input type="text"
+                                                name="petweight" value="<?php echo $stmt[7]?>" class="form-control"
+                                                placeholder="Registered"></div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>   
-                    
-                </div>  
-        </div>
-        
-        <div class = "container-fluid ">
-            <div class="row justify-content-center">
-                <div class="col-xl-4 col-md-6 mb-4">
-                    <div class="card border-left-primary shadow h-100 py-2 align-items-center">  
-                        <div class="h5 mb-0 font-weight-bold text-gray-800  justify-content-center"><button type = "button" class = " btn btn-success" onclick="location.href='rSendsnippet.php'";>GO BACK</button></div>   
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="container-fluid ">
+                <div class="row justify-content-center">
+                    <div class="col-xl-4 col-md-6 mb-4">
+                        <div class="card border-left-primary shadow h-100 py-2 align-items-center">
+                            <div class="h5 mb-0 font-weight-bold text-gray-800  justify-content-center"><button
+                                    type="button" class=" btn btn-success" onclick="location.href='rSendsnippet.php'"
+                                    ;>GO BACK</button></div>
+                        </div>
                     </div>
                 </div>
-            </div>  
-    </form>
-    <div class = "container-fluid ">
-        <div  class ="table-responsive table table-striped table-bordered table-hover" >
-        <table id = "linktable" class = "display" style ="width : 100%">
-            <thead>
-                <tr>
-                    <th>Select</th>
-                    <th>Links</th>
-                       
-                </tr>
-            </thead>
-            <tbody>
-                <?php
+        </form>
+        <div class="container-fluid ">
+            <div class="table-responsive table table-striped table-bordered table-hover">
+                <table id="linktable" class="display" style="width : 100%">
+                    <thead>
+                        <tr>
+                            <th>Select</th>
+                            <th>Links</th>
+
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php
 
 
                 function returnLinks($searchQ){
@@ -340,14 +360,14 @@ $conn = new mysqli('localhost', 'root','','wildvetcheckinsystem');
                 }
                 ?>
 
-            </tbody>
-        </table>
-    </div>
-    </div>
+                    </tbody>
+                </table>
+            </div>
+        </div>
 
-    </div>   
+    </div>
 </div>
-          
+
 <?php 
     include('includes/scripts.php');
     include('includes/footer.php');
