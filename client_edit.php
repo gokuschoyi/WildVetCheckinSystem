@@ -300,7 +300,7 @@ $conn = new mysqli('localhost', 'root','','wildvetcheckinsystem');
                                         <div class="text-xs font-weight-bold text-primary text-uppercase mb-1"
                                             style="font-size:1.2vw;">Pet Name</div>
                                         <div class="h5 mb-0 font-weight-bold text-gray-800"><input type="text"
-                                                name="petname" value="<?php echo $stmt[15]?>" class="form-control"
+                                                name="petname" value="<?php echo $stmt[19]?>" class="form-control"
                                                 placeholder="Pet Name"></div>
                                     </div>
                                 </div>
@@ -316,7 +316,7 @@ $conn = new mysqli('localhost', 'root','','wildvetcheckinsystem');
                                         <div class="text-xs font-weight-bold text-primary text-uppercase mb-1"
                                             style="font-size:1.2vw;">Pet Type</div>
                                         <div class="h5 mb-0 font-weight-bold text-gray-800"><input type="text"
-                                                name="pettype" value="<?php echo $stmt[16]?>" class="form-control"
+                                                name="pettype" value="<?php echo $stmt[20]?>" class="form-control"
                                                 placeholder="Pet Type"></div>
                                     </div>
                                 </div>
@@ -332,7 +332,7 @@ $conn = new mysqli('localhost', 'root','','wildvetcheckinsystem');
                                         <div class="text-xs font-weight-bold text-primary text-uppercase mb-1"
                                             style="font-size:1.2vw;">Breed</div>
                                         <div class="h5 mb-0 font-weight-bold text-gray-800"><input type="text"
-                                                name="breed" value="<?php echo $stmt[17]?>" class="form-control"
+                                                name="breed" value="<?php echo $stmt[21]?>" class="form-control"
                                                 placeholder="Breed"></div>
                                     </div>
                                 </div>
@@ -348,7 +348,7 @@ $conn = new mysqli('localhost', 'root','','wildvetcheckinsystem');
                                         <div class="text-xs font-weight-bold text-primary text-uppercase mb-1"
                                             style="font-size:1.2vw;">Sex</div>
                                         <div class="h5 mb-0 font-weight-bold text-gray-800"><input type="text"
-                                                name="sex" value="<?php echo $stmt[18]?>" class="form-control"
+                                                name="sex" value="<?php echo $stmt[22]?>" class="form-control"
                                                 placeholder="Sex"></div>
                                     </div>
                                 </div>
@@ -370,7 +370,7 @@ $conn = new mysqli('localhost', 'root','','wildvetcheckinsystem');
                                         <div class="text-xs font-weight-bold text-primary text-uppercase mb-1"
                                             style="font-size:1.2vw;">Color</div>
                                         <div class="h5 mb-0 font-weight-bold text-gray-800"><input type="text"
-                                                name="color" value="<?php echo $stmt[19]?>" class="form-control"
+                                                name="color" value="<?php echo $stmt[23]?>" class="form-control"
                                                 placeholder="Color"></div>
                                     </div>
                                 </div>
@@ -386,7 +386,7 @@ $conn = new mysqli('localhost', 'root','','wildvetcheckinsystem');
                                         <div class="text-xs font-weight-bold text-primary text-uppercase mb-1"
                                             style="font-size:1.2vw;">Age</div>
                                         <div class="h5 mb-0 font-weight-bold text-gray-800"><input type="text"
-                                                name="age" value="<?php echo $stmt[20]?>" class="form-control"
+                                                name="age" value="<?php echo $stmt[24]?>" class="form-control"
                                                 placeholder="Age"></div>
                                     </div>
                                 </div>
@@ -402,7 +402,7 @@ $conn = new mysqli('localhost', 'root','','wildvetcheckinsystem');
                                         <div class="text-xs font-weight-bold text-primary text-uppercase mb-1"
                                             style="font-size:1.2vw;">Weight</div>
                                         <div class="h5 mb-0 font-weight-bold text-gray-800"><input type="text"
-                                                name="weight" value="<?php echo $stmt[21]?>" class="form-control"
+                                                name="weight" value="<?php echo $stmt[25]?>" class="form-control"
                                                 placeholder="Weight"></div>
                                     </div>
                                 </div>
@@ -418,7 +418,7 @@ $conn = new mysqli('localhost', 'root','','wildvetcheckinsystem');
                                         <div class="text-xs font-weight-bold text-primary text-uppercase mb-1"
                                             style="font-size:1.2vw;">Microchip</div>
                                         <div class="h5 mb-0 font-weight-bold text-gray-800"><input type="text"
-                                                name="microchip" value="<?php echo $stmt[22]?>" class="form-control"
+                                                name="microchip" value="<?php echo $stmt[26]?>" class="form-control"
                                                 placeholder="Microchip"></div>
                                     </div>
                                 </div>
@@ -439,7 +439,7 @@ $conn = new mysqli('localhost', 'root','','wildvetcheckinsystem');
                                         <div class="text-xs font-weight-bold text-primary text-uppercase mb-1"
                                             style="font-size:1.2vw;">Insurance</div>
                                         <div class="h5 mb-0 font-weight-bold text-gray-800"><input type="text"
-                                                name="insurance" value="<?php echo $stmt[23]?>" class="form-control"
+                                                name="insurance" value="<?php echo $stmt[27]?>" class="form-control"
                                                 placeholder="Insurance"></div>
                                     </div>
                                 </div>
@@ -455,7 +455,7 @@ $conn = new mysqli('localhost', 'root','','wildvetcheckinsystem');
                                         <div class="text-xs font-weight-bold text-primary text-uppercase mb-1"
                                             style="font-size:1.2vw;">Medication</div>
                                         <div class="h5 mb-0 font-weight-bold text-gray-800"><input type="text"
-                                                name="medication" value="<?php echo $stmt[24]?>" class="form-control"
+                                                name="medication" value="<?php echo $stmt[28]?>" class="form-control"
                                                 placeholder="Medication"></div>
                                     </div>
                                 </div>
@@ -471,7 +471,7 @@ $conn = new mysqli('localhost', 'root','','wildvetcheckinsystem');
                                         <div class="text-xs font-weight-bold text-primary text-uppercase mb-1"
                                             style="font-size:1.2vw;">Parasite Control</div>
                                         <div class="h5 mb-0 font-weight-bold text-gray-800"><input type="text"
-                                                name="parasiteC" value="<?php echo $stmt[25]?>" class="form-control"
+                                                name="parasiteC" value="<?php echo $stmt[29]?>" class="form-control"
                                                 placeholder="Parasite Control"></div>
                                     </div>
                                 </div>
@@ -487,7 +487,7 @@ $conn = new mysqli('localhost', 'root','','wildvetcheckinsystem');
                                         <div class="text-xs font-weight-bold text-primary text-uppercase mb-1"
                                             style="font-size:1.2vw;">MC Date</div>
                                         <div class="h5 mb-0 font-weight-bold text-gray-800"><input type="text"
-                                                name="mcdate" value="<?php echo $stmt[26]?>" class="form-control"
+                                                name="mcdate" value="<?php echo $stmt[30]?>" class="form-control"
                                                 placeholder="MC Date"></div>
                                     </div>
                                 </div>

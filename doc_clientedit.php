@@ -1,6 +1,6 @@
 <?php
 include('includes\header.php');
-include('includes\navbar.php');
+include('includes\navbarDoc.php');
 $conn = new mysqli('localhost', 'root','','wildvetcheckinsystem');
     if(isset($_POST['edituser']))
     {
@@ -67,7 +67,7 @@ $conn = new mysqli('localhost', 'root','','wildvetcheckinsystem');
                 <li class="nav-item dropdown no-arrow">
                     <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown"
                         aria-haspopup="true" aria-expanded="false">
-                        <span class="mr-2 d-none d-lg-inline text-gray-600 small">Douglas McGee</span>
+                        <span class="mr-2 d-none d-lg-inline text-gray-600 small"><?php echo $_SESSION["docEmail"]; ?></span>
                         <img class="img-profile rounded-circle" src="img/undraw_profile.svg">
                     </a>
                     <!-- Dropdown - User Information -->
@@ -114,7 +114,7 @@ $conn = new mysqli('localhost', 'root','','wildvetcheckinsystem');
                 $query2 = $conn->prepare("SELECT reason from petinfo where petKey = ?");
                 $query2->bind_param("i",  $cid);
                 $query2->execute();
-                $result = $query2->get_result()->fetch_row(); 
+                $result = $query2->get_result()->fetch_row();
             ?>
                 <h1 class="h3 mb-0 text-gray-800">EDIT CLIENT ID <?php   echo $cid ?> </h1>
                 <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
@@ -175,8 +175,7 @@ $conn = new mysqli('localhost', 'root','','wildvetcheckinsystem');
                 $stmt = $query->get_result()->fetch_row();
             ?>
 
-        <form method="POST" action="client_updateall.php">
-            <input type="hidden" name="cidd" value="<?php echo $stmt[0]?>">
+        
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-xl-4 col-md-6 mb-4">
@@ -204,7 +203,7 @@ $conn = new mysqli('localhost', 'root','','wildvetcheckinsystem');
                                             style="font-size:1.2vw;">Other Contact</div>
                                         <div class="h5 mb-0 font-weight-bold text-gray-800"><input type="text"
                                                 name="otherContact" value="<?php echo $stmt[5]?>" class="form-control"
-                                                placeholder="Other Contact"></div>
+                                                placeholder=" Mobile Number"></div>
                                     </div>
                                 </div>
                             </div>
@@ -220,7 +219,7 @@ $conn = new mysqli('localhost', 'root','','wildvetcheckinsystem');
                                             style="font-size:1.2vw;">Email</div>
                                         <div class="h5 mb-0 font-weight-bold text-gray-800"><input type="text"
                                                 name="email" value="<?php echo $stmt[6]?>" class="form-control"
-                                                placeholder="Email"></div>
+                                                placeholder=" Mobile Number"></div>
                                     </div>
                                 </div>
                             </div>
@@ -273,7 +272,7 @@ $conn = new mysqli('localhost', 'root','','wildvetcheckinsystem');
                                             style="font-size:1.2vw;">Postcode</div>
                                         <div class="h5 mb-0 font-weight-bold text-gray-800"><input type="text"
                                                 name="postcode" value="<?php echo $stmt[9]?>" class="form-control"
-                                                placeholder="Postcode"></div>
+                                                placeholder="PostCode"></div>
                                     </div>
                                 </div>
                             </div>
@@ -300,7 +299,7 @@ $conn = new mysqli('localhost', 'root','','wildvetcheckinsystem');
                                         <div class="text-xs font-weight-bold text-primary text-uppercase mb-1"
                                             style="font-size:1.2vw;">Pet Name</div>
                                         <div class="h5 mb-0 font-weight-bold text-gray-800"><input type="text"
-                                                name="petname" value="<?php echo $stmt[17]?>" class="form-control"
+                                                name="petname" value="<?php echo $stmt[19]?>" class="form-control"
                                                 placeholder="Pet Name"></div>
                                     </div>
                                 </div>
@@ -316,7 +315,7 @@ $conn = new mysqli('localhost', 'root','','wildvetcheckinsystem');
                                         <div class="text-xs font-weight-bold text-primary text-uppercase mb-1"
                                             style="font-size:1.2vw;">Pet Type</div>
                                         <div class="h5 mb-0 font-weight-bold text-gray-800"><input type="text"
-                                                name="pettype" value="<?php echo $stmt[18]?>" class="form-control"
+                                                name="pettype" value="<?php echo $stmt[20]?>" class="form-control"
                                                 placeholder="Pet Type"></div>
                                     </div>
                                 </div>
@@ -332,7 +331,7 @@ $conn = new mysqli('localhost', 'root','','wildvetcheckinsystem');
                                         <div class="text-xs font-weight-bold text-primary text-uppercase mb-1"
                                             style="font-size:1.2vw;">Breed</div>
                                         <div class="h5 mb-0 font-weight-bold text-gray-800"><input type="text"
-                                                name="breed" value="<?php echo $stmt[19]?>" class="form-control"
+                                                name="breed" value="<?php echo $stmt[21]?>" class="form-control"
                                                 placeholder="Breed"></div>
                                     </div>
                                 </div>
@@ -348,8 +347,8 @@ $conn = new mysqli('localhost', 'root','','wildvetcheckinsystem');
                                         <div class="text-xs font-weight-bold text-primary text-uppercase mb-1"
                                             style="font-size:1.2vw;">Sex</div>
                                         <div class="h5 mb-0 font-weight-bold text-gray-800"><input type="text"
-                                                name="sex" value="<?php echo $stmt[20]?>" class="form-control"
-                                                placeholder="Sexr"></div>
+                                                name="sex" value="<?php echo $stmt[22]?>" class="form-control"
+                                                placeholder="Sex"></div>
                                     </div>
                                 </div>
                             </div>
@@ -370,7 +369,7 @@ $conn = new mysqli('localhost', 'root','','wildvetcheckinsystem');
                                         <div class="text-xs font-weight-bold text-primary text-uppercase mb-1"
                                             style="font-size:1.2vw;">Color</div>
                                         <div class="h5 mb-0 font-weight-bold text-gray-800"><input type="text"
-                                                name="color" value="<?php echo $stmt[21]?>" class="form-control"
+                                                name="color" value="<?php echo $stmt[23]?>" class="form-control"
                                                 placeholder="Color"></div>
                                     </div>
                                 </div>
@@ -386,7 +385,7 @@ $conn = new mysqli('localhost', 'root','','wildvetcheckinsystem');
                                         <div class="text-xs font-weight-bold text-primary text-uppercase mb-1"
                                             style="font-size:1.2vw;">Age</div>
                                         <div class="h5 mb-0 font-weight-bold text-gray-800"><input type="text"
-                                                name="age" value="<?php echo $stmt[22]?>" class="form-control"
+                                                name="age" value="<?php echo $stmt[24]?>" class="form-control"
                                                 placeholder="Age"></div>
                                     </div>
                                 </div>
@@ -402,7 +401,7 @@ $conn = new mysqli('localhost', 'root','','wildvetcheckinsystem');
                                         <div class="text-xs font-weight-bold text-primary text-uppercase mb-1"
                                             style="font-size:1.2vw;">Weight</div>
                                         <div class="h5 mb-0 font-weight-bold text-gray-800"><input type="text"
-                                                name="weight" value="<?php echo $stmt[23]?>" class="form-control"
+                                                name="weight" value="<?php echo $stmt[25]?>" class="form-control"
                                                 placeholder="Weight"></div>
                                     </div>
                                 </div>
@@ -418,7 +417,7 @@ $conn = new mysqli('localhost', 'root','','wildvetcheckinsystem');
                                         <div class="text-xs font-weight-bold text-primary text-uppercase mb-1"
                                             style="font-size:1.2vw;">Microchip</div>
                                         <div class="h5 mb-0 font-weight-bold text-gray-800"><input type="text"
-                                                name="microchip" value="<?php echo $stmt[24]?>" class="form-control"
+                                                name="microchip" value="<?php echo $stmt[26]?>" class="form-control"
                                                 placeholder="Microchip"></div>
                                     </div>
                                 </div>
@@ -439,7 +438,7 @@ $conn = new mysqli('localhost', 'root','','wildvetcheckinsystem');
                                         <div class="text-xs font-weight-bold text-primary text-uppercase mb-1"
                                             style="font-size:1.2vw;">Insurance</div>
                                         <div class="h5 mb-0 font-weight-bold text-gray-800"><input type="text"
-                                                name="insurance" value="<?php echo $stmt[25]?>" class="form-control"
+                                                name="insurance" value="<?php echo $stmt[27]?>" class="form-control"
                                                 placeholder="Insurance"></div>
                                     </div>
                                 </div>
@@ -455,7 +454,7 @@ $conn = new mysqli('localhost', 'root','','wildvetcheckinsystem');
                                         <div class="text-xs font-weight-bold text-primary text-uppercase mb-1"
                                             style="font-size:1.2vw;">Medication</div>
                                         <div class="h5 mb-0 font-weight-bold text-gray-800"><input type="text"
-                                                name="medication" value="<?php echo $stmt[26]?>" class="form-control"
+                                                name="medication" value="<?php echo $stmt[28]?>" class="form-control"
                                                 placeholder="Medication"></div>
                                     </div>
                                 </div>
@@ -471,7 +470,7 @@ $conn = new mysqli('localhost', 'root','','wildvetcheckinsystem');
                                         <div class="text-xs font-weight-bold text-primary text-uppercase mb-1"
                                             style="font-size:1.2vw;">Parasite Control</div>
                                         <div class="h5 mb-0 font-weight-bold text-gray-800"><input type="text"
-                                                name="parasiteC" value="<?php echo $stmt[27]?>" class="form-control"
+                                                name="parasiteC" value="<?php echo $stmt[29]?>" class="form-control"
                                                 placeholder="Parasite Control"></div>
                                     </div>
                                 </div>
@@ -487,7 +486,7 @@ $conn = new mysqli('localhost', 'root','','wildvetcheckinsystem');
                                         <div class="text-xs font-weight-bold text-primary text-uppercase mb-1"
                                             style="font-size:1.2vw;">MC Date</div>
                                         <div class="h5 mb-0 font-weight-bold text-gray-800"><input type="text"
-                                                name="mcdate" value="<?php echo $stmt[28]?>" class="form-control"
+                                                name="mcdate" value="<?php echo $stmt[30]?>" class="form-control"
                                                 placeholder="MC Date"></div>
                                     </div>
                                 </div>
@@ -498,27 +497,48 @@ $conn = new mysqli('localhost', 'root','','wildvetcheckinsystem');
 
             </div>
 
-            <div class="container-fluid ">
-                <div class="row justify-content-center">
-                    <div class="col-xl-4 col-md-6 mb-4">
-                        <div class="card border-left-primary shadow h-100 py-2 align-items-center">
-                            <div class="h5 mb-0 font-weight-bold text-gray-800  justify-content-center"><button
-                                    type="submit" name="updateclient" class=" btn btn-success">UPDATE</button></div>
+            <form method="POST" action="doc_clientupdate.php">
+                <input  name="cidd" value="<?php echo $stmt[0]?>">
+                
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-xl-12 col-md-6 mb-4">
+                            <div class="card border-left-primary shadow h-100 py-2">
+                                <div class="card-body">
+                                    <div class="row no-gutters align-items-center">
+                                        <div class="col mr-2">
+                                            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1"
+                                                style="font-size:1.2vw;">Additional Comments</div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800"><input type="text"
+                                                    name="comments" value="<?php echo $stmt[15]?>" class="form-control"
+                                                    placeholder="Additional Comments"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                    <div class="col-xl-4 col-md-6 mb-4">
-                        <div class="card border-left-primary shadow h-100 py-2 align-items-center">
-                            <div class="h5 mb-0 font-weight-bold text-gray-800  justify-content-center"><button
-                                    type="button" class=" btn btn-success" onclick="location.href='rAllclients.php'"
-                                    ;>GO BACK</button></div>
 
-                        </div>
                     </div>
                 </div>
 
-        </form>
+                <div class="container-fluid ">
+                    <div class="row justify-content-center">
+                        <div class="col-xl-4 col-md-6 mb-4">
+                            <div class="card border-left-primary shadow h-100 py-2 align-items-center">
+                                <div class="h5 mb-0 font-weight-bold text-gray-800  justify-content-center"><button
+                                        type="submit" name="updateDocclient" class=" btn btn-success">UPDATE</button></div>
 
-
+                            </div>
+                        </div>
+                        <div class="col-xl-4 col-md-6 mb-4">
+                            <div class="card border-left-primary shadow h-100 py-2 align-items-center">
+                                <div class="h5 mb-0 font-weight-bold text-gray-800  justify-content-center"><button
+                                        type="button" class=" btn btn-success" onclick="location.href='docDash.php'"
+                                        ;>GO BACK</button></div>
+                            </div>
+                        </div>
+                    </div>
+            </form>
     </div>
 </div>
 

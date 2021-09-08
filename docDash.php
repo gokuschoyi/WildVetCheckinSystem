@@ -1,6 +1,6 @@
 <?php
 include('includes\header.php');
-include('includes\navbar.php');
+include('includes\navbarDoc.php');
 
 ?>
 
@@ -63,7 +63,8 @@ include('includes\navbar.php');
                 <li class="nav-item dropdown no-arrow">
                     <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown"
                         aria-haspopup="true" aria-expanded="false">
-                        <span class="mr-2 d-none d-lg-inline text-gray-600 small">Douglas McGee</span>
+                        <span
+                            class="mr-2 d-none d-lg-inline text-gray-600 small"><?php echo $_SESSION["docEmail"]; ?></span>
                         <img class="img-profile rounded-circle" src="img/undraw_profile.svg">
                     </a>
                     <!-- Dropdown - User Information -->
@@ -117,11 +118,20 @@ include('includes\navbar.php');
                                     <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
                                         CLIENTS TODAY</div>
                                     <?php
-                                                date_default_timezone_set('Australia/ACT');
-                                                $date = date("Y-m-d");
+                                            
                                                 $conn = new mysqli('localhost', 'root','','wildvetcheckinsystem');
-                                                $query = $conn->prepare("SELECT COUNT(checkinDate) FROM clientinfo WHERE checkinDate = ?");
-                                                $query->bind_param("s",$date);
+                                                $_SESSION['qEmail'] = $_SESSION['docEmail'];
+                                                $query1 = $conn->prepare("SELECT dFname from doctor WHERE dEmail = ?");
+                                                $query1->bind_param("s", $_SESSION['qEmail']);
+                                                $query1->execute();
+                                                $result = $query1->get_result();
+                                                while($row = $result->fetch_assoc()){
+                                                $qname = "$row[dFname]";}
+                                                echo $qname;
+                                                $_SESSION['docname'] = $qname;
+                                                    $viewed = "No";
+                                                $query = $conn->prepare("SELECT COUNT(assignedDoc) FROM clientinfo WHERE assignedDoc = ? AND viewed = ?");
+                                                $query->bind_param("ss",$qname ,$viewed);
                                                 $query->execute();
                                                 $stmt = $query->get_result()->fetch_row();
                                                 
@@ -149,8 +159,8 @@ include('includes\navbar.php');
                             <th>Pet Type</th>
                             <th>Breed</th>
                             <th>EDIT DETAILS</th>
-                            <th>ASSIGNED DOCTOR</th>
-                            <th>ASSIGN DOCTOR</th>
+                            <th>Client Checked</th>
+
 
                         </tr>
                     </thead>
@@ -169,12 +179,12 @@ include('includes\navbar.php');
                                     echo $options;
                                     
                                 date_default_timezone_set('Australia/ACT');
-                                $date = date("Y-m-d");
+                                
                                 $conn = new mysqli('localhost', 'root','','wildvetcheckinsystem');
-
-                                $query = $conn->prepare("SELECT  DISTINCT clientinfo.clientId, clientinfo.title, clientinfo.firstName, clientinfo.surName, clientinfo.checkinDate, clientinfo.mobileNo, clientinfo.email ,petinfo.petKey, petinfo.petName, petinfo.petType, petinfo.breed, clientinfo.assignedDoc 
-                                FROM clientinfo JOIN petinfo ON clientinfo.clientId=petinfo.petKey WHERE clientinfo.checkinDate = ? ");
-                                $query->bind_param("s",$date);
+                                    $viewed = "No";
+                                $query = $conn->prepare("SELECT  DISTINCT clientinfo.clientId, clientinfo.title, clientinfo.firstName, clientinfo.surName, clientinfo.assignedDoc, clientinfo.checkinDate, clientinfo.mobileNo, clientinfo.email ,petinfo.petKey, petinfo.petName, petinfo.petType, petinfo.breed 
+                                FROM clientinfo JOIN petinfo ON clientinfo.clientId=petinfo.petKey WHERE clientinfo.assignedDoc = ? AND viewed = ? ");
+                                $query->bind_param("ss",$qname, $viewed);
                                 $query->execute();
                                 $result = $query->get_result();
                                 while( $data =  mysqli_fetch_array( $result)){
@@ -183,52 +193,25 @@ include('includes\navbar.php');
                         <tr>
                             <td> <?php echo $data[0] ?></td>
                             <td> <?php echo $name ?> </td>
-                            <td> <?php echo $data[5] ?></td>
                             <td> <?php echo $data[6] ?></td>
-                            <td> <?php echo $data[8] ?></td>
+                            <td> <?php echo $data[7] ?></td>
                             <td> <?php echo $data[9] ?></td>
                             <td> <?php echo $data[10] ?></td>
+                            <td> <?php echo $data[11] ?></td>
                             <td>
-                                <form action="client_edit.php" method="POST">
+                                <form action="doc_clientedit.php" method="POST">
                                     <input type="hidden" name="cid" value=<?php echo $data[0] ?>>
                                     <input type="hidden" name="cname" value=<?php echo $data[2] ?>>
                                     <button type="submit" name="edituser" class=" btn btn-success">View/Edit</button>
-                                </form>    
+                                </form>
                             </td>
-                            <td> <?php echo $data[11] ?></td>
-                            <td><?php $idvalue = $data[0]; ?>
-                                <div class="modal fade" id="message<?php echo $data[0];?>" tabindex="-1" role="dialog"
-                                    aria-labelledby="assignDoc" aria-hidden="true">
-                                    <div class="modal-dialog" role="document">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                                <h5 class="modal-title" id="assignDoc">SELECT DOCTOR</h5>
-                                                <button type="button" class="close" data-dismiss="modal"
-                                                    aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                                            </div>
-                                            <form action="assignDoc.php" method="POST">
-                                            <input  name="cidd" value=<?php echo $data[0] ?>>
-                                                <div class="modal-body">
-                                                    <div class="form-group">
-                                                        <label> DOCTOR </label>
-                                                        <select id=select name = "option" class="form-control">
-                                                            <?php echo $options;?>
-                                                        </select>
-                                                    </div>
-                                                </div>
-                                                <div class="modal-footer">
-                                                    <button type="button" class="btn btn-secondary"
-                                                        data-dismiss="modal">Close</button>
-                                                    <button type="submit" name="assigndoc"
-                                                        class="btn btn-primary">Assign Doctor</button>
-                                                </div>
-                                            </form>
-                                        </div>
-                                    </div>
-                                </div>
-                                <button type="button" class="btn btn-primary" data-toggle="modal"
-                                    data-target="#message<?php echo $data[0];?>">ASSIGN DOCTOR</button>
+                            <td>
+                                <form action="doc_clientcheck.php" method="POST">
+                                    <input type="hidden" name="cid" value=<?php echo $data[0] ?>>
+                                    <button type="submit" name="done" class=" btn btn-success">Done</button>
+                                </form>
                             </td>
+
                         </tr>
                         <?php   
                                 }

@@ -43,9 +43,10 @@ if (isset($_POST['submit'])){
             $pdfID = $_SESSION['ID'];
             $newsletter = "No";
             $snippet = "No";
+            $viewed = "No";
 
-            $stmt2 = $conn->prepare("UPDATE clientinfo SET newsletter = ?, snippet = ? WHERE clientid = ?");
-            $stmt2->bind_param("ssi",$newsletter, $snippet, $pdfID);
+            $stmt2 = $conn->prepare("UPDATE clientinfo SET newsletter = ?, snippet = ?, viewed = ? WHERE clientid = ?");
+            $stmt2->bind_param("sssi",$newsletter, $snippet, $viewed, $pdfID);
             $stmt2->execute();
 
             date_default_timezone_set('Australia/ACT');
