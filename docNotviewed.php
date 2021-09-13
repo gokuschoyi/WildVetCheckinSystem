@@ -100,7 +100,7 @@ include('includes\navbarDoc.php');
 
             <!-- Page Heading -->
             <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                <h1 class="h3 mb-0 text-gray-800">CLIENTS TODAY
+                <h1 class="h3 mb-0 text-gray-800">CLIENTS NOT VIEWED
                     <?php date_default_timezone_set('Australia/ACT');  echo date("j/M/y") ?> </h1>
                 <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
                         class="fas fa-download fa-sm text-white-50"></i> Generate Report</a>
@@ -130,10 +130,8 @@ include('includes\navbarDoc.php');
                                                 echo $qname;
                                                 $_SESSION['docname'] = $qname;
                                                     $viewed = "No";
-                                                    date_default_timezone_set('Australia/ACT');
-                                                    $date = date("Y-m-d");
-                                                $query = $conn->prepare("SELECT COUNT(assignedDoc) FROM clientinfo WHERE assignedDoc = ? AND viewed = ? AND checkinDate = ? ");
-                                                $query->bind_param("sss",$qname ,$viewed, $date);
+                                                $query = $conn->prepare("SELECT COUNT(assignedDoc) FROM clientinfo WHERE assignedDoc = ? AND viewed = ?");
+                                                $query->bind_param("ss",$qname ,$viewed);
                                                 $query->execute();
                                                 $stmt = $query->get_result()->fetch_row();
                                                 
@@ -181,12 +179,12 @@ include('includes\navbarDoc.php');
                                     echo $options;
                                     
                                 date_default_timezone_set('Australia/ACT');
-                                $date = date("Y-m-d");
+                                
                                 $conn = new mysqli('localhost', 'root','','wildvetcheckinsystem');
                                     $viewed = "No";
-                                $query = $conn->prepare("SELECT  DISTINCT clientinfo.clientId, clientinfo.title, clientinfo.firstName, clientinfo.surName, clientinfo.assignedDoc, clientinfo.checkinDate, clientinfo.mobileNo, clientinfo.email ,petinfo.petKey, petinfo.petName, petinfo.petType, petinfo.breed ,clientinfo.viewed
-                                FROM clientinfo JOIN petinfo ON clientinfo.clientId=petinfo.petKey WHERE clientinfo.assignedDoc = ? AND clientinfo.viewed = ? AND clientinfo.checkinDate = ? ");
-                                $query->bind_param("sss",$qname, $viewed, $date);
+                                $query = $conn->prepare("SELECT  DISTINCT clientinfo.clientId, clientinfo.title, clientinfo.firstName, clientinfo.surName, clientinfo.assignedDoc, clientinfo.checkinDate, clientinfo.mobileNo, clientinfo.email ,petinfo.petKey, petinfo.petName, petinfo.petType, petinfo.breed 
+                                FROM clientinfo JOIN petinfo ON clientinfo.clientId=petinfo.petKey WHERE clientinfo.assignedDoc = ? AND viewed = ? ");
+                                $query->bind_param("ss",$qname, $viewed);
                                 $query->execute();
                                 $result = $query->get_result();
                                 while( $data =  mysqli_fetch_array( $result)){
@@ -201,7 +199,7 @@ include('includes\navbarDoc.php');
                             <td> <?php echo $data[10] ?></td>
                             <td> <?php echo $data[11] ?></td>
                             <td>
-                                <form action="doc_clientedit.php" method="POST">
+                                <form action="doc_notViewedClientedit.php" method="POST">
                                     <input type="hidden" name="cid" value=<?php echo $data[0] ?>>
                                     <input type="hidden" name="cname" value=<?php echo $data[2] ?>>
                                     <button type="submit" name="edituser" class=" btn btn-success">View/Edit</button>
@@ -210,7 +208,7 @@ include('includes\navbarDoc.php');
                             <td>
                                 <form action="doc_clientcheck.php" method="POST">
                                     <input type="hidden" name="cid" value=<?php echo $data[0] ?>>
-                                    <button type="submit" name="done" class=" btn btn-success">Done</button>
+                                    <button type="notViewedsubmit" name="done" class=" btn btn-success">Done</button>
                                 </form>
                             </td>
 

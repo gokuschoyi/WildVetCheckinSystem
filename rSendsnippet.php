@@ -146,9 +146,7 @@ include('includes\navbar.php');
                                     <th>Age</th>
                                     <th>Pet Type</th>
                                     <th>Breed</th>
-                                    <th>SELECT</th>
-                                    
-                                   
+                                    <th>SELECT</th>  
                                 </tr>
                             </thead>
                             <tbody>

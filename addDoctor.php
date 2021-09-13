@@ -106,14 +106,11 @@ include('includes\navbar.php');
 
             <!-- Content Row -->
             <div class="row">
-
-                <div class="col-xl-4 col-md-6 mb-4">
+                <div class="col-xl-4 col-md-4 mb-4">
                     <div class="card border-left-primary shadow h-100 py-2">
                         <div class="card-body">
                             <div class="row no-gutters align-items-center">
                                 <div class="col mr-2">
-                                    <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
-                                    </div>
                                     <div class="modal fade" id="addadminprofile" tabindex="-1" role="dialog"
                                         aria-labelledby="exampleModalLabel" aria-hidden="true">
                                         <div class="modal-dialog" role="document">
@@ -126,9 +123,7 @@ include('includes\navbar.php');
                                                     </button>
                                                 </div>
                                                 <form action="docCode.php" method="POST">
-
                                                     <div class="modal-body">
-
                                                         <div class="form-group">
                                                             <label> Firstname </label>
                                                             <input type="text" name="firstname" class="form-control"
@@ -154,14 +149,13 @@ include('includes\navbar.php');
                                                             class="btn btn-primary">Save</button>
                                                     </div>
                                                 </form>
-
                                             </div>
                                         </div>
                                     </div>
 
-                                    <button type="button" class="btn btn-primary" data-toggle="modal"
-                                        data-target="#addadminprofile">Add Doctor Profile</button>
-                                    <div class="h5 mb-0 font-weight-bold text-gray-800"></div>
+                                    <button type="button" class="btn btn-primary justify-content-center"
+                                        data-toggle="modal" data-target="#addadminprofile">Add Doctor Profile</button>
+                                    <div class="h5 mb-0 font-weight-bold text-gray-800 "></div>
                                 </div>
                                 <div class="col-auto">
                                     <i class="fas fa-calendar fa-2x text-gray-300"></i>
@@ -171,7 +165,7 @@ include('includes\navbar.php');
                     </div>
                 </div>
                 <!-- Earnings (Monthly) Card Example -->
-                <div class="col-xl-4 col-md-6 mb-4">
+                <div class="col-xl-4 col-md-4 mb-4">
                     <div class="card border-left-primary shadow h-100 py-2">
                         <div class="card-body">
                             <div class="row no-gutters align-items-center">
@@ -198,7 +192,7 @@ include('includes\navbar.php');
                 </div>
 
                 <!-- Earnings (Monthly) Card Example -->
-                <div class="col-xl-4 col-md-6 mb-4">
+                <div class="col-xl-4 col-md-4 mb-4">
                     <div class="card border-left-success shadow h-100 py-2">
                         <div class="card-body">
                             <div class="row no-gutters align-items-center">

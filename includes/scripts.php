@@ -79,7 +79,7 @@
         $(document).ready(function() {
         var table = $('#linktable').DataTable( {
             "dom": '<"row"<"col-6"<"d-flex justify-content-left justify-content-left"<""l>>><"col-6"<"d-flex justify-content-end"<""f>>>>tp<"ml-4"i>',
-            "scrollY": "450px",
+            "scrollY": "500px",
             "scrollX": true,
             "paging": true,
 

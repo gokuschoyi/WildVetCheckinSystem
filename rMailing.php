@@ -139,6 +139,7 @@ include('includes\navbar.php');
                     <thead>
                         <tr>
                             <th>Cid</th>
+                            <th>Check-In Date</th>
                             <th>Client Name</th>
                             <th>Mobile</th>
                             <th>Email</th>
@@ -148,7 +149,7 @@ include('includes\navbar.php');
                         <?php
                                 $value = "Yes";
                                 $conn = new mysqli('localhost', 'root','','wildvetcheckinsystem');
-                                $query = $conn->prepare("SELECT  clientinfo.clientId, clientinfo.title, clientinfo.firstName, clientinfo.surName,  clientinfo.mobileNo, clientinfo.email, clientinfo.newsletter
+                                $query = $conn->prepare("SELECT  clientinfo.clientId, clientinfo.checkinDate, clientinfo.title, clientinfo.firstName, clientinfo.surName,  clientinfo.mobileNo, clientinfo.email, clientinfo.newsletter
                                 FROM clientinfo  WHERE clientinfo.newsletter = ?");
                                 $query->bind_param("s",$value);
                                 $query->execute();
@@ -157,6 +158,7 @@ include('includes\navbar.php');
                                     echo '
                                     <tr>
                                         <td> '.$data['clientId'].'</td>
+                                        <td> '.$data['checkinDate'].'</td>
                                         <td> '.$data['title'].' '.$data['firstName'].' '.$data['surName'].'</td>
                                         <td> '.$data['mobileNo'].'</td>
                                         <td> '.$data['email'].'</td>

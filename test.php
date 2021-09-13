@@ -1,11 +1,11 @@
 <?php
-$searchLink = 'https://www.google.co.in/search?q=dji+mavic+3';
+$searchLink = 'https://www.google.co.in/search?q=how+to+get+title+from+simple+dom+parser';
 $html = file_get_contents($searchLink);
 $htmlDom = new DOMDocument;
 @$htmlDom->loadHTML($html);
-$links = $htmlDom->getElementsByTagName('a');
+$link1 = $htmlDom->getElementsByTagName('a');
 $extractedLinks = array();
-foreach($links as $link){
+foreach($link1 as $link){
     $linkHref = $link->getAttribute('href');
     if(strlen(trim($linkHref)) == 0){
         continue;
@@ -27,16 +27,18 @@ foreach($links as $link){
     }
     //echo searchString();
 }
-echo searchString();
 
-function searchString(){
-    $str1 = "gokul";
-    $str2 = "choyi";
-    $str3 = $str1." ".$str2;
-    $str4 = str_replace(' ', '+',$str3);
-    echo $str4;
+$link1 = $htmlDom->getElementsByTagName('a');
+$extractedLinks1 = array();
+foreach($link1 as $lnk){
+    $linkHref = $lnk->getAttribute('h3 class');
+       echo $linkHref . '<br>';
+    }
+    
 
-}
+
+
+
 
 ?>
 

@@ -141,18 +141,15 @@ include('includes\navbar.php');
                             <th>Client Name</th>
                             <th>Mobile</th>
                             <th>Email</th>
-                            <th>Pet Name</th>
-                            <th>Pet Type</th>
-                            <th>Breed</th>
+                            <th>Assigned Doctor</th>
                             <th>EDIT DETAILS</th>
                             <th>DELETE RECORD</th>
-
                         </tr>
                     </thead>
                     <tbody>
                         <?php
                                 $conn = new mysqli('localhost', 'root','','wildvetcheckinsystem');
-                                $sql = $conn-> query(query: 'SELECT DISTINCT clientinfo.clientId, clientinfo.title, clientinfo.firstName, clientinfo.surName, clientinfo.mobileNo, clientinfo.email ,petinfo.petName, petinfo.petType, petinfo.breed FROM clientinfo JOIN petinfo ON clientinfo.clientId=petinfo.petKey');
+                                $sql = $conn-> query(query: 'SELECT DISTINCT clientinfo.clientId, clientinfo.title, clientinfo.firstName, clientinfo.surName, clientinfo.mobileNo, clientinfo.email ,clientinfo.assignedDoc FROM clientinfo JOIN petinfo ON clientinfo.clientId=petinfo.petKey');
                                 while( $data = $sql-> fetch_array()){
                                     echo '
                                     <tr>
@@ -160,9 +157,7 @@ include('includes\navbar.php');
                                         <td> '.$data['title'].' '.$data['firstName'].' '.$data['surName'].'</td>
                                         <td> '.$data['mobileNo'].'</td>
                                         <td> '.$data['email'].'</td>
-                                        <td> '.$data['petName'].'</td>
-                                        <td> '.$data['petType'].'</td>
-                                        <td> '.$data['breed'].'</td>
+                                        <td> '.$data['assignedDoc'].'</td>
                                         <td>
                                             <form action = "client_editall.php" method = "POST">
                                             <input type = "hidden" name = "cid" value ='.$data['clientId'].'>

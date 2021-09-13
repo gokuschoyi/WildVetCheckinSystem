@@ -42,6 +42,7 @@
         <div class="bg-white py-2 collapse-inner rounded">
             <!--<h6 class="collapse-header">Custom Components:</h6>-->
             <a class="collapse-item" href="docDash.php">Today</a>
+            <a class="collapse-item" href="docNotviewed.php">Not Viewed</a>
             <a class="collapse-item" href="docHistory.php">History</a>
         </div>
     </div>

@@ -102,7 +102,8 @@ $conn = new mysqli('localhost', 'root','','wildvetcheckinsystem');
                 <?php
             if(isset($_POST['selectarticle']))
             {
-                $cid = $_POST['cid'];  
+                $cid = $_POST['cid']; 
+                
             }
             ?>
                 <h1 class="h3 mb-0 text-gray-800">CLIENT ID : <?php   echo $id ?> </h1>
@@ -113,7 +114,7 @@ $conn = new mysqli('localhost', 'root','','wildvetcheckinsystem');
             <div class="row">
 
                 <!-- Earnings (Monthly) Card Example -->
-                <div class="col-xl-4 col-md-6 mb-4">
+                <div class="col-xl-6 col-md-6 mb-4">
                     <div class="card border-left-primary shadow h-100 py-2">
                         <div class="card-body">
                             <div class="row no-gutters align-items-center">
@@ -124,13 +125,13 @@ $conn = new mysqli('localhost', 'root','','wildvetcheckinsystem');
                                     <?php
                                         $space = " ";
                                         $conn = new mysqli('localhost', 'root','','wildvetcheckinsystem');
-                                        $query = $conn->prepare("SELECT title, firstName, surName FROM clientinfo WHERE clientId = ?");
+                                        $query = $conn->prepare("SELECT title, firstName, surName, addComments FROM clientinfo WHERE clientId = ?");
                                         $query->bind_param("s",$id);
                                         $query->execute();
-                                        $stmt = $query->get_result()->fetch_row();
+                                        $stmt1 = $query->get_result()->fetch_row();
                                         ?>
                                     <div class="h5 mb-0 font-weight-bold text-gray-800">
-                                        <?php echo $stmt[0], $space,$stmt[1], $space, $stmt[2]?></div>
+                                        <?php echo $stmt1[0], $space,$stmt1[1], $space, $stmt1[2]?></div>
                                 </div>
                                 <div class="col-auto"><i class="fas fa-calendar fa-2x text-gray-300"></i></div>
                             </div>
@@ -138,7 +139,7 @@ $conn = new mysqli('localhost', 'root','','wildvetcheckinsystem');
                     </div>
                 </div>
 
-                <div class="col-xl-4 col-md-6 mb-4">
+                <div class="col-xl-6 col-md-6 mb-4">
                     <div class="card border-left-primary shadow h-100 py-2">
                         <div class="card-body">
                             <div class="row no-gutters align-items-center">
@@ -164,7 +165,7 @@ $conn = new mysqli('localhost', 'root','','wildvetcheckinsystem');
             </div>
         </div>
         <?php
-        if(isset($_POST['editdoc']))
+        if(isset($_POST['selectarticle']))
             {
                 $cid = $_POST['cid'];
                 $space = " ";
@@ -176,11 +177,11 @@ $conn = new mysqli('localhost', 'root','','wildvetcheckinsystem');
                 $stmt = $query->get_result()->fetch_row();
             ?>
 
-        <form method="POST" action="">
+        <form method="" action="">
             <input type="hidden" name="petkey" value="<?php echo $stmt[7]?>">
             <div class="container-fluid">
                 <div class="row">
-                    <div class="col-xl-4 col-md-6 mb-4">
+                    <div class="col-xl-4 col-md-4 mb-4">
                         <div class="card border-left-primary shadow h-100 py-2">
                             <div class="card-body">
                                 <div class="row no-gutters align-items-center">
@@ -196,7 +197,7 @@ $conn = new mysqli('localhost', 'root','','wildvetcheckinsystem');
                         </div>
                     </div>
 
-                    <div class="col-xl-4 col-md-6 mb-4">
+                    <div class="col-xl-4 col-md-4 mb-4">
                         <div class="card border-left-primary shadow h-100 py-2">
                             <div class="card-body">
                                 <div class="row no-gutters align-items-center">
@@ -212,7 +213,7 @@ $conn = new mysqli('localhost', 'root','','wildvetcheckinsystem');
                         </div>
                     </div>
 
-                    <div class="col-xl-4 col-md-6 mb-4">
+                    <div class="col-xl-4 col-md-4 mb-4">
                         <div class="card border-left-primary shadow h-100 py-2">
                             <div class="card-body">
                                 <div class="row no-gutters align-items-center">
@@ -233,7 +234,7 @@ $conn = new mysqli('localhost', 'root','','wildvetcheckinsystem');
 
             <div class="container-fluid">
                 <div class="row">
-                    <div class="col-xl-4 col-md-6 mb-4">
+                    <div class="col-xl-4 col-md-4 mb-4">
                         <div class="card border-left-primary shadow h-100 py-2">
                             <div class="card-body">
                                 <div class="row no-gutters align-items-center">
@@ -249,7 +250,7 @@ $conn = new mysqli('localhost', 'root','','wildvetcheckinsystem');
                         </div>
                     </div>
 
-                    <div class="col-xl-4 col-md-6 mb-4">
+                    <div class="col-xl-4 col-md-4 mb-4">
                         <div class="card border-left-primary shadow h-100 py-2">
                             <div class="card-body">
                                 <div class="row no-gutters align-items-center">
@@ -265,7 +266,7 @@ $conn = new mysqli('localhost', 'root','','wildvetcheckinsystem');
                         </div>
                     </div>
 
-                    <div class="col-xl-4 col-md-6 mb-4">
+                    <div class="col-xl-4 col-md-4 mb-4">
                         <div class="card border-left-primary shadow h-100 py-2">
                             <div class="card-body">
                                 <div class="row no-gutters align-items-center">
@@ -286,17 +287,38 @@ $conn = new mysqli('localhost', 'root','','wildvetcheckinsystem');
 
             <div class="container-fluid ">
                 <div class="row justify-content-center">
-                    <div class="col-xl-4 col-md-6 mb-4">
-                        <div class="card border-left-primary shadow h-100 py-2 align-items-center">
-                            <div class="h5 mb-0 font-weight-bold text-gray-800  justify-content-center"><button
-                                    type="button" class=" btn btn-success" onclick="location.href='rSendsnippet.php'"
-                                    ;>GO BACK</button></div>
+                    <div class="col-xl-12 col-md-6 mb-4">
+                        <div class="card border-left-primary shadow h-100 py-2">
+                            <div class="card-body">
+                                <div class="row no-gutters align-items-center">
+                                    <div class="col mr-2">
+                                        <div class="text-xs font-weight-bold text-primary text-uppercase mb-1"
+                                            style="font-size:1.2vw;">Doctor's Comments</div>
+                                        <div class="h5 mb-0 font-weight-bold text-gray-800"><input type="text"
+                                                name="petweight" value="<?php echo $stmt1[3] ?>" class="form-control"
+                                                placeholder="Registered"></div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
+            </div>
         </form>
+
+        <div class="container-fluid ">
+                <div class="row justify-content-center">
+                    <div class="col-xl-12 col-md-6 mb-4 align-items-center">
+                        <div class="card border-primary shadow h-100 py-2 align-items-center">
+                            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1 align-items-center" style="font-size:1.5vw;">SELECT LINKS</div>  
+                        </div>
+                    </div>
+                </div>
+            </div>
+
         <div class="container-fluid ">
             <div class="table-responsive table table-striped table-bordered table-hover">
+            <form method = "POST" action = "rSendEmail.php">
                 <table id="linktable" class="display" style="width : 100%">
                     <thead>
                         <tr>
@@ -307,8 +329,9 @@ $conn = new mysqli('localhost', 'root','','wildvetcheckinsystem');
                     </thead>
                     <tbody>
                         <?php
-
-
+                        if(isset($_POST['selectarticle'])){
+                            $cid = $_POST['cid'];   
+                        }
                 function returnLinks($searchQ){
                     $array = array();
                     $search = 'https://www.google.co.in/search?q=';
@@ -335,40 +358,83 @@ $conn = new mysqli('localhost', 'root','','wildvetcheckinsystem');
                         }
                     return $array;
                     }
-                    https://www.google.com/search?q=female+entire+rajapalaya+dentestry
+                    
                     function makeSearchString($type, $breed, $sex, $age, $reason){
-                        $search = $sex."+".$breed."+".$reason;
+                        $search = $sex."+".$breed."+".$type."+".$reason;
                         return $search;
                     }
                     $ctype = $stmt[3];
                     $cbreed = $stmt[4];
                     $csex = str_replace(' ','+', $stmt[5]);
                     $cage = $stmt[6];
-                    $creason = $stmt[1];
+                    $creason = str_replace(' ', '+', $stmt[1]);
 
                     $searchQuery = makeSearchString($ctype,$cbreed, $csex, $cage, $creason);
+                    echo $searchQuery;
                     $data = array();
                     $data =  returnLinks($searchQuery);
                         foreach($data as $d){
                     echo '
                     <tr>
-                        <td> <input type = "checkbox"></td>
-                        <td> '. $d . '</td>
+                        <td> <input type = "checkbox" name = "check_list[]" value = '. $d .' ></td>
+                        <td> '. $d .'</td>
                         
                     </tr>
                     ';
                 }
                 ?>
-
                     </tbody>
                 </table>
+                <div class="container-fluid ">
+                    <div class="row justify-content-center">
+                        <div class="col-xl-4 col-md-6 mb-4">
+                            <div class="card border-left-primary shadow h-100 py-2 align-items-center">
+                                <div class="h5 mb-0 font-weight-bold text-gray-800  justify-content-center">
+                                <button type="submit" name = "sendEmail" class=" btn btn-success justify-content-center" method = "POST" action = "">PREVIEW EMAIL</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <input type = "hidden" name = "cid" value = "<?php echo $id?>">
+            </form>
+                
+        </div>
+        <div class="container-fluid ">
+            <div class="row justify-content-center">
+                <div class="col-xl-4 col-md-6 mb-4">
+                    <div class="card border-left-primary shadow h-100 py-2 align-items-center">
+                        <div class="h5 mb-0 font-weight-bold text-gray-800  justify-content-center">
+                            <buttontype="button" class=" btn btn-warning"onclick="location.href='rSendsnippet.php'" ;>GO BACK</button></div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
-
     </div>
-</div>
 
 <?php 
     include('includes/scripts.php');
-    include('includes/footer.php');
     ?>
+
+<script>
+
+    function toggleSelectedLinks(box){
+        //alert("testing");
+        var linkArray = new array();
+        var links = $(box).attr("value");
+        if($(box).prop("checked") == true){
+            //array_push(linkArray, links);
+            print(links);
+        }
+        
+        return linkArray;
+        
+    }
+ 
+
+</script>
+
+<?php
+include('includes/footer.php');
+?>
