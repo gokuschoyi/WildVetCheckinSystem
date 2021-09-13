@@ -2,7 +2,7 @@
 include('includes\header.php');
 include('includes\navbar.php');
 include('simple_html_dom.php');
-$conn = new mysqli('pk1l4ihepirw9fob.cbetxkdyhwsb.us-east-1.rds.amazonaws.com', 'sn4abkagkvz8sd1n','nm85ad3jt3wpvxc6','xlx8er1i5yj6m7u4');
+$conn = new mysqli('localhost', 'root','','wildvetcheckinsystem');
     if(isset($_POST['selectarticle']))
     {
         $id = $_POST['cid'];
@@ -124,7 +124,7 @@ $conn = new mysqli('pk1l4ihepirw9fob.cbetxkdyhwsb.us-east-1.rds.amazonaws.com', 
                                         CLIENT NAME</div>
                                     <?php
                                         $space = " ";
-                                        $conn = new mysqli('pk1l4ihepirw9fob.cbetxkdyhwsb.us-east-1.rds.amazonaws.com', 'sn4abkagkvz8sd1n','nm85ad3jt3wpvxc6','xlx8er1i5yj6m7u4');
+                                        $conn = new mysqli('localhost', 'root','','wildvetcheckinsystem');
                                         $query = $conn->prepare("SELECT title, firstName, surName, addComments FROM clientinfo WHERE clientId = ?");
                                         $query->bind_param("s",$id);
                                         $query->execute();
@@ -148,7 +148,7 @@ $conn = new mysqli('pk1l4ihepirw9fob.cbetxkdyhwsb.us-east-1.rds.amazonaws.com', 
                                         style="font-size:1.2vw;">
                                         REASON FOR VISIT</div>
                                     <?php
-                                        $conn = new mysqli('pk1l4ihepirw9fob.cbetxkdyhwsb.us-east-1.rds.amazonaws.com', 'sn4abkagkvz8sd1n','nm85ad3jt3wpvxc6','xlx8er1i5yj6m7u4');
+                                        $conn = new mysqli('localhost', 'root','','wildvetcheckinsystem');
                                         $query = $conn->prepare("SELECT reason from petinfo where petKey = ?");
                                         $query->bind_param("s",$cid);
                                         $query->execute();
@@ -170,7 +170,7 @@ $conn = new mysqli('pk1l4ihepirw9fob.cbetxkdyhwsb.us-east-1.rds.amazonaws.com', 
                 $cid = $_POST['cid'];
                 $space = " ";
             }
-                $conn = new mysqli('pk1l4ihepirw9fob.cbetxkdyhwsb.us-east-1.rds.amazonaws.com', 'sn4abkagkvz8sd1n','nm85ad3jt3wpvxc6','xlx8er1i5yj6m7u4');
+                $conn = new mysqli('localhost', 'root','','wildvetcheckinsystem');
                 $query = $conn->prepare("SELECT petKey, reason, petName, petType, breed, sex, age, petWeight FROM petinfo WHERE petKey = ?");
                 $query->bind_param("s",$cid);
                 $query->execute();

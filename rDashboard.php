@@ -118,7 +118,7 @@ include('includes/navbar.php');
                                     <?php
                                                 date_default_timezone_set('Australia/ACT');
                                                 $date = date("Y-m-d");
-                                                $conn = new mysqli('pk1l4ihepirw9fob.cbetxkdyhwsb.us-east-1.rds.amazonaws.com', 'sn4abkagkvz8sd1n','nm85ad3jt3wpvxc6','xlx8er1i5yj6m7u4');
+                                                $conn = new mysqli('localhost', 'root','','wildvetcheckinsystem');
                                                 $query = $conn->prepare("SELECT COUNT(checkinDate) FROM clientinfo WHERE checkinDate = ?");
                                                 $query->bind_param("s",$date);
                                                 $query->execute();
@@ -144,7 +144,7 @@ include('includes/navbar.php');
                                     <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
                                         CLIENTS (ALL)</div>
                                     <?php
-                                                $conn = new mysqli('pk1l4ihepirw9fob.cbetxkdyhwsb.us-east-1.rds.amazonaws.com', 'sn4abkagkvz8sd1n','nm85ad3jt3wpvxc6','xlx8er1i5yj6m7u4');
+                                                $conn = new mysqli('localhost', 'root','','wildvetcheckinsystem');
                                                 $query = 'SELECT  COUNT(DISTINCT clientId) FROM clientinfo JOIN petinfo ON clientinfo.clientId = petinfo.petKey';
                                                 $stmt = $conn->prepare($query);
                                                 $stmt->execute();
@@ -169,7 +169,7 @@ include('includes/navbar.php');
                                     <div class="text-xs font-weight-bold text-info text-uppercase mb-1">
                                         REGISTERED DOCTOR</div>
                                     <?php
-                                                $conn = new mysqli('pk1l4ihepirw9fob.cbetxkdyhwsb.us-east-1.rds.amazonaws.com', 'sn4abkagkvz8sd1n','nm85ad3jt3wpvxc6','xlx8er1i5yj6m7u4');
+                                                $conn = new mysqli('localhost', 'root','','wildvetcheckinsystem');
                                                 $query = 'SELECT  COUNT(DISTINCT docId) FROM doctor WHERE registered = "Yes"';
                                                 $stmt = $conn->prepare($query);
                                                 $stmt->execute();

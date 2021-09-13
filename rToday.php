@@ -119,7 +119,7 @@ include('includes\navbar.php');
                                     <?php
                                                 date_default_timezone_set('Australia/ACT');
                                                 $date = date("Y-m-d");
-                                                $conn = new mysqli('pk1l4ihepirw9fob.cbetxkdyhwsb.us-east-1.rds.amazonaws.com', 'sn4abkagkvz8sd1n','nm85ad3jt3wpvxc6','xlx8er1i5yj6m7u4');
+                                                $conn = new mysqli('localhost', 'root','','wildvetcheckinsystem');
                                                 $query = $conn->prepare("SELECT COUNT(checkinDate) FROM clientinfo WHERE checkinDate = ?");
                                                 $query->bind_param("s",$date);
                                                 $query->execute();
@@ -170,7 +170,7 @@ include('includes\navbar.php');
                                     
                                 date_default_timezone_set('Australia/ACT');
                                 $date = date("Y-m-d");
-                                $conn = new mysqli('pk1l4ihepirw9fob.cbetxkdyhwsb.us-east-1.rds.amazonaws.com', 'sn4abkagkvz8sd1n','nm85ad3jt3wpvxc6','xlx8er1i5yj6m7u4');
+                                $conn = new mysqli('localhost', 'root','','wildvetcheckinsystem');
 
                                 $query = $conn->prepare("SELECT  DISTINCT clientinfo.clientId, clientinfo.title, clientinfo.firstName, clientinfo.surName, clientinfo.checkinDate, clientinfo.mobileNo, clientinfo.email ,petinfo.petKey, petinfo.petName, petinfo.petType, petinfo.breed, clientinfo.assignedDoc 
                                 FROM clientinfo JOIN petinfo ON clientinfo.clientId=petinfo.petKey WHERE clientinfo.checkinDate = ? ");
