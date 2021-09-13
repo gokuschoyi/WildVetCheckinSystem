@@ -1,7 +1,7 @@
 <?php
 include('includes\header.php');
 include('includes\navbarDoc.php');
-$conn = new mysqli('localhost', 'root','','wildvetcheckinsystem');
+$conn = new mysqli('pk1l4ihepirw9fob.cbetxkdyhwsb.us-east-1.rds.amazonaws.com', 'sn4abkagkvz8sd1n','nm85ad3jt3wpvxc6','xlx8er1i5yj6m7u4');
     if(isset($_POST['notViewedsubmit']))
     {
         $cid = $_POST['cid'];
@@ -105,7 +105,7 @@ $conn = new mysqli('localhost', 'root','','wildvetcheckinsystem');
                 $cid = $_POST['cid'];
                 $space = " ";
             }
-            $conn = new mysqli('localhost', 'root','','wildvetcheckinsystem');
+            $conn = new mysqli('pk1l4ihepirw9fob.cbetxkdyhwsb.us-east-1.rds.amazonaws.com', 'sn4abkagkvz8sd1n','nm85ad3jt3wpvxc6','xlx8er1i5yj6m7u4');
                 $query = $conn->prepare("SELECT * FROM clientinfo WHERE clientId = ?");
                 $query->bind_param("s",$cid);
                 $query->execute();
@@ -168,7 +168,7 @@ $conn = new mysqli('localhost', 'root','','wildvetcheckinsystem');
                 $cid = $_POST['cid'];
                 $space = " ";
             }
-                $conn = new mysqli('localhost', 'root','','wildvetcheckinsystem');
+                $conn = new mysqli('pk1l4ihepirw9fob.cbetxkdyhwsb.us-east-1.rds.amazonaws.com', 'sn4abkagkvz8sd1n','nm85ad3jt3wpvxc6','xlx8er1i5yj6m7u4');
                 $query = $conn->prepare("SELECT * FROM clientinfo JOIN petinfo ON clientinfo.clientId = petinfo.petKey WHERE clientId = ?");
                 $query->bind_param("s",$cid);
                 $query->execute();

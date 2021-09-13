@@ -1,7 +1,7 @@
 <?php
 include('includes\header.php');
 include('includes\navbar.php');
-$conn = new mysqli('localhost', 'root','','wildvetcheckinsystem');
+$conn = new mysqli('pk1l4ihepirw9fob.cbetxkdyhwsb.us-east-1.rds.amazonaws.com', 'sn4abkagkvz8sd1n','nm85ad3jt3wpvxc6','xlx8er1i5yj6m7u4');
     if(isset($_POST['editdoc']))
     {
         $cid = $_POST['did'];
@@ -108,7 +108,7 @@ $conn = new mysqli('localhost', 'root','','wildvetcheckinsystem');
                 $cid = $_POST['did'];
                 $space = " ";
             }
-            $conn = new mysqli('localhost', 'root','','wildvetcheckinsystem');
+            $conn = new mysqli('pk1l4ihepirw9fob.cbetxkdyhwsb.us-east-1.rds.amazonaws.com', 'sn4abkagkvz8sd1n','nm85ad3jt3wpvxc6','xlx8er1i5yj6m7u4');
                 $query = $conn->prepare("SELECT * FROM doctor WHERE docId = ?");
                 $query->bind_param("s",$cid);
                 $query->execute();
@@ -147,7 +147,7 @@ $conn = new mysqli('localhost', 'root','','wildvetcheckinsystem');
                 $cid = $_POST['did'];
                 $space = " ";
             }
-                $conn = new mysqli('localhost', 'root','','wildvetcheckinsystem');
+                $conn = new mysqli('pk1l4ihepirw9fob.cbetxkdyhwsb.us-east-1.rds.amazonaws.com', 'sn4abkagkvz8sd1n','nm85ad3jt3wpvxc6','xlx8er1i5yj6m7u4');
                 $query = $conn->prepare("SELECT * FROM doctor WHERE docId = ?");
                 $query->bind_param("s",$cid);
                 $query->execute();
