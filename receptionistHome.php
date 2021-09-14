@@ -149,7 +149,7 @@
                         </thead>
                         <tbody>
                             <?php
-                                $conn = new mysqli('localhost', 'root','','wildvetcheckinsystem');
+                                $conn = new mysqli('pk1l4ihepirw9fob.cbetxkdyhwsb.us-east-1.rds.amazonaws.com', 'sn4abkagkvz8sd1n','nm85ad3jt3wpvxc6','xlx8er1i5yj6m7u4');
                                 $sql = $conn-> query(query: 'SELECT clientinfo.clientId, clientinfo.title, clientinfo.firstName, clientinfo.surName, clientinfo.mobileNo, clientinfo.email ,petinfo.petName, petinfo.petType, petinfo.breed FROM clientinfo JOIN petinfo ON clientinfo.clientId=petinfo.petKey');
                                 while( $data = $sql-> fetch_array()){
                                     echo '

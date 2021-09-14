@@ -1,6 +1,6 @@
 <?php
-include('includes\header.php');
-include('includes\navbar.php');
+include 'includes/header.php';
+include 'includes/navbar.php';
 
 ?>
 
@@ -117,7 +117,7 @@ include('includes\navbar.php');
                                         TOTAL</div>
                                     <?php
                                                 $value = "Yes";
-                                                $conn = new mysqli('localhost', 'root','','wildvetcheckinsystem');
+                                                $conn = new mysqli('pk1l4ihepirw9fob.cbetxkdyhwsb.us-east-1.rds.amazonaws.com', 'sn4abkagkvz8sd1n','nm85ad3jt3wpvxc6','xlx8er1i5yj6m7u4');
                                                 $query = $conn->prepare("SELECT COUNT(newsletter) FROM clientinfo WHERE newsletter = ?");
                                                 $query->bind_param("s",$value);
                                                 $query->execute();
@@ -148,7 +148,7 @@ include('includes\navbar.php');
                     <tbody>
                         <?php
                                 $value = "Yes";
-                                $conn = new mysqli('localhost', 'root','','wildvetcheckinsystem');
+                                $conn = new mysqli('pk1l4ihepirw9fob.cbetxkdyhwsb.us-east-1.rds.amazonaws.com', 'sn4abkagkvz8sd1n','nm85ad3jt3wpvxc6','xlx8er1i5yj6m7u4');
                                 $query = $conn->prepare("SELECT  clientinfo.clientId, clientinfo.checkinDate, clientinfo.title, clientinfo.firstName, clientinfo.surName,  clientinfo.mobileNo, clientinfo.email, clientinfo.newsletter
                                 FROM clientinfo  WHERE clientinfo.newsletter = ?");
                                 $query->bind_param("s",$value);
@@ -176,6 +176,6 @@ include('includes\navbar.php');
     </div>
     <!-- End of Main Content -->
     <?php 
-    include('includes\scripts.php');
-    include('includes\footer.php');
+    include 'includes/scripts.php';
+    include 'includes/footer.php';
     ?>

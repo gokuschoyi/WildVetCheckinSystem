@@ -7,7 +7,7 @@ if(isset($_POST['registerbtn']))
     $email = $_POST['email'];
     $registered = "No";
     
-    $conn = new mysqli('localhost', 'root', '', 'wildvetcheckinsystem');
+    $conn = new mysqli('pk1l4ihepirw9fob.cbetxkdyhwsb.us-east-1.rds.amazonaws.com', 'sn4abkagkvz8sd1n','nm85ad3jt3wpvxc6','xlx8er1i5yj6m7u4');
     $email_query = $conn->prepare("SELECT * FROM doctor WHERE demail = ? ");
     $email_query->bind_param("s", $email);
     $email_query->execute();

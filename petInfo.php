@@ -1,9 +1,10 @@
 <?php session_start();
 use PHPMailer\PHPMailer\PHPMailer;
-require 'vendor\autoload.php';
-
-include_once('vendor\tecnickcom\tcpdf\tcpdf.php');
-include_once('vendor\autoload.php');
+require 'vendor/autoload.php';
+error_reporting(0);
+ob_clean(); //Clear any previous output
+ob_start(); //Start new output buffer
+include_once('vendor/tecnickcom/tcpdf/tcpdf.php');
 echo $_SESSION["idEmail"];
 if (isset($_POST['submit'])){
     $reason = $_POST['reason'];
@@ -22,7 +23,7 @@ if (isset($_POST['submit'])){
     $ID='';
     //$_SESSION['idEmail'] = $_POST['email'];
     
-    $conn = new mysqli('localhost', 'root', '', 'wildvetcheckinsystem');
+    $conn = new mysqli('pk1l4ihepirw9fob.cbetxkdyhwsb.us-east-1.rds.amazonaws.com', 'sn4abkagkvz8sd1n','nm85ad3jt3wpvxc6','xlx8er1i5yj6m7u4');
     if ($conn->connect_error) {
         die('Connection to DB failed : ' . $conn->connect_error);
     } 
@@ -81,6 +82,7 @@ if (isset($_POST['submit'])){
             }
             </style>
             <table style="background-color: #222222; color: #fff">
+            <thead></thead>
             <tbody>
             <tr>
             
@@ -104,6 +106,7 @@ if (isset($_POST['submit'])){
 
         $html .= '
             <table>
+            <thead></thead>
             <tbody>
             <tr>
             <td align = "center"><h1><strong>WILD VET CHECK-IN SYSTEM</strong></h1><br/></td></tr>
@@ -113,6 +116,7 @@ if (isset($_POST['submit'])){
 
         $html .= '
             <table>
+            <thead></thead>
             <tbody>
             <tr>
             <td align="center"><strong style="font-size:16px;">Client Details</strong><br/>
@@ -135,6 +139,7 @@ if (isset($_POST['submit'])){
 
         $html .= '
             <table style="width:100%" align = "center">
+            <thead></thead>
             <tbody>
             <tr>
             <td style="text-decoration: underline;"><strong style="font-size:16px;">Pet Details</strong></td>
@@ -143,6 +148,7 @@ if (isset($_POST['submit'])){
             </table>
 
             <table style="width:100%" align = "center">
+            <thead></thead>
             <tbody>
             <tr>
             <td><strong = "font-size:14px;">Pet Name : '.$petName.'</strong><br/>
@@ -152,6 +158,7 @@ if (isset($_POST['submit'])){
             </table>
 
             <table style="width:100%" align = "center">
+            <thead></thead>
             <tbody>
             <tr colspan="4" style="font-weight:bold;">
             <th style="border-top: 1px solid #222">Breed</th>
@@ -164,6 +171,7 @@ if (isset($_POST['submit'])){
             </table>
 
             <table "width:100%" align = "center">
+            <thead></thead>
             <tbody>
             <tr>
             <td style="border-bottom: 1px solid #222">'.$breed.'</td>
@@ -176,6 +184,7 @@ if (isset($_POST['submit'])){
             </table>
 
             <table "width:100%" align = "center">
+            <thead></thead>
             <tbody>
             <tr style="font-weight:bold;">
             <th>Microchip</th>
@@ -188,6 +197,7 @@ if (isset($_POST['submit'])){
             </table>
 
             <table "width:100%" align = "center">
+            <thead></thead>
             <tbody>
             <tr>
             <td style="border-bottom: 1px solid #222">'.$microchip.'</td>
@@ -202,6 +212,7 @@ if (isset($_POST['submit'])){
 
         $html .= '
             <table>
+            <thead></thead>
             <tbody>
             <tr>
             <td style = "height:50px;"align="center"><strong style="font-size:16px;">Thank you for checkin in with us. See you soon.</strong></td>
@@ -213,6 +224,7 @@ if (isset($_POST['submit'])){
 
         $html .= '
             <table>
+            <thead></thead>
             <tbody>
             <tr>
             <td style = "height:40px;"align="center" "text-decoration: underline;"><strong style="font-size:16px;">Opening Hours</strong></td>
@@ -221,6 +233,7 @@ if (isset($_POST['submit'])){
             </table>
 
             <table "width:100%" align = "center">
+            <thead></thead>
             <tbody>
             <tr>
             <td style="text-decoration: underline;">Mon-Fri : 08:00 am - 07:00 pm</td>
@@ -229,6 +242,7 @@ if (isset($_POST['submit'])){
             </table>
 
             <table align = "center">
+            <thead></thead>
             <tbody>
             <tr>
             <td style="text-decoration: underline;">Saturday : 09:00 am - 05:00 pm</td>
@@ -237,6 +251,7 @@ if (isset($_POST['submit'])){
             </table>
 
             <table "width:100%" align = "center">
+            <thead></thead>
             <tbody>
             <tr>
             <td style="text-decoration: underline;">Sunday : 09:00 am - 12:00 pm</td>
@@ -248,6 +263,7 @@ if (isset($_POST['submit'])){
 
         $html .= '
             <table>
+            <thead></thead>
             <tbody>
             <tr height = "40px";>
             </tr>
@@ -255,6 +271,7 @@ if (isset($_POST['submit'])){
             </table>
 
             <table>
+            <thead></thead>
             <tbody>
             <tr>
             <td style="border-top: 1px solid #222" align="center"><strong style="font-size:42px;">THE WILD VET</strong></td>
@@ -263,6 +280,7 @@ if (isset($_POST['submit'])){
             </table>
 
             <table>
+            <thead></thead>
             <tbody>
             <tr>
             <td align="center"><strong style="font-size:14px;">EXOTICS & SMALL ANIMAL VETERINARIAN</strong></td>
@@ -271,9 +289,6 @@ if (isset($_POST['submit'])){
             </table>
         
         ';
-
-        
-
         $pdf = new TCPDF(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false, true);
         $pdf->SetMargins(-1, 0, -1);
         $pdf->setPrintHeader(false);
@@ -288,7 +303,7 @@ if (isset($_POST['submit'])){
         $pdf->writeHTMLCell(0, 0, '', '', $html, 0, 0, 0, true, '', true);
         $pdf_name = ''.$pdfID.'.pdf';
         $pdf->Output(dirname(__FILE__).'/invoice/'.$pdf_name.'', 'F');
-        echo 'PDF saved. <a href="invoice/'.$pdf_name.'">View</a>';
+        //echo 'PDF saved. <a href="invoice/'.$pdf_name.'">View</a>';
 
         $mail = new PHPMailer();
         $mail->IsSMTP();
@@ -298,13 +313,10 @@ if (isset($_POST['submit'])){
         $mail->Password = '123@wildvet';
         $mail->SMTPSecure ='tls';
         $mail->Port = '587';
-
         $mail->setFrom('thewildvetcheckin@gmail.com','Wild Vet Reception');
         $mail->addAddress('gokulsangamitrachoyi@gmail.com','Gokul');
-
         $mail->isHTML(true);
-
-        $mail->Subject = "Checkin Information"; 
+        $mail->Subject = "Checkin Information Test Server"; 
         $mail->Body = "<p>Thank you for checking in with us. Attached is a pdf document containig your information. See you soon.</p>";
      
         if(!$mail->send()){
@@ -315,8 +327,7 @@ if (isset($_POST['submit'])){
         else
         echo ' Mail sent Success';
             $mail->smtpClose();
-
-        header("Location: thankYou.php");
+            header("Location: thankYou.php"); 
     }
     }  
 }
@@ -370,7 +381,8 @@ if (isset($_POST['submit'])){
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Andada&amp;display=swap">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Andika&amp;display=swap">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Averia+Serif+Libre&amp;display=swap">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Courier+Prime:400,400i,700,700i&amp;subset=latin-ext&amp;display=swap">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css?family=Courier+Prime:400,400i,700,700i&amp;subset=latin-ext&amp;display=swap">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=GFS+Neohellenic&amp;display=swap">
     <link rel="stylesheet" href="assets/fonts/font-awesome.min.css">
     <link rel="stylesheet" href="assets/fonts/ionicons.min.css">
@@ -384,8 +396,13 @@ if (isset($_POST['submit'])){
 </head>
 
 <body>
-    <nav class="navbar navbar-light navbar-expand-md d-flex justify-content-center align-items-center navigation-clean" style="height: 180px;">
-        <div class="container"><a class="navbar-brand font-monospace d-lg-flex justify-content-lg-center align-items-lg-center" href="#" style="font-size: 35px;">Wild Vet Check-In</a><button data-bs-toggle="collapse" class="navbar-toggler" data-bs-target="#navcol-1"><span class="visually-hidden">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
+    <nav class="navbar navbar-light navbar-expand-md d-flex justify-content-center align-items-center navigation-clean"
+        style="height: 180px;">
+        <div class="container"><a
+                class="navbar-brand font-monospace d-lg-flex justify-content-lg-center align-items-lg-center" href="#"
+                style="font-size: 35px;">Wild Vet Check-In</a><button data-bs-toggle="collapse" class="navbar-toggler"
+                data-bs-target="#navcol-1"><span class="visually-hidden">Toggle navigation</span><span
+                    class="navbar-toggler-icon"></span></button>
             <div class="collapse navbar-collapse" id="navcol-1">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item"><a class="nav-link font-monospace" href="services.html">Services</a></li>
@@ -397,29 +414,42 @@ if (isset($_POST['submit'])){
         </div>
     </nav>
     <div style="background: url(&quot;assets/img/11027%20(2).jpg&quot;)  center no-repeat;height :788px;">
-        <form action="<?php echo htmlentities($_SERVER['PHP_SELF']); ?>" method="POST" id ="petDetails">
+        <form action="<?php echo htmlentities($_SERVER['PHP_SELF']); ?>" method="POST" id="petDetails">
             <div class="row">
-                    <div class="col d-flex d-lg-flex justify-content-center align-items-center justify-content-lg-center align-items-lg-center" style="height: 50px;"><select class="form-select-sm d-lg-flex justify-content-lg-center align-items-lg-center" style="width: 240px;height: 33px;border-radius: 13px;border-width: 1px;border-color: rgb(231,173,169);opacity: 0.85;" name="reason" required="">
-                            <option value="general" selected="">Reason for Visit</option>
-                            <option value="Health Check">Health Check</option>
-                            <option value="Nail Clipping">Nail Clipping</option>
-                            <option value="Microcipping">Microcipping</option>
-                            <option value="Dentstry">Dentstry</option>
-                            <option value="New puppies/kittens">New puppies/kittens</option>
-                            <option value="Laboratory Testing">Laboratory Testing</option>
-                            <option value="Surgery">Surgery</option>
-                            <option value="Hospitalization">Hospitalization</option>
-                            <option value="Parasite Prevention">Parasite Prevention</option>
-                            <option value="Medicine">Medicine</option>
-                            <option value="Behavioural Advice">Behavioural Advice</option>
-                            <option value="Nutritional Advice">Nutritional Advice</option>
-                        </select></div>
-                </div>
-            <div class="row">
-                <div class="col d-flex d-lg-flex justify-content-center align-items-center justify-content-lg-center align-items-lg-center" style="height: 50px;"><input class="form-control-sm d-lg-flex justify-content-lg-center align-items-lg-center" type="text" placeholder="Pet Name" style="border-radius: 13px;width: 240px;border-width: 1px;border-color: rgb(231,173,169);" name="petName" required="" autocomplete="on"></div>
+                <div class="col d-flex d-lg-flex justify-content-center align-items-center justify-content-lg-center align-items-lg-center"
+                    style="height: 50px;"><select
+                        class="form-select-sm d-lg-flex justify-content-lg-center align-items-lg-center"
+                        style="width: 240px;height: 33px;border-radius: 13px;border-width: 1px;border-color: rgb(231,173,169);opacity: 0.85;"
+                        name="reason" required="">
+                        <option value="general" selected="">Reason for Visit</option>
+                        <option value="Health Check">Health Check</option>
+                        <option value="Nail Clipping">Nail Clipping</option>
+                        <option value="Microcipping">Microcipping</option>
+                        <option value="Dentstry">Dentstry</option>
+                        <option value="New puppies/kittens">New puppies/kittens</option>
+                        <option value="Laboratory Testing">Laboratory Testing</option>
+                        <option value="Surgery">Surgery</option>
+                        <option value="Hospitalization">Hospitalization</option>
+                        <option value="Parasite Prevention">Parasite Prevention</option>
+                        <option value="Medicine">Medicine</option>
+                        <option value="Behavioural Advice">Behavioural Advice</option>
+                        <option value="Nutritional Advice">Nutritional Advice</option>
+                    </select></div>
             </div>
             <div class="row">
-                <div class="col d-flex d-lg-flex justify-content-center align-items-center justify-content-lg-center align-items-lg-center" style="height: 50px;"><select class="form-select-sm d-lg-flex justify-content-lg-center align-items-lg-center" style="width: 240px;height: 33px;border-radius: 13px;border-width: 1px;border-color: rgb(231,173,169);opacity: 0.85;" name="petType" required="">
+                <div class="col d-flex d-lg-flex justify-content-center align-items-center justify-content-lg-center align-items-lg-center"
+                    style="height: 50px;"><input
+                        class="form-control-sm d-lg-flex justify-content-lg-center align-items-lg-center" type="text"
+                        placeholder="Pet Name"
+                        style="border-radius: 13px;width: 240px;border-width: 1px;border-color: rgb(231,173,169);"
+                        name="petName" required="" autocomplete="on"></div>
+            </div>
+            <div class="row">
+                <div class="col d-flex d-lg-flex justify-content-center align-items-center justify-content-lg-center align-items-lg-center"
+                    style="height: 50px;"><select
+                        class="form-select-sm d-lg-flex justify-content-lg-center align-items-lg-center"
+                        style="width: 240px;height: 33px;border-radius: 13px;border-width: 1px;border-color: rgb(231,173,169);opacity: 0.85;"
+                        name="petType" required="">
                         <option value="No Pet Selected" selected="">Select type of pet</option>
                         <option value="Canine">Canine</option>
                         <option value="Feline">Feline</option>
@@ -432,10 +462,19 @@ if (isset($_POST['submit'])){
                     </select></div>
             </div>
             <div class="row">
-                <div class="col d-flex d-lg-flex justify-content-center align-items-center justify-content-lg-center align-items-lg-center" style="height: 50px;"><input class="form-control-sm d-lg-flex justify-content-lg-center align-items-lg-center" type="text" placeholder="Breed" style="border-radius: 13px;width: 240px;border-width: 1px;border-color: rgb(231,173,169);" name="breed" required="" autocomplete="on"></div>
+                <div class="col d-flex d-lg-flex justify-content-center align-items-center justify-content-lg-center align-items-lg-center"
+                    style="height: 50px;"><input
+                        class="form-control-sm d-lg-flex justify-content-lg-center align-items-lg-center" type="text"
+                        placeholder="Breed"
+                        style="border-radius: 13px;width: 240px;border-width: 1px;border-color: rgb(231,173,169);"
+                        name="breed" required="" autocomplete="on"></div>
             </div>
             <div class="row">
-                <div class="col d-flex d-lg-flex justify-content-center align-items-center justify-content-lg-center align-items-lg-center" style="height: 50px;"><select class="form-select-sm d-lg-flex justify-content-lg-center align-items-lg-center" style="width: 240px;border-radius: 13px;height: 31px;border-color: rgb(231,173,169);opacity: .85;" name="sex" required="">
+                <div class="col d-flex d-lg-flex justify-content-center align-items-center justify-content-lg-center align-items-lg-center"
+                    style="height: 50px;"><select
+                        class="form-select-sm d-lg-flex justify-content-lg-center align-items-lg-center"
+                        style="width: 240px;border-radius: 13px;height: 31px;border-color: rgb(231,173,169);opacity: .85;"
+                        name="sex" required="">
                         <option value="None Selected" selected="">Select sex</option>
                         <option value="Male Entire">Male Entire</option>
                         <option value="Male Neutered">Male Neutered</option>
@@ -445,55 +484,102 @@ if (isset($_POST['submit'])){
                     </select></div>
             </div>
             <div class="row">
-                <div class="col d-flex d-lg-flex justify-content-center align-items-center justify-content-lg-center align-items-lg-center" style="height: 50px;"><input class="form-control-sm d-lg-flex justify-content-lg-center align-items-lg-center" type="text" placeholder="Color" style="border-radius: 13px;width: 240px;border-width: 1px;border-color: rgb(231,173,169);" name="color" required="" autocomplete="on"></div>
+                <div class="col d-flex d-lg-flex justify-content-center align-items-center justify-content-lg-center align-items-lg-center"
+                    style="height: 50px;"><input
+                        class="form-control-sm d-lg-flex justify-content-lg-center align-items-lg-center" type="text"
+                        placeholder="Color"
+                        style="border-radius: 13px;width: 240px;border-width: 1px;border-color: rgb(231,173,169);"
+                        name="color" required="" autocomplete="on"></div>
             </div>
             <div class="row">
-                <div class="col d-flex d-lg-flex justify-content-center align-items-center justify-content-lg-center align-items-lg-center" style="height: 50px;"><input class="form-control-sm d-lg-flex justify-content-lg-center align-items-lg-center" type="text" placeholder="Age" style="border-radius: 13px;width: 240px;border-width: 1px;border-color: rgb(231,173,169);" name="age" required="" autocomplete="on"></div>
+                <div class="col d-flex d-lg-flex justify-content-center align-items-center justify-content-lg-center align-items-lg-center"
+                    style="height: 50px;"><input
+                        class="form-control-sm d-lg-flex justify-content-lg-center align-items-lg-center" type="text"
+                        placeholder="Age"
+                        style="border-radius: 13px;width: 240px;border-width: 1px;border-color: rgb(231,173,169);"
+                        name="age" required="" autocomplete="on"></div>
             </div>
             <div class="row">
-                <div class="col d-flex d-lg-flex justify-content-center align-items-center justify-content-lg-center align-items-lg-center" style="height: 50px;"><input class="form-control-sm d-lg-flex justify-content-lg-center align-items-lg-center" type="text" placeholder="Weight (Kg)" style="border-radius: 13px;width: 240px;border-width: 1px;border-color: rgb(231,173,169);" name="petWeight" required="" autocomplete="on"></div>
+                <div class="col d-flex d-lg-flex justify-content-center align-items-center justify-content-lg-center align-items-lg-center"
+                    style="height: 50px;"><input
+                        class="form-control-sm d-lg-flex justify-content-lg-center align-items-lg-center" type="text"
+                        placeholder="Weight (Kg)"
+                        style="border-radius: 13px;width: 240px;border-width: 1px;border-color: rgb(231,173,169);"
+                        name="petWeight" required="" autocomplete="on"></div>
             </div>
             <div class="row">
-                <div class="col d-flex d-lg-flex justify-content-center align-items-center justify-content-lg-center align-items-lg-center" style="height: 50px;"><select class="form-select-sm d-lg-flex justify-content-lg-center align-items-lg-center" style="width: 240px;border-radius: 13px;height: 31px;border-color: rgb(231,173,169);opacity: .85;" name="microchip" required="">
+                <div class="col d-flex d-lg-flex justify-content-center align-items-center justify-content-lg-center align-items-lg-center"
+                    style="height: 50px;"><select
+                        class="form-select-sm d-lg-flex justify-content-lg-center align-items-lg-center"
+                        style="width: 240px;border-radius: 13px;height: 31px;border-color: rgb(231,173,169);opacity: .85;"
+                        name="microchip" required="">
                         <option value="None Selected" selected="">Microchip</option>
                         <option value="Yes">Yes</option>
                         <option value="No">No</option>
                     </select></div>
             </div>
             <div class="row">
-                <div class="col d-flex d-lg-flex justify-content-center align-items-center justify-content-lg-center align-items-lg-center" style="height: 50px;"><select class="form-select-sm d-lg-flex justify-content-lg-center align-items-lg-center" style="width: 240px;border-radius: 13px;height: 31px;border-color: rgb(231,173,169);opacity: .85;" name="insurance" required="">
+                <div class="col d-flex d-lg-flex justify-content-center align-items-center justify-content-lg-center align-items-lg-center"
+                    style="height: 50px;"><select
+                        class="form-select-sm d-lg-flex justify-content-lg-center align-items-lg-center"
+                        style="width: 240px;border-radius: 13px;height: 31px;border-color: rgb(231,173,169);opacity: .85;"
+                        name="insurance" required="">
                         <option value="None Selected" selected="">Insurance</option>
                         <option value="Yes">Yes</option>
                         <option value="No">No</option>
                     </select></div>
             </div>
             <div class="row">
-                <div class="col d-flex d-lg-flex justify-content-center align-items-center justify-content-lg-center align-items-lg-center" style="height: 50px;"><input class="form-control-sm d-lg-flex justify-content-lg-center align-items-lg-center" type="text" placeholder="Medication (If Any)" style="border-radius: 13px;border-color: rgb(231,173,169);width: 240px;" name="medication" required="" autocomplete="on"></div>
+                <div class="col d-flex d-lg-flex justify-content-center align-items-center justify-content-lg-center align-items-lg-center"
+                    style="height: 50px;"><input
+                        class="form-control-sm d-lg-flex justify-content-lg-center align-items-lg-center" type="text"
+                        placeholder="Medication (If Any)"
+                        style="border-radius: 13px;border-color: rgb(231,173,169);width: 240px;" name="medication"
+                        required="" autocomplete="on"></div>
             </div>
             <div class="row">
-                <div class="col d-flex d-lg-flex justify-content-center align-items-center justify-content-lg-center align-items-lg-center" style="height: 50px;"><select class="form-select-sm d-lg-flex justify-content-lg-center align-items-lg-center" style="width: 240px;border-radius: 13px;height: 31px;border-color: rgb(231,173,169);opacity: .85;" name="parasiteControl" required="">
+                <div class="col d-flex d-lg-flex justify-content-center align-items-center justify-content-lg-center align-items-lg-center"
+                    style="height: 50px;"><select
+                        class="form-select-sm d-lg-flex justify-content-lg-center align-items-lg-center"
+                        style="width: 240px;border-radius: 13px;height: 31px;border-color: rgb(231,173,169);opacity: .85;"
+                        name="parasiteControl" required="">
                         <option value="None Selected" selected="">Parasite Control</option>
                         <option value="Yes">Yes</option>
                         <option value="No">No</option>
                     </select></div>
             </div>
             <div class="row">
-                <div class="col d-flex d-lg-flex justify-content-center align-items-center" style="height: 50px;"><input class="form-control-sm d-lg-flex justify-content-lg-center align-items-lg-center" type="date" style="border-radius: 13px;width: 240px;border-width: 1px;border-color: rgb(231,173,169);opacity: 0.85;" name="mcDate" required=""></div>
+                <div class="col d-flex d-lg-flex justify-content-center align-items-center" style="height: 50px;"><input
+                        class="form-control-sm d-lg-flex justify-content-lg-center align-items-lg-center" type="date"
+                        style="border-radius: 13px;width: 240px;border-width: 1px;border-color: rgb(231,173,169);opacity: 0.85;"
+                        name="mcDate" required=""></div>
             </div>
             <div class="row">
-                <div class="col d-flex d-lg-flex justify-content-center align-items-center justify-content-lg-center align-items-lg-center" style="height: 34px;"><button id="petDetails" class="btn btn-primary btn-sm font-monospace d-flex justify-content-center align-items-center" type="submit" form="petDetails" name = "submit" value="Submit" style="border-radius: 30px;background: rgb(157,126,207);height: 35px;width: 148px;">Submit Details</button></div>
+                <div class="col d-flex d-lg-flex justify-content-center align-items-center justify-content-lg-center align-items-lg-center"
+                    style="height: 34px;"><button id="petDetails"
+                        class="btn btn-primary btn-sm font-monospace d-flex justify-content-center align-items-center"
+                        type="submit" form="petDetails" name="submit" value="Submit"
+                        style="border-radius: 30px;background: rgb(157,126,207);height: 35px;width: 148px;">Submit
+                        Details</button></div>
             </div>
             <div class="row">
-                <div class="col d-flex d-lg-flex justify-content-center align-items-center justify-content-lg-center align-items-lg-center" style="height: 50px;"><button onclick="parent.location='clientInfo.php'" id="goBack" class="btn btn-primary btn-sm font-monospace d-xl-flex justify-content-xl-center align-items-xl-center" type="button" style="border-radius: 30px;background: rgb(157,126,207);">Go Back</button>
+                <div class="col d-flex d-lg-flex justify-content-center align-items-center justify-content-lg-center align-items-lg-center"
+                    style="height: 50px;"><button onclick="parent.location='clientInfo.php'" id="goBack"
+                        class="btn btn-primary btn-sm font-monospace d-xl-flex justify-content-xl-center align-items-xl-center"
+                        type="button" style="border-radius: 30px;background: rgb(157,126,207);">Go Back</button>
                 </div>
             </div>
-        </div>
+    </div>
     </form>
     <div class="container">
         <footer class="footer-basic" style="background: transparent;">
-            <div class="d-xl-flex justify-content-xl-center align-items-xl-center social"><a class="d-xl-flex justify-content-xl-center align-items-xl-center" href="https://www.instagram.com/thewildvetclinic/"><i class="icon ion-social-instagram"></i></a><a href="https://www.facebook.com/thewildvetclinic/"><i class="icon ion-social-facebook"></i></a></div>
+            <div class="d-xl-flex justify-content-xl-center align-items-xl-center social"><a
+                    class="d-xl-flex justify-content-xl-center align-items-xl-center"
+                    href="https://www.instagram.com/thewildvetclinic/"><i class="icon ion-social-instagram"></i></a><a
+                    href="https://www.facebook.com/thewildvetclinic/"><i class="icon ion-social-facebook"></i></a></div>
             <ul class="list-inline">
-                <li class="list-inline-item"><a href="https://wildvet.ezyvet.com/external/portal/main/login">Sign-In</a></li>
+                <li class="list-inline-item"><a href="https://wildvet.ezyvet.com/external/portal/main/login">Sign-In</a>
+                </li>
                 <li class="list-inline-item"><a href="contactUs.html">Contact Us</a></li>
                 <li class="list-inline-item"><a href="services.html">F.A.Q</a></li>
             </ul>
@@ -501,7 +587,7 @@ if (isset($_POST['submit'])){
         </footer>
     </div>
     <script src="assets/bootstrap/js/bootstrap.min.js"></script>
-   
+
 </body>
 
 </html>

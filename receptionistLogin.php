@@ -1,6 +1,6 @@
 <?php
 if (isset($_POST['rLogin'])){
-    header("Location: testdash.php");
+    header("Location: rDashboard.php");
 
 }
 ?>
@@ -70,7 +70,7 @@ if (isset($_POST['rLogin'])){
         <div class="container"><a class="navbar-brand font-monospace" href="index.php" style="font-size: 35px;">The Wild Vet</a><button data-bs-toggle="collapse" class="navbar-toggler" data-bs-target="#navcol-1"><span class="visually-hidden">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
             <div class="collapse navbar-collapse" id="navcol-1">
                 <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"><a class="nav-link font-monospace" href="clientCheckin.html">Check-In Page</a></li>
+                    <li class="nav-item"><a class="nav-link font-monospace" href="clientCheckin.php">Check-In Page</a></li>
                     <li class="nav-item"><a class="nav-link font-monospace" href="#">About Us</a></li>
                     <li class="nav-item"><a class="nav-link font-monospace" href="contactUs.html">Contact</a></li>
                 </ul>
@@ -79,7 +79,7 @@ if (isset($_POST['rLogin'])){
     </nav>
     <h4 class="font-monospace text-center d-flex d-lg-flex justify-content-center align-items-center justify-content-lg-center align-items-lg-center" style="height: 133px;font-weight: bold;opacity: 0.85;font-size: 28.376px;">Receptionist Login</h4>
     <div class="d-flex d-lg-flex d-xl-flex justify-content-center align-items-start justify-content-sm-center align-items-sm-center justify-content-md-center align-items-md-center justify-content-lg-center align-items-lg-center justify-content-xl-center align-items-xl-center" style="height: 580px;">
-    <form method="post" style="background: transparent;border-radius: 26px;width: 240px;">
+    <form method="post" action = "" style="background: transparent;border-radius: 26px;width: 240px;">
         <h2 class="visually-hidden">Login Form</h2>
         <div class="d-flex d-lg-flex d-xl-flex justify-content-center align-items-center justify-content-sm-center align-items-sm-center justify-content-md-center align-items-md-center justify-content-lg-center align-items-lg-center justify-content-xl-center align-items-xl-center illustration" style="height: 190px;"><img class="d-flex justify-content-center align-items-center" src="assets\img\password.png" style="width: 80px;" /></div>
         <div class="mb-3"><input type="email" class="form-control" name="email" placeholder="Email" /></div>

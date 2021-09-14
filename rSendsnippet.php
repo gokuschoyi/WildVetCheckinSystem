@@ -1,6 +1,6 @@
 <?php
-include('includes\header.php');
-include('includes\navbar.php');
+include 'includes/header.php';
+include 'includes/navbar.php';
 
 ?>
     
@@ -120,7 +120,7 @@ include('includes\navbar.php');
                                                 Remaining</div>
                                                 <?php
                                                 $snippet = "No";
-                                                $conn = new mysqli('localhost', 'root','','wildvetcheckinsystem');
+                                                $conn = new mysqli('pk1l4ihepirw9fob.cbetxkdyhwsb.us-east-1.rds.amazonaws.com', 'sn4abkagkvz8sd1n','nm85ad3jt3wpvxc6','xlx8er1i5yj6m7u4');
                                                 $query = $conn->prepare("SELECT COUNT(snippet) FROM clientinfo WHERE snippet = ?");
                                                 $query->bind_param("s",$snippet);
                                                 $query->execute();
@@ -152,7 +152,7 @@ include('includes\navbar.php');
                             <tbody>
                                 <?php
                                 $snippet ="No";
-                                $conn = new mysqli('localhost', 'root','','wildvetcheckinsystem');
+                                $conn = new mysqli('pk1l4ihepirw9fob.cbetxkdyhwsb.us-east-1.rds.amazonaws.com', 'sn4abkagkvz8sd1n','nm85ad3jt3wpvxc6','xlx8er1i5yj6m7u4');
 
                                 $query = $conn->prepare("SELECT  DISTINCT clientinfo.clientId, clientinfo.title, clientinfo.firstName, clientinfo.surName, clientinfo.checkinDate, petinfo.reason, petinfo.petKey, petinfo.petName, petinfo.petType, petinfo.breed, petinfo.age
                                 FROM clientinfo JOIN petinfo ON clientinfo.clientId=petinfo.petKey WHERE clientinfo.snippet = ? ORDER BY clientinfo.clientId DESC");
@@ -192,8 +192,8 @@ include('includes\navbar.php');
             </div>
             <!-- End of Main Content -->
     <?php 
-    include('includes\scripts.php');
-    include('includes\footer.php');
+    include 'includes/scripts.php';
+    include 'includes/footer.php';
     ?>
 
     

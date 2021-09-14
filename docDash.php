@@ -1,6 +1,6 @@
 <?php
-include('includes\header.php');
-include('includes\navbarDoc.php');
+include 'includes/header.php';
+include 'includes/navbarDoc.php';
 
 ?>
 
@@ -119,7 +119,7 @@ include('includes\navbarDoc.php');
                                         CLIENTS TODAY</div>
                                     <?php
                                             
-                                                $conn = new mysqli('localhost', 'root','','wildvetcheckinsystem');
+                                                $conn = new mysqli('pk1l4ihepirw9fob.cbetxkdyhwsb.us-east-1.rds.amazonaws.com', 'sn4abkagkvz8sd1n','nm85ad3jt3wpvxc6','xlx8er1i5yj6m7u4');
                                                 $_SESSION['qEmail'] = $_SESSION['docEmail'];
                                                 $query1 = $conn->prepare("SELECT dFname from doctor WHERE dEmail = ?");
                                                 $query1->bind_param("s", $_SESSION['qEmail']);
@@ -182,7 +182,7 @@ include('includes\navbarDoc.php');
                                     
                                 date_default_timezone_set('Australia/ACT');
                                 $date = date("Y-m-d");
-                                $conn = new mysqli('localhost', 'root','','wildvetcheckinsystem');
+                                $conn = new mysqli('pk1l4ihepirw9fob.cbetxkdyhwsb.us-east-1.rds.amazonaws.com', 'sn4abkagkvz8sd1n','nm85ad3jt3wpvxc6','xlx8er1i5yj6m7u4');
                                     $viewed = "No";
                                 $query = $conn->prepare("SELECT  DISTINCT clientinfo.clientId, clientinfo.title, clientinfo.firstName, clientinfo.surName, clientinfo.assignedDoc, clientinfo.checkinDate, clientinfo.mobileNo, clientinfo.email ,petinfo.petKey, petinfo.petName, petinfo.petType, petinfo.breed ,clientinfo.viewed
                                 FROM clientinfo JOIN petinfo ON clientinfo.clientId=petinfo.petKey WHERE clientinfo.assignedDoc = ? AND clientinfo.viewed = ? AND clientinfo.checkinDate = ? ");
@@ -228,6 +228,6 @@ include('includes\navbarDoc.php');
     </div>
     <!-- End of Main Content -->
     <?php 
-    include('includes\scripts.php');
-    include('includes\footer.php');
+    include 'includes/scripts.php';
+    include 'includes/footer.php';
     ?>
