@@ -79,14 +79,14 @@
         $(document).ready(function() {
         var table = $('#linktable').DataTable( {
             "dom": '<"row"<"col-6"<"d-flex justify-content-left justify-content-left"<""l>>><"col-6"<"d-flex justify-content-end"<""f>>>>tp<"ml-4"i>',
-            "scrollY": "500px",
+            "scrollY": "680px",
             "scrollX": true,
             "paging": true,
 
             "columnDefs": [
             {
-                "targets": [ 0 ],
-                "visible": true,
+                "targets": [ 1 ],
+                "visible": false,
                 "searchable": true
             }
             ],

@@ -52,8 +52,9 @@ if (isset($_POST['submit'])){
 
             date_default_timezone_set('Australia/ACT');
             $date = date("Y-m-d");
-            $stmt = $conn->prepare("UPDATE clientinfo SET checkinDate = ? WHERE clientid = ?");
-            $stmt->bind_param("si",$date, $pdfID);
+            $time = date("h:i:s A");
+            $stmt = $conn->prepare("UPDATE clientinfo SET checkinDate = ?, checkinTime = ? WHERE clientid = ?");
+            $stmt->bind_param("ssi",$date, $time, $pdfID);
             $stmt->execute();
 
             $query3 = $conn->prepare("SELECT * FROM petinfo INNER JOIN clientinfo WHERE clientinfo.clientId='$_SESSION[ID]'"); 
@@ -304,7 +305,8 @@ if (isset($_POST['submit'])){
         $pdf_name = ''.$pdfID.'.pdf';
         $pdf->Output(dirname(__FILE__).'/invoice/'.$pdf_name.'', 'F');
         //echo 'PDF saved. <a href="invoice/'.$pdf_name.'">View</a>';
-
+        $filepath = "invoice/".$pdf_name; 
+        
         $mail = new PHPMailer();
         $mail->IsSMTP();
         $mail-> Host ='smtp.gmail.com';
@@ -318,7 +320,7 @@ if (isset($_POST['submit'])){
         $mail->isHTML(true);
         $mail->Subject = "Checkin Information Test Server"; 
         $mail->Body = "<p>Thank you for checking in with us. Attached is a pdf document containig your information. See you soon.</p>";
-     
+        $mail->AddAttachment($filepath);
         if(!$mail->send()){
         echo 'something went wrong';
         echo'Mailer Error : ' .$mail->ErrorInfo;

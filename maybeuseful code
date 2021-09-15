@@ -453,3 +453,28 @@ $array = array();
                                                 </select>  
                                                 <button type = "submit" class = " btn btn-success">Select Doctor</button>
                                                 <?php $test = "string";?>
+
+
+
+                                                if(isset($_POST['sendEmail'])){
+                                if(!empty($_POST['check_list'])) {
+                                $checked_count = count($_POST['check_list']);
+                                echo "You have selected following ".$checked_count." option(s): <br/>";
+                                    foreach($_POST['check_list'] as $selected) {
+                                    echo "<p>".$selected ."</p>";
+                                    }
+                                        echo "<br/><b>Note :</b> <span>Similarily, You Can Also Perform CRUD Operations using These Selected Values.</span>";
+                                }
+                                else{
+                                    echo "<b>Please Select Atleast One Option.</b>";
+                                }
+
+                            }
+
+
+                            $conn = new mysqli('pk1l4ihepirw9fob.cbetxkdyhwsb.us-east-1.rds.amazonaws.com', 'sn4abkagkvz8sd1n','nm85ad3jt3wpvxc6','xlx8er1i5yj6m7u4');
+            $snippet ="Yes";
+            $stmt = $conn->prepare("UPDATE clientinfo SET snippet = ? WHERE clientId = ?");
+            $stmt->bind_param("si", $snippet, $id);
+            $stmt->execute();
+            

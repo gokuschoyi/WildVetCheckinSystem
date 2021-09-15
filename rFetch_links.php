@@ -1,7 +1,7 @@
 <?php
 include 'includes/header.php';
 include 'includes/navbar.php';
-include('simple_html_dom.php');
+include 'simple_html_dom.php';
 $conn = new mysqli('pk1l4ihepirw9fob.cbetxkdyhwsb.us-east-1.rds.amazonaws.com', 'sn4abkagkvz8sd1n','nm85ad3jt3wpvxc6','xlx8er1i5yj6m7u4');
     if(isset($_POST['selectarticle']))
     {
@@ -324,6 +324,7 @@ $conn = new mysqli('pk1l4ihepirw9fob.cbetxkdyhwsb.us-east-1.rds.amazonaws.com', 
                         <tr>
                             <th>Select</th>
                             <th>Links</th>
+                            <th>Title</th>
 
                         </tr>
                     </thead>
@@ -332,37 +333,55 @@ $conn = new mysqli('pk1l4ihepirw9fob.cbetxkdyhwsb.us-east-1.rds.amazonaws.com', 
                         if(isset($_POST['selectarticle'])){
                             $cid = $_POST['cid'];   
                         }
+                        
                 function returnLinks($searchQ){
-                    $array = array();
+                    $arrayL = array();
                     $search = 'https://www.google.co.in/search?q=';
                     $searchF = $search.$searchQ;
-                    $html = file_get_contents($searchF);
-                    $htmlDom = new DOMDocument;
-                    @$htmlDom->loadHTML($html);
-                    $links = $htmlDom->getElementsByTagName('a');
-                    //$extractedLinks = array();
-                    foreach($links as $link){
-                        $linkHref = $link->getAttribute('href');
-                    if(strlen(trim($linkHref)) == 0){
-                        continue;
-                        }
-                        if($linkHref[1] == 'u'){
-                            $count = 0;
-                            $cutRes = "";
-                            while($linkHref[$count] != '&'){
-                                $count++;
-                                $cutRes = substr($linkHref, 7, $count-7);
+                    $html = file_get_html($searchF);
+                    foreach($html->find("div.kCrYT") as $h){
+                        foreach($h->find("h3.zBAuLc") as $title){
+                            foreach($h->find('a[href^=/url?q]') as $links){
+                                $li = $links->getAttribute('href');
+                                if(strlen(trim($li)) == 0){
+                                    continue;
+                                    }
+                                if($li[1] == 'u'){
+                                    $count = 0;
+                                    $cutRes = "";
+                                    while($li[$count] != '&'){
+                                        $count++;
+                                        $cutRes = substr($li, 7, $count-7);
+                                    }
                                 }
-                            array_push($array,$cutRes);
+                            }
+                            array_push($arrayL,$cutRes);
+                        }
+                    }
+                return $arrayL;
+                }
+                
+                function returnTitle($searchQ){
+                    $arrayT = array();
+                    $search = 'https://www.google.co.in/search?q=';
+                    $searchF = $search.$searchQ;
+                    $html = file_get_html($searchF);
+                    foreach($html->find("div.kCrYT") as $h){
+                        foreach($h->find("h3.zBAuLc") as $title){
+                            foreach($h->find('a[href^=/url?q]') as $links){
+                                $li = $links->getAttribute('href');
+                                    array_push($arrayT,$title);
                             }
                         }
-                    return $array;
-                    }
-                    
+                        }
+                    return $arrayT;
+                }
+
                     function makeSearchString($type, $breed, $sex, $age, $reason){
                         $search = $sex."+".$breed."+".$type."+".$reason;
                         return $search;
                     }
+
                     $ctype = $stmt[3];
                     $cbreed = $stmt[4];
                     $csex = str_replace(' ','+', $stmt[5]);
@@ -370,14 +389,24 @@ $conn = new mysqli('pk1l4ihepirw9fob.cbetxkdyhwsb.us-east-1.rds.amazonaws.com', 
                     $creason = str_replace(' ', '+', $stmt[1]);
 
                     $searchQuery = makeSearchString($ctype,$cbreed, $csex, $cage, $creason);
+
                     echo $searchQuery;
-                    $data = array();
-                    $data =  returnLinks($searchQuery);
-                        foreach($data as $d){
+
+                    $dataL = array();
+                    $dataT = array();
+                    $dataL =  returnLinks($searchQuery);
+                    $dataT =  returnTitle($searchQuery);
+
+                    $it = new MultipleIterator();
+                    $it->attachIterator(new ArrayIterator($dataL));
+                    $it->attachIterator(new ArrayIterator($dataT));
+
+                        foreach($it as $a){
                     echo '
                     <tr>
-                        <td> <input type = "checkbox" name = "check_list[]" value = '. $d .' ></td>
-                        <td> '. $d .'</td>
+                        <td> <input type = "checkbox" name = "check_list[]" value = '. $a[0] .' ></td>
+                        <td> '. $a[0] .'</td>
+                        <td> '. $a[1] .'</td>
                         
                     </tr>
                     ';
