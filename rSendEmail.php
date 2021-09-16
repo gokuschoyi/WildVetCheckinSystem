@@ -211,7 +211,7 @@ $conn = new mysqli('pk1l4ihepirw9fob.cbetxkdyhwsb.us-east-1.rds.amazonaws.com', 
                                                         }
                                                         ?>
                                                         <label for="body" class="form-label">Body</label>
-                                                        <textarea class="form-control" id="body" name="body"  placeholder="Hi, How are you?" rows="10" required><?php foreach($arraySel as $sel) {echo $sel ."\n";} ?></textarea><br/>
+                                                        <textarea class="form-control" id="body" name="body"  placeholder="Hi, How are you?" rows="10" required><?php foreach($arraySel as $sel) {echo $sel ."\n";} ?></textarea></n>
                                                     </div>
                                                     <div style =" text-align :center">
                                                         <button class="btn btn-primary me-2" name="submitEmail" type="submit">Send Email</button>

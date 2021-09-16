@@ -419,14 +419,12 @@ if (isset($_POST['submit'])){
         <form action="<?php echo htmlentities($_SERVER['PHP_SELF']); ?>" method="POST" id="petDetails">
             <div class="row">
                 <div class="col d-flex d-lg-flex justify-content-center align-items-center justify-content-lg-center align-items-lg-center"
-                    style="height: 50px;"><select
-                        class="form-select-sm d-lg-flex justify-content-lg-center align-items-lg-center"
-                        style="width: 240px;height: 33px;border-radius: 13px;border-width: 1px;border-color: rgb(231,173,169);opacity: 0.85;"
-                        name="reason" required="">
-                        <option value="general" selected="">Reason for Visit</option>
+                    style="height: 50px;">
+                    <select class="form-select-sm d-lg-flex justify-content-lg-center align-items-lg-center" style="width: 240px;height: 33px;border-radius: 13px;border-width: 1px;border-color: rgb(231,173,169);opacity: 0.85;" name="reason" required="">
+                        <option value="General" selected="">Reason for Visit</option>
                         <option value="Health Check">Health Check</option>
                         <option value="Nail Clipping">Nail Clipping</option>
-                        <option value="Microcipping">Microcipping</option>
+                        <option value="Microchipping">Microcipping</option>
                         <option value="Dentstry">Dentstry</option>
                         <option value="New puppies/kittens">New puppies/kittens</option>
                         <option value="Laboratory Testing">Laboratory Testing</option>

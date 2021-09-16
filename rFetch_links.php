@@ -6,6 +6,7 @@ $conn = new mysqli('pk1l4ihepirw9fob.cbetxkdyhwsb.us-east-1.rds.amazonaws.com', 
     if(isset($_POST['selectarticle']))
     {
         $id = $_POST['cid'];
+        $_SESSION['id'] = $id;
     }        
 ?>
 <!-- Content Wrapper -->
@@ -100,13 +101,8 @@ $conn = new mysqli('pk1l4ihepirw9fob.cbetxkdyhwsb.us-east-1.rds.amazonaws.com', 
             <!-- Page Heading -->
             <div class="d-sm-flex align-items-center justify-content-between mb-4">
                 <?php
-            if(isset($_POST['selectarticle']))
-            {
-                $cid = $_POST['cid']; 
-                
-            }
             ?>
-                <h1 class="h3 mb-0 text-gray-800">CLIENT ID : <?php   echo $id ?> </h1>
+                <h1 class="h3 mb-0 text-gray-800">CLIENT ID : <?php echo  $_SESSION['id'] ?> </h1>
                 <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
                         class="fas fa-download fa-sm text-white-50"></i> Generate Report</a>
             </div>
@@ -126,7 +122,7 @@ $conn = new mysqli('pk1l4ihepirw9fob.cbetxkdyhwsb.us-east-1.rds.amazonaws.com', 
                                         $space = " ";
                                         $conn = new mysqli('pk1l4ihepirw9fob.cbetxkdyhwsb.us-east-1.rds.amazonaws.com', 'sn4abkagkvz8sd1n','nm85ad3jt3wpvxc6','xlx8er1i5yj6m7u4');
                                         $query = $conn->prepare("SELECT title, firstName, surName, addComments FROM clientinfo WHERE clientId = ?");
-                                        $query->bind_param("s",$id);
+                                        $query->bind_param("s", $_SESSION['id']);
                                         $query->execute();
                                         $stmt1 = $query->get_result()->fetch_row();
                                         ?>
@@ -150,7 +146,7 @@ $conn = new mysqli('pk1l4ihepirw9fob.cbetxkdyhwsb.us-east-1.rds.amazonaws.com', 
                                     <?php
                                         $conn = new mysqli('pk1l4ihepirw9fob.cbetxkdyhwsb.us-east-1.rds.amazonaws.com', 'sn4abkagkvz8sd1n','nm85ad3jt3wpvxc6','xlx8er1i5yj6m7u4');
                                         $query = $conn->prepare("SELECT reason from petinfo where petKey = ?");
-                                        $query->bind_param("s",$cid);
+                                        $query->bind_param("s", $_SESSION['id']);
                                         $query->execute();
                                         $stmt = $query->get_result()->fetch_row();
                                         ?>
@@ -165,14 +161,9 @@ $conn = new mysqli('pk1l4ihepirw9fob.cbetxkdyhwsb.us-east-1.rds.amazonaws.com', 
             </div>
         </div>
         <?php
-        if(isset($_POST['selectarticle']))
-            {
-                $cid = $_POST['cid'];
-                $space = " ";
-            }
                 $conn = new mysqli('pk1l4ihepirw9fob.cbetxkdyhwsb.us-east-1.rds.amazonaws.com', 'sn4abkagkvz8sd1n','nm85ad3jt3wpvxc6','xlx8er1i5yj6m7u4');
                 $query = $conn->prepare("SELECT petKey, reason, petName, petType, breed, sex, age, petWeight FROM petinfo WHERE petKey = ?");
-                $query->bind_param("s",$cid);
+                $query->bind_param("s", $_SESSION['id']);
                 $query->execute();
                 $stmt = $query->get_result()->fetch_row();
             ?>
@@ -325,6 +316,7 @@ $conn = new mysqli('pk1l4ihepirw9fob.cbetxkdyhwsb.us-east-1.rds.amazonaws.com', 
                             <th>Select</th>
                             <th>Links</th>
                             <th>Title</th>
+                            <th>Page Preview</th>
 
                         </tr>
                     </thead>
@@ -334,64 +326,192 @@ $conn = new mysqli('pk1l4ihepirw9fob.cbetxkdyhwsb.us-east-1.rds.amazonaws.com', 
                             $cid = $_POST['cid'];   
                         }
                         
-                function returnLinks($searchQ){
-                    $arrayL = array();
+            function returnLinks($searchQ){
+                    $arrayLinks = array();
                     $search = 'https://www.google.co.in/search?q=';
                     $searchF = $search.$searchQ;
                     $html = file_get_html($searchF);
-                    foreach($html->find("div.kCrYT") as $h){
-                        foreach($h->find("h3.zBAuLc") as $title){
-                            foreach($h->find('a[href^=/url?q]') as $links){
-                                $li = $links->getAttribute('href');
-                                if(strlen(trim($li)) == 0){
-                                    continue;
+                    for($i=1;$i<=2;$i++){
+                        if($i==1){
+                        $html = file_get_html($searchF);
+                        echo '<br>';
+                        foreach($html->find("div.kCrYT") as $h){
+                            foreach($h->find("h3.zBAuLc") as $title){
+                                foreach($h->find('a[href^=/url?q]') as $links){
+                                    $li = $links->getAttribute('href');
+                                    if(strlen(trim($li)) == 0){
+                                        continue;
                                     }
-                                if($li[1] == 'u'){
-                                    $count = 0;
-                                    $cutRes = "";
-                                    while($li[$count] != '&'){
-                                        $count++;
-                                        $cutRes = substr($li, 7, $count-7);
+                                    if($li[1] == 'u'){
+                                        $count = 0;
+                                        $cutRes = "";
+                                        while($li[$count] != '&'){
+                                            $count++;
+                                            $cutRes = substr($li, 7, $count-7);
+                                            }
+                                        array_push($arrayLinks,$cutRes);
                                     }
-                                }
+                                }  
                             }
-                            array_push($arrayL,$cutRes);
-                        }
+                        }   
                     }
-                return $arrayL;
+                        if($i ==2){
+                        $searchF = $searchF."&start=10";
+                        $html = file_get_html($searchF);
+                        echo '<br>';
+                        foreach($html->find("div.kCrYT") as $h){
+                            foreach($h->find("h3.zBAuLc") as $title){
+                                foreach($h->find('a[href^=/url?q]') as $links){
+                                    $li = $links->getAttribute('href');
+                                    if(strlen(trim($li)) == 0){
+                                        continue;
+                                    }
+                                    if($li[1] == 'u'){
+                                        $count = 0;
+                                        $cutRes = "";
+                                        while($li[$count] != '&'){
+                                            $count++;
+                                            $cutRes = substr($li, 7, $count-7);
+                                            }
+                                        array_push($arrayLinks,$cutRes);
+                                    }
+                                }  
+                            }
+                        }   
+                    }
+                        if($i==3){
+                        $searchF = $searchF."&start=20";
+                        $html = file_get_html($searchF);
+                        echo '<br>';
+                        foreach($html->find("div.kCrYT") as $h){
+                            foreach($h->find("h3.zBAuLc") as $title){
+                                foreach($h->find('a[href^=/url?q]') as $links){
+                                    $li = $links->getAttribute('href');
+                                    if(strlen(trim($li)) == 0){
+                                        continue;
+                                    }
+                                    if($li[1] == 'u'){
+                                        $count = 0;
+                                        $cutRes = "";
+                                        while($li[$count] != '&'){
+                                            $count++;
+                                            $cutRes = substr($li, 7, $count-7);
+                                            }
+                                        
+                                        array_push($arrayLinks,$cutRes);
+                                    }
+                                }  
+                            }
+                        }   
+                    }
                 }
-                
-                function returnTitle($searchQ){
-                    $arrayT = array();
+                return $arrayLinks;
+            }
+            function returnTitle($searchQ){
+                    $arrayTitle = array();
                     $search = 'https://www.google.co.in/search?q=';
                     $searchF = $search.$searchQ;
                     $html = file_get_html($searchF);
-                    foreach($html->find("div.kCrYT") as $h){
-                        foreach($h->find("h3.zBAuLc") as $title){
-                            foreach($h->find('a[href^=/url?q]') as $links){
-                                $li = $links->getAttribute('href');
-                                    array_push($arrayT,$title);
+                    for($i=1;$i<=2;$i++){
+                        if($i==1){
+                        $html = file_get_html($searchF);
+                        echo '<br>';
+                        foreach($html->find("div.kCrYT") as $h){
+                            foreach($h->find("h3.zBAuLc") as $title){
+                                array_push($arrayTitle,$title); 
                             }
-                        }
-                        }
-                    return $arrayT;
-                }
-
-                    function makeSearchString($type, $breed, $sex, $age, $reason){
-                        $search = $sex."+".$breed."+".$type."+".$reason;
-                        return $search;
+                        }   
                     }
+                        if($i ==2){
+                        $searchF = $searchF."&start=10";
+                        $html = file_get_html($searchF);
+                        echo '<br>';
+                        foreach($html->find("div.kCrYT") as $h){
+                            foreach($h->find("h3.zBAuLc") as $title){
+                                array_push($arrayTitle,$title);
+                            } 
+                        }   
+                    }
+                        if($i==3){
+                        $searchF = $searchF."&start=20";
+                        $html = file_get_html($searchF);
+                        echo '<br>';
+                        foreach($html->find("div.kCrYT") as $h){
+                            foreach($h->find("h3.zBAuLc") as $title){
+                                array_push($arrayTitle,$title);  
+                            }
+                        }   
+                    }
+                }
+                return $arrayTitle;
+            } 
+            function makeSearchString($type, $breed, $sex, $age, $reason){         
+                if($reason == 'General'){
+                    $search = "How+to+take+care+of+".$age."+year+old+".$breed;
+                    return $search;
+                }
+                else if($reason == 'Health+Check'){
+                    $search = "How+to+look+after+".$age."+year+old+".$breed."+puppy";
+                    return $search;
+                }
+                else if($reason == 'Nail+Clipping'){
+                    $search = "How+to+care+for+".$breed."+after+nail+clipping";
+                    return $search;
+                }
+                else if($reason == 'Microchipping'){
+                    $search = "Everything+to+look+after+microchip+".$breed;
+                    return $search;
+                }
+                else if($reason == 'Dentstry'){
+                    $search = "Caring+for+".$breed."+after+dental+care";
+                    return $search;
+                }
+                else if($reason == 'New+puppies/kittens'){
+                    $search = "Looking+after+new".$breed;
+                    return $search;
+                }
+                else if($reason == 'Laboratory+Test'){
+                    $search = "Lab+tetst+for+".$breed;
+                    return $search;
+                }
+                else if($reason == 'Surgery'){
+                    $search = "Everything+you+need+to+know+before+pet+surgery";
+                    return $search;
+                }
+                else if($reason == 'Hospitalization'){
+                    $search = "Everything+you+need+to+know+for+pet+hosptalization";
+                    return $search;
+                }
+                else if($reason == 'Parasite+Prevention'){
+                    $search = "Everything+you+need+to+know+for+parasite+prevention+for+".$type;
+                    return $search;
+                }
+                else if($reason == 'Medicine'){
+                    $search = "Important+information+about+pet+medicine";
+                    return $search;
+                }
+                else if($reason == 'Behavioural+Advice'){
+                    $search = "behavioural+advice+for+".$breed;
+                    return $search;
+                }
+                else if($reason == 'Nutritional+Advice'){
+                    $search = "Nutritional+advice+for+".$breed;
+                    return $search;
+                }
+            }
 
                     $ctype = $stmt[3];
-                    $cbreed = $stmt[4];
+                    $cbreed = str_replace(' ','+', $stmt[4]);
                     $csex = str_replace(' ','+', $stmt[5]);
                     $cage = $stmt[6];
                     $creason = str_replace(' ', '+', $stmt[1]);
 
-                    $searchQuery = makeSearchString($ctype,$cbreed, $csex, $cage, $creason);
+                    $searchQuery = makeSearchString($ctype, $cbreed, $csex, $cage, $creason);
 
-                    echo $searchQuery;
-
+                    echo $searchQuery.'<br>';
+                    echo $creason.'<br>';
+                    echo $ctype.'<br>';
+                    echo $cbreed.'<br>';
                     $dataL = array();
                     $dataT = array();
                     $dataL =  returnLinks($searchQuery);
@@ -402,14 +522,50 @@ $conn = new mysqli('pk1l4ihepirw9fob.cbetxkdyhwsb.us-east-1.rds.amazonaws.com', 
                     $it->attachIterator(new ArrayIterator($dataT));
 
                         foreach($it as $a){
-                    echo '
+                    ?>
                     <tr>
-                        <td> <input type = "checkbox" name = "check_list[]" value = '. $a[0] .' ></td>
-                        <td> '. $a[0] .'</td>
-                        <td> '. $a[1] .'</td>
+                        <td> <input type = "checkbox" name = "check_list[]" value = "<?php echo $a[0] ?>" ></td>
+                        <td> <?php echo $a[0] ?></td>
+                        <td style = "font-size : 16px;"> <?php echo $a[1] ?></td>
+                        <td>
+                        <div class="modal fade" id="previewpage" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalLabel">Page Preview</h5>
+                                        <button type="button" class="close" data-dismiss="modal"
+                                            aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <div class="form-group">
+                                            <label> Firstname </label>
+                                            <input type="text" name="firstname" value = "<?php echo $a[0] ?>" class="form-control" placeholder="Enter First Name"> </input>
+                                        </div>
+                                    </div>
+                                    
+                                        $str = <?php echo $a[0] ?>
+                                        $html = file_get_contents($str);
+                                        $htmlDom = new DOMDocument;
+                                        @$htmlDom->loadHTML($html);
+                                        echo $htmlDom->saveHTML();
+                                    
+                                    
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary"
+                                            data-dismiss="modal">Close</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <button type="button" class="btn btn-primary justify-content-center" data-toggle="modal" data-target="#previewpage">Preview Page</button>
+                        </td>
                         
                     </tr>
-                    ';
+                    
+                <?php
                 }
                 ?>
                     </tbody>
@@ -441,13 +597,12 @@ $conn = new mysqli('pk1l4ihepirw9fob.cbetxkdyhwsb.us-east-1.rds.amazonaws.com', 
             </div>
         </div>
     </div>
-
+    
 <?php 
     include('includes/scripts.php');
     ?>
 
 <script>
-
     function toggleSelectedLinks(box){
         //alert("testing");
         var linkArray = new array();
@@ -456,12 +611,8 @@ $conn = new mysqli('pk1l4ihepirw9fob.cbetxkdyhwsb.us-east-1.rds.amazonaws.com', 
             //array_push(linkArray, links);
             print(links);
         }
-        
         return linkArray;
-        
     }
- 
-
 </script>
 
 <?php

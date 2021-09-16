@@ -478,3 +478,48 @@ $array = array();
             $stmt->bind_param("si", $snippet, $id);
             $stmt->execute();
             
+
+
+            function makeSearchString($type, $breed, $sex, $age, $reason)
+                {         
+                    if('$reason' == 'General'){
+                        $search = "How+to+take+care+of+".$age."+year+old+".$breed;
+                    }
+                    else if(strcmp('$reason', 'Health Check') == 0){
+                        $search = "How+to+look+after+".$age."+year+old+".$breed."+puppy";
+                    }
+                    else if('$reason' == 'Nail Clipping'){
+                        $search = "How+to+care+for+".$breed."+after+nail+clipping";
+                    }
+                    else if('$reason' == 'Microchipping'){
+                        $search = "Everything+to+look+after+microchip+".$breed;
+                    }
+                    else if('$reason' == 'Dentstry'){
+                        $search = "Caring+for+".$breed."+after+dental+care";
+                    }
+                    else if('$reason' == 'New puppies/kittens'){
+                        $search = "Looking+after+new".$breed;
+                    }
+                    else if('$reason' == 'Laboratory Testing'){
+                        $search = "Lab+tetst+for+".$breed;
+                    }
+                    else if('$reason' == 'Surgery'){
+                        $search = "Everything+you+need+to+know+before+pet+surgery";
+                    }
+                    else if('$reason' == 'Hospitalization'){
+                        $search = "Everything+you+need+to+know+for+pet+hosptalization";
+                    }
+                    else if('$reason' == 'Parasite Prevention'){
+                        $search = "Everything+you+need+to+know+for+parasite+prevention+for+".$type;
+                    }
+                    else if('$reason' == 'Medicine'){
+                        $search = "Important+information+about+pet+medicine";
+                    }
+                    else if('$reason' == 'Behavioural Advice'){
+                        $search = "behavioural+advice+for+".$breed;
+                    }
+                    else if('$reason' == 'Nutritional Advice'){
+                        $search = "Nutritional+advice+for+".$breed;
+                    }
+                    return $search;
+                }

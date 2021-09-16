@@ -144,7 +144,7 @@ include'includes/navbar.php';
                             <th>Cid</th>
                             <th>Client Name</th>
                             <th>Mobile</th>
-                            <th>Email</th>
+                            <th>Reason For Visit</th>
                             <th>Pet Name</th>
                             <th>Pet Type</th>
                             <th>Breed</th>
@@ -172,7 +172,7 @@ include'includes/navbar.php';
                                 $date = date("Y-m-d");
                                 $conn = new mysqli('pk1l4ihepirw9fob.cbetxkdyhwsb.us-east-1.rds.amazonaws.com', 'sn4abkagkvz8sd1n','nm85ad3jt3wpvxc6','xlx8er1i5yj6m7u4');
 
-                                $query = $conn->prepare("SELECT  DISTINCT clientinfo.clientId, clientinfo.title, clientinfo.firstName, clientinfo.surName, clientinfo.checkinDate, clientinfo.mobileNo, clientinfo.email ,petinfo.petKey, petinfo.petName, petinfo.petType, petinfo.breed, clientinfo.assignedDoc 
+                                $query = $conn->prepare("SELECT  DISTINCT clientinfo.clientId, clientinfo.title, clientinfo.firstName, clientinfo.surName, clientinfo.checkinDate, clientinfo.mobileNo, petinfo.reason ,petinfo.petKey, petinfo.petName, petinfo.petType, petinfo.breed, clientinfo.assignedDoc 
                                 FROM clientinfo JOIN petinfo ON clientinfo.clientId=petinfo.petKey WHERE clientinfo.checkinDate = ? ");
                                 $query->bind_param("s",$date);
                                 $query->execute();

@@ -45,6 +45,6 @@ if(isset($_POST['submitEmail']))
         $stmt = $conn->prepare("UPDATE clientinfo SET snippet = ? WHERE clientId = ?");
         $stmt->bind_param("si", $snippet, $id);
         $stmt->execute();
-        header("Location: rSendSnippet.php");
+        header("Location: rSendsnippet.php");
     }
 ?>
