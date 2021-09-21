@@ -11,13 +11,10 @@ if(isset($_POST['submitEmail']))
         $cSubject = $_POST['subject'];
         $cAttachment = $_FILES['attachments']['name'];
         $cBody = $_POST['body'];
-        $_SESSION['test']= $cName; 
+        $_SESSION['id']= $_POST['cid']; 
     }
 $conn = new mysqli('pk1l4ihepirw9fob.cbetxkdyhwsb.us-east-1.rds.amazonaws.com', 'sn4abkagkvz8sd1n','nm85ad3jt3wpvxc6','xlx8er1i5yj6m7u4');
-    if(isset($_POST['selectarticle']))
-    {
-        $id = $_POST['cid'];
-    } 
+    
     $_SESSION['status'] = 0;
 ?>
 <!-- Content Wrapper -->
@@ -117,7 +114,7 @@ $conn = new mysqli('pk1l4ihepirw9fob.cbetxkdyhwsb.us-east-1.rds.amazonaws.com', 
                 $cid = $_POST['cid'];
             }
             ?>
-                <h1 class="h3 mb-0 text-gray-800">CLIENT ID : <?php   echo $cid ?> </h1>
+                <h1 class="h3 mb-0 text-gray-800">CLIENT ID : <?php   echo $_SESSION['id'] ?> </h1>
                 <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
                         class="fas fa-download fa-sm text-white-50"></i> Generate Report</a>
             </div>
@@ -218,6 +215,7 @@ $conn = new mysqli('pk1l4ihepirw9fob.cbetxkdyhwsb.us-east-1.rds.amazonaws.com', 
                                                         <button class="btn btn-danger" type="reset">Reset Form</button>
                                                     </div>
                                                     <input type = "hidden" name = "cid" value = "<?php echo $cid?>">
+                                                    <input type = "hidden" name = "selectedLinks[]" value = "<?php echo $arraySel?>">
                                                 </form>
                                             </div>
                                         </div>

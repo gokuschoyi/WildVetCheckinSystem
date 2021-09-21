@@ -306,7 +306,13 @@ if (isset($_POST['submit'])){
         $pdf->Output(dirname(__FILE__).'/invoice/'.$pdf_name.'', 'F');
         //echo 'PDF saved. <a href="invoice/'.$pdf_name.'">View</a>';
         $filepath = "invoice/".$pdf_name; 
-        
+
+        $template = "./templateCheckin.php";
+        if(file_exists($template))
+            $message = file_get_contents($template);
+        else
+            die("unable to lovate file");
+
         $mail = new PHPMailer();
         $mail->IsSMTP();
         $mail-> Host ='smtp.gmail.com';
@@ -319,7 +325,7 @@ if (isset($_POST['submit'])){
         $mail->addAddress('gokulsangamitrachoyi@gmail.com','Gokul');
         $mail->isHTML(true);
         $mail->Subject = "Checkin Information Test Server"; 
-        $mail->Body = "<p>Thank you for checking in with us. Attached is a pdf document containig your information. See you soon.</p>";
+        $mail->Body = $message;
         $mail->AddAttachment($filepath);
         if(!$mail->send()){
         echo 'something went wrong';
@@ -424,7 +430,7 @@ if (isset($_POST['submit'])){
                         <option value="General" selected="">Reason for Visit</option>
                         <option value="Health Check">Health Check</option>
                         <option value="Nail Clipping">Nail Clipping</option>
-                        <option value="Microchipping">Microcipping</option>
+                        <option value="Microchipping">Microchipping</option>
                         <option value="Dentstry">Dentstry</option>
                         <option value="New puppies/kittens">New puppies/kittens</option>
                         <option value="Laboratory Testing">Laboratory Testing</option>

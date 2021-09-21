@@ -18,6 +18,11 @@
     <script type="text/javascript" charset="utf8" src="https://code.jquery.com/jquery-3.5.1.js"></script>
     <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.11.0/js/jquery.dataTables.min.js"></script>
     <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.25/js/dataTables.bootstrap5.min.js"></script>
+
+   
+   
+   
+
     <script>
         $(document).ready(function() {
         var table = $('#clients').DataTable( {
@@ -86,22 +91,13 @@
             "columnDefs": [
             {
                 "targets": [ 1 ],
-                "visible": false,
+                "visible": true,
                 "searchable": true
             }
             ],
             "order": [[ 0, "desc" ]]
             } ); 
 
-            $('a.toggle-vis').on( 'click', function (e) {
-                e.preventDefault();
-
-            // Get the column API object
-            var column = table.column( $(this).attr('data-column') );
-
-            // Toggle the visibility
-            column.visible( ! column.visible() );
-            } );
         } );
 
     </script>

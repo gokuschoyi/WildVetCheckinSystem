@@ -7,7 +7,7 @@ $searchLink = 'https://www.google.com/search?q=it+jobs';
 $html = file_get_contents($searchLink);
 $htmlDom = new DOMDocument;
 @$htmlDom->loadHTML($html);
-echo $htmlDom->saveHTML();
+//echo $htmlDom->saveHTML();
 
 $link1 = $htmlDom->getElementsByTagName('a');
 $extractedLinks = array();
@@ -23,7 +23,7 @@ foreach($link1 as $link){
         while($linkHref[$count] != '&')
         {
             $count++;
-            $cutRes = substr($linkHref, 7, $count-7);
+            $cutRes = substr($linkHref, 15, $count-15);
             
         }
 

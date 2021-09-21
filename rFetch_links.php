@@ -168,7 +168,7 @@ $conn = new mysqli('pk1l4ihepirw9fob.cbetxkdyhwsb.us-east-1.rds.amazonaws.com', 
                 $stmt = $query->get_result()->fetch_row();
             ?>
 
-        <form method="" action="">
+        
             <input type="hidden" name="petkey" value="<?php echo $stmt[7]?>">
             <div class="container-fluid">
                 <div class="row">
@@ -287,7 +287,7 @@ $conn = new mysqli('pk1l4ihepirw9fob.cbetxkdyhwsb.us-east-1.rds.amazonaws.com', 
                                             style="font-size:1.2vw;">Doctor's Comments</div>
                                         <div class="h5 mb-0 font-weight-bold text-gray-800"><input type="text"
                                                 name="petweight" value="<?php echo $stmt1[3] ?>" class="form-control"
-                                                placeholder="Registered"></div>
+                                                placeholder="None given by doctor."></div>
                                     </div>
                                 </div>
                             </div>
@@ -295,7 +295,7 @@ $conn = new mysqli('pk1l4ihepirw9fob.cbetxkdyhwsb.us-east-1.rds.amazonaws.com', 
                     </div>
                 </div>
             </div>
-        </form>
+        
 
         <div class="container-fluid ">
                 <div class="row justify-content-center">
@@ -324,6 +324,7 @@ $conn = new mysqli('pk1l4ihepirw9fob.cbetxkdyhwsb.us-east-1.rds.amazonaws.com', 
                         <?php
                         if(isset($_POST['selectarticle'])){
                             $cid = $_POST['cid'];   
+                            $count = 1;  
                         }
                         
             function returnLinks($searchQ){
@@ -331,7 +332,7 @@ $conn = new mysqli('pk1l4ihepirw9fob.cbetxkdyhwsb.us-east-1.rds.amazonaws.com', 
                     $search = 'https://www.google.co.in/search?q=';
                     $searchF = $search.$searchQ;
                     $html = file_get_html($searchF);
-                    for($i=1;$i<=2;$i++){
+                    for($i=1;$i<=1;$i++){
                         if($i==1){
                         $html = file_get_html($searchF);
                         echo '<br>';
@@ -412,7 +413,7 @@ $conn = new mysqli('pk1l4ihepirw9fob.cbetxkdyhwsb.us-east-1.rds.amazonaws.com', 
                     $search = 'https://www.google.co.in/search?q=';
                     $searchF = $search.$searchQ;
                     $html = file_get_html($searchF);
-                    for($i=1;$i<=2;$i++){
+                    for($i=1;$i<=1;$i++){
                         if($i==1){
                         $html = file_get_html($searchF);
                         echo '<br>';
@@ -521,67 +522,60 @@ $conn = new mysqli('pk1l4ihepirw9fob.cbetxkdyhwsb.us-east-1.rds.amazonaws.com', 
                     $it->attachIterator(new ArrayIterator($dataL));
                     $it->attachIterator(new ArrayIterator($dataT));
 
-                        foreach($it as $a){
+                foreach($it as $a){
                     ?>
                     <tr>
                         <td> <input type = "checkbox" name = "check_list[]" value = "<?php echo $a[0] ?>" ></td>
                         <td> <?php echo $a[0] ?></td>
                         <td style = "font-size : 16px;"> <?php echo $a[1] ?></td>
                         <td>
-                        <div class="modal fade" id="previewpage" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                            <div class="modal-dialog" role="document">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h5 class="modal-title" id="exampleModalLabel">Page Preview</h5>
-                                        <button type="button" class="close" data-dismiss="modal"
-                                            aria-label="Close">
-                                            <span aria-hidden="true">&times;</span>
-                                        </button>
-                                    </div>
-                                    <div class="modal-body">
-                                        <div class="form-group">
-                                            <label> Firstname </label>
-                                            <input type="text" name="firstname" value = "<?php echo $a[0] ?>" class="form-control" placeholder="Enter First Name"> </input>
+                            <button type = "button" class="btn btn-primary justify-content-center" data-toggle="modal" data-target="#previewpage<?php echo $count;?>">Preview Page</button>
+
+                            <div id="previewpage<?php echo $count; $count++;?>" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal-dialog modal-xl" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title justify-content-center" id="exampleModalLabel">Page Preview</h5>
+                                            <button type="button" class="close" data-dismiss="modal"
+                                                aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
                                         </div>
-                                    </div>
-                                    
-                                        $str = <?php echo $a[0] ?>
-                                        $html = file_get_contents($str);
-                                        $htmlDom = new DOMDocument;
-                                        @$htmlDom->loadHTML($html);
-                                        echo $htmlDom->saveHTML();
-                                    
-                                    
-                                    <div class="modal-footer">
-                                        <button type="button" class="btn btn-secondary"
-                                            data-dismiss="modal">Close</button>
+                                        <div class="modal-body">
+                                            <div class="form-group">
+                                                <input type = "hidden" name="links" value = <?php echo $a[0] ?> class="form-control">
+                                            </div>
+                                            <div>
+                                            <iframe style = "height : 600px; width : 1100px;" src="<?php echo $a[0] ?>"></iframe>
+                                            </div>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary"
+                                                data-dismiss="modal">Close</button>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-
-                        <button type="button" class="btn btn-primary justify-content-center" data-toggle="modal" data-target="#previewpage">Preview Page</button>
                         </td>
-                        
                     </tr>
-                    
-                <?php
+                    <?php
                 }
                 ?>
-                    </tbody>
-                </table>
+            </tbody>
+        </table>
                 <div class="container-fluid ">
                     <div class="row justify-content-center">
                         <div class="col-xl-4 col-md-6 mb-4">
                             <div class="card border-left-primary shadow h-100 py-2 align-items-center">
                                 <div class="h5 mb-0 font-weight-bold text-gray-800  justify-content-center">
                                 <button type="submit" name = "sendEmail" class=" btn btn-success justify-content-center" method = "POST" action = "">PREVIEW EMAIL</button>
+                                <input type = "hidden" name = "cid" value = "<?php echo $_SESSION['id']?>">
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                <input type = "hidden" name = "cid" value = "<?php echo $id?>">
+                
             </form>
                 
         </div>

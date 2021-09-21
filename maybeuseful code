@@ -523,3 +523,38 @@ $array = array();
                     }
                     return $search;
                 }
+
+                <div class="modal fade" id="messages<?php echo $a[0]?>" tabindex="-1" role="dialog" aria-labelledby="previewlink" aria-hidden="true">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="previewlink">Page Preview</h5>
+                                        <button type="button" class="close" data-dismiss="modal"
+                                            aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <div class="form-group">
+                                            <label> Firstname </label>
+                                            <input type="text" name="firstname" value = <?php echo $a[0] ?> > </input>
+                                        </div>
+                                    </div>
+                                    <php>
+                                        $str =  echo $a[0];
+                                        $html = file_get_contents($str);
+                                        $htmlDom = new DOMDocument;
+                                        @$htmlDom->loadHTML($html);
+                                        print "$htmlDom->saveHTML()";
+                                    ?>
+                                    
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary"
+                                            data-dismiss="modal">Close</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <iframe style = "height : 600px; width = 800px;" src="<?php echo $a[0] ?>"></iframe>

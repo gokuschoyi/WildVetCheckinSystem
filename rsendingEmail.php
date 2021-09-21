@@ -5,6 +5,13 @@ use PHPMailer\PHPMailer\Exception;
 require 'vendor/autoload.php';
 error_reporting();
 $_SESSION['status'] = 0;
+
+$template = "./template.php";
+if(file_exists($template))
+    $message = file_get_contents($template);
+else
+    die("unable to lovate file");
+
 if(isset($_POST['submitEmail']))
     {
         $cName = $_POST['sender_name'];
@@ -12,7 +19,9 @@ if(isset($_POST['submitEmail']))
         $cSubject = $_POST['subject'];
         //$cAttachment = $_FILES['attachments']['name'];
         $cBody = $_POST['body'];
-        //echo $cname; 
+        $linksArr = array();
+        $linksArr = $_POST['selectedLinks'];
+        echo $linksArr; 
     
         $mail = new PHPMailer();
         $mail->IsSMTP();
@@ -26,7 +35,7 @@ if(isset($_POST['submitEmail']))
         $mail->addAddress($cEmail, $cName);
         $mail->isHTML(true);
         $mail->Subject = $cSubject; 
-        $mail->Body = $cBody;
+        $mail->Body = $message;
         
         try{
             $mail->send();
@@ -48,3 +57,6 @@ if(isset($_POST['submitEmail']))
         header("Location: rSendsnippet.php");
     }
 ?>
+<script>
+    
+</script>
