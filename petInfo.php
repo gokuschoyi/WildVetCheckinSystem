@@ -311,7 +311,7 @@ if (isset($_POST['submit'])){
         if(file_exists($template))
             $message = file_get_contents($template);
         else
-            die("unable to lovate file");
+            die("unable to locate file");
 
         $mail = new PHPMailer();
         $mail->IsSMTP();

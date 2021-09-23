@@ -69,6 +69,24 @@ body {
   background-color: #fff;
 }
 
+.hidden {
+  display:none;
+  }
+.visible {
+  display:block;
+  position:absolute;
+  top:30%;left:40%;
+  z-index: 1;
+  width: auto;
+  height: auto;
+  background-color: #0f6848;
+  }
+.loader {
+  display: flex;
+  background-color: #149063;
+  z-index: 1;
+}
+
 [tabindex="-1"]:focus:not(:focus-visible) {
   outline: 0 !important;
 }

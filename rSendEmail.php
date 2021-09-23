@@ -154,6 +154,7 @@ $conn = new mysqli('pk1l4ihepirw9fob.cbetxkdyhwsb.us-east-1.rds.amazonaws.com', 
             {
                 $cid = $_POST['cid'];
                 $space = " ";
+                $selectedCount = count($_POST['check_list']);
             }
                 $conn = new mysqli('pk1l4ihepirw9fob.cbetxkdyhwsb.us-east-1.rds.amazonaws.com', 'sn4abkagkvz8sd1n','nm85ad3jt3wpvxc6','xlx8er1i5yj6m7u4');
                 $query = $conn->prepare("SELECT email FROM clientinfo WHERE clientId = ?");
@@ -215,7 +216,8 @@ $conn = new mysqli('pk1l4ihepirw9fob.cbetxkdyhwsb.us-east-1.rds.amazonaws.com', 
                                                         <button class="btn btn-danger" type="reset">Reset Form</button>
                                                     </div>
                                                     <input type = "hidden" name = "cid" value = "<?php echo $cid?>">
-                                                    <input type = "hidden" name = "selectedLinks[]" value = "<?php echo $arraySel?>">
+                                                    <input type = "hidden" name = "selectedCount" value = "<?php echo $selectedCount?>">
+                                                    <input type = "hidden" name = "selected" value = "<?php foreach ($arraySel as $arr) {echo $arr ."\n";}?>">
                                                 </form>
                                             </div>
                                         </div>

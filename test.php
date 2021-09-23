@@ -1,17 +1,50 @@
 <?php
 include "simple_html_dom.php";
-use PHPMailer\PHPMailer\PHPMailer;
-require 'vendor/autoload.php';
 
-$searchLink = 'https://www.google.com/search?q=it+jobs';
-$html = file_get_contents($searchLink);
+$template = "./template.php";
+
+if(file_exists($template))
+    $message = file_get_contents($template);
+else
+    die("unable to locate file");
+if(!$message)
+echo "test";
 $htmlDom = new DOMDocument;
-@$htmlDom->loadHTML($html);
-//echo $htmlDom->saveHTML();
+@$htmlDom->loadHTML($message);
+echo $htmlDom->saveHTML();
 
-$link1 = $htmlDom->getElementsByTagName('a');
-$extractedLinks = array();
-foreach($link1 as $link){
+//$html = file_get_html($bing);
+//echo $html;
+/* for($i=0; $i<2; $i++){
+    $links = "http://google.com";
+    $inside = $htmlDom->getElementById('test');
+    
+
+    $div = $htmlDom->createElement("div");
+    $div->setAttribute("class","justify-content: center;");
+    $div->setAttribute("style"," height : 70px; display: flex; align-items: center; margin-left:35%; margin-right:35%; margin-top: 8px;");
+    $div->setAttribute("id", $i);
+    
+    $link = $htmlDom->createElement("a");
+    $link->setAttribute('href', $links);
+    $link->setAttribute("class", "button");
+    $link->setAttribute("style", "width : 150px; background-color: #b967c7; border: none; color: white; padding: 15px 15px; text-align: center; text-decoration: none; display: inline-block; font-size: 12px; margin: 4px 2px; cursor: pointer;");
+    $link->textContent =("Go to Google");
+    
+    $div->appendChild($link);
+
+    $inside->appendChild($div);
+
+    
+    
+}
+echo $htmlDom->saveHTML(); */
+
+//echo $htmlDom->saveHTML();
+//$search = 'https://www.google.com/search?q=';
+
+/* $extractedLinks = array(); 
+ foreach($link1 as $link){
     $linkHref = $link->getAttribute('href');
     if(strlen(trim($linkHref)) == 0){
         continue;
@@ -121,6 +154,7 @@ $arrayTitle = array();
     }
     
 
+    echo $htmlDomt->saveHTML() .'<br>';
     
         
             echo '<br>';
@@ -130,5 +164,5 @@ $arrayTitle = array();
             foreach($arrayTitle as $title)
             echo $title.'<br>'; 
             
-
+ */
 ?>

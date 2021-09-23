@@ -284,7 +284,7 @@
 											<!--[if mso]><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td style="padding-right: 10px; padding-left: 10px; padding-top: 0px; padding-bottom: 0px; font-family: Tahoma, Verdana, sans-serif"><![endif]-->
 											<div style="color:#454562;font-family:'Roboto', Tahoma, Verdana, Segoe, sans-serif;line-height:1.2;padding-top:0px;padding-right:10px;padding-bottom:0px;padding-left:10px;">
 												<div class="txtTinyMce-wrapper" style="font-size: 12px; line-height: 1.2; color: #454562; font-family: 'Roboto', Tahoma, Verdana, Segoe, sans-serif; mso-line-height-alt: 14px;">
-													<p style="margin: 0; font-size: 58px; line-height: 1.2; word-break: break-word; mso-line-height-alt: 70px; margin-top: 0; margin-bottom: 0;"><span style="font-size: 14px;">Attached is a PDF with all your check-in details. If any of the information provided is wrong, do not hesitate to contact us. See you soon..</span></p>
+													<p style="margin: 0; font-size: 58px; line-height: 1.2; word-break: break-word; mso-line-height-alt: 70px; margin-top: 0; margin-bottom: 0;"><span style="font-size: 14px;">Attached is a PDF with all your check-in details. If any of the information provided is wrong, do not hesitate to contact us. See you soon.</span></p>
 												</div>
 											</div>
 											<!--[if mso]></td></tr></table><![endif]-->
