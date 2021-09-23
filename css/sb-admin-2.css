@@ -69,23 +69,23 @@ body {
   background-color: #fff;
 }
 
-.hidden {
-  display:none;
-  }
+
+
 .visible {
-  display:block;
-  position:absolute;
-  top:30%;left:40%;
-  z-index: 1;
-  width: auto;
-  height: auto;
-  background-color: #0f6848;
+    width: 200px;
+    height: 200px;
+    position: absolute;
+    left: 50%;
+    /* centers the loading animation horizontally one the screen */
+    top: 50%;
+    /* centers the loading animation vertically one the screen */
+    background-image: url(https://raw.githubusercontent.com/niklausgerber/PreLoadMe/master/img/status.gif);
+    /* path to your loading animation */
+    background-repeat: no-repeat;
+    background-position: center;
+    margin: -100px 0 0 -100px;
+    /* is width and height divided by two */
   }
-.loader {
-  display: flex;
-  background-color: #149063;
-  z-index: 1;
-}
 
 [tabindex="-1"]:focus:not(:focus-visible) {
   outline: 0 !important;

@@ -98,7 +98,7 @@ $conn = new mysqli('pk1l4ihepirw9fob.cbetxkdyhwsb.us-east-1.rds.amazonaws.com', 
 
         </nav>
         
-        <img src="assets\img\giphy.gif" id="loading" class="hidden">
+            <div id="loading" class="hidden">&nbsp;</div>
         
         <script>
             document.getElementById("loading").className="visible";
