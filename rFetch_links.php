@@ -98,12 +98,14 @@ $conn = new mysqli('pk1l4ihepirw9fob.cbetxkdyhwsb.us-east-1.rds.amazonaws.com', 
 
         </nav>
         
-            <div id="loading" class="hidden">&nbsp;</div>
-        
+        <div id = "loading" class="hidden">
+            <span class="loader"><div class="loader-inner"></div></span>
+        </div>
         <script>
-            document.getElementById("loading").className="visible";
+            document.getElementById("loading").className="loader-wrapper";
             var hide=function(){
-                document.getElementById("loading").className="hidden"};
+                document.getElementById("loading").className="hidden"
+            };
             var oldLoad=window.onload;
             var newLoad=oldLoad?
             function(){

@@ -81,13 +81,13 @@ if (isset($_POST['submitEmail'])) {
 }
 
 if ($_SESSION['status'] == 1) {
-    $snippet = "Yes";
     $id = $_POST['cid'];
     $conn = new mysqli('pk1l4ihepirw9fob.cbetxkdyhwsb.us-east-1.rds.amazonaws.com', 'sn4abkagkvz8sd1n', 'nm85ad3jt3wpvxc6', 'xlx8er1i5yj6m7u4');
     $snippet = "Yes";
     $stmt = $conn->prepare("UPDATE clientinfo SET snippet = ? WHERE clientId = ?");
     $stmt->bind_param("si", $snippet, $id);
     $stmt->execute();
+    session_destroy();
     header("Location: rSendsnippet.php");
 }
-?> */
+?>

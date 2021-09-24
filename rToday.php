@@ -147,7 +147,7 @@ include'includes/navbar.php';
                             <th>Reason For Visit</th>
                             <th>Pet Name</th>
                             <th>Pet Type</th>
-                            <th>Breed</th>
+                            <th>SNIPPET STATUS</th>
                             <th>EDIT DETAILS</th>
                             <th>ASSIGNED DOCTOR</th>
                             <th>ASSIGN DOCTOR</th>
@@ -172,7 +172,7 @@ include'includes/navbar.php';
                                 $date = date("Y-m-d");
                                 $conn = new mysqli('pk1l4ihepirw9fob.cbetxkdyhwsb.us-east-1.rds.amazonaws.com', 'sn4abkagkvz8sd1n','nm85ad3jt3wpvxc6','xlx8er1i5yj6m7u4');
 
-                                $query = $conn->prepare("SELECT  DISTINCT clientinfo.clientId, clientinfo.title, clientinfo.firstName, clientinfo.surName, clientinfo.checkinDate, clientinfo.mobileNo, petinfo.reason ,petinfo.petKey, petinfo.petName, petinfo.petType, petinfo.breed, clientinfo.assignedDoc 
+                                $query = $conn->prepare("SELECT  DISTINCT clientinfo.clientId, clientinfo.title, clientinfo.firstName, clientinfo.surName, clientinfo.checkinDate, clientinfo.mobileNo, petinfo.reason ,petinfo.petKey, petinfo.petName, petinfo.petType, clientinfo.snippet, clientinfo.assignedDoc 
                                 FROM clientinfo JOIN petinfo ON clientinfo.clientId=petinfo.petKey WHERE clientinfo.checkinDate = ? ");
                                 $query->bind_param("s",$date);
                                 $query->execute();
@@ -187,7 +187,7 @@ include'includes/navbar.php';
                             <td> <?php echo $data[6] ?></td>
                             <td> <?php echo $data[8] ?></td>
                             <td> <?php echo $data[9] ?></td>
-                            <td> <?php echo $data[10] ?></td>
+                            <td> <?php $val = $data[10]; if($val == "Yes") echo "Snippet Sent"; else echo "Snippet not Sent";  ?></td>
                             <td>
                                 <form action="client_edit.php" method="POST">
                                     <input type="hidden" name="cid" value=<?php echo $data[0] ?>>
