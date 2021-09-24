@@ -85,16 +85,16 @@
     ?>
     <h4 class="font-monospace text-center d-flex d-lg-flex justify-content-center align-items-center justify-content-lg-center align-items-lg-center"
         style="height: 133px;font-weight: bold;opacity: 0.85;font-size: 28.376px;">Doctor Login</h4>
-    <div class="d-xl-flex justify-content-xl-center align-items-xl-start" style="height: 580px;">
+    <div class="d-flex d-lg-flex d-xl-flex justify-content-center align-items-start justify-content-sm-center align-items-sm-center justify-content-md-center align-items-md-center justify-content-lg-center align-items-lg-center justify-content-xl-center align-items-xl-center" style="height: 580px;">
         <form method="POST" action="verifyDocLogin.php"
             style="background: transparent;border-radius: 26px;width: 240px;">
             <h2 class="visually-hidden">Login Form</h2>
-            <div class="d-xl-flex justify-content-xl-center align-items-xl-center illustration" style="height: 190px;">
+            <div class="d-flex d-lg-flex d-xl-flex justify-content-center align-items-center justify-content-sm-center align-items-sm-center justify-content-md-center align-items-md-center justify-content-lg-center align-items-lg-center justify-content-xl-center align-items-xl-center illustration" style="height: 190px;">
                 <img src="assets/img/password.png" style="width: 80px;"></div>
             <div class="mb-3"><input class="form-control" type="email" name="email" placeholder="Email"></div>
             <div class="mb-3"><input class="form-control" type="password" name="password" placeholder="Password"></div>
-            <div class="d-xl-flex justify-content-xl-center align-items-xl-center mb-3"><button
-                    class="btn btn-primary d-block w-100" name="logindoc" type="submit">Log In</button></div>
+            <div class="d-xl-flex justify-content-xl-center align-items-xl-center mb-3">
+                <button class="btn btn-primary d-block w-100" name="logindoc" type="submit">Log In</button></div>
             <p class="d-xl-flex justify-content-xl-center align-items-xl-center forgot">Haven't registered yet? </p>
             <br /><a class="d-xl-flex justify-content-xl-center align-items-xl-center"
                 href="doctorRegister.php">Register here</a>

@@ -1,4 +1,16 @@
-<?php session_start();?>
+<?php
+ob_start();
+session_start();
+$_SESSION['username'] = $_SESSION['rName'];
+$_SESSION['docname'] = $_SESSION['docEmail'];
+if(!isset($_SESSION['username'])){
+    header("Location: rDashboard.php");
+}
+if(!isset($_SESSION['docname'])){
+    header("Location: doctorLogin.php");
+}
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 

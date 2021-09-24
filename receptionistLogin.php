@@ -1,4 +1,5 @@
 <?php
+session_start();
 if (isset($_POST['rLogin'])){
     header("Location: rDashboard.php");
 
@@ -77,14 +78,24 @@ if (isset($_POST['rLogin'])){
             </div>
         </div>
     </nav>
+    <?php
+        if(isset($_SESSION['fail']))
+        {
+            echo '<h2 class = "bg-danger text-white text-align-center">'.$_SESSION['fail'].'</h2>';
+            unset($_SESSION['fail']);
+        } 
+    ?>
     <h4 class="font-monospace text-center d-flex d-lg-flex justify-content-center align-items-center justify-content-lg-center align-items-lg-center" style="height: 133px;font-weight: bold;opacity: 0.85;font-size: 28.376px;">Receptionist Login</h4>
     <div class="d-flex d-lg-flex d-xl-flex justify-content-center align-items-start justify-content-sm-center align-items-sm-center justify-content-md-center align-items-md-center justify-content-lg-center align-items-lg-center justify-content-xl-center align-items-xl-center" style="height: 580px;">
-    <form method="post" action = "" style="background: transparent;border-radius: 26px;width: 240px;">
+    <form method="post" action = "verifyReceptionist.php" 
+        style="background: transparent;border-radius: 26px;width: 240px;">
         <h2 class="visually-hidden">Login Form</h2>
-        <div class="d-flex d-lg-flex d-xl-flex justify-content-center align-items-center justify-content-sm-center align-items-sm-center justify-content-md-center align-items-md-center justify-content-lg-center align-items-lg-center justify-content-xl-center align-items-xl-center illustration" style="height: 190px;"><img class="d-flex justify-content-center align-items-center" src="assets\img\password.png" style="width: 80px;" /></div>
-        <div class="mb-3"><input type="email" class="form-control" name="email" placeholder="Email" /></div>
+        <div class="d-flex d-lg-flex d-xl-flex justify-content-center align-items-center justify-content-sm-center align-items-sm-center justify-content-md-center align-items-md-center justify-content-lg-center align-items-lg-center justify-content-xl-center align-items-xl-center illustration" style="height: 190px;">
+            <img class="d-flex justify-content-center align-items-center" src="assets\img\password.png" style="width: 80px;" /></div>
+        <div class="mb-3"><input type="text" class="form-control" name="username" placeholder="Username" /></div>
         <div class="mb-3"><input type="password" class="form-control" name="password" placeholder="Password" /></div>
-        <div class="d-xl-flex justify-content-xl-center align-items-xl-center mb-3"><button class="btn btn-primary d-block w-100" type="submit" name = "rLogin">Log In</button></div>
+        <div class="d-xl-flex justify-content-xl-center align-items-xl-center mb-3">
+            <button class="btn btn-primary d-block w-100" type="submit" name = "rLogin">Log In</button></div>
         <a class="d-flex d-sm-flex d-md-flex d-lg-flex d-xl-flex justify-content-center align-items-center justify-content-sm-center align-items-sm-center justify-content-md-center align-items-md-center justify-content-lg-center align-items-lg-center justify-content-xl-center align-items-xl-center forgot" href="#">Forgot your email or password?</a>
     </form>
 </div>

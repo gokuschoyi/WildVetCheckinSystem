@@ -1,7 +1,3 @@
-<?php
-    $_SESSION['namEmail'] = $_SESSION['docEmail']; 
-    //echo $_SESSION['namEmail'];
-?>
 <!-- Sidebar -->
 <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
@@ -111,4 +107,8 @@
                 </div>
             </div>
         </div>
+        <php
+        unset($_SESSION["docname"]);
+        ob_end_clean();
+        ?>
     </div>
