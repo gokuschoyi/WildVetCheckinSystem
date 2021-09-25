@@ -1,9 +1,9 @@
 <?php
 ob_start();
 session_start();
-$_SESSION['username'] = $_SESSION['rName'];
-if(!isset($_SESSION['rName'])){
-    header("Location: receptionistLogin.php");
+$_SESSION['docname'] = $_SESSION['docEmail'];
+if(!isset($_SESSION['docEmail'])){
+    header("Location: doctorLogin.php");
 }
 
 ?>

@@ -1,5 +1,5 @@
 <?php
-include 'includes/header.php';
+include 'includes/headerDoc.php';
 include 'includes/navbarDoc.php';
 
 ?>

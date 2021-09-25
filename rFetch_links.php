@@ -68,7 +68,7 @@ $conn = new mysqli('pk1l4ihepirw9fob.cbetxkdyhwsb.us-east-1.rds.amazonaws.com', 
                 <li class="nav-item dropdown no-arrow">
                     <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown"
                         aria-haspopup="true" aria-expanded="false">
-                        <span class="mr-2 d-none d-lg-inline text-gray-600 small">Douglas McGee</span>
+                        <span class="mr-2 d-none d-lg-inline text-gray-600 small"><?php echo $_SESSION['rname'];?></span>
                         <img class="img-profile rounded-circle" src="img/undraw_profile.svg">
                     </a>
                     <!-- Dropdown - User Information -->
@@ -103,15 +103,10 @@ $conn = new mysqli('pk1l4ihepirw9fob.cbetxkdyhwsb.us-east-1.rds.amazonaws.com', 
         </div>
         <script>
             document.getElementById("loading").className="loader-wrapper";
-            var hide=function(){
-                document.getElementById("loading").className="hidden"
-            };
+            var hide=function(){document.getElementById("loading").className="hidden"};
             var oldLoad=window.onload;
             var newLoad=oldLoad?
-            function(){
-                hide.call(this);
-                oldLoad.call(this)
-            }
+            function(){hide.call(this); oldLoad.call(this)}
             :hide;
             window.onload=newLoad; 
         </script>
@@ -523,7 +518,7 @@ $conn = new mysqli('pk1l4ihepirw9fob.cbetxkdyhwsb.us-east-1.rds.amazonaws.com', 
                                 echo $ctype.'<br>';
                                 echo $cbreed.'<br>';
 
-                                $dataGoogle = returnBingTitleLinks($searchQuery);
+                                $dataGoogle = returnGoogleTitleLinks($searchQuery);
 
                                 foreach($dataGoogle as $a){
                                     ?>
