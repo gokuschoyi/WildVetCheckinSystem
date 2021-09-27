@@ -89,6 +89,7 @@ body {
 .loader-inner {
   height: 100px;
   width: 100px;
+  bottom: 75%;
   margin: 0 auto;
   background-color: red;
   animation-name: stretch;

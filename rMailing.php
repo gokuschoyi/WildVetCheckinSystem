@@ -18,7 +18,7 @@ include 'includes/navbar.php';
             </button>
 
             <!-- Topbar Search -->
-            <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
+            <!-- <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
                 <div class="input-group">
                     <input type="text" class="form-control bg-light border-0 small" placeholder="Quick Search..."
                         aria-label="Search" aria-describedby="basic-addon2">
@@ -28,7 +28,7 @@ include 'includes/navbar.php';
                         </button>
                     </div>
                 </div>
-            </form>
+            </form> -->
 
             <!-- Topbar Navbar -->
             <ul class="navbar-nav ml-auto">
@@ -63,7 +63,7 @@ include 'includes/navbar.php';
                     <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown"
                         aria-haspopup="true" aria-expanded="false">
                         <span class="mr-2 d-none d-lg-inline text-gray-600 small"><?php echo $_SESSION['rname'];?></span>
-                        <img class="img-profile rounded-circle" src="img/undraw_profile.svg">
+                        <img class="img-profile rounded-circle" src="assets\img\receptionist.png">
                     </a>
                     <!-- Dropdown - User Information -->
                     <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
@@ -92,17 +92,19 @@ include 'includes/navbar.php';
 
         </nav>
         <!-- End of Topbar -->
-
+        <div  class="loader-wrapper">
+            <div class="loader-inner"></div>
+        </div>
         <!-- Begin Page Content -->
         <div class="container-fluid">
 
             <!-- Page Heading -->
             <div class="d-sm-flex align-items-center justify-content-between mb-4">
                 <h1 class="h3 mb-0 text-gray-800">MAILING LIST</h1>
-                <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
-                        class="fas fa-download fa-sm text-white-50"></i> Generate Report</a>
+                <form method = "POST" action = "downloadCSV.php">
+                <button type="submit" name="downloadCSV" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-download fa-sm text-white-50"></i> Download CSV FIle</Button>
+                </form>
             </div>
-
             <!-- Content Row -->
             <div class="row">
 
@@ -115,13 +117,13 @@ include 'includes/navbar.php';
                                     <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
                                         TOTAL</div>
                                     <?php
-                                                $value = "Yes";
-                                                $conn = new mysqli('pk1l4ihepirw9fob.cbetxkdyhwsb.us-east-1.rds.amazonaws.com', 'sn4abkagkvz8sd1n','nm85ad3jt3wpvxc6','xlx8er1i5yj6m7u4');
-                                                $query = $conn->prepare("SELECT COUNT(newsletter) FROM clientinfo WHERE newsletter = ?");
-                                                $query->bind_param("s",$value);
-                                                $query->execute();
-                                                $stmt = $query->get_result()->fetch_row();
-                                                ?>
+                                        $value = "Yes";
+                                        $conn = new mysqli('pk1l4ihepirw9fob.cbetxkdyhwsb.us-east-1.rds.amazonaws.com', 'sn4abkagkvz8sd1n','nm85ad3jt3wpvxc6','xlx8er1i5yj6m7u4');
+                                        $query = $conn->prepare("SELECT COUNT(newsletter) FROM clientinfo WHERE newsletter = ?");
+                                        $query->bind_param("s",$value);
+                                        $query->execute();
+                                        $stmt = $query->get_result()->fetch_row();
+                                        ?>
                                     <div class="h5 mb-0 font-weight-bold text-gray-800"><?php echo $stmt[0]?></div>
                                 </div>
                                 <div class="col-auto">
@@ -169,6 +171,17 @@ include 'includes/navbar.php';
                     </tbody>
                 </table>
             </div>
+            <div class="container-fluid ">
+                    <div class="row justify-content-center">
+                        <div class="col-xl-4 col-md-6 mb-4">
+                            <div class="card border-left-primary shadow h-100 py-2 align-items-center">
+                                <div class="h5 mb-0 font-weight-bold text-gray-800  justify-content-center">
+                                    <button type="button" class=" btn btn-warning"onclick="location.href='rDashboard.php'" ;>GO BACK</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             <!-- Content Row -->
         </div>
         <!-- /.container-fluid -->

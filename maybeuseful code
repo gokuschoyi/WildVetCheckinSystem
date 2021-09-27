@@ -686,3 +686,22 @@ document.getElementById("loading").className="visible";
     overflow: visible;
     background: #fff url('assets\img\giphy.gif') no-repeat center center;
 }
+
+
+if($query1->num_rows > 0){ 
+                        $delimiter = ","; 
+                        $filename = "members-data_" . date('Y-m-d') . ".csv"; 
+                        // Create a file pointer 
+                        $f = fopen('MailingList', 'w');
+                        $fields = array('ID', 'TITLE', 'FIRST NAME', 'LAST NAME', 'EMAIL', 'CHECK-IN DATE');
+                        fputcsv($f, $fields, $delimiter); 
+                        while($row = $result->fetch_assoc()){ 
+                            $status = ($row['status'] == 1)?'Active':'Inactive'; 
+                            $lineData = array($row['clientId'], $row['title'], $row['firstName'], $row['surName'], $row['email'], $row['checkinDate'], $status); 
+                            fputcsv($f, $lineData, $delimiter); 
+                        } 
+                        fseek($f, 0);
+                        header('Content-Type: text/csv'); 
+                        header('Content-Disposition: attachment; filename="' . $filename . '";');
+                        fpassthru($f); 
+                    }

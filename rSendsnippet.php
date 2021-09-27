@@ -18,7 +18,7 @@ include 'includes/navbar.php';
                     </button>
 
                     <!-- Topbar Search -->
-                    <form
+                    <!-- <form
                         class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
                         <div class="input-group">
                             <input type="text" class="form-control bg-light border-0 small" placeholder="Quick Search..."
@@ -29,7 +29,7 @@ include 'includes/navbar.php';
                                 </button>
                             </div>
                         </div>
-                    </form>
+                    </form> -->
 
                     <!-- Topbar Navbar -->
                     <ul class="navbar-nav ml-auto">
@@ -66,7 +66,7 @@ include 'includes/navbar.php';
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <span class="mr-2 d-none d-lg-inline text-gray-600 small"><?php echo $_SESSION['rname'];?></span>
                                 <img class="img-profile rounded-circle"
-                                    src="img/undraw_profile.svg">
+                                    src="assets\img\receptionist.png">
                             </a>
                             <!-- Dropdown - User Information -->
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
@@ -95,15 +95,20 @@ include 'includes/navbar.php';
 
                 </nav>
                 <!-- End of Topbar -->
-
+                <div  class="loader-wrapper">
+                    <div class="loader-inner"></div>
+                </div>
                 <!-- Begin Page Content -->
+                <div  class="loader-wrapper">
+                    <div class="loader-inner"></div>
+                </div>
                 <div class="container-fluid">
 
                     <!-- Page Heading -->
                     <div class="d-sm-flex align-items-center justify-content-between mb-4">
                         <h1 class="h3 mb-0 text-gray-800">SEND SNIPPETS <?php date_default_timezone_set('Australia/ACT');  echo date("j/M/y") ?> </h1>
-                        <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
-                                class="fas fa-download fa-sm text-white-50"></i> Generate Report</a>
+                        <a href="rDashboard.php" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
+                                class="fas fa-long-arrow-alt-left fa-sm text-white-50"></i> GO BACK</a>
                     </div>
 
                     <!-- Content Row -->

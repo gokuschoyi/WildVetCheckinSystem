@@ -19,7 +19,7 @@ include 'includes/navbarDoc.php';
             </button>
 
             <!-- Topbar Search -->
-            <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
+            <!-- form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
                 <div class="input-group">
                     <input type="text" class="form-control bg-light border-0 small" placeholder="Quick Search..."
                         aria-label="Search" aria-describedby="basic-addon2">
@@ -29,7 +29,7 @@ include 'includes/navbarDoc.php';
                         </button>
                     </div>
                 </div>
-            </form>
+            </form> -->
 
             <!-- Topbar Navbar -->
             <ul class="navbar-nav ml-auto">
@@ -65,7 +65,7 @@ include 'includes/navbarDoc.php';
                         aria-haspopup="true" aria-expanded="false">
                         <span
                             class="mr-2 d-none d-lg-inline text-gray-600 small"><?php echo $_SESSION['docname']; ?></span>
-                        <img class="img-profile rounded-circle" src="img/undraw_profile.svg">
+                        <img class="img-profile rounded-circle" src="assets\img\doctor.png">
                     </a>
                     <!-- Dropdown - User Information -->
                     <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
@@ -102,8 +102,8 @@ include 'includes/navbarDoc.php';
             <div class="d-sm-flex align-items-center justify-content-between mb-4">
                 <h1 class="h3 mb-0 text-gray-800">CLIENTS TODAY
                     <?php date_default_timezone_set('Australia/ACT');  echo date("j/M/y") ?> </h1>
-                <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
-                        class="fas fa-download fa-sm text-white-50"></i> Generate Report</a>
+                <!-- <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
+                        class="fas fa-download fa-sm text-white-50"></i> Generate Report</a> -->
             </div>
 
             <!-- Content Row -->
@@ -168,7 +168,7 @@ include 'includes/navbarDoc.php';
                     </thead>
                     <tbody>
                         <?php
-                                $registered = "Yes";
+                                /* $registered = "Yes";
                                 $stmt = $conn->prepare("SELECT dFname FROM doctor WHERE registered = ?");
                                 $stmt->bind_param("s",$registered);
                                 $stmt->execute();
@@ -178,7 +178,7 @@ include 'includes/navbarDoc.php';
                                     {
                                         $options = $options."<option>$resu[0]</options>";
                                     }
-                                    echo $options;
+                                    echo $options; */
                                     
                                 date_default_timezone_set('Australia/ACT');
                                 $date = date("Y-m-d");
