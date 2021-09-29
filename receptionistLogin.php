@@ -74,6 +74,10 @@ session_start();
 .navbar-nav{
     border-radius: 10px;
 }
+.nav-link{
+    background-color:#f2f9ff;
+    border-radius:15px;
+}
 </style>
 <body style="background: url(&quot;assets/img/6677.jpg&quot;) center no-repeat;">
     <nav class="navbar navbar-light navbar-expand-md navigation-clean" style="height: 150px;background: #c292fb;">
@@ -115,13 +119,13 @@ session_start();
             <div class="mb-3"><input type="password" class="form-control" name="password" placeholder="Password" /></div>
             <div class="d-xl-flex justify-content-xl-center align-items-xl-center mb-3">
                 <button class="btn btn-primary d-block w-100" type="submit" name = "rLogin">Log In</button></div>
-            <a class="d-flex d-sm-flex d-md-flex d-lg-flex d-xl-flex justify-content-center align-items-center justify-content-sm-center align-items-sm-center justify-content-md-center align-items-md-center justify-content-lg-center align-items-lg-center justify-content-xl-center align-items-xl-center forgot" href="recoverySelection.php">Forgot password?</a>
+            <a class="d-flex d-sm-flex d-md-flex d-lg-flex d-xl-flex justify-content-center align-items-center justify-content-sm-center align-items-sm-center justify-content-md-center align-items-md-center justify-content-lg-center align-items-lg-center justify-content-xl-center align-items-xl-center forgot" style = "padding-top : 30px;" href="recoverySelection.php">Forgot password?</a>
         </form>
     </div>
-    <footer class="footer-basic" style="height: 150px;">
+    <footer class="footer-basic" style="height: 130px; padding-top:30px;">
         <ul class="list-inline">
             <li class="list-inline-item"><a href="index.php">Home</a></li>
-            <li class="list-inline-item"><a href="#">Users Manual</a></li>
+            <li class="list-inline-item"><a href="#">User Manual</a></li>
             <li class="list-inline-item"><a href="#">About</a></li>
             <li class="list-inline-item"><a href="#">Terms & Conditions</a></li>
             <li class="list-inline-item"><a href="#">Privacy Policy</a></li>

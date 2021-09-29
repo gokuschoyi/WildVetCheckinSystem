@@ -1,8 +1,8 @@
 <?php session_start();
-echo $_SESSION['idEmail'];
-echo $_SESSION['ID'];
+/* echo $_SESSION['idEmail'];
+echo $_SESSION['ID']; */
 $id = $_SESSION['ID'];
-echo $_SESSION['first'];
+/* echo $_SESSION['first']; */
 $newsletter = "Yes";
     if(isset($_POST['newsletter'])){
         $conn = new mysqli('pk1l4ihepirw9fob.cbetxkdyhwsb.us-east-1.rds.amazonaws.com', 'sn4abkagkvz8sd1n','nm85ad3jt3wpvxc6','xlx8er1i5yj6m7u4');
@@ -71,10 +71,21 @@ $newsletter = "Yes";
     <link rel="stylesheet" href="assets/css/Navigation-Clean.css">
     <link rel="stylesheet" href="assets/css/styles.css">
 </head>
-
+<style>
+.navbar-nav{
+border-radius: 15px;
+}
+.nav-item{
+    text-align: center;
+}
+.nav-link{
+    background-color:#b5d6f3;
+    border-radius:15px;
+}
+</style>
 <body>
-    <nav class="navbar navbar-light navbar-expand-md d-flex justify-content-center align-items-center navigation-clean" style="height: 180px;">
-        <div class="container"><a class="navbar-brand font-monospace d-lg-flex justify-content-lg-center align-items-lg-center" href="clientCheckin.php" style="font-size: 35px;">Wild Vet</a><button data-bs-toggle="collapse" class="navbar-toggler" data-bs-target="#navcol-1"><span class="visually-hidden">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
+    <nav class="navbar navbar-light navbar-expand-md d-flex justify-content-center align-items-center navigation-clean" style="height: 190px;">
+        <div class="container"><a class="navbar-brand font-monospace d-lg-flex justify-content-lg-center align-items-lg-center" href="clientCheckin.php" style="font-size: 28px;">Wild Vet</a><button data-bs-toggle="collapse" class="navbar-toggler" data-bs-target="#navcol-1"><span class="visually-hidden">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
             <div class="collapse navbar-collapse" id="navcol-1">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item"><a class="nav-link font-monospace" href="services.php">Services</a></li>
@@ -85,41 +96,41 @@ $newsletter = "Yes";
             </div>
         </div>
     </nav>
-    <div class="container d-flex d-xl-flex justify-content-center align-items-center justify-content-xl-center align-items-xl-center"><img src="assets/img/check.png" style="height: 130px;"></div>
-    <div class="row">
-        <div class="col d-flex d-xl-flex justify-content-center align-items-center justify-content-xl-center align-items-xl-center">
-            <p class="font-monospace text-center d-flex d-md-flex justify-content-center align-items-center justify-content-md-center align-items-md-center" style="font-size: 25px;color: rgb(109,134,163);width: 550px;">Thank you for checking in with us. We have sent you an email confirming your details. If any of the information provided is wrong do not hesitate to contact us. Hope to see you soon</p>
+    <div class="container d-flex d-xl-flex justify-content-center align-items-center justify-content-xl-center align-items-xl-center"><img src="assets/img/check.png" style="height: 90px;"></div>
+    <div class="container">
+        <div class="row">
+            <div class="col d-flex d-xl-flex justify-content-center align-items-center justify-content-xl-center align-items-xl-center">
+                <p class="font-monospace text-center d-flex d-md-flex justify-content-center align-items-center justify-content-md-center align-items-md-center" style="font-size: 25px;color: rgb(109,134,163);width: 550px;">Thank you for checking in with us. We have sent you an email confirming your details. If any of the information provided is wrong do not hesitate to contact us. Hope to see you soon</p>
+            </div>
         </div>
     </div>
-
-    <div class="row justify-content-center">
-        <div class="col-xl-3 col-md-6 mb-4">
-            <div class="card border-left-primary shadow h-100 py-2">
-                <div class="card-body">
-                    <div class="row no-gutters align-items-center">
-                        <div class="col mr-2">
-                            <form method = "POST">
-                            <div class="font-monospace text-xs  text-uppercase mb-1 text-center" style="color: rgb(109,134,163);font-size: 18px;">WILD VET NEWSLETTER</div>  
-                            <div class="font-monospace h6 mb-0 font-weight-bold text-gray-800 text-center ">Would you like to subscribe to our newsletter to stay informed on the latest news </div>
-                            <div class="col d-flex d-lg-flex justify-content-center align-items-center justify-content-lg-center align-items-lg-center" style="height: 50px;"><button type = "submit" name = "newsletter" class = " btn btn-success" style="border-radius: 30px;" >YES</button></div>
-                            </form>
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-xl-3 col-md-6 mb-4">
+                <div class="card border-left-primary shadow h-100 py-2">
+                    <div class="card-body">
+                        <div class="row no-gutters align-items-center">
+                            <div class="col mr-2">
+                                <form method = "POST">
+                                <div class="font-monospace text-xs  text-uppercase mb-1 text-center" style="color: rgb(109,134,163);font-size: 18px;">WILD VET NEWSLETTER</div>  
+                                <div class="font-monospace h6 mb-0 font-weight-bold text-gray-800 text-center ">Would you like to subscribe to our newsletter to stay informed on the latest news </div>
+                                <div class="col d-flex d-lg-flex justify-content-center align-items-center justify-content-lg-center align-items-lg-center" style="height: 50px;"><button type = "submit" name = "newsletter" class = " btn btn-success" style="border-radius: 30px;" >YES</button></div>
+                                </form>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-        </div>   
+            </div>   
+        </div>
     </div>
 
     <div class="container">
         <footer class="footer-basic" style="background: transparent;">
-            <div class="d-xl-flex justify-content-xl-center align-items-xl-center social">
-                <a class="d-xl-flex justify-content-xl-center align-items-xl-center" href="https://www.instagram.com/thewildvetclinic/">
-                    <i class="icon ion-social-instagram"></i>
-                </a>
-                <a class="d-xl-flex justify-content-xl-center align-items-xl-center" href="https://www.facebook.com/thewildvetclinic/">
-                    <i class="icon ion-social-facebook"></i>
-                </a>
-        </div>
+        <div class="d-xl-flex justify-content-xl-center align-items-xl-center social"><a
+                    class="d-xl-flex justify-content-xl-center align-items-xl-center"
+                    href="https://www.instagram.com/thewildvetclinic/"><i class="icon ion-social-instagram"></i></a><a
+                    href="https://www.facebook.com/thewildvetclinic/"><i class="icon ion-social-facebook"></i></a>
+                </div>
             <ul class="list-inline">
                 <li class="list-inline-item"><a href="services.php">Services</a></li>
                 <li class="list-inline-item"><a href="contactUs.php">Contact-Us</a></li>
@@ -128,7 +139,8 @@ $newsletter = "Yes";
             <p class="copyright" style="font-size : 18px; font-weight: bold; color: rgb(40,33,33);">The Wild Vet© 2021</p>
         </footer>
     </div>
-    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+<script src="assets/bootstrap/js/bootstrap.min.js">
+</script>
 </body>
 
 </html>

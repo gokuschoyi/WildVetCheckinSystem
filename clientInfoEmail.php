@@ -79,17 +79,17 @@ border-radius: 15px;
     </head>
     <body style="background: url(&quot;assets/img/Home%20BG.jpg&quot;) top;">
         <nav class="navbar navbar-light navbar-expand-md navigation-clean" style="height: 190px; background :transparent ;">
-            <div class="container"><a class="navbar-brand font-monospace" href="#" style="font-size: 35px;">Wild Vet Check-In</a><button data-bs-toggle="collapse" class="navbar-toggler" data-bs-target="#navcol-1"><span class="visually-hidden">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
+            <div class="container"><a class="navbar-brand font-monospace" href="#" style="font-size: 28px;">Wild Vet Check-In</a><button data-bs-toggle="collapse" class="navbar-toggler" data-bs-target="#navcol-1"><span class="visually-hidden">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
                 <div class="collapse navbar-collapse" id="navcol-1">
                     <ul class="navbar-nav ms-auto" style = "background:#8cc1bf;">
                         <li class="nav-item"><a class="nav-link font-monospace" href="services.php">Services</a></li>
-                        <li class="nav-item"></li>
                         <li class="nav-item"><a class="nav-link font-monospace" href="contactUs.php">Contact Us</a></li>
                         <li class="nav-item"><a class="nav-link" href="services.php">F.A.Q</a></li>
                     </ul>
                 </div>
             </div>
         </nav>
+        <div class="container">
         <?php
             $conn = new mysqli('pk1l4ihepirw9fob.cbetxkdyhwsb.us-east-1.rds.amazonaws.com', 'sn4abkagkvz8sd1n','nm85ad3jt3wpvxc6','xlx8er1i5yj6m7u4');
             if(isset($_SESSION["entEmail"]))
@@ -135,6 +135,7 @@ border-radius: 15px;
                 }
             }
         ?>
+    </div>
         <?php
         $query_run = mysqli_query($conn,$query);
         $count = $query_run->num_rows;
@@ -164,4 +165,4 @@ border-radius: 15px;
         <script src="assets/bootstrap/js/bootstrap.min.js"></script>
     </body>
 </html>
-<!-- <div class="container"style = "background:#8cc1bf;"> -->font-size : 18px; font-weight: bold;
+<!-- <div class="container"style = "background:#8cc1bf;"> -->

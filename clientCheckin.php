@@ -61,11 +61,15 @@
     <link rel="stylesheet" href="assets/css/styles.css">
 </head>
 <style>
-    .navbar-nav{
-    border-radius: 10px;
+.navbar-nav{
+border-radius: 15px;
 }
 .nav-item{
     text-align: center;
+}
+.nav-link{
+    background-color:#f2f9ff;
+    border-radius:15px;
 }
 </style>
 <body style="background: url(&quot;assets/img/6677.jpg&quot;) center no-repeat;">
@@ -73,7 +77,7 @@
         <div class="container-fluid"><a class="navbar-brand" href="clientCheckin.php" style="font-size: 28px;">The Wild Vet Check-In</a><button data-bs-toggle="collapse" class="navbar-toggler" data-bs-target="#navcol-1"><span class="visually-hidden">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
             <div class="collapse navbar-collapse" id="navcol-1">
                 <ul class="navbar-nav ms-auto" style = "background:#c292fb;">
-                    <li class="nav-item "><a class="nav-link active " href="https://wildvet.ezyvet.com/external/portal/main/login" style="color: rgba(0, 0, 0, 0.9);">Sign-In</a></li>
+                    <li class="nav-item"><a class="nav-link" href="https://wildvet.ezyvet.com/external/portal/main/login" style="color: rgba(0, 0, 0, 0.9);">Sign-In</a></li>
                     <li class="nav-item"><a class="nav-link" href="contactUs.php" style="color: rgba(0, 0, 0, 0.9);">Contact</a></li>
                     <li class="nav-item"><a class="nav-link" href="services.php" style="color: rgba(0, 0, 0, 0.9);">Services</a></li>
                 </ul>

@@ -415,10 +415,10 @@ if (isset($_POST['submit'])){
 }
 </style>
 <body>
-    <nav class="navbar navbar-light navbar-expand-md d-flex justify-content-center align-items-center navigation-clean"style="background :transparent;height: 180px;">
+    <nav class="navbar navbar-light navbar-expand-md d-flex justify-content-center align-items-center navigation-clean"style="background :transparent;height: 190px;">
         <div class="container"><a
                 class="navbar-brand font-monospace d-lg-flex justify-content-lg-center align-items-lg-center" href="#"
-                style="font-size: 35px;">Wild Vet Check-In</a><button data-bs-toggle="collapse" class="navbar-toggler"
+                style="font-size: 28px;">Wild Vet Check-In</a><button data-bs-toggle="collapse" class="navbar-toggler"
                 data-bs-target="#navcol-1"><span class="visually-hidden">Toggle navigation</span><span
                     class="navbar-toggler-icon"></span></button>
             <div class="collapse navbar-collapse" id="navcol-1">
@@ -575,7 +575,7 @@ if (isset($_POST['submit'])){
                     style="height: 34px;"><button id="petDetails"
                         class="btn btn-primary btn-sm font-monospace d-flex justify-content-center align-items-center"
                         type="submit" form="petDetails" name="submit" value="Submit"
-                        style="border-radius: 30px;background: rgb(157,126,207);height: 35px;width: 148px; font-weight: bold;">SBMIT DETAILS</button></div>
+                        style="border-radius: 30px;background: rgb(157,126,207);height: 35px;width: 148px; font-weight: bold;">SUBMIT DETAILS</button></div>
             </div>
             <div class="row">
                 <div class="col d-flex d-lg-flex justify-content-center align-items-center justify-content-lg-center align-items-lg-center"
@@ -586,12 +586,13 @@ if (isset($_POST['submit'])){
             </div>
     </div>
     </form>
-    <div class="container">
+    <div class="container" style="height: 180px">
         <footer class="footer-basic" style="background: transparent;">
             <div class="d-xl-flex justify-content-xl-center align-items-xl-center social"><a
                     class="d-xl-flex justify-content-xl-center align-items-xl-center"
                     href="https://www.instagram.com/thewildvetclinic/"><i class="icon ion-social-instagram"></i></a><a
-                    href="https://www.facebook.com/thewildvetclinic/"><i class="icon ion-social-facebook"></i></a></div>
+                    href="https://www.facebook.com/thewildvetclinic/"><i class="icon ion-social-facebook"></i></a>
+                </div>
             <ul class="list-inline">
                 <li class="list-inline-item"><a href="https://wildvet.ezyvet.com/external/portal/main/login">Sign-In</a>
                 </li>
@@ -601,7 +602,8 @@ if (isset($_POST['submit'])){
             <p class="copyright" style="font-size : 18px; font-weight: bold; color: rgb(40,33,33);">The Wild Vet© 2021</p>
         </footer>
     </div>
-    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="assets/bootstrap/js/bootstrap.min.js">
+</script>
 
 </body>
 

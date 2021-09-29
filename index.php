@@ -66,81 +66,82 @@
     display: none;
     }
 }
+.navbar-nav{
+border-radius: 15px;
+}
+.nav-item{
+    text-align: center;
+}
+.nav-link{
+    background-color:#f2f9ff;
+    border-radius:15px;
+}/*  */
 </style>
 <body style="background: url(&quot;assets/img/6677.jpg&quot;) center no-repeat;">
     <nav class="navbar navbar-light navbar-expand-md navigation-clean" style="height: 150px;background: #c292fb;">
         <div class="container"><a class="navbar-brand font-monospace" href="index.php" style="font-size: 35px;">The Wild Vet</a>
-            <button data-bs-toggle="collapse" class="navbar-toggler" data-bs-target="#navcol-1"> 
-                <span class="visually-hidden">Toggle navigation</span><span class="navbar-toggler-icon"></span>
-            </button>
+            <button data-bs-toggle="collapse" class="navbar-toggler" data-bs-target="#navcol-1">
+                <span class="visually-hidden">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
             <div class="collapse navbar-collapse" id="navcol-1">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"><a class="nav-link font-monospace" href="recoverySelection.php">Forgot Username/Password</a></li>
-                    
+            <ul class="navbar-nav ms-auto" style = "background:#c292fb;">
+                <li class="nav-item"><a class="nav-link font-monospace" href="recoverySelection.php">Forgot Username/Password</a></li>
                 </ul>
             </div>
             <div class = "example">
-            <div class="col-md-12 d-flex d-xl-flex justify-content-center align-items-center justify-content-xl-center align-items-xl-center" style = 'width :100px; padding-left : 25px; '>
-                <img src="assets\img\logo.png" style="height: 80px; padding-left : 20px;">
+            <div class="col-md-12 d-flex d-xl-flex justify-content-center align-items-center justify-content-xl-center align-items-xl-center" style = 'width :100px; padding-left : 45px;'>
+                <img src="assets\img\logo.png" style="height: 80px;">
             </div>
             </div>
         </div>
     </nav>
-    <h4 class="font-monospace text-center d-flex d-lg-flex justify-content-center align-items-center justify-content-lg-center align-items-lg-center"
-        style="height: 133px;font-weight: bold;opacity: 0.85;font-size: 28px;">Online Check-In Management System
-    </h4>
-        <div class="row d-md-flex d-lg-flex d-xl-flex justify-content-md-center align-items-md-center justify-content-lg-center align-items-lg-center justify-content-xl-center align-items-xl-center"
-            style="height : 285px">
-            <div class="col-md-6 col-lg-4 item" style="height: 184px;">
-                <div class="container">
-                    <div class="row">
-                        <div
-                            class="col-md-12 d-flex d-xl-flex justify-content-center align-items-center justify-content-xl-center align-items-xl-center">
-                            <img src="assets/img/receptionist.png" style="height: 60px;"></div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-12" style="height: 70px;">
-                            <h2 class="font-monospace d-flex d-xl-flex justify-content-center align-items-center justify-content-xl-center align-items-xl-center"
-                                style="color: rgb(93,72,96);height: 60px;">Receptionist</h2>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div
-                            class="col-md-12 d-flex d-lg-flex d-xl-flex justify-content-center align-items-center justify-content-lg-center align-items-lg-center justify-content-xl-center align-items-xl-center">
-                            <a class="btn btn-primary" role="button" style="border-radius: 30px;"
-                                href="receptionistLogin.php">Login</a></div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="row d-md-flex d-lg-flex d-xl-flex justify-content-md-center align-items-md-center justify-content-lg-center align-items-lg-center justify-content-xl-center align-items-xl-center"
-            style="height : 285px">
-            <div class="col-md-6 col-lg-4 item" style="height: 184px;">
-                <div class="container">
-                    <div class="row">
-                        <div
-                            class="col-md-12 d-flex d-xl-flex justify-content-center align-items-center justify-content-xl-center align-items-xl-center">
-                            <img src="assets/img/doctor.png" style="height: 60px;"></div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-12" style="height: 70px;">
-                            <h2 class="font-monospace d-flex d-xl-flex justify-content-center align-items-center justify-content-xl-center align-items-xl-center"
-                                style="color: rgb(93,72,96);height: 60px;">Doctor</h2>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div
-                            class="col-md-12 d-flex d-lg-flex d-xl-flex justify-content-center align-items-center justify-content-lg-center align-items-lg-center justify-content-xl-center align-items-xl-center">
-                            <a class="btn btn-primary" role="button" style="border-radius: 30px;"
-                                href="doctorLogin.php">Login</a></div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
+    <div class="container">
+        <h4 class="font-monospace text-center d-flex d-lg-flex justify-content-center align-items-center justify-content-lg-center align-items-lg-center"
+        style="height: 133px;font-weight: bold;opacity: 0.85;font-size: 28px;">Online Check-In Management System</h4>
     </div>
-    <footer class="footer-basic" style="height: 150px; padding-top:50px;">
-        
+    <div class="container">
+        <div class="row d-md-flex d-lg-flex d-xl-flex justify-content-md-center align-items-md-center justify-content-lg-center align-items-lg-center justify-content-xl-center align-items-xl-center"style="height : 285px">
+            <div class="col-md-6 col-lg-4 item" style="height: 184px;">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12 d-flex d-xl-flex justify-content-center align-items-center justify-content-xl-center align-items-xl-center"><img src="assets/img/receptionist.png" style="height: 60px;"></div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12" style="height: 70px;"><h2 class="font-monospace d-flex d-xl-flex justify-content-center align-items-center justify-content-xl-center align-items-xl-center"style="color: rgb(93,72,96);height: 60px;">Receptionist</h2></div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12 d-flex d-lg-flex d-xl-flex justify-content-center align-items-center justify-content-lg-center align-items-lg-center justify-content-xl-center align-items-xl-center">
+                            <a class="btn btn-primary" role="button" style="border-radius: 30px;" href="receptionistLogin.php">Login</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row d-md-flex d-lg-flex d-xl-flex justify-content-md-center align-items-md-center justify-content-lg-center align-items-lg-center justify-content-xl-center align-items-xl-center"style="height : 285px">
+            <div class="col-md-6 col-lg-4 item" style="height: 184px;">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12 d-flex d-xl-flex justify-content-center align-items-center justify-content-xl-center align-items-xl-center">
+                            <img src="assets/img/doctor.png" style="height: 60px;">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12" style="height: 70px;">
+                            <h2 class="font-monospace d-flex d-xl-flex justify-content-center align-items-center justify-content-xl-center align-items-xl-center"style="color: rgb(93,72,96);height: 60px;">Doctor</h2>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12 d-flex d-lg-flex d-xl-flex justify-content-center align-items-center justify-content-lg-center align-items-lg-center justify-content-xl-center align-items-xl-center">
+                            <a class="btn btn-primary" role="button" style="border-radius: 30px;" href="doctorLogin.php">Login</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <footer class="footer-basic" style="height: 130px; padding-top:30px;">
         <ul class="list-inline">
             <li class="list-inline-item"><a href="index.php">Home</a></li>
             <li class="list-inline-item"><a href="#">User Manual</a></li>
