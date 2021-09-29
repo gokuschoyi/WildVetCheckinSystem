@@ -705,3 +705,39 @@ if($query1->num_rows > 0){
                         header('Content-Disposition: attachment; filename="' . $filename . '";');
                         fpassthru($f); 
                     }
+
+
+                    else{
+        $_SESSION['rName'] = "";
+        $query = $conn->prepare("SELECT rUsername, rPassword FROM reception WHERE rUsername = ?");
+        $query->bind_param("s",$rUsername);
+        try{
+            if($query->execute() === false){
+                throw new nouserException();
+            }
+            /* else{
+                //$query->execute();
+                $result= $query->get_result();
+                while($row = $result->fetch_assoc()){
+                    $qusername = "$row[rUsername]";
+                    $qpassword = "$row[rPassword]";
+                    if(($rUsername == $qusername) && ($rPassword == $qpassword))
+                    {
+                        $_SESSION['rName'] = $qusername;
+                        header('Location: rDashboard.php');
+                    }
+                    else if($rPassword != $qpassword)
+                    {
+                        $_SESSION['fail'] = 'Password is invalid';
+                        header('Location: receptionistLogin.php');
+                    }
+                }
+            } */
+        }
+        catch(nouserException $e){
+            /* $_SESSION['fail'] = 'Username not valid. Try again.';
+            header('Location: receptionistLogin.php'); */
+            echo "working";
+        }
+    }
+}

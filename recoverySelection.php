@@ -1,3 +1,4 @@
+<?php session_start();?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -61,42 +62,45 @@
     <link rel="stylesheet" href="assets/css/styles.css">
 </head>
 <style>
-    @media screen and (max-width: 600px) {
+    @media screen and (max-width: 400px) {
     div.example {
     display: none;
     }
 }
 </style>
-<body style="background: url(&quot;assets/img/6677.jpg&quot;) center no-repeat;">
+
+<body style="height: 1020px;background: url(&quot;assets/img/6677.jpg&quot;) center no-repeat;">
     <nav class="navbar navbar-light navbar-expand-md navigation-clean" style="height: 150px;background: #c292fb;">
-        <div class="container"><a class="navbar-brand font-monospace" href="index.php" style="font-size: 35px;">The Wild Vet</a>
-            <button data-bs-toggle="collapse" class="navbar-toggler" data-bs-target="#navcol-1"> 
-                <span class="visually-hidden">Toggle navigation</span><span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navcol-1">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"><a class="nav-link font-monospace" href="recoverySelection.php">Forgot Username/Password</a></li>
-                    
-                </ul>
-            </div>
+        <div class="container"><a class="navbar-brand font-monospace" href="index.php" style="font-size: 35px; width : 250px">The Wild Vet</a>
             <div class = "example">
-            <div class="col-md-12 d-flex d-xl-flex justify-content-center align-items-center justify-content-xl-center align-items-xl-center" style = 'width :100px; padding-left : 25px; '>
-                <img src="assets\img\logo.png" style="height: 80px; padding-left : 20px;">
-            </div>
+                <div class="col-md-12 d-flex d-xl-flex justify-content-center align-items-center justify-content-xl-center align-items-xl-center" style = 'width :100px; '>
+                    <img src="assets\img\logo.png" style="height: 80px; padding-left : 45px;">
+                </div>
             </div>
         </div>
     </nav>
+    <?php 
+        if(isset($_SESSION['error']))
+        {
+            echo '<h2 class = "bg-danger text-white text-align-center">'.$_SESSION['error'].'</h2>';
+            unset($_SESSION['error']);
+        } 
+        
+    ?>
     <h4 class="font-monospace text-center d-flex d-lg-flex justify-content-center align-items-center justify-content-lg-center align-items-lg-center"
-        style="height: 133px;font-weight: bold;opacity: 0.85;font-size: 28px;">Online Check-In Management System
+        style="height: 133px;font-weight: bold;opacity: 0.85;font-size: 28px;">Username/Password Recovery
     </h4>
+    
+    <div class="container" style="height : 570px">
         <div class="row d-md-flex d-lg-flex d-xl-flex justify-content-md-center align-items-md-center justify-content-lg-center align-items-lg-center justify-content-xl-center align-items-xl-center"
-            style="height : 285px">
+            style="height : 260px">
             <div class="col-md-6 col-lg-4 item" style="height: 184px;">
                 <div class="container">
                     <div class="row">
                         <div
                             class="col-md-12 d-flex d-xl-flex justify-content-center align-items-center justify-content-xl-center align-items-xl-center">
-                            <img src="assets/img/receptionist.png" style="height: 60px;"></div>
+                            <img src="assets/img/receptionist.png" style="height: 60px;">
+                        </div>
                     </div>
                     <div class="row">
                         <div class="col-md-12" style="height: 70px;">
@@ -104,23 +108,29 @@
                                 style="color: rgb(93,72,96);height: 60px;">Receptionist</h2>
                         </div>
                     </div>
+                    <form method = "POST" action = "process.php">
                     <div class="row">
-                        <div
-                            class="col-md-12 d-flex d-lg-flex d-xl-flex justify-content-center align-items-center justify-content-lg-center align-items-lg-center justify-content-xl-center align-items-xl-center">
-                            <a class="btn btn-primary" role="button" style="border-radius: 30px;"
-                                href="receptionistLogin.php">Login</a></div>
+                        <div class="col-md-12 d-flex d-lg-flex d-xl-flex justify-content-center align-items-center justify-content-lg-center align-items-lg-center justify-content-xl-center align-items-xl-center">
+                            <div class="col d-flex d-lg-flex justify-content-center align-items-center justify-content-lg-center align-items-lg-center"style="height: 50px; padding-right:10px;">
+                            <input class="form-control-sm d-lg-flex justify-content-lg-center align-items-lg-center" type="email" placeholder="Enter your Email" style="border-radius: 13px;width: 200px;border-width: 1px;border-color: rgb(231,173,169);"
+                            name="rEmail" required=""></div>
+                            <button class="btn btn-primary btn-sm font-monospace d-lg-flex d-flex justify-content-center align-items-center" type="submit"
+                                style="border-radius: 30px;background: rgb(157,126,207);height: 31px;width: 100px;">GO</button>
+                        </div>
                     </div>
+                    </form>
                 </div>
             </div>
         </div>
         <div class="row d-md-flex d-lg-flex d-xl-flex justify-content-md-center align-items-md-center justify-content-lg-center align-items-lg-center justify-content-xl-center align-items-xl-center"
-            style="height : 285px">
+            style="height : 260px">
             <div class="col-md-6 col-lg-4 item" style="height: 184px;">
                 <div class="container">
                     <div class="row">
                         <div
                             class="col-md-12 d-flex d-xl-flex justify-content-center align-items-center justify-content-xl-center align-items-xl-center">
-                            <img src="assets/img/doctor.png" style="height: 60px;"></div>
+                            <img src="assets/img/doctor.png" style="height: 60px;">
+                        </div>
                     </div>
                     <div class="row">
                         <div class="col-md-12" style="height: 70px;">
@@ -128,29 +138,35 @@
                                 style="color: rgb(93,72,96);height: 60px;">Doctor</h2>
                         </div>
                     </div>
+                    <form method = "POST" action = "process.php">
                     <div class="row">
-                        <div
-                            class="col-md-12 d-flex d-lg-flex d-xl-flex justify-content-center align-items-center justify-content-lg-center align-items-lg-center justify-content-xl-center align-items-xl-center">
-                            <a class="btn btn-primary" role="button" style="border-radius: 30px;"
-                                href="doctorLogin.php">Login</a></div>
+                        <div class="col-md-12 d-flex d-lg-flex d-xl-flex justify-content-center align-items-center justify-content-lg-center align-items-lg-center justify-content-xl-center align-items-xl-center">
+                            <div class="col d-flex d-lg-flex justify-content-center align-items-center justify-content-lg-center align-items-lg-center"style="height: 50px; padding-right:10px;">
+                            <input class="form-control-sm d-lg-flex justify-content-lg-center align-items-lg-center" type="email" placeholder="Enter your Email" style="border-radius: 13px;width: 200px;border-width: 1px;border-color: rgb(231,173,169);"
+                            name="dEmail" required="" autocomplete="on"></div>
+                            <button class="btn btn-primary btn-sm font-monospace d-lg-flex d-flex justify-content-center align-items-center" type="submit"  name="" 
+                                style="border-radius: 30px;background: rgb(157,126,207);height: 31px;width: 100px;">Go</button>
+                        </div>
                     </div>
+                    </form>
                 </div>
             </div>
         </div>
-
     </div>
-    <footer class="footer-basic" style="height: 150px; padding-top:50px;">
-        
-        <ul class="list-inline">
-            <li class="list-inline-item"><a href="index.php">Home</a></li>
-            <li class="list-inline-item"><a href="#">User Manual</a></li>
-            <li class="list-inline-item"><a href="#">About</a></li>
-            <li class="list-inline-item"><a href="#">Terms & Conditions</a></li>
-            <li class="list-inline-item"><a href="#">Privacy Policy</a></li>
-        </ul>
-        <p class="copyright" style = "font-size : 18px; font-weight: bold; padding-top:20px;">The Wild Vet Check-In System © 2021</p>
-    </footer>
-    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+    </form>
+        <footer class="footer-basic" style="height: 150px; padding-top:50px;">
+
+            <ul class="list-inline">
+                <li class="list-inline-item"><a href="index.php">Home</a></li>
+                <li class="list-inline-item"><a href="#">User Manual</a></li>
+                <li class="list-inline-item"><a href="#">About</a></li>
+                <li class="list-inline-item"><a href="#">Terms & Conditions</a></li>
+                <li class="list-inline-item"><a href="#">Privacy Policy</a></li>
+            </ul>
+            <p class="copyright" style="font-size : 18px; font-weight: bold; padding-top:20px;">The Wild Vet Check-In
+                System © 2021</p>
+        </footer>
+        <script src="assets/bootstrap/js/bootstrap.min.js"></script>
 </body>
 
 </html>

@@ -65,58 +65,75 @@
         <section class="features-boxed">
             <div class="container">
                 <div class="intro">
-                    <h2 class="text-center">Our Services</h2>
+                    <h2 class="text-center">Contact Us</h2>
                     <p class="text-center" style="color: rgb(125, 130, 133);">We provide the following services to different kids of pets.</p>
                 </div>
-                <div class="row justify-content-center features">
+                <div class="row d-sm-flex d-md-flex justify-content-sm-center justify-content-md-center features">
                     <div class="col-sm-6 col-md-5 col-lg-4 item">
-                        <div class="box" style="height: 342px;">
-                            <picture><img src="assets/img/1262694-200.png" style="height: 114px;"></picture>
-                            <h3 class="name">Health Check-up</h3>
-                            <p class="description" style="height: 88px;">We assess all aspects of your pet including its weight, behavior, appetite, parasite prevention and vaccination status.</p>
-                        </div>
+                        <picture><img src="assets/img/logo.png" style="height: 274px;"></picture>
+                        <h5 class="display-5">THE WILD VET</h5>
+                        <h6 class="display-6 d-xl-flex justify-content-xl-center align-items-xl-center" style="font-size: 20px;">Exotic &amp; Small Animal Veterinarian</h6>
                     </div>
                     <div class="col-sm-6 col-md-5 col-lg-4 item">
-                        <div class="box" style="height: 342px;"><i class="fa fa-clock-o icon"></i>
-                            <h3 class="name">Nutrition Advice</h3>
-                            <p class="description">You can ask us about suitable diet options for your pet, where we take into account the pets age, nutrition requirements and medical recommendations.</p>
+                        <h1 class="d-flex justify-content-center align-items-center" style="height: 130px;text-align: center;">Contact</h1>
+                        <div class="row">
+                            <div class="col"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" style="width: 20px;height: 20px;">
+                                    <path fill-rule="evenodd" clip-rule="evenodd" d="M3.00977 5.83789C3.00977 5.28561 3.45748 4.83789 4.00977 4.83789H20C20.5523 4.83789 21 5.28561 21 5.83789V17.1621C21 18.2667 20.1046 19.1621 19 19.1621H5C3.89543 19.1621 3 18.2667 3 17.1621V6.16211C3 6.11449 3.00333 6.06765 3.00977 6.0218V5.83789ZM5 8.06165V17.1621H19V8.06199L14.1215 12.9405C12.9499 14.1121 11.0504 14.1121 9.87885 12.9405L5 8.06165ZM6.57232 6.80554H17.428L12.7073 11.5263C12.3168 11.9168 11.6836 11.9168 11.2931 11.5263L6.57232 6.80554Z" fill="currentColor"></path>
+                                </svg></div>
+                            <div class="col" style="width: 244px;padding-right : 100px;">
+                                <p style="width: 220px;">reception@thewildvet.com.au</p>
+                            </div>
                         </div>
-                    </div>
-                    <div class="col-sm-6 col-md-5 col-lg-4 offset-xl-0 item">
-                        <div class="box" style="height: 342px;">
-                            <picture><img src="assets/img/istockphoto-1136809021-612x612.jpg" style="height: 114px;"></picture>
-                            <h3 class="name">Microchipping</h3>
-                            <p class="description">Microchipping enables to track your pet in case they are lost. Ensure they are microchipped early.</p>
-                        </div>
-                    </div>
-                    <div class="col-sm-6 col-md-5 col-lg-4 item">
-                        <div class="box" style="height: 342px;">
-                            <picture><img src="assets/img/875858-200.png" style="height: 116px;"></picture>
-                            <h3 class="name">New puppies/kittens</h3>
-                            <p class="description">Are you thinking&nbsp; about getting a new pet? If so do not worry, Wild Vet Sydney will take care of your new pet and answer any questions that you may have.</p>
+                        <div class="row">
+                            <div class="col"><i class="fa fa-phone" style="width: 20px;height: 20px;"></i></div>
+                            <div class="col" style="width: 244px;padding-right : 100px;">
+                                <p style="width: 220px;">1300 WILD VET (1300 9453 83)</p>
+                            </div>
                         </div>
                     </div>
                     <div class="col-sm-6 col-md-5 col-lg-4 item">
-                        <div class="box">
-                            <picture><img src="assets/img/1161813.png" style="height: 116px;"></picture>
-                            <h3 class="name">Surgery</h3>
-                            <p class="description" style="height: 110px;">Our in-house vets are experienced with all routine soft tissue surgeries (and many non-routine), dentistry, de-sexing, microchipping, etc.&nbsp;<br></p>
+                        <h1 class="d-flex justify-content-center align-items-center" style="height: 130px;text-align: center;">Opening Hours</h1>
+                        <div class="row">
+                            <div class="col">
+                                <p>Mon-Fri</p>
+                            </div>
+                            <div class="col">
+                                <p>08:00 am</p>
+                            </div>
+                            <div class="col">
+                                <p>07:00 pm</p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <p>Sat</p>
+                            </div>
+                            <div class="col">
+                                <p>09:00 am<br></p>
+                            </div>
+                            <div class="col">
+                                <p>05:00 pm<br></p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <p>Sun</p>
+                            </div>
+                            <div class="col">
+                                <p>09:00 am<br></p>
+                            </div>
+                            <div class="col">
+                                <p>12:00 pm<br></p>
+                            </div>
                         </div>
                     </div>
-                    <div class="col-sm-6 col-md-5 col-lg-4 item">
-                        <div class="box" style="height: 342px;">
-                            <picture><img src="assets/img/download%20(1).png" style="height: 116px;"></picture>
-                            <h3 class="name">Lab Testing</h3>
-                            <p class="description">Our in-house services are able to perform blood, urine and faecal tests, assess organ function, and flag any markers for significant disease on the spot.<br></p>
-                        </div>
-                    </div>
-                </div>
-                <div class="row" style="height: 150px;">
-                    <div class="col d-flex d-xl-flex justify-content-center justify-content-xl-center align-items-xl-center"><a class="btn btn-primary d-xl-flex justify-content-xl-center align-items-xl-center" role="button" style="border-radius: 30px;" href="clientCheckin.html">Home</a></div>
                 </div>
             </div>
         </section>
     </section>
+    <div class="row" >
+        <div class="col d-flex d-xl-flex justify-content-center justify-content-xl-center align-items-xl-center"><a class="btn btn-primary" role="button" style="margin-top :20px;border-radius: 30px;" href="clientCheckin.php">Home</a></div>
+    </div>
     <script src="assets/bootstrap/js/bootstrap.min.js"></script>
 </body>
 

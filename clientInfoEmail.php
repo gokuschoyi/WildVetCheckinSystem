@@ -2,12 +2,24 @@
     $_SESSION["entEmail"] = $_POST['enteredEmail'];
     $_SESSION["idEmail"] = $_SESSION["entEmail"];
     
-    echo $_SESSION["entEmail"];
+    //echo $_SESSION["entEmail"];
 ?>
 
 <!DOCTYPE html>
 <html lang="en">
 <head></head>
+<style>
+.navbar-nav{
+border-radius: 15px;
+}
+.nav-link{
+    background-color:#f2f9ff;
+    border-radius:15px;
+}
+.nav-item{
+    text-align: center;
+}
+</style>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
     <title>Client Landing page</title>
@@ -66,14 +78,14 @@
         <link rel="stylesheet" href="assets/css/styles.css">
     </head>
     <body style="background: url(&quot;assets/img/Home%20BG.jpg&quot;) top;">
-        <nav class="navbar navbar-light navbar-expand-md navigation-clean" style="height: 190px;">
+        <nav class="navbar navbar-light navbar-expand-md navigation-clean" style="height: 190px; background :transparent ;">
             <div class="container"><a class="navbar-brand font-monospace" href="#" style="font-size: 35px;">Wild Vet Check-In</a><button data-bs-toggle="collapse" class="navbar-toggler" data-bs-target="#navcol-1"><span class="visually-hidden">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
                 <div class="collapse navbar-collapse" id="navcol-1">
-                    <ul class="navbar-nav ms-auto">
-                        <li class="nav-item"><a class="nav-link font-monospace" href="services.html">Services</a></li>
+                    <ul class="navbar-nav ms-auto" style = "background:#8cc1bf;">
+                        <li class="nav-item"><a class="nav-link font-monospace" href="services.php">Services</a></li>
                         <li class="nav-item"></li>
-                        <li class="nav-item"><a class="nav-link font-monospace" href="contactUs.html">Contact Us</a></li>
-                        <li class="nav-item"><a class="nav-link" href="services.html">F.A.Q</a></li>
+                        <li class="nav-item"><a class="nav-link font-monospace" href="contactUs.php">Contact Us</a></li>
+                        <li class="nav-item"><a class="nav-link" href="services.php">F.A.Q</a></li>
                     </ul>
                 </div>
             </div>
@@ -139,15 +151,17 @@
         }
             ?>
         <div class="container">
-            <footer class="footer-basic" style="background: transparent;">
-            <div class="d-xl-flex justify-content-xl-center align-items-xl-center social"><a class="d-xl-flex justify-content-xl-center align-items-xl-center" href="https://www.instagram.com/thewildvetclinic/"><i class="icon ion-social-instagram "></i></a><a href="https://www.facebook.com/thewildvetclinic/"><i class="icon ion-social-facebook"></i></a></div>
-                <ul class="list-inline">
-                    <li class="list-inline-item"><a href="services.html">Services</a></li>
-                    <li class="list-inline-item"><a href="contactUs.html">Contact-Us</a></li>
-                    <li class="list-inline-item"><a href="services.html">F.A.Q</a></li>
-                </ul>
-                <p class="copyright" style="color: rgb(40,33,33);">The Wild Vet© 2021</p>
-            </footer>
-            <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+        <footer class="footer-basic" style="background:#f2f9ff; opacity:0.80;padding-top:20px ">
+            <div class="d-xl-flex justify-content-xl-center align-items-xl-center social"><a class="d-xl-flex justify-content-xl-center align-items-xl-center" href="https://www.instagram.com/thewildvetclinic/"><i class="icon ion-social-instagram"></i></a><a href="https://www.facebook.com/thewildvetclinic/"><i class="icon ion-social-facebook"></i></a></div>
+            <ul class="list-inline">
+                <li class="list-inline-item"><a href="services.php">Services</a></li>
+                <li class="list-inline-item"><a href="contactUs.php">Contact-Us</a></li>
+                <li class="list-inline-item"><a href="services.php">F.A.Q</a></li>
+            </ul>
+            <p class="copyright" style="font-size : 18px; font-weight: bold; color: rgb(40,33,33);">The Wild Vet© 2021</p>
+        </footer>
+    </div>
+        <script src="assets/bootstrap/js/bootstrap.min.js"></script>
     </body>
 </html>
+<!-- <div class="container"style = "background:#8cc1bf;"> -->font-size : 18px; font-weight: bold;

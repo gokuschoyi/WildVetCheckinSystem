@@ -5,7 +5,7 @@ error_reporting(0);
 ob_clean(); //Clear any previous output
 ob_start(); //Start new output buffer
 include_once('vendor/tecnickcom/tcpdf/tcpdf.php');
-echo $_SESSION["idEmail"];
+//echo $_SESSION["idEmail"];
 if (isset($_POST['submit'])){
     $reason = $_POST['reason'];
     $petName = $_POST['petName'];
@@ -402,21 +402,31 @@ if (isset($_POST['submit'])){
     <link rel="stylesheet" href="assets/css/Navigation-Clean.css">
     <link rel="stylesheet" href="assets/css/styles.css">
 </head>
-
+<style>
+    .navbar-nav{
+    border-radius: 15px;
+}
+.nav-item{
+    text-align: center;
+}
+.nav-link{
+    background-color:#f2f9ff;
+    border-radius:15px;
+}
+</style>
 <body>
-    <nav class="navbar navbar-light navbar-expand-md d-flex justify-content-center align-items-center navigation-clean"
-        style="height: 180px;">
+    <nav class="navbar navbar-light navbar-expand-md d-flex justify-content-center align-items-center navigation-clean"style="background :transparent;height: 180px;">
         <div class="container"><a
                 class="navbar-brand font-monospace d-lg-flex justify-content-lg-center align-items-lg-center" href="#"
                 style="font-size: 35px;">Wild Vet Check-In</a><button data-bs-toggle="collapse" class="navbar-toggler"
                 data-bs-target="#navcol-1"><span class="visually-hidden">Toggle navigation</span><span
                     class="navbar-toggler-icon"></span></button>
             <div class="collapse navbar-collapse" id="navcol-1">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"><a class="nav-link font-monospace" href="services.html">Services</a></li>
+                <ul class="navbar-nav ms-auto" style = "background:#8cc1bf;">
+                    <li class="nav-item"><a class="nav-link font-monospace" href="services.php">Services</a></li>
                     <li class="nav-item"></li>
-                    <li class="nav-item"><a class="nav-link font-monospace" href="contactUs.html">Contact Us</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#">F.A.Q</a></li>
+                    <li class="nav-item"><a class="nav-link font-monospace" href="contactUs.php">Contact Us</a></li>
+                    <li class="nav-item"><a class="nav-link" href="services.php">F.A.Q</a></li>
                 </ul>
             </div>
         </div>
@@ -565,8 +575,7 @@ if (isset($_POST['submit'])){
                     style="height: 34px;"><button id="petDetails"
                         class="btn btn-primary btn-sm font-monospace d-flex justify-content-center align-items-center"
                         type="submit" form="petDetails" name="submit" value="Submit"
-                        style="border-radius: 30px;background: rgb(157,126,207);height: 35px;width: 148px;">Submit
-                        Details</button></div>
+                        style="border-radius: 30px;background: rgb(157,126,207);height: 35px;width: 148px; font-weight: bold;">SBMIT DETAILS</button></div>
             </div>
             <div class="row">
                 <div class="col d-flex d-lg-flex justify-content-center align-items-center justify-content-lg-center align-items-lg-center"
@@ -589,7 +598,7 @@ if (isset($_POST['submit'])){
                 <li class="list-inline-item"><a href="contactUs.html">Contact Us</a></li>
                 <li class="list-inline-item"><a href="services.html">F.A.Q</a></li>
             </ul>
-            <p class="copyright" style="color: rgb(40,33,33);">The Wild Vet© 2021</p>
+            <p class="copyright" style="font-size : 18px; font-weight: bold; color: rgb(40,33,33);">The Wild Vet© 2021</p>
         </footer>
     </div>
     <script src="assets/bootstrap/js/bootstrap.min.js"></script>

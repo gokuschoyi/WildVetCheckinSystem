@@ -1,9 +1,5 @@
 <?php
 session_start();
-if (isset($_POST['rLogin'])){
-    header("Location: rDashboard.php");
-
-}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -65,16 +61,39 @@ if (isset($_POST['rLogin'])){
     <link rel="stylesheet" href="assets/css/Navigation-Clean.css">
     <link rel="stylesheet" href="assets/css/styles.css">
 </head>
-
+<style>
+@media screen and (max-width: 600px) {
+    div.example {
+    display: none;
+    }
+}
+.navbar-collapse{
+    z-index: 1000;
+    
+}
+.navbar-nav{
+    border-radius: 10px;
+}
+</style>
 <body style="background: url(&quot;assets/img/6677.jpg&quot;) center no-repeat;">
-    <nav class="navbar navbar-light navbar-expand-md navigation-clean" style="height: 150px;background: #f8ddf5;">
-        <div class="container"><a class="navbar-brand font-monospace" href="index.php" style="font-size: 35px;">The Wild Vet</a><button data-bs-toggle="collapse" class="navbar-toggler" data-bs-target="#navcol-1"><span class="visually-hidden">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
+    <nav class="navbar navbar-light navbar-expand-md navigation-clean" style="height: 150px;background: #c292fb;">
+        <div class="container"><a class="navbar-brand font-monospace" href="index.php" style="font-size: 35px;">The Wild Vet</a>
+            <button data-bs-toggle="collapse" class="navbar-toggler" data-bs-target="#navcol-1">
+                <span class="visually-hidden">Toggle navigation</span><span class="navbar-toggler-icon"></span>
+            </button>
             <div class="collapse navbar-collapse" id="navcol-1">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"><a class="nav-link font-monospace" href="clientCheckin.php">Check-In Page</a></li>
-                    <li class="nav-item"><a class="nav-link font-monospace" href="#">About Us</a></li>
-                    <li class="nav-item"><a class="nav-link font-monospace" href="contactUs.html">Contact</a></li>
+                <ul class="navbar-nav ms-auto" style = "background:#c292fb;">
+                    <li class="nav-item"><a class="nav-link font-monospace" href="index.php">Home</a></li>
+                    <li class="nav-item"><a class="nav-link font-monospace" href="#">Services</a></li>
+                    <li class="nav-item"><a class="nav-link font-monospace" href="#">About</a></li>
+                    <li class="nav-item"><a class="nav-link font-monospace" href="#">Terms & Services</a></li>
+                    <li class="nav-item"><a class="nav-link font-monospace" href="#">Privacy Policy</a></li>
                 </ul>
+            </div>
+            <div class = "example">
+            <div class="col-md-12 d-flex d-xl-flex justify-content-center align-items-center justify-content-xl-center align-items-xl-center" style = 'width :100px; padding-left : 45px;'>
+                <img src="assets\img\logo.png" style="height: 80px;">
+            </div>
             </div>
         </div>
     </nav>
@@ -85,27 +104,26 @@ if (isset($_POST['rLogin'])){
             unset($_SESSION['fail']);
         } 
     ?>
-    <h4 class="font-monospace text-center d-flex d-lg-flex justify-content-center align-items-center justify-content-lg-center align-items-lg-center" style="height: 133px;font-weight: bold;opacity: 0.85;font-size: 28.376px;">Receptionist Login</h4>
-    <div class="d-flex d-lg-flex d-xl-flex justify-content-center align-items-start justify-content-sm-center align-items-sm-center justify-content-md-center align-items-md-center justify-content-lg-center align-items-lg-center justify-content-xl-center align-items-xl-center" style="height: 580px;">
-    <form method="post" action = "verifyReceptionist.php" 
-        style="background: transparent;border-radius: 26px;width: 240px;">
-        <h2 class="visually-hidden">Login Form</h2>
-        <div class="d-flex d-lg-flex d-xl-flex justify-content-center align-items-center justify-content-sm-center align-items-sm-center justify-content-md-center align-items-md-center justify-content-lg-center align-items-lg-center justify-content-xl-center align-items-xl-center illustration" style="height: 190px;">
-            <img class="d-flex justify-content-center align-items-center" src="assets\img\password.png" style="width: 80px;" /></div>
-        <div class="mb-3"><input type="text" class="form-control" name="username" placeholder="Username" /></div>
-        <div class="mb-3"><input type="password" class="form-control" name="password" placeholder="Password" /></div>
-        <div class="d-xl-flex justify-content-xl-center align-items-xl-center mb-3">
-            <button class="btn btn-primary d-block w-100" type="submit" name = "rLogin">Log In</button></div>
-        <a class="d-flex d-sm-flex d-md-flex d-lg-flex d-xl-flex justify-content-center align-items-center justify-content-sm-center align-items-sm-center justify-content-md-center align-items-md-center justify-content-lg-center align-items-lg-center justify-content-xl-center align-items-xl-center forgot" href="#">Forgot your email or password?</a>
-    </form>
-</div>
-    <footer class="footer-basic" style="height: 200px;">
-        <div class="social" style="height: 60px;"><a href="#"><i class="icon ion-social-instagram"></i></a><a href="#"><i class="icon ion-social-snapchat"></i></a><a href="#"><i class="icon ion-social-twitter"></i></a><a href="#"><i class="icon ion-social-facebook"></i></a></div>
+    <h4 class="font-monospace text-center d-flex d-lg-flex justify-content-center align-items-center justify-content-lg-center align-items-lg-center" style="height: 133px;font-weight: bold;opacity: 0.85;font-size: 28px;">Receptionist Login</h4>
+    <div class="d-flex d-lg-flex d-xl-flex justify-content-center align-items-start justify-content-sm-center align-items-sm-center justify-content-md-center align-items-md-center justify-content-lg-center align-items-lg-center justify-content-xl-center align-items-xl-center" style="height: 570px;">
+        <form method="post" action = "verifyReceptionist.php" 
+            style="background: transparent;border-radius: 26px;width: 240px; height:460px;">
+            <h2 class="visually-hidden">Login Form</h2>
+            <div class="d-flex d-lg-flex d-xl-flex justify-content-center align-items-center justify-content-sm-center align-items-sm-center justify-content-md-center align-items-md-center justify-content-lg-center align-items-lg-center justify-content-xl-center align-items-xl-center illustration" style="height: 190px;">
+                <img class="d-flex justify-content-center align-items-center" src="assets\img\password.png" style="width: 80px;" /></div>
+            <div class="mb-3"><input type="text" class="form-control" name="username" placeholder="Username" /></div>
+            <div class="mb-3"><input type="password" class="form-control" name="password" placeholder="Password" /></div>
+            <div class="d-xl-flex justify-content-xl-center align-items-xl-center mb-3">
+                <button class="btn btn-primary d-block w-100" type="submit" name = "rLogin">Log In</button></div>
+            <a class="d-flex d-sm-flex d-md-flex d-lg-flex d-xl-flex justify-content-center align-items-center justify-content-sm-center align-items-sm-center justify-content-md-center align-items-md-center justify-content-lg-center align-items-lg-center justify-content-xl-center align-items-xl-center forgot" href="recoverySelection.php">Forgot password?</a>
+        </form>
+    </div>
+    <footer class="footer-basic" style="height: 150px;">
         <ul class="list-inline">
-            <li class="list-inline-item"><a href="#">Home</a></li>
-            <li class="list-inline-item"><a href="#">Services</a></li>
+            <li class="list-inline-item"><a href="index.php">Home</a></li>
+            <li class="list-inline-item"><a href="#">Users Manual</a></li>
             <li class="list-inline-item"><a href="#">About</a></li>
-            <li class="list-inline-item"><a href="#">Terms</a></li>
+            <li class="list-inline-item"><a href="#">Terms & Conditions</a></li>
             <li class="list-inline-item"><a href="#">Privacy Policy</a></li>
         </ul>
         <p class="copyright">The Wild Vet © 2021</p>

@@ -1,7 +1,8 @@
-<?php session_start();?>
+<?php 
+include('process.php');                                      
+?>
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
@@ -48,9 +49,9 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Andada&amp;display=swap">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Andika&amp;display=swap">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Averia+Serif+Libre&amp;display=swap">
-    <link rel="stylesheet"
-        href="https://fonts.googleapis.com/css?family=Courier+Prime:400,400i,700,700i&amp;subset=latin-ext&amp;display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Courier+Prime:400,400i,700,700i&amp;subset=latin-ext&amp;display=swap">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=GFS+Neohellenic&amp;display=swap">
+    <link rel="stylesheet" href="assets/fonts/font-awesome.min.css">
     <link rel="stylesheet" href="assets/fonts/ionicons.min.css">
     <link rel="stylesheet" href="assets/css/Features-Blue.css">
     <link rel="stylesheet" href="assets/css/Features-Boxed.css">
@@ -60,75 +61,45 @@
     <link rel="stylesheet" href="assets/css/Navigation-Clean.css">
     <link rel="stylesheet" href="assets/css/styles.css">
 </head>
-<style>
-@media screen and (max-width: 600px) {
-    div.example {
-    display: none;
-    }
-}
-.navbar-collapse{
-    z-index: 1000;
-    
-}
-.navbar-nav{
-    border-radius: 10px;
-}
-</style>
-<body style="background: url(&quot;assets/img/6677.jpg&quot;) center no-repeat;">
-    <nav class="navbar navbar-light navbar-expand-md navigation-clean" style="height: 150px;background: #c292fb;">
-        <div class="container"><a class="navbar-brand font-monospace" href="index.php" style="font-size: 35px;">The Wild Vet</a>
-            <button data-bs-toggle="collapse" class="navbar-toggler" data-bs-target="#navcol-1">
-                <span class="visually-hidden">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
+
+<body>
+    <nav class="navbar navbar-light navbar-expand-md d-flex justify-content-center align-items-center navigation-clean" style="height: 180px;">
+        <div class="container"><a class="navbar-brand font-monospace d-lg-flex justify-content-lg-center align-items-lg-center" href="clientCheckin.php" style="font-size: 35px;">Wild Vet</a><button data-bs-toggle="collapse" class="navbar-toggler" data-bs-target="#navcol-1"><span class="visually-hidden">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
             <div class="collapse navbar-collapse" id="navcol-1">
-            <ul class="navbar-nav ms-auto" style = "background:#c292fb;">
-                    <li class="nav-item"><a class="nav-link font-monospace" href="index.php">Home</a></li>
-                    <li class="nav-item"><a class="nav-link font-monospace" href="#">Services</a></li>
-                    <li class="nav-item"><a class="nav-link font-monospace" href="#">About</a></li>
-                    <li class="nav-item"><a class="nav-link font-monospace" href="#">Terms & Services</a></li>
-                    <li class="nav-item"><a class="nav-link font-monospace" href="#">Privacy Policy</a></li>
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link font-monospace" href="services.html">Services</a></li>
+                    <li class="nav-item"></li>
+                    <li class="nav-item"><a class="nav-link font-monospace" href="contactUs.html">Contact Us</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">F.A.Q</a></li>
                 </ul>
-            </div>
-            <div class = "example">
-            <div class="col-md-12 d-flex d-xl-flex justify-content-center align-items-center justify-content-xl-center align-items-xl-center" style = 'width :100px; padding-left : 45px;'>
-                <img src="assets\img\logo.png" style="height: 80px;">
-            </div>
             </div>
         </div>
     </nav>
-    <?php 
-        if(isset($_SESSION['fail']))
-        {
-            echo '<h2 class = "bg-danger text-white text-align-center">'.$_SESSION['fail'].'</h2>';
-            unset($_SESSION['fail']);
-        } 
-    ?>
-    <h4 class="font-monospace text-center d-flex d-lg-flex justify-content-center align-items-center justify-content-lg-center align-items-lg-center"
-        style="height: 133px;font-weight: bold;opacity: 0.85;font-size: 28px;">Doctor Login</h4>
-    <div class="d-flex d-lg-flex d-xl-flex justify-content-center align-items-start justify-content-sm-center align-items-sm-center justify-content-md-center align-items-md-center justify-content-lg-center align-items-lg-center justify-content-xl-center align-items-xl-center" style="height: 570px;">
-        <form method="POST" action="verifyDocLogin.php"
-            style="background: transparent;border-radius: 26px;width: 240px;">
-            <h2 class="visually-hidden">Login Form</h2>
-            <div class="d-flex d-lg-flex d-xl-flex justify-content-center align-items-center justify-content-sm-center align-items-sm-center justify-content-md-center align-items-md-center justify-content-lg-center align-items-lg-center justify-content-xl-center align-items-xl-center illustration" style="height: 190px;">
-                <img src="assets/img/password.png" style="width: 80px;"></div>
-            <div class="mb-3"><input class="form-control" type="email" name="email" placeholder="Email"></div>
-            <div class="mb-3"><input class="form-control" type="password" name="password" placeholder="Password"></div>
-            <div class="d-xl-flex justify-content-xl-center align-items-xl-center mb-3">
-                <button class="btn btn-primary d-block w-100" name="logindoc" type="submit">Log In</button></div>
-                <a class="d-xl-flex justify-content-xl-center align-items-xl-center" href="recoverySelection.php">Forgot Password</a>
-            <p class="d-xl-flex justify-content-xl-center align-items-xl-center forgot" style = "padding-top : 20px;">Haven't registered yet? </p>
-            <a class="d-xl-flex justify-content-xl-center align-items-xl-center" href="doctorRegister.php">Register here</a>
-        </form>
+    <div class="container d-flex d-xl-flex justify-content-center align-items-center justify-content-xl-center align-items-xl-center" style = "padding-bottom:10px"><img src="assets/img/check.png" style="height: 130px; ;"></div>
+        <div class="row" style = "padding-top:50px">
+            <div class="col d-flex d-xl-flex justify-content-center align-items-center justify-content-xl-center align-items-xl-center">
+                <p class="font-monospace text-center d-flex d-md-flex justify-content-center align-items-center justify-content-md-center align-items-md-center" style="font-size: 20px;color: rgb(109,134,163);width: 550px;">We sent an email to <?php echo $_GET['email'] ?> to help you recover your account. </p>
+            </div>
+        </div>
+        <div class="row" style = "padding-top:30px">
+            <div class="col d-flex d-xl-flex justify-content-center align-items-center justify-content-xl-center align-items-xl-center">
+                <p class="font-monospace text-center d-flex d-md-flex justify-content-center align-items-center justify-content-md-center align-items-md-center" style="font-size: 20px;color: rgb(109,134,163);width: 550px;">Please login into your email account and click on the link we sent to reset your password</p></p>
+            </div>
+        </div>
     </div>
-    <footer class="footer-basic" style="height: 150px;">
-        <ul class="list-inline">
-            <li class="list-inline-item"><a href="index.php">Home</a></li>
-            <li class="list-inline-item"><a href="#">User Manual</a></li>
-            <li class="list-inline-item"><a href="#">About</a></li>
-            <li class="list-inline-item"><a href="#">Terms & Conditions</a></li>
-            <li class="list-inline-item"><a href="#">Privacy Policy</a></li>
-        </ul>
-        <p class="copyright" style = "font-size : 18px; font-weight: bold; padding-top:20px;">The Wild Vet © 2021</p>
-    </footer>
+    <form action="receptionistLogin.php" method="POST" class ="d-flex d-md-flex justify-content-center align-items-center justify-content-md-center align-items-md-cente" style = "padding-top:70px; padding-bottom:100px;" >
+        <button type="submit" name="done" class=" btn btn-success">Login</button>
+    </form>
+    <div class="container">
+        <footer class="footer-basic" style="background: transparent;">
+            <ul class="list-inline">
+                <li class="list-inline-item"><a href="services.html">Services</a></li>
+                <li class="list-inline-item"><a href="contactUs.html">Contact-Us</a></li>
+                <li class="list-inline-item"><a href="services.html">F.A.Q</a></li>
+            </ul>
+            <p class="copyright" style="color: rgb(40,33,33);">The Wild Vet© 2021</p>
+        </footer>
+    </div>
     <script src="assets/bootstrap/js/bootstrap.min.js"></script>
 </body>
 
