@@ -62,7 +62,7 @@ include 'includes/navbar.php';
                 <li class="nav-item dropdown no-arrow">
                     <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown"
                         aria-haspopup="true" aria-expanded="false">
-                        <span class="mr-2 d-none d-lg-inline text-gray-600 small"><?php echo $_SESSION['rname'];?></span>
+                        <span class="mr-2 d-none d-lg-inline text-gray-600 small"><?php echo $_SESSION['username'];?></span>
                         <img class="img-profile rounded-circle" src="assets\img\receptionist.png">
                     </a>
                     <!-- Dropdown - User Information -->
@@ -101,8 +101,8 @@ include 'includes/navbar.php';
             <!-- Page Heading -->
             <div class="d-sm-flex align-items-center justify-content-between mb-4">
                 <h1 class="h3 mb-0 text-gray-800">ALL CLIENTS</h1>
-                <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
-                        class="fas fa-download fa-sm text-white-50"></i> Generate Report</a>
+                <a href="rDashboard.php" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
+                        class="fas fa-long-arrow-alt-left fa-sm text-white-50"></i> GO BACK</a>
             </div>
 
             <!-- Content Row -->
