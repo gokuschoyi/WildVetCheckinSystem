@@ -2,7 +2,9 @@
 include 'includes/header.php';
 include 'includes/navbar.php';
 ?>
+<style>
 
+</style>
 <!-- Content Wrapper -->
 <div id="content-wrapper" class="d-flex flex-column">
 
@@ -70,13 +72,13 @@ include 'includes/navbar.php';
                     <!-- Dropdown - User Information -->
                     <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
                         aria-labelledby="userDropdown">
-                        <a class="dropdown-item" href="#">
+                        <a class="dropdown-item" href="rProfile.php">
                             <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                             Profile
                         </a>
-                        <a class="dropdown-item" href="#">
+                        <a class="dropdown-item" href="addDoctor.php">
                             <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
-                            Settings
+                            Add/Edit Doctor
                         </a>
                         <a class="dropdown-item" href="#">
                             <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
@@ -209,10 +211,29 @@ include 'includes/navbar.php';
 
         </div>
         <!-- /.container-fluid -->
-
+        <!-- <div class="container-fluid">
+            <div id="chart-container">
+                <canvas id="graphCanvas"></canvas>
+            </div>
+        </div> -->
+    <div class="container-fluid" style = "width:auto; height:600px;">
+        <div class="card shadow mb-4">
+            <div class="card-header py-3">
+                <h6 class="m-0 font-weight-bold text-primary">Bar Chart</h6>
+            </div>
+            <div class="card-body">
+                <div class="chart-bar" >
+                    <canvas id="graphCanvas"></canvas>
+                </div>
+                <hr>
+                Clients on a particular Day.
+            </div>
+        </div>
+    </div>
+        
     </div>
     <!-- End of Main Content -->
-
+    <script type="text/javascript" src="app.js"></script>
     <?php 
     include 'includes/scripts.php';
     include 'includes/footer.php';

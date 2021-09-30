@@ -1,9 +1,12 @@
 <?php
 ob_start();
 session_start();
-$_SESSION['username'] = $_SESSION['rName'];
-if(!isset($_SESSION['rName'])){
-    header("Location: receptionistLogin.php");
+
+if(isset($_SESSION['rName'])){
+    $_SESSION['username'] = $_SESSION['rName'];
+}
+if(isset($_SESSION['rNameU'])){
+    $_SESSION['username'] = $_SESSION['rNameU'];
 }
 
 ?>

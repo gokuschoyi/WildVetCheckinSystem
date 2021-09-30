@@ -741,3 +741,405 @@ if($query1->num_rows > 0){
         }
     }
 }
+
+if(isset($_SESSION['rName'])){
+    $_SESSION['username'] = $_SESSION['rName'];
+    header("Location: rDashboard.php");
+}
+if(isset($_SESSION['updatedUserName'])){
+    $_SESSION['username'] = $_SESSION['updatedUserName'];
+    header("Location: rProfile.php");
+}
+
+<!-- <script>
+            $(document).ready(function () {
+                showGraph();
+            });
+            function showGraph()
+            {
+                {
+                    $.post("data1.php",
+                    function (data)
+                    {
+                        console.log(data);
+                        var date = [];
+                        var count = [];
+
+                        for (var i in data) {
+                            date.push(data[i].day);
+                            count.push(data[i].totalC);
+                        }
+
+                        var chartdata = {
+                            labels: TotalCount,
+                            datasets: [
+                                {
+                                    label: 'date',
+                                    backgroundColor: '#49e2ff',
+                                    borderColor: '#46d5f1',
+                                    hoverBackgroundColor: '#CCCCCC',
+                                    hoverBorderColor: '#666666',
+                                    data: totalC
+                                }
+                            ]
+                        };
+                        var ctx = document.getElementById("graphCanvas");
+                        //var graphTarget = $("#graphCanvas");
+                        var barGraph = new Chart(ctx, {
+                            type: 'bar',
+                            data: chartdata
+                        });
+                    });
+                }
+            }
+        </script> -->
+
+
+
+
+
+function makechart()
+	    {
+		    $.ajax({
+			url:"data1.php",
+			method:"POST",
+			data:{action:'fetch'},
+			dataType:"JSON",
+			success:function(data)
+			{
+				var total = [];
+				var color = [];
+
+				for(var count = 0; count < data.length; count++)
+				{
+
+					total.push(data[count].day);
+					color.push(data[count].totalC);
+				}
+            var ctx = document.getElementById("graphCanvas");
+            var graphCanvas = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: day,
+                    datasets: [{
+                        label: "Clients",
+                        backgroundColor: "#4e73df",
+                        hoverBackgroundColor: "#2e59d9",
+                        borderColor: "#4e73df",
+                        data: color
+                    }],
+                },
+                options: {
+                    maintainAspectRatio: false,
+                    layout: {
+                        padding: {
+                            left: 10,
+                            right: 25,
+                            top: 25,
+                            bottom: 0
+                        }
+                    },
+                    scales: {
+                        xAxes: [{
+                            time: {
+                                unit: 'month'
+                            },
+                            gridLines: {
+                                display: false,
+                                drawBorder: false
+                            },
+                            ticks: {
+                                maxTicksLimit: 6
+                            },
+                            maxBarThickness: 25,
+                        }],
+                        yAxes: [{
+                            ticks: {
+                                min: 0,
+                                max: 15000,
+                                maxTicksLimit: 5,
+                                padding: 10,
+                                // Include a dollar sign in the ticks
+                                callback: function(value, index, values) {
+                                    return '$' + number_format(value);
+                                }
+                            },
+                            gridLines: {
+                                color: "rgb(234, 236, 244)",
+                                zeroLineColor: "rgb(234, 236, 244)",
+                                drawBorder: false,
+                                borderDash: [2],
+                                zeroLineBorderDash: [2]
+                            }
+                        }],
+                    },
+                    legend: {
+                        display: false
+                    },
+                    tooltips: {
+                        titleMarginBottom: 10,
+                        titleFontColor: '#6e707e',
+                        titleFontSize: 14,
+                        backgroundColor: "rgb(255,255,255)",
+                        bodyFontColor: "#858796",
+                        borderColor: '#dddfeb',
+                        borderWidth: 1,
+                        xPadding: 15,
+                        yPadding: 15,
+                        displayColors: false,
+                        caretPadding: 10,
+                        callbacks: {
+                            label: function(tooltipItem, chart) {
+                                var datasetLabel = chart.datasets[tooltipItem.datasetIndex].label || '';
+                                return datasetLabel + ': $' + number_format(tooltipItem.yLabel);
+                            }
+                        }
+                    },
+                }
+            });
+        }
+    });
+}
+
+
+$(document).ready(function(){
+                $.ajax({
+                url:"data1.php",
+                method:"POST",
+                data:{action:'fetch'},
+                dataType:"JSON",
+                success:function(data)
+                {
+                    var language = [];
+                    var total = [];
+                    var color = [];
+
+                    for(var count = 0; count < data.length; count++)
+                    {
+                        language.push(data[count].language);
+                        total.push(data[count].day);
+                        color.push(data[count].totalC);
+                    }
+                
+                    var chart_data = {
+                            labels:total,
+                            datasets:[
+                                {
+                                    label:'Vote',
+                                    backgroundColor:color,
+                                    color:'#fff',
+                                    data:color
+                                }
+                            ]
+                        };
+                }
+            })
+        
+            var ctx = document.getElementById("graphCanvas");
+            var graphCanvas = new Chart(ctx, {
+                type: 'bar',
+                data: dataset,
+                options: {
+                    maintainAspectRatio: false,
+                    layout: {
+                        padding: {
+                            left: 10,
+                            right: 25,
+                            top: 25,
+                            bottom: 0
+                        }
+                    },
+                    scales: {
+                        xAxes: [{
+                            time: {
+                                unit: 'month'
+                            },
+                            gridLines: {
+                                display: false,
+                                drawBorder: false
+                            },
+                            ticks: {
+                                maxTicksLimit: 6
+                            },
+                            maxBarThickness: 25,
+                        }],
+                        yAxes: [{
+                            ticks: {
+                                min: 0,
+                                max: 15000,
+                                maxTicksLimit: 5,
+                                padding: 10,
+                                // Include a dollar sign in the ticks
+                                callback: function(value, index, values) {
+                                    return '$' + number_format(value);
+                                }
+                            },
+                            gridLines: {
+                                color: "rgb(234, 236, 244)",
+                                zeroLineColor: "rgb(234, 236, 244)",
+                                drawBorder: false,
+                                borderDash: [2],
+                                zeroLineBorderDash: [2]
+                            }
+                        }],
+                    },
+                    legend: {
+                        display: false
+                    },
+                    tooltips: {
+                        titleMarginBottom: 10,
+                        titleFontColor: '#6e707e',
+                        titleFontSize: 14,
+                        backgroundColor: "rgb(255,255,255)",
+                        bodyFontColor: "#858796",
+                        borderColor: '#dddfeb',
+                        borderWidth: 1,
+                        xPadding: 15,
+                        yPadding: 15,
+                        displayColors: false,
+                        caretPadding: 10,
+                        callbacks: {
+                            label: function(tooltipItem, chart) {
+                                var datasetLabel = chart.datasets[tooltipItem.datasetIndex].label || '';
+                                return datasetLabel + ': $' + number_format(tooltipItem.yLabel);
+                            }
+                        }
+                    },
+                }
+            });
+        });
+
+
+
+        <!-- $(document).ready(function() {
+    $.ajax({
+        url: "http://localhost/WildVetCheckin/data1.php",
+        method: "GET",
+        success: function(data) {
+            console.log(data);
+            var player = [];
+            var score = [];
+
+            for (var i in data) {
+                player.push(data[i].day);
+                score.push(data[i].totalC);
+            }
+
+            var chartdata = {
+                labels: player,
+                datasets: [{
+                    label: 'Clients',
+                    backgroundColor: '#4e73df',
+                    borderColor: 'rgba(200, 200, 200, 0.75)',
+                    hoverBackgroundColor: '#2e59d9',
+                    hoverBorderColor: 'rgba(200, 200, 200, 1)',
+                    data: score
+                }]
+            };
+            var layout = {
+                responsive: true,
+                padding: {
+                    left: 10,
+                    right: 25,
+                    top: 25,
+                    bottom: 0
+                },
+                scales: {
+                    yAxes: [{
+                        ticks: {
+                            min: 0
+                        }
+                    }]
+                },
+                gridLines: {
+                    color: "rgb(234, 236, 244)",
+                    zeroLineColor: "rgb(234, 236, 244)",
+                    drawBorder: false,
+                    borderDash: [2],
+                    zeroLineBorderDash: [2]
+                }
+            };
+            var scale = {
+                xAxes: [{
+                    time: {
+                        unit: 'month'
+                    },
+                    gridLines: {
+                        display: false,
+                        drawBorder: false
+                    },
+                    ticks: {
+                        maxTicksLimit: 6
+                    },
+                    maxBarThickness: 25,
+                }],
+                yAxes: [{
+                    ticks: {
+                        min: 0,
+                        max: 15000,
+                        maxTicksLimit: 5,
+                        padding: 10,
+                        // Include a dollar sign in the ticks
+                        callback: function(value, index, values) {
+                            return '$' + number_format(value);
+                        }
+                    },
+                    gridLines: {
+                        color: "rgb(234, 236, 244)",
+                        zeroLineColor: "rgb(234, 236, 244)",
+                        drawBorder: false,
+                        borderDash: [2],
+                        zeroLineBorderDash: [2]
+                    }
+                }],
+            };
+            var tooltip = {
+                titleMarginBottom: 10,
+                titleFontColor: '#6e707e',
+                titleFontSize: 14,
+                backgroundColor: "rgb(255,255,255)",
+                bodyFontColor: "#858796",
+                borderColor: '#dddfeb',
+                borderWidth: 1,
+                xPadding: 15,
+                yPadding: 15,
+                displayColors: false,
+                caretPadding: 10,
+                callbacks: {
+                    label: function(tooltipItem, chart) {
+                        var datasetLabel = chart.datasets[tooltipItem.datasetIndex].label || '';
+                        return datasetLabel + ': $' + number_format(tooltipItem.yLabel);
+                    }
+                }
+            };
+            var legend = {
+                display: false
+            };
+
+            var ctx = $("#graphCanvas");
+
+            var graphCanvas = new Chart(ctx, {
+                type: 'bar',
+                data: chartdata,
+                layout: layout,
+                scale: scale,
+                tooltip: tooltip,
+                legend: legend
+            });
+        },
+        error: function(data) {
+            console.log(data);
+        }
+    });
+}); -->
+
+<!-- SELECT checkinDate as day, count(clientID) as totalC from clientinfo WHERE checkinDate BETWEEN CURDATE()-7 AND CURDATE() GROUP BY EXTRACT(day FROM checkinDate);
+
+SELECT
+  EXTRACT(day FROM checkinDate) AS day ,
+  COUNT(clientID) AS totalC
+  
+FROM clientinfo
+GROUP BY EXTRACT(day FROM checkinDate());
+SELECT checkinDate as day, count(clientID) as totalC from clientinfo WHERE checkinDate BETWEEN CURDATE()-7 AND CURDATE() GROUP BY EXTRACT(day FROM checkinDate);
+-->
