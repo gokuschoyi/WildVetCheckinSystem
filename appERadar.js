@@ -1,6 +1,6 @@
 $(document).ready(function() {
     $.ajax({
-        url: "http://localhost/WildVetCheckin/data.php",
+        url: "http://localhost/WildVetCheckin/dataERadar.php",
         method: "GET",
         success: function(data) {
             console.log(data);
@@ -8,8 +8,8 @@ $(document).ready(function() {
             var totalc = [];
 
             for (var i in data) {
-                day.push(data[i].day);
-                totalc.push(data[i].totalC);
+                day.push(data[i].pc);
+                totalc.push(data[i].pcc);
             }
 
             var chartdata = {
@@ -26,10 +26,10 @@ $(document).ready(function() {
                     data: totalc
                 }]
             };
-            var ctx = $("#graphCanvas");
+            var ctx = $("#graphradar");
 
             var graphCanvas = new Chart(ctx, {
-                type: 'bar',
+                type: 'doughnut',
                 data: chartdata,
                 options: {
                     maintainAspectRatio: false,

@@ -117,14 +117,13 @@ include 'includes/navbar.php';
     <div class="container-fluid" style = "width:auto; height:600px;">
         <div class="card shadow mb-4">
             <div class="card-header py-3">
-                <h6 class="m-0 font-weight-bold text-primary">Bar Chart</h6>
+                <h6 class="m-0 font-weight-bold text-primary" style = "text-align: center">CLIENTS (Monthly)</h6>
             </div>
             <div class="card-body">
                 <div class="chart-bar" >
                     <canvas id="graphCanvasA"></canvas>
                 </div>
                 <hr>
-                CLIENTS (Monthly)
             </div>
         </div>
     </div>
@@ -132,14 +131,27 @@ include 'includes/navbar.php';
     <div class="container-fluid" style = "width:auto; height:600px;">
         <div class="card shadow mb-4">
             <div class="card-header py-3">
-                <h6 class="m-0 font-weight-bold text-primary">Bar Chart</h6>
+                <h6 class="m-0 font-weight-bold text-primary" style = "text-align: center">CLIENTS (Fortnightly)</h6>
             </div>
             <div class="card-body">
                 <div class="chart-bar" >
                     <canvas id="graphCanvasB"></canvas>
                 </div>
                 <hr>
-                CLIENTS (2 WEEKS)
+            </div>
+        </div>
+    </div>
+
+    <div class="container-fluid" style = "width:auto; height:600px;">
+        <div class="card shadow mb-4">
+            <div class="card-header py-3">
+                <h6 class="m-0 font-weight-bold text-primary" style = "text-align: center">CLIENTS (By Postcode)</h6>
+            </div>
+            <div class="card-body">
+                <div class="chart-bar" >
+                    <canvas id="graphradar"></canvas>
+                </div>
+                <hr>
             </div>
         </div>
     </div>

@@ -1,6 +1,6 @@
 $(document).ready(function() {
     $.ajax({
-        url: "https://webprog.cs.latrobe.edu.au/~20306942/dataA.php",
+        url: "http://localhost/WildVetCheckin/dataA.php",
         method: "GET",
         success: function(data) {
             console.log(data);
@@ -16,9 +16,12 @@ $(document).ready(function() {
                 labels: day,
                 datasets: [{
                     label: 'Clients',
-                    backgroundColor: '#e8695d',
+                    backgroundColor: '#ff6384',
                     borderColor: 'rgba(200, 200, 200, 0.75)',
-                    hoverBackgroundColor: '#2e59d9',
+                    hoverBackgroundColor: '#ebe0ff',
+                    borderWidth: 2,
+                    borderRadius: 15,
+                    borderSkipped: false,
                     hoverBorderColor: 'rgba(200, 200, 200, 1)',
                     data: totalc
                 }]

@@ -209,27 +209,70 @@ include 'includes/navbar.php';
 
             <!-- Content Row -->
 
-        </div>
-        <!-- /.container-fluid -->
-        <!-- <div class="container-fluid">
-            <div id="chart-container">
-                <canvas id="graphCanvas"></canvas>
-            </div>
-        </div> -->
-    <div class="container-fluid" style = "width:auto; height:600px;">
-        <div class="card shadow mb-4">
-            <div class="card-header py-3">
-                <h6 class="m-0 font-weight-bold text-primary">Bar Chart</h6>
-            </div>
-            <div class="card-body">
-                <div class="chart-bar" >
-                    <canvas id="graphCanvas"></canvas>
+        
+        <div class="row justify-content-center ">
+            <div class="col-xl-4 col-lg-4">
+                <div class="card shadow mb-4">
+                    <!-- Card Header - Dropdown -->
+                    <div class="card-header py-3 justify-content-center">
+                        <h6 class="m-0 font-weight-bold text-primary" style = "text-align: center">Snippet Sent</h6>
+                    </div>
+                    <!-- Card Body -->
+                    <div class="card-body">
+                        <div class="chart-pie pt-4">
+                            <canvas id="myPieChartA"></canvas>
+                        </div>
+                        <hr>
+                    </div>
                 </div>
-                <hr>
-                Clients on a particular Day.
+            </div>
+            <div class="col-xl-4 col-lg-4">
+                <div class="card shadow mb-4">
+                    <!-- Card Header - Dropdown -->
+                    <div class="card-header py-3">
+                        <h6 class="m-0 font-weight-bold text-primary" style = "text-align: center">Client Seen By Doctor</h6>
+                    </div>
+                    <!-- Card Body -->
+                    <div class="card-body">
+                        <div class="chart-pie pt-4">
+                            <canvas id="myPieChartB"></canvas>
+                        </div>
+                        <hr>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-4 col-lg-4">
+                <div class="card shadow mb-4">
+                    <!-- Card Header - Dropdown -->
+                    <div class="card-header py-3">
+                        <h6 class="m-0 font-weight-bold text-primary" style = "text-align: center">Assign Doctor (Remaining)</h6>
+                    </div>
+                    <!-- Card Body -->
+                    <div class="card-body">
+                        <div class="chart-pie pt-4">
+                            <canvas id="myPieChartC"></canvas>
+                        </div>
+                        <hr>
+                    </div>
+                </div>
             </div>
         </div>
-    </div>
+        
+        
+        <div class="container-fluid" style = "width:auto; height:600px;">
+            <div class="card shadow mb-4">
+                <div class="card-header py-3">
+                    <h6 class="m-0 font-weight-bold text-primary" style = "text-align: center">Clients (Previous 7 Days)</h6>
+                </div>
+                <div class="card-body">
+                    <div class="chart-bar" >
+                        <canvas id="graphCanvas"></canvas>
+                    </div>
+                    <hr>
+                    Clients on a particular Day.
+                </div>
+            </div>
+        </div>
         
     </div>
     <!-- End of Main Content -->

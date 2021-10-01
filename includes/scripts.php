@@ -1,21 +1,21 @@
     <!-- Bootstrap core JavaScript-->
     <script src="vendor/jquery/jquery.min.js"></script>
-    <script src="vendor\bootstrap\js\bootstrap.bundle.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
     <!-- Core plugin JavaScript-->
-    <script src="vendor\jquery-easing\jquery.easing.min.js"></script>
+    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
 
     <!-- Custom scripts for all pages-->
     <script src="js/sb-admin-2.min.js"></script>
 
     <!-- Page level plugins -->
     <script src="vendor/chart.js/Chart.min.js"></script>
-    <script src="vendor\bootstrap\js\bootstrap.min.js.map"></script>
+    <!-- <script src="vendor\bootstrap\js\bootstrap.min.js.map"></script>
     <script src="vendor\fontawesome-free\css\all.min.css"></script>
     <script src="vendor\jquery\jquery.min.js"></script>
     <script src="vendor\bootstrap\js\bootstrap.bundle.min.js"></script>
     <script src="vendor\bootstrap\js\bootstrap.bundle.min.js.map"></script>
-    <script src="vendor\fontawesome-free\css\all.min.css"></script>
+    <script src="vendor\fontawesome-free\css\all.min.css"></script> -->
     <!-- Page level custom scripts -->
     <!-- <script src="js/demo/chart-area-demo.js"></script>
     <script src="js/demo/chart-pie-demo.js"></script> -->
@@ -26,6 +26,10 @@
     <script type="text/javascript" src="app.js"></script>
     <script type="text/javascript" src="appA.js"></script>
     <script type="text/javascript" src="appB.js"></script>
+    <script type="text/javascript" src="appCPieChart.js"></script>
+    <script type="text/javascript" src="appDPieChart.js"></script>
+    <script type="text/javascript" src="appEPieChart.js"></script>
+    <script type="text/javascript" src="appERadar.js"></script>
     <script>
         $(document).ready(function() {
             var table = $('#clients').DataTable({
