@@ -1,6 +1,7 @@
 <?php session_start();
 use PHPMailer\PHPMailer\PHPMailer;
 require 'vendor/autoload.php';
+include_once 'includes\dbConn.php';
 error_reporting(0);
 ob_clean(); //Clear any previous output
 ob_start(); //Start new output buffer
@@ -23,7 +24,6 @@ if (isset($_POST['submit'])){
     $ID='';
     //$_SESSION['idEmail'] = $_POST['email'];
     
-    $conn = new mysqli('pk1l4ihepirw9fob.cbetxkdyhwsb.us-east-1.rds.amazonaws.com', 'sn4abkagkvz8sd1n','nm85ad3jt3wpvxc6','xlx8er1i5yj6m7u4');
     if ($conn->connect_error) {
         die('Connection to DB failed : ' . $conn->connect_error);
     } 

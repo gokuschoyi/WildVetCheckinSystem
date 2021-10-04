@@ -1,4 +1,5 @@
 <?php
+include_once 'includes\dbConn.php';
 session_start();
     $firstname = $_POST['dFname'];
     $username = $_POST['username'];
@@ -6,7 +7,6 @@ session_start();
     $dPassword = $_POST['dPassword'];
     $dCpassword = $_POST['dCpassword'];
    
-    $conn = new mysqli('pk1l4ihepirw9fob.cbetxkdyhwsb.us-east-1.rds.amazonaws.com', 'sn4abkagkvz8sd1n','nm85ad3jt3wpvxc6','xlx8er1i5yj6m7u4');
     if ($conn->connect_error) {
         die('Connection to DB failed : ' . $conn->connect_error);
     } 
@@ -104,27 +104,48 @@ session_start();
     <link rel="stylesheet" href="assets/css/Navigation-Clean.css">
     <link rel="stylesheet" href="assets/css/styles.css">
 </head>
-
+<style>
+@media screen and (max-width: 600px) {
+    div.example {
+    display: none;
+    }
+}
+.navbar-collapse{
+    z-index: 1000;
+    
+}
+.navbar-nav{
+    border-radius: 10px;
+}
+.nav-link{
+    background-color:#f2f9ff;
+    border-radius:15px;
+}
+</style>
 <body>
-    <nav class="navbar navbar-light navbar-expand-md d-flex justify-content-center align-items-center navigation-clean"
-        style="height: 180px;">
-        <div class="container"><a
-                class="navbar-brand font-monospace d-lg-flex justify-content-lg-center align-items-lg-center"
-                href="index.php" style="font-size: 35px;">Wild Vet</a><button data-bs-toggle="collapse"
+    <nav class="navbar navbar-light navbar-expand-md d-flex justify-content-center align-items-center navigation-clean" style="height: 180px;background: #c292fb;">
+        <div class="container"><a class="navbar-brand font-monospace d-lg-flex justify-content-lg-center align-items-lg-center" href="index.php" style="font-size: 35px;">Wild Vet</a><button data-bs-toggle="collapse"
                 class="navbar-toggler" data-bs-target="#navcol-1"><span class="visually-hidden">Toggle
                     navigation</span><span class="navbar-toggler-icon"></span></button>
             <div class="collapse navbar-collapse" id="navcol-1">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"><a class="nav-link font-monospace" href="services.html">Services</a></li>
-                    <li class="nav-item"><a class="nav-link font-monospace" href="contactUs.html">Contact Us</a></li>
-                    <li class="nav-item"><a class="nav-link font-monospace" href="contactUs.html">F.A.Q</a></li>
+                <ul class="navbar-nav ms-auto" style = "background:#c292fb;">
+                    <li class="nav-item"><a class="nav-link font-monospace" href="#">Services</a></li>
+                    <li class="nav-item"><a class="nav-link font-monospace" href="#">About</a></li>
+                    <li class="nav-item"><a class="nav-link font-monospace" href="#">Terms & Services</a></li>
+                    <li class="nav-item"><a class="nav-link font-monospace" href="#">Privacy Policy</a></li>
                 </ul>
+            </div>
+            <div class = "example" style = "padding-top:20px;">
+            <div class="d-flex d-lg-flex d-xl-flex justify-content-center align-items-center justify-content-sm-center align-items-sm-center justify-content-md-center align-items-md-center justify-content-lg-center align-items-lg-center justify-content-xl-center align-items-xl-center" style = "width :100px; padding-left : 45px;">
+                <img src="assets\img\logo.png" style="height: 80px;">
+            </div>
             </div>
         </div>
     </nav>
     <div class="row">
-        <div class="col d-xl-flex justify-content-xl-center align-items-xl-center"><img src="assets/img/check.png"
-                style="width: 100px;"></div>
+        <div class="d-flex d-lg-flex d-xl-flex justify-content-center align-items-center justify-content-sm-center align-items-sm-center justify-content-md-center align-items-md-center justify-content-lg-center align-items-lg-center justify-content-xl-center align-items-xl-center">
+            <img src="assets/img/check.png" style="width: 100px;">
+        </div>
     </div>
     <div class="d-sm-flex d-lg-flex d-xl-flex justify-content-sm-center align-items-sm-center justify-content-lg-center align-items-lg-center justify-content-xl-center align-items-xl-center"
         style="height: 210px;">
@@ -135,15 +156,15 @@ session_start();
     <div class="d-xl-flex justify-content-xl-center align-items-xl-center" style="height: 170px;">
         <?php 
     if($buttonFlag == true){
-         echo '<form action = "doctorLogin.php" method = "POST">
-         <button class="btn btn-success" type="submit" name = "login">Log-In</button></form>';
-         $buttonFlag = false;
+        echo '<form action = "doctorLogin.php" method = "POST" class = "d-flex d-lg-flex d-xl-flex justify-content-center align-items-center justify-content-sm-center align-items-sm-center justify-content-md-center align-items-md-center justify-content-lg-center align-items-lg-center justify-content-xl-center align-items-xl-center">
+        <button class="btn btn-success" type="submit" name = "login">Log-In</button></form>';
+        $buttonFlag = false;
         }
     else {
-        echo '<form action = "doctorRegister.php" method = "POST">
-         <button class="btn btn-success" type="submit" name = "goback">GO BACK</button></form>';   
+        echo '<form action = "doctorRegister.php" method = "POST" class ="d-flex d-lg-flex d-xl-flex justify-content-center align-items-center justify-content-sm-center align-items-sm-center justify-content-md-center align-items-md-center justify-content-lg-center align-items-lg-center justify-content-xl-center align-items-xl-center">
+        <button class="btn btn-success " type="submit" name = "goback">GO BACK</button></form>';   
         }
-         ?></div>
+        ?></div>
     <div class="container">
         <footer class="footer-basic" style="background: transparent;height: 200px;">
             <div class="d-xl-flex justify-content-xl-center align-items-xl-center social"><a

@@ -116,7 +116,7 @@
                         ?>
                         <input type="hidden" name="token" value = "<?php echo $token;?>">
                         <div class="col-md-12 d-flex d-lg-flex d-xl-flex justify-content-center align-items-center justify-content-lg-center align-items-lg-center justify-content-xl-center align-items-xl-center" style = "padding-top :30px;">
-                            <button class="btn btn-primary btn-sm font-monospace d-lg-flex d-flex justify-content-center align-items-center" type="submit"  name="receptionistCredentials" 
+                            <button class="btn btn-primary btn-sm font-monospace d-lg-flex d-flex justify-content-center align-items-center" type="submit"  name="doctorCredentials" 
                                 style="border-radius: 30px;background: rgb(157,126,207);height: 31px;width: 100px;">Submit</button>
                         </div>
                     </div>

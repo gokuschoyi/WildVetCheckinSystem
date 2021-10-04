@@ -1,11 +1,11 @@
 <?php session_start();
+include_once 'includes\dbConn.php';
 /* echo $_SESSION['idEmail'];
 echo $_SESSION['ID']; */
 $id = $_SESSION['ID'];
 /* echo $_SESSION['first']; */
 $newsletter = "Yes";
     if(isset($_POST['newsletter'])){
-        $conn = new mysqli('pk1l4ihepirw9fob.cbetxkdyhwsb.us-east-1.rds.amazonaws.com', 'sn4abkagkvz8sd1n','nm85ad3jt3wpvxc6','xlx8er1i5yj6m7u4');
         $stmt = $conn->prepare("UPDATE clientinfo SET newsletter = ? WHERE clientid = ?");
         $stmt->bind_param("si",$newsletter,$id);
         $stmt->execute();

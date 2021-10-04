@@ -1,12 +1,15 @@
 <?php
 include 'includes/header.php';
 include('includes\navbarDoc.php');
-$conn = new mysqli('pk1l4ihepirw9fob.cbetxkdyhwsb.us-east-1.rds.amazonaws.com', 'sn4abkagkvz8sd1n','nm85ad3jt3wpvxc6','xlx8er1i5yj6m7u4');
+include_once 'includes\dbConn.php';
     if(isset($_POST['edituser']))
     {
         $cid = $_POST['cid'];
         $space = " ";
-    }        
+    } 
+    if(isset($_SESSION['cidup'])) {
+        $cid = $_SESSION['cidup'];
+    }     
 ?>
 <!-- Content Wrapper -->
 <div id="content-wrapper" class="d-flex flex-column">
@@ -105,7 +108,10 @@ $conn = new mysqli('pk1l4ihepirw9fob.cbetxkdyhwsb.us-east-1.rds.amazonaws.com', 
                 $cid = $_POST['cid'];
                 $space = " ";
             }
-            $conn = new mysqli('pk1l4ihepirw9fob.cbetxkdyhwsb.us-east-1.rds.amazonaws.com', 'sn4abkagkvz8sd1n','nm85ad3jt3wpvxc6','xlx8er1i5yj6m7u4');
+            if(isset($_SESSION['cidup'])) {
+                $cid = $_SESSION['cidup'];
+                $space = " ";
+            }  
                 $query = $conn->prepare("SELECT * FROM clientinfo WHERE clientId = ?");
                 $query->bind_param("s",$cid);
                 $query->execute();
@@ -117,8 +123,8 @@ $conn = new mysqli('pk1l4ihepirw9fob.cbetxkdyhwsb.us-east-1.rds.amazonaws.com', 
                 $result = $query2->get_result()->fetch_row();
             ?>
                 <h1 class="h3 mb-0 text-gray-800">EDIT CLIENT ID <?php   echo $cid ?> </h1>
-                <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
-                        class="fas fa-download fa-sm text-white-50"></i> Generate Report</a>
+                <a href="docDash.php" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
+                        class="fas fa-long-arrow-alt-left fa-sm text-white-50"></i> GO BACK</a>
             </div>
 
             <!-- Content Row -->
@@ -168,7 +174,10 @@ $conn = new mysqli('pk1l4ihepirw9fob.cbetxkdyhwsb.us-east-1.rds.amazonaws.com', 
                 $cid = $_POST['cid'];
                 $space = " ";
             }
-                $conn = new mysqli('pk1l4ihepirw9fob.cbetxkdyhwsb.us-east-1.rds.amazonaws.com', 'sn4abkagkvz8sd1n','nm85ad3jt3wpvxc6','xlx8er1i5yj6m7u4');
+            if(isset($_SESSION['cidup'])) {
+                $cid = $_SESSION['cidup'];
+                $space = " ";
+            }  
                 $query = $conn->prepare("SELECT * FROM clientinfo JOIN petinfo ON clientinfo.clientId = petinfo.petKey WHERE clientId = ?");
                 $query->bind_param("s",$cid);
                 $query->execute();
@@ -228,60 +237,7 @@ $conn = new mysqli('pk1l4ihepirw9fob.cbetxkdyhwsb.us-east-1.rds.amazonaws.com', 
 
                 </div>
             </div>
-
-            <div class="container-fluid">
-                <div class="row">
-                    <div class="col-xl-4 col-md-6 mb-4">
-                        <div class="card border-left-primary shadow h-100 py-2">
-                            <div class="card-body">
-                                <div class="row no-gutters align-items-center">
-                                    <div class="col mr-2">
-                                        <div class="text-xs font-weight-bold text-primary text-uppercase mb-1"
-                                            style="font-size:1.2vw;">Address</div>
-                                        <div class="h5 mb-0 font-weight-bold text-gray-800"><input type="text"
-                                                name="address" value="<?php echo $stmt[7]?>" class="form-control"
-                                                placeholder="Address"></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-xl-4 col-md-6 mb-4">
-                        <div class="card border-left-primary shadow h-100 py-2">
-                            <div class="card-body">
-                                <div class="row no-gutters align-items-center">
-                                    <div class="col mr-2">
-                                        <div class="text-xs font-weight-bold text-primary text-uppercase mb-1"
-                                            style="font-size:1.2vw;">Suburb</div>
-                                        <div class="h5 mb-0 font-weight-bold text-gray-800"><input type="text"
-                                                name="suburb" value="<?php echo $stmt[8]?>" class="form-control"
-                                                placeholder="Suburb"></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-xl-4 col-md-6 mb-4">
-                        <div class="card border-left-primary shadow h-100 py-2">
-                            <div class="card-body">
-                                <div class="row no-gutters align-items-center">
-                                    <div class="col mr-2">
-                                        <div class="text-xs font-weight-bold text-primary text-uppercase mb-1"
-                                            style="font-size:1.2vw;">Postcode</div>
-                                        <div class="h5 mb-0 font-weight-bold text-gray-800"><input type="text"
-                                                name="postcode" value="<?php echo $stmt[9]?>" class="form-control"
-                                                placeholder="PostCode"></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-
-            </div>
+            
 
             <div class="container-fluid">
                 <div class="d-sm-flex align-items-center justify-content-between mb-4">
@@ -498,7 +454,7 @@ $conn = new mysqli('pk1l4ihepirw9fob.cbetxkdyhwsb.us-east-1.rds.amazonaws.com', 
             </div>
 
             <form method="POST" action="doc_clientupdate.php">
-                <input  name="cidd" value="<?php echo $stmt[0]?>">
+                <input type = "hidden" name="cidd" value="<?php echo $stmt[0]?>">
                 
                 <div class="container-fluid">
                     <div class="row">

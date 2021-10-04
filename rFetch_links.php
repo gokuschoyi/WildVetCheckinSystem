@@ -2,7 +2,7 @@
 include 'includes/header.php';
 include 'includes/navbar.php';
 include 'simple_html_dom.php';
-$conn = new mysqli('pk1l4ihepirw9fob.cbetxkdyhwsb.us-east-1.rds.amazonaws.com', 'sn4abkagkvz8sd1n','nm85ad3jt3wpvxc6','xlx8er1i5yj6m7u4');
+include_once 'includes\dbConn.php';
     if(isset($_POST['selectarticle']))
     {
         $id = $_POST['cid'];
@@ -126,7 +126,6 @@ $conn = new mysqli('pk1l4ihepirw9fob.cbetxkdyhwsb.us-east-1.rds.amazonaws.com', 
                                             CLIENT NAME</div>
                                         <?php
                                             $space = " ";
-                                            $conn = new mysqli('pk1l4ihepirw9fob.cbetxkdyhwsb.us-east-1.rds.amazonaws.com', 'sn4abkagkvz8sd1n','nm85ad3jt3wpvxc6','xlx8er1i5yj6m7u4');
                                             $query = $conn->prepare("SELECT title, firstName, surName, addComments FROM clientinfo WHERE clientId = ?");
                                             $query->bind_param("s", $_SESSION['id']);
                                             $query->execute();
@@ -150,7 +149,6 @@ $conn = new mysqli('pk1l4ihepirw9fob.cbetxkdyhwsb.us-east-1.rds.amazonaws.com', 
                                             style="font-size:1.2vw;">
                                             REASON FOR VISIT</div>
                                         <?php
-                                            $conn = new mysqli('pk1l4ihepirw9fob.cbetxkdyhwsb.us-east-1.rds.amazonaws.com', 'sn4abkagkvz8sd1n','nm85ad3jt3wpvxc6','xlx8er1i5yj6m7u4');
                                             $query = $conn->prepare("SELECT reason from petinfo where petKey = ?");
                                             $query->bind_param("s", $_SESSION['id']);
                                             $query->execute();
@@ -167,7 +165,6 @@ $conn = new mysqli('pk1l4ihepirw9fob.cbetxkdyhwsb.us-east-1.rds.amazonaws.com', 
                 </div>
                 </div>
                 <?php
-                        $conn = new mysqli('pk1l4ihepirw9fob.cbetxkdyhwsb.us-east-1.rds.amazonaws.com', 'sn4abkagkvz8sd1n','nm85ad3jt3wpvxc6','xlx8er1i5yj6m7u4');
                         $query = $conn->prepare("SELECT petKey, reason, petName, petType, breed, sex, age, petWeight FROM petinfo WHERE petKey = ?");
                         $query->bind_param("s", $_SESSION['id']);
                         $query->execute();
@@ -504,14 +501,11 @@ $conn = new mysqli('pk1l4ihepirw9fob.cbetxkdyhwsb.us-east-1.rds.amazonaws.com', 
                                 $creason = str_replace(' ', '+', $stmt[1]);
 
                                 $searchQuery = makeSearchString($ctype, $cbreed, $csex, $cage, $creason);
-
-                                echo $searchQuery.'<br>';
+                                /* echo $searchQuery.'<br>';
                                 echo $creason.'<br>';
                                 echo $ctype.'<br>';
-                                echo $cbreed.'<br>';
-
+                                echo $cbreed.'<br>'; */
                                 $dataGoogle = returnGoogleTitleLinks($searchQuery);
-
                                 foreach($dataGoogle as $a){
                                     ?>
                                     <tr>

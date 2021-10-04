@@ -1,4 +1,5 @@
 <?php
+include_once 'includes\dbConn.php';
 session_start();
     if(isset($_POST['logindoc']))
     {
@@ -6,7 +7,6 @@ session_start();
     $docPass = $_POST['password'];
     echo $docEmail;
     echo $docPass;
-    $conn = new mysqli('pk1l4ihepirw9fob.cbetxkdyhwsb.us-east-1.rds.amazonaws.com', 'sn4abkagkvz8sd1n','nm85ad3jt3wpvxc6','xlx8er1i5yj6m7u4');
     if ($conn->connect_error) {
         die('Connection to DB failed : ' . $conn->connect_error);
     } 

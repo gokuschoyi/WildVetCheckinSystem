@@ -1,7 +1,7 @@
 <?php
 include 'includes/header.php';
 include 'includes/navbar.php';
-
+include_once 'includes\dbConn.php';
 ?>
 
 <!-- Content Wrapper -->
@@ -118,7 +118,7 @@ include 'includes/navbar.php';
                                         <div class="modal-dialog" role="document">
                                             <div class="modal-content">
                                                 <div class="modal-header">
-                                                    <h5 class="modal-title" id="exampleModalLabel">Add Admin Data</h5>
+                                                    <h5 class="modal-title" id="exampleModalLabel">Add Doctor Data</h5>
                                                     <button type="button" class="close" data-dismiss="modal"
                                                         aria-label="Close">
                                                         <span aria-hidden="true">&times;</span>
@@ -176,7 +176,6 @@ include 'includes/navbar.php';
                                         DOCTORS ADDED</div>
                                     <?php
                                         
-                                        $conn = new mysqli('pk1l4ihepirw9fob.cbetxkdyhwsb.us-east-1.rds.amazonaws.com', 'sn4abkagkvz8sd1n','nm85ad3jt3wpvxc6','xlx8er1i5yj6m7u4');
                                         $query = $conn->prepare("SELECT COUNT(docId) FROM doctor ");
                                         
                                         $query->execute();
@@ -202,7 +201,7 @@ include 'includes/navbar.php';
                                     <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
                                         DOCTORS REGISTERED</div>
                                     <?php
-                                            $conn = new mysqli('pk1l4ihepirw9fob.cbetxkdyhwsb.us-east-1.rds.amazonaws.com', 'sn4abkagkvz8sd1n','nm85ad3jt3wpvxc6','xlx8er1i5yj6m7u4');
+                                            
                                             $query = 'SELECT COUNT(registered) FROM doctor WHERE registered = "yes"';
                                             $stmt = $conn->prepare($query);
                                             $stmt->execute();
@@ -245,7 +244,7 @@ include 'includes/navbar.php';
                         </thead>
                         <tbody>
                             <?php
-                                $conn = new mysqli('pk1l4ihepirw9fob.cbetxkdyhwsb.us-east-1.rds.amazonaws.com', 'sn4abkagkvz8sd1n','nm85ad3jt3wpvxc6','xlx8er1i5yj6m7u4');
+                                
                                 $sql = $conn-> query('SELECT docId, dFname, dLname, dEmail, dPassword, registered  FROM doctor');
                                 while( $data = $sql-> fetch_array()){
                                     echo '

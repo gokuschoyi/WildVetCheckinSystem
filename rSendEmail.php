@@ -4,6 +4,7 @@ include 'includes/navbar.php';
 include 'simple_html_dom.php';
 use PHPMailer\PHPMailer\PHPMailer;
 require 'vendor/autoload.php';
+include_once 'includes\dbConn.php';
 if(isset($_POST['submitEmail']))
     {
         $cName = $_POST['sender_name'];
@@ -13,7 +14,9 @@ if(isset($_POST['submitEmail']))
         $cBody = $_POST['body'];
         $_SESSION['id']= $_POST['cid']; 
     }
-$conn = new mysqli('pk1l4ihepirw9fob.cbetxkdyhwsb.us-east-1.rds.amazonaws.com', 'sn4abkagkvz8sd1n','nm85ad3jt3wpvxc6','xlx8er1i5yj6m7u4');
+if(isset($_POST['goback'])){
+    $_SESSION['id']= $_POST['cid'];
+}
     
     $_SESSION['status'] = 0;
 ?>
@@ -135,7 +138,6 @@ $conn = new mysqli('pk1l4ihepirw9fob.cbetxkdyhwsb.us-east-1.rds.amazonaws.com', 
                                         CLIENT NAME</div>
                                     <?php
                                         $space = " ";
-                                        $conn = new mysqli('pk1l4ihepirw9fob.cbetxkdyhwsb.us-east-1.rds.amazonaws.com', 'sn4abkagkvz8sd1n','nm85ad3jt3wpvxc6','xlx8er1i5yj6m7u4');
                                         $query = $conn->prepare("SELECT title, firstName, surName, addComments FROM clientinfo WHERE clientId = ?");
                                         $query->bind_param("s",$cid);
                                         $query->execute();
@@ -159,7 +161,6 @@ $conn = new mysqli('pk1l4ihepirw9fob.cbetxkdyhwsb.us-east-1.rds.amazonaws.com', 
                 $space = " ";
                 $selectedCount = count($_POST['check_list']);
             }
-                $conn = new mysqli('pk1l4ihepirw9fob.cbetxkdyhwsb.us-east-1.rds.amazonaws.com', 'sn4abkagkvz8sd1n','nm85ad3jt3wpvxc6','xlx8er1i5yj6m7u4');
                 $query = $conn->prepare("SELECT email FROM clientinfo WHERE clientId = ?");
                 $query->bind_param("s",$cid);
                 $query->execute();
@@ -236,7 +237,7 @@ $conn = new mysqli('pk1l4ihepirw9fob.cbetxkdyhwsb.us-east-1.rds.amazonaws.com', 
                 <div class="col-xl-4 col-md-6 mb-4">
                     <div class="card border-left-primary shadow h-100 py-2 align-items-center">
                         <div class="h5 mb-0 font-weight-bold text-gray-800  justify-content-center">
-                            <buttontype="button" class=" btn btn-warning" onclick="location.href='rFetch_links.php'" ;>
+                            <button type="button" class=" btn btn-warning" name = "goback" onclick="location.href='rFetch_links.php'" ;>
                                 GO BACK</button>
                         </div>
                     </div>

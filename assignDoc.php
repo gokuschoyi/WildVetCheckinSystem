@@ -1,5 +1,6 @@
 <?php
 session_start();
+include_once 'includes\dbConn.php';
 if(isset($_POST['assigndoc']))
 {
     $opt = $_POST['option'];
@@ -9,7 +10,7 @@ if(isset($_POST['assigndoc']))
     //echo $_SESSION['clientid'];
     echo $id;
     echo $opt;
-$conn = new mysqli('pk1l4ihepirw9fob.cbetxkdyhwsb.us-east-1.rds.amazonaws.com', 'sn4abkagkvz8sd1n','nm85ad3jt3wpvxc6','xlx8er1i5yj6m7u4');
+
 $stmt = $conn->prepare("UPDATE clientinfo SET assignedDoc = ? WHERE clientId = ?");
 $stmt->bind_param("si",$opt, $id);
 $stmt->execute();

@@ -65,29 +65,51 @@ if(isset($_POST['docRegister'])){
     <link rel="stylesheet" href="assets/css/Navigation-Clean.css">
     <link rel="stylesheet" href="assets/css/styles.css">
 </head>
-
+<style>
+@media screen and (max-width: 600px) {
+    div.example {
+    display: none;
+    }
+}
+.navbar-collapse{
+    z-index: 1000;
+    
+}
+.navbar-nav{
+    border-radius: 10px;
+}
+.nav-link{
+    background-color:#f2f9ff;
+    border-radius:15px;
+}
+</style>
 <body style="background: url(&quot;assets/img/6677.jpg&quot;) center no-repeat;">
-    <nav class="navbar navbar-light navbar-expand-md navigation-clean" style="height: 150px;background: #f8ddf5;">
+    <nav class="navbar navbar-light navbar-expand-md navigation-clean" style="height: 150px;background: #c292fb;">
         <div class="container"><a class="navbar-brand font-monospace" href="#" style="font-size: 35px;">The Wild
                 Vet</a><button data-bs-toggle="collapse" class="navbar-toggler" data-bs-target="#navcol-1"><span
                     class="visually-hidden">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
             <div class="collapse navbar-collapse" id="navcol-1">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"><a class="nav-link font-monospace" href="clientCheckin.html">Check-In Page</a>
-                    </li>
-                    <li class="nav-item"><a class="nav-link font-monospace" href="#">About Us</a></li>
-                    <li class="nav-item"><a class="nav-link font-monospace" href="contactUs.html">Contact</a></li>
+                <ul class="navbar-nav ms-auto" style = "background:#c292fb;">
+                <li class="nav-item"><a class="nav-link font-monospace" href="index.php">Home</a></li>
+                    <li class="nav-item"><a class="nav-link font-monospace" href="#">Services</a></li>
+                    <li class="nav-item"><a class="nav-link font-monospace" href="#">About</a></li>
+                    <li class="nav-item"><a class="nav-link font-monospace" href="#">Terms & Services</a></li>
+                    <li class="nav-item"><a class="nav-link font-monospace" href="#">Privacy Policy</a></li>
                 </ul>
+            </div>
+            <div class = "example">
+            <div class="col-md-12 d-flex d-xl-flex justify-content-center align-items-center justify-content-xl-center align-items-xl-center" style = 'width :100px; padding-left : 45px;'>
+                <img src="assets\img\logo.png" style="height: 80px;">
+            </div>
             </div>
         </div>
     </nav>
     <h4 class="font-monospace text-center d-flex d-lg-flex justify-content-center align-items-center justify-content-lg-center align-items-lg-center"
         style="height: 133px;font-weight: bold;opacity: 0.85;font-size: 28.376px;">Doctor Register</h4>
-    <div class="d-xl-flex justify-content-xl-center align-items-xl-start" style="height: 582px;">
-        <form action="verifyDoc.php" method="POST"
-            style="background: transparent;border-radius: 26px;max-width: 240px;width: 240px;">
+    <div class="d-flex d-lg-flex d-xl-flex justify-content-center align-items-start justify-content-sm-center align-items-sm-center justify-content-md-center align-items-md-center justify-content-lg-center align-items-lg-center justify-content-xl-center align-items-xl-center" style="height: 582px;">
+        <form action="verifyDoc.php" method="POST" style="background: transparent;border-radius: 26px;max-width: 240px;width: 240px;">
             <h2 class="visually-hidden">Login Form</h2>
-            <div class="d-xl-flex justify-content-xl-center align-items-xl-center illustration" style="height: 130px;">
+            <div class="d-flex d-lg-flex d-xl-flex justify-content-center align-items-center justify-content-sm-center align-items-sm-center justify-content-md-center align-items-md-center justify-content-lg-center align-items-lg-center justify-content-xl-center align-items-xl-center illustration" style="height: 130px;">
                 <img src="assets/img/password.png" style="width: 80px;"></div>
             <div class="mb-3"><input class="form-control" type="text" name="dFname" placeholder="First Name"></div>
             <div class="mb-3"><input class="form-control" type="text" name="username" placeholder="Username"></div>
@@ -97,8 +119,8 @@ if(isset($_POST['docRegister'])){
                     placeholder="Confirm Password"></div>
             <div class="mb-3"><button class="btn btn-primary d-block w-100" type="submit"
                     name="docRegister">REGISTER</button></div>
-            <p class="d-xl-flex justify-content-xl-center align-items-xl-center forgot">Already Registered? </p><br />
-            <a class="d-xl-flex justify-content-xl-center align-items-xl-center" href="doctorLogin.php">Login here</a>
+            <p class="d-flex d-lg-flex d-xl-flex justify-content-center align-items-center justify-content-sm-center align-items-sm-center justify-content-md-center align-items-md-center justify-content-lg-center align-items-lg-center justify-content-xl-center align-items-xl-center forgot">Already Registered? </p><br />
+            <a class="d-flex d-lg-flex d-xl-flex justify-content-center align-items-center justify-content-sm-center align-items-sm-center justify-content-md-center align-items-md-center justify-content-lg-center align-items-lg-center justify-content-xl-center align-items-xl-center illustration" href="doctorLogin.php">Login here</a>
         </form>
 
 

@@ -1,6 +1,6 @@
 $(document).ready(function() {
     $.ajax({
-        url: "http://localhost/WildVetCheckin/dataERadar.php",
+        url: "https://webprog.cs.latrobe.edu.au/~20306942/dataERadar.php",
         method: "GET",
         success: function(data) {
             console.log(data);

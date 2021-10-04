@@ -1,6 +1,7 @@
 <?php
 include 'includes/header.php';
 include 'includes/navbar.php';
+include_once 'includes\dbConn.php';
 ?>
 <style>
 
@@ -121,7 +122,6 @@ include 'includes/navbar.php';
                                     <?php
                                                 date_default_timezone_set('Australia/ACT');
                                                 $date = date("Y-m-d");
-                                                $conn = new mysqli('pk1l4ihepirw9fob.cbetxkdyhwsb.us-east-1.rds.amazonaws.com', 'sn4abkagkvz8sd1n','nm85ad3jt3wpvxc6','xlx8er1i5yj6m7u4');
                                                 $query = $conn->prepare("SELECT COUNT(checkinDate) FROM clientinfo WHERE checkinDate = ?");
                                                 $query->bind_param("s",$date);
                                                 $query->execute();
@@ -147,7 +147,6 @@ include 'includes/navbar.php';
                                     <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
                                         CLIENTS (ALL)</div>
                                     <?php
-                                                $conn = new mysqli('pk1l4ihepirw9fob.cbetxkdyhwsb.us-east-1.rds.amazonaws.com', 'sn4abkagkvz8sd1n','nm85ad3jt3wpvxc6','xlx8er1i5yj6m7u4');
                                                 $query = 'SELECT  COUNT(DISTINCT clientId) FROM clientinfo JOIN petinfo ON clientinfo.clientId = petinfo.petKey';
                                                 $stmt = $conn->prepare($query);
                                                 $stmt->execute();
@@ -172,7 +171,6 @@ include 'includes/navbar.php';
                                     <div class="text-xs font-weight-bold text-info text-uppercase mb-1">
                                         REGISTERED DOCTOR</div>
                                     <?php
-                                                $conn = new mysqli('pk1l4ihepirw9fob.cbetxkdyhwsb.us-east-1.rds.amazonaws.com', 'sn4abkagkvz8sd1n','nm85ad3jt3wpvxc6','xlx8er1i5yj6m7u4');
                                                 $query = 'SELECT  COUNT(DISTINCT docId) FROM doctor WHERE registered = "Yes"';
                                                 $stmt = $conn->prepare($query);
                                                 $stmt->execute();
@@ -259,17 +257,19 @@ include 'includes/navbar.php';
         </div>
         
         
-        <div class="container-fluid" style = "width:auto; height:600px;">
-            <div class="card shadow mb-4">
-                <div class="card-header py-3">
-                    <h6 class="m-0 font-weight-bold text-primary" style = "text-align: center">Clients (Previous 7 Days)</h6>
-                </div>
-                <div class="card-body">
-                    <div class="chart-bar" >
-                        <canvas id="graphCanvas"></canvas>
+        <div class="row justify-content-center ">
+            <div class="col-xl-12 col-lg-12">
+                <div class="card shadow mb-4">
+                    <div class="card-header py-3">
+                        <h6 class="m-0 font-weight-bold text-primary" style = "text-align: center">Clients (Previous 7 Days)</h6>
                     </div>
-                    <hr>
-                    Clients on a particular Day.
+                    <div class="card-body">
+                        <div class="chart-bar" >
+                            <canvas id="graphCanvas"></canvas>
+                        </div>
+                        <hr>
+                        Clients on a particular Day.
+                    </div>
                 </div>
             </div>
         </div>

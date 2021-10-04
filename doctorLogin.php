@@ -102,9 +102,15 @@
     <?php 
         if(isset($_SESSION['fail']))
         {
-            echo '<h2 class = "bg-danger text-white text-align-center">'.$_SESSION['fail'].'</h2>';
-            unset($_SESSION['fail']);
+            echo '<div class="col d-flex d-lg-flex justify-content-center align-items-center justify-content-lg-center align-items-lg-center"style="height: 50px; padding-right:10px;">
+                        <h2 class = "bg-danger text-white text-align-center">'.$_SESSION['fail'].'</h2>              
+                        </div>';
         } 
+        if(isset($_SESSION['status'])){
+            echo '<div class="col d-flex d-lg-flex justify-content-center align-items-center justify-content-lg-center align-items-lg-center"style="height: 50px; padding-right:10px;">
+                        <h2 class = "bg-danger text-white text-align-center">'.$_SESSION['status'].'</h2>              
+                        </div>';
+        }
     ?>
     <h4 class="font-monospace text-center d-flex d-lg-flex justify-content-center align-items-center justify-content-lg-center align-items-lg-center"
         style="height: 112px;font-weight: bold;opacity: 0.85;font-size: 28px;">Doctor Login</h4>

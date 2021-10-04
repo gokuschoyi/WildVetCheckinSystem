@@ -97,7 +97,7 @@
 
                 "columnDefs": [{
                     "targets": [1],
-                    "visible": true,
+                    "visible": false,
                     "searchable": true
                 }],
                 "order": [

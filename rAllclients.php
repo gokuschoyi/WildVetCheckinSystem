@@ -1,6 +1,7 @@
 <?php
 include 'includes/header.php';
 include 'includes/navbar.php';
+include_once 'includes\dbConn.php';
 ?>
 
 <!-- Content Wrapper -->
@@ -117,7 +118,6 @@ include 'includes/navbar.php';
                                     <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
                                         CLIENTS (All)</div>
                                     <?php
-                                                $conn = new mysqli('pk1l4ihepirw9fob.cbetxkdyhwsb.us-east-1.rds.amazonaws.com', 'sn4abkagkvz8sd1n','nm85ad3jt3wpvxc6','xlx8er1i5yj6m7u4');
                                                 $query = 'SELECT  COUNT(DISTINCT clientId) FROM clientinfo JOIN petinfo ON clientinfo.clientId = petinfo.petKey';
                                                 $stmt = $conn->prepare($query);
                                                 $stmt->execute();
@@ -149,7 +149,6 @@ include 'includes/navbar.php';
                     </thead>
                     <tbody>
                         <?php
-                                $conn = new mysqli('pk1l4ihepirw9fob.cbetxkdyhwsb.us-east-1.rds.amazonaws.com', 'sn4abkagkvz8sd1n','nm85ad3jt3wpvxc6','xlx8er1i5yj6m7u4');
                                 $sql = $conn-> query('SELECT DISTINCT clientinfo.clientId, clientinfo.title, clientinfo.firstName, clientinfo.surName, clientinfo.mobileNo, clientinfo.email, clientinfo.assignedDoc FROM clientinfo JOIN petinfo ON clientinfo.clientId=petinfo.petKey');
                                 while( $data = $sql-> fetch_array()){
                                     echo '

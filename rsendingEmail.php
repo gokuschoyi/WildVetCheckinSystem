@@ -3,7 +3,7 @@ session_start();
 
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
-
+include_once 'includes\dbConn.php';
 include "simple_html_dom.php";
 require 'vendor/autoload.php';
 //error_reporting();
@@ -82,12 +82,10 @@ if (isset($_POST['submitEmail'])) {
 
 if ($_SESSION['status'] == 1) {
     $id = $_POST['cid'];
-    $conn = new mysqli('pk1l4ihepirw9fob.cbetxkdyhwsb.us-east-1.rds.amazonaws.com', 'sn4abkagkvz8sd1n', 'nm85ad3jt3wpvxc6', 'xlx8er1i5yj6m7u4');
     $snippet = "Yes";
     $stmt = $conn->prepare("UPDATE clientinfo SET snippet = ? WHERE clientId = ?");
     $stmt->bind_param("si", $snippet, $id);
     $stmt->execute();
-    session_destroy();
     header("Location: rSendsnippet.php");
 }
 ?>

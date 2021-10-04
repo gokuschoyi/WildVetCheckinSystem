@@ -64,13 +64,13 @@ include('process.php');
 
 <body>
     <nav class="navbar navbar-light navbar-expand-md d-flex justify-content-center align-items-center navigation-clean" style="height: 180px;">
-        <div class="container"><a class="navbar-brand font-monospace d-lg-flex justify-content-lg-center align-items-lg-center" href="clientCheckin.php" style="font-size: 35px;">Wild Vet</a><button data-bs-toggle="collapse" class="navbar-toggler" data-bs-target="#navcol-1"><span class="visually-hidden">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
+        <div class="container"><a class="navbar-brand font-monospace d-lg-flex justify-content-lg-center align-items-lg-center" href="index.php" style="font-size: 35px;">Wild Vet</a><button data-bs-toggle="collapse" class="navbar-toggler" data-bs-target="#navcol-1"><span class="visually-hidden">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
             <div class="collapse navbar-collapse" id="navcol-1">
                 <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"><a class="nav-link font-monospace" href="services.html">Services</a></li>
+                    <li class="nav-item"><a class="nav-link font-monospace" href="services.php">Services</a></li>
                     <li class="nav-item"></li>
-                    <li class="nav-item"><a class="nav-link font-monospace" href="contactUs.html">Contact Us</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#">F.A.Q</a></li>
+                    <li class="nav-item"><a class="nav-link font-monospace" href="contactUs.php">Contact Us</a></li>
+                    <li class="nav-item"><a class="nav-link" href="services.php">F.A.Q</a></li>
                 </ul>
             </div>
         </div>

@@ -1,7 +1,7 @@
 <?php
 include 'includes/headerDoc.php';
 include 'includes/navbarDoc.php';
-
+include_once 'includes\dbConn.php';
 ?>
 
 <!-- Content Wrapper -->
@@ -119,7 +119,6 @@ include 'includes/navbarDoc.php';
                                         CLIENTS TODAY</div>
                                     <?php
                                             
-                                                $conn = new mysqli('pk1l4ihepirw9fob.cbetxkdyhwsb.us-east-1.rds.amazonaws.com', 'sn4abkagkvz8sd1n','nm85ad3jt3wpvxc6','xlx8er1i5yj6m7u4');
                                                 $_SESSION['qEmail'] = $_SESSION['docEmail'];
                                                 $query1 = $conn->prepare("SELECT dFname from doctor WHERE dEmail = ?");
                                                 $query1->bind_param("s", $_SESSION['qEmail']);
@@ -160,7 +159,7 @@ include 'includes/navbarDoc.php';
                             <th>Pet Name</th>
                             <th>Pet Type</th>
                             <th>Breed</th>
-                            <th>EDIT DETAILS</th>
+                            <th>ADD NOTES</th>
                             <th>Client Checked</th>
 
 
@@ -182,7 +181,6 @@ include 'includes/navbarDoc.php';
                                     
                                 date_default_timezone_set('Australia/ACT');
                                 $date = date("Y-m-d");
-                                $conn = new mysqli('pk1l4ihepirw9fob.cbetxkdyhwsb.us-east-1.rds.amazonaws.com', 'sn4abkagkvz8sd1n','nm85ad3jt3wpvxc6','xlx8er1i5yj6m7u4');
                                     $viewed = "No";
                                 $query = $conn->prepare("SELECT  DISTINCT clientinfo.clientId, clientinfo.title, clientinfo.firstName, clientinfo.surName, clientinfo.assignedDoc, clientinfo.checkinDate, clientinfo.mobileNo, clientinfo.email ,petinfo.petKey, petinfo.petName, petinfo.petType, petinfo.breed ,clientinfo.viewed
                                 FROM clientinfo JOIN petinfo ON clientinfo.clientId=petinfo.petKey WHERE clientinfo.assignedDoc = ? AND clientinfo.viewed = ? AND clientinfo.checkinDate = ? ");
@@ -204,7 +202,7 @@ include 'includes/navbarDoc.php';
                                 <form action="doc_clientedit.php" method="POST">
                                     <input type="hidden" name="cid" value=<?php echo $data[0] ?>>
                                     <input type="hidden" name="cname" value=<?php echo $data[2] ?>>
-                                    <button type="submit" name="edituser" class=" btn btn-success">View/Edit</button>
+                                    <button type="submit" name="edituser" class=" btn btn-success">Add Note</button>
                                 </form>
                             </td>
                             <td>

@@ -1,6 +1,7 @@
 <?php
 include 'includes/header.php';
-include 'includes/navbar.php';       
+include 'includes/navbar.php'; 
+include_once 'includes\dbConn.php';      
 ?>
 <!-- Content Wrapper -->
 <div id="content-wrapper" class="d-flex flex-column">
@@ -101,7 +102,6 @@ include 'includes/navbar.php';
                 $ruser = $_SESSION['username'];
                 $space = ", ";
         
-                $conn = new mysqli('pk1l4ihepirw9fob.cbetxkdyhwsb.us-east-1.rds.amazonaws.com', 'sn4abkagkvz8sd1n','nm85ad3jt3wpvxc6','xlx8er1i5yj6m7u4');
                 $query = $conn->prepare("SELECT rLastname, rFirstname FROM reception WHERE rUsername = ?");
                 $query->bind_param("s",$ruser);
                 $query->execute();
@@ -139,7 +139,6 @@ include 'includes/navbar.php';
         </div>
         <?php
             $ruser = $_SESSION['username'];
-            $conn = new mysqli('pk1l4ihepirw9fob.cbetxkdyhwsb.us-east-1.rds.amazonaws.com', 'sn4abkagkvz8sd1n','nm85ad3jt3wpvxc6','xlx8er1i5yj6m7u4');
             $query = $conn->prepare("SELECT rId, rUsername, rPassword, rEmail FROM reception  WHERE rUsername = ?");
             $query->bind_param("s",$ruser);
             $query->execute();

@@ -1,6 +1,7 @@
 <?php
 include 'includes/header.php';
 include 'includes/navbar.php';
+include_once 'includes\dbConn.php';
 ?>
 
 <!-- Content Wrapper -->
@@ -91,6 +92,17 @@ include 'includes/navbar.php';
             </ul>
 
         </nav>
+        <!-- <?php
+        echo $_SESSION['message'];
+        if(isset($_SESSION['message'])){
+            if(($_SESSION['message']) == 1){
+                echo '<div class="alert alert-success alert-dismissable" id="flash-msg">
+                <button aria-hidden="true" data-dismiss="alert" class="close" type="button">×</button>
+                <h4 class = "text-center"><i class="icon fa fa-check"></i>Client information Updated</h4>
+                </div>';
+            }
+        }
+        ?> -->
         <!-- End of Topbar -->
         <div  class="loader-wrapper">
             <div class="loader-inner"></div>
@@ -120,7 +132,6 @@ include 'includes/navbar.php';
                                     <?php
                                                 date_default_timezone_set('Australia/ACT');
                                                 $date = date("Y-m-d");
-                                                $conn = new mysqli('pk1l4ihepirw9fob.cbetxkdyhwsb.us-east-1.rds.amazonaws.com', 'sn4abkagkvz8sd1n','nm85ad3jt3wpvxc6','xlx8er1i5yj6m7u4');
                                                 $query = $conn->prepare("SELECT COUNT(checkinDate) FROM clientinfo WHERE checkinDate = ?");
                                                 $query->bind_param("s",$date);
                                                 $query->execute();
@@ -171,7 +182,6 @@ include 'includes/navbar.php';
                                     
                                 date_default_timezone_set('Australia/ACT');
                                 $date = date("Y-m-d");
-                                $conn = new mysqli('pk1l4ihepirw9fob.cbetxkdyhwsb.us-east-1.rds.amazonaws.com', 'sn4abkagkvz8sd1n','nm85ad3jt3wpvxc6','xlx8er1i5yj6m7u4');
 
                                 $query = $conn->prepare("SELECT  DISTINCT clientinfo.clientId, clientinfo.title, clientinfo.firstName, clientinfo.surName, clientinfo.checkinDate, clientinfo.mobileNo, petinfo.reason ,petinfo.petKey, petinfo.petName, petinfo.petType, clientinfo.snippet, clientinfo.assignedDoc 
                                 FROM clientinfo JOIN petinfo ON clientinfo.clientId=petinfo.petKey WHERE clientinfo.checkinDate = ? ");
@@ -208,7 +218,7 @@ include 'includes/navbar.php';
                                                     aria-label="Close"><span aria-hidden="true">&times;</span></button>
                                             </div>
                                             <form action="assignDoc.php" method="POST">
-                                            <input  name="cidd" value=<?php echo $data[0] ?>>
+                                            <input type ="hidden" name="cidd" value=<?php echo $data[0] ?>>
                                                 <div class="modal-body">
                                                     <div class="form-group">
                                                         <label> DOCTOR </label>
