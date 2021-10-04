@@ -4,6 +4,7 @@ include 'includes/navbar.php';
 include 'simple_html_dom.php';
 use PHPMailer\PHPMailer\PHPMailer;
 require 'allVendor/autoload.php';
+include 'allVendor/phpmailer/phpmailer/src/PHPMailer.php';
 include_once 'includes/dbConn.php';
 if(isset($_POST['submitEmail']))
     {
