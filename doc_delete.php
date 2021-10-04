@@ -1,5 +1,5 @@
 <?php
-include_once 'includes\dbConn.php';
+include_once 'includes/dbConn.php';
 if(isset($_POST['deletedoc'])){
     $did = $_POST['did'];
     $query = $conn->prepare("DELETE FROM doctor WHERE docId = ?");

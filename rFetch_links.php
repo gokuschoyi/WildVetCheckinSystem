@@ -2,7 +2,7 @@
 include 'includes/header.php';
 include 'includes/navbar.php';
 include 'simple_html_dom.php';
-include_once 'includes\dbConn.php';
+include_once 'includes/dbConn.php';
     if(isset($_POST['selectarticle']))
     {
         $id = $_POST['cid'];

@@ -1,6 +1,6 @@
 <?php
 session_start();
-include_once 'includes\dbConn.php';
+include_once 'includes/dbConn.php';
 if(isset($_POST['registerbtn']))
 {
     $firstname = $_POST['firstname'];

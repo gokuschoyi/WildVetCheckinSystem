@@ -1,7 +1,7 @@
 <?php
 include 'includes/header.php';
-include('includes\navbarDoc.php');
-include_once 'includes\dbConn.php';
+include('includes/navbarDoc.php');
+include_once 'includes/dbConn.php';
     if(isset($_POST['edituser']))
     {
         $cid = $_POST['cid'];

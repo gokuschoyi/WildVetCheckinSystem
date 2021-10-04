@@ -1,5 +1,5 @@
 <?php
-include_once 'includes\dbConn.php';
+include_once 'includes/dbConn.php';
 session_start();
     if(isset($_POST['updatereception'])){
         //$r_id = $_POST['docid'];

@@ -1,5 +1,5 @@
 <?php
-include 'includes\dbConn.php';
+include 'includes/dbConn.php';
 use Exception as Exception;
 class nouserException extends Exception{};
 session_start();

@@ -1,5 +1,5 @@
 <?php
-include_once 'includes\dbConn.php';
+include_once 'includes/dbConn.php';
     if(isset($_POST['updateclient'])){
         $u_id = $_POST['cidd'];
         $u_mobile = $_POST['mobileUpdate'];

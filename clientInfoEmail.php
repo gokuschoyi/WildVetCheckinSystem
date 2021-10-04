@@ -1,7 +1,7 @@
 <?php session_start();
     $_SESSION["entEmail"] = $_POST['enteredEmail'];
     $_SESSION["idEmail"] = $_SESSION["entEmail"];
-    include_once 'includes\dbConn.php';
+    include_once 'includes/dbConn.php';
     //echo $_SESSION["entEmail"];
 ?>
 

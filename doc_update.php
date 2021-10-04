@@ -1,5 +1,5 @@
 <?php
-include_once 'includes\dbConn.php';
+include_once 'includes/dbConn.php';
     if(isset($_POST['updatedoc'])){
         $d_id = $_POST['docid'];
         $d_firstname = $_POST['firstname'];

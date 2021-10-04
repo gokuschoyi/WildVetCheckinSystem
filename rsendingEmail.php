@@ -3,7 +3,7 @@ session_start();
 
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
-include_once 'includes\dbConn.php';
+include_once 'includes/dbConn.php';
 include "simple_html_dom.php";
 require 'vendor/autoload.php';
 //error_reporting();

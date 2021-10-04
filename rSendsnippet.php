@@ -1,7 +1,7 @@
 <?php
 include 'includes/header.php';
 include 'includes/navbar.php';
-include_once 'includes\dbConn.php';
+include_once 'includes/dbConn.php';
 ?>
     
         <!-- Content Wrapper -->

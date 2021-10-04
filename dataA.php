@@ -3,7 +3,7 @@ header('Content-Type: application/json');
 header("Access-Control-Allow-Origin: *");
 header("Access-Control-Allow-Methods: PUT, GET, POST");
 header("Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Accept");
-include_once 'includes\dbConn.php';
+include_once 'includes/dbConn.php';
 date_default_timezone_set('Australia/ACT');
 $dateT = date("Y-m-d");
 $date = date_create($dateT);

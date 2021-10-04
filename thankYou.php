@@ -1,5 +1,5 @@
 <?php session_start();
-include_once 'includes\dbConn.php';
+include_once 'includes/dbConn.php';
 /* echo $_SESSION['idEmail'];
 echo $_SESSION['ID']; */
 $id = $_SESSION['ID'];

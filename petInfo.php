@@ -1,7 +1,7 @@
 <?php session_start();
 use PHPMailer\PHPMailer\PHPMailer;
 require 'vendor/autoload.php';
-include_once 'includes\dbConn.php';
+include_once 'includes/dbConn.php';
 error_reporting(0);
 ob_clean(); //Clear any previous output
 ob_start(); //Start new output buffer

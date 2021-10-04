@@ -1,5 +1,5 @@
 <?php session_start();
-include_once 'includes\dbConn.php';
+include_once 'includes/dbConn.php';
 $title = $_POST['title'];
 $firstName = $_POST['firstName'];
 $surName = $_POST['surName'];

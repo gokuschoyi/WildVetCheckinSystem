@@ -1,5 +1,5 @@
 <?php session_start();
-include_once 'includes\dbConn.php';
+include_once 'includes/dbConn.php';
 $petName = $_POST['petName'];
 $petType = $_POST['petType'];
 $breed = $_POST['breed'];
