@@ -3,7 +3,7 @@ include 'includes/header.php';
 include 'includes/navbar.php';
 include 'simple_html_dom.php';
 use PHPMailer\PHPMailer\PHPMailer;
-require 'vendor/autoload.php';
+require 'allVendor/autoload.php';
 include_once 'includes/dbConn.php';
 if(isset($_POST['submitEmail']))
     {

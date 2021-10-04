@@ -1,11 +1,11 @@
 <?php session_start();
 use PHPMailer\PHPMailer\PHPMailer;
-require 'vendor/autoload.php';
+require 'allVendor/autoload.php';
 include_once 'includes/dbConn.php';
 error_reporting(0);
 ob_clean(); //Clear any previous output
 ob_start(); //Start new output buffer
-include_once('vendor/tecnickcom/tcpdf/tcpdf.php');
+include_once('allVendor/tecnickcom/tcpdf/tcpdf.php');
 //echo $_SESSION["idEmail"];
 if (isset($_POST['submit'])){
     $reason = $_POST['reason'];

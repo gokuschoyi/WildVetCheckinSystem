@@ -5,7 +5,7 @@ use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 include 'includes/dbConn.php';
 include "simple_html_dom.php";
-require 'vendor/autoload.php';
+require 'allVendor/autoload.php';
 if (isset($_POST['passwordRecovery'])) {
     $email = $_POST['rEmail'];
     // ensure that the user exists on our system
