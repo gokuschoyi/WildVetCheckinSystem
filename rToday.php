@@ -92,17 +92,15 @@ include_once 'includes/dbConn.php';
             </ul>
 
         </nav>
-        <!-- <?php
-        echo $_SESSION['message'];
-        if(isset($_SESSION['message'])){
-            if(($_SESSION['message']) == 1){
-                echo '<div class="alert alert-success alert-dismissable" id="flash-msg">
-                <button aria-hidden="true" data-dismiss="alert" class="close" type="button">×</button>
-                <h4 class = "text-center"><i class="icon fa fa-check"></i>Client information Updated</h4>
-                </div>';
-            }
+        <?php
+        if(($_SESSION['clientUpdated']) == 1){
+            echo '<div class="alert alert-success alert-dismissable" id="flash-msg">
+            <button aria-hidden="true" data-dismiss="alert" class="close" type="button">×</button>
+            <h4 class = "text-center"><i class="icon fa fa-check">Client Details Updated.</i></h4>
+            </div>';
         }
-        ?> -->
+            unset($_SESSION['clientUpdated']);
+        ?>
         <!-- End of Topbar -->
         <div  class="loader-wrapper">
             <div class="loader-inner"></div>

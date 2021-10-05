@@ -40,7 +40,7 @@ function addExtraLinks($count, $message, $sLinks)
         $link->setAttribute('href', $links);
         $link->setAttribute("class", "button");
         $link->setAttribute("style", "width : 150px; background-color: #b967c7; border: none; color: white; padding: 15px 15px; text-align: center; text-decoration: none; display: inline-block; font-size: 12px; margin: 4px 2px; cursor: pointer;");
-        $link->textContent = ("Go to Google");
+        $link->textContent = ("Article : ".$i+1);
 
         $div->appendChild($link);
 
@@ -81,6 +81,7 @@ if (isset($_POST['submitEmail'])) {
 }
 
 if ($_SESSION['status'] == 1) {
+    $_SESSION['snippetSent'] = 1;
     $id = $_POST['cid'];
     $snippet = "Yes";
     $stmt = $conn->prepare("UPDATE clientinfo SET snippet = ? WHERE clientId = ?");

@@ -490,7 +490,7 @@ include_once 'includes/dbConn.php';
                                     <div class="col mr-2">
                                         <div class="text-xs font-weight-bold text-primary text-uppercase mb-1"
                                             style="font-size:1.2vw;">MC Date</div>
-                                        <div class="h5 mb-0 font-weight-bold text-gray-800"><input type="text"
+                                        <div class="h5 mb-0 font-weight-bold text-gray-800"><input type="date"
                                                 name="mcdate" value="<?php echo $stmt[30]?>" class="form-control"
                                                 placeholder="MC Date"></div>
                                     </div>

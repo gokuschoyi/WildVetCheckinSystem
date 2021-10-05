@@ -96,23 +96,20 @@ include_once 'includes/dbConn.php';
 
                 </nav>
                 <?php
-                if(isset($_SESSION['status'])){
-                    if(($_SESSION['status']) == 1){
+                if((isset($_SESSION['snippetSent'])) == 1){
                         echo '<div class="alert alert-success alert-dismissable" id="flash-msg">
                         <button aria-hidden="true" data-dismiss="alert" class="close" type="button">×</button>
-                        <h4><i class="icon fa fa-check"></i>Email successfully sent.</h4>
+                        <h4><i class="icon fa fa-check">Email successfully sent.</i></h4>
                         </div>';
-                    }
                 }
+                    unset($_SESSION['snippetSent']);
                 ?>
                 <!-- End of Topbar -->
                 <div  class="loader-wrapper">
                     <div class="loader-inner"></div>
                 </div>
                 <!-- Begin Page Content -->
-                <div  class="loader-wrapper">
-                    <div class="loader-inner"></div>
-                </div>
+                
                 <div class="container-fluid">
 
                     <!-- Page Heading -->
