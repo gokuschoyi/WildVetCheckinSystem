@@ -114,44 +114,50 @@ include 'includes/navbar.php';
 
         </div>
         
-    <div class="container-fluid" style = "width:auto; height:600px;">
-        <div class="card shadow mb-4">
-            <div class="card-header py-3">
-                <h6 class="m-0 font-weight-bold text-primary" style = "text-align: center">CLIENTS (Monthly)</h6>
-            </div>
-            <div class="card-body">
-                <div class="chart-bar" >
-                    <canvas id="graphCanvasA"></canvas>
+    <div class="row justify-content-center">
+        <div class="col-xl-12 col-lg-12 col-md-12 mb-12">
+            <div class="card shadow mb-4">
+                <div class="card-header py-3">
+                    <h6 class="m-0 font-weight-bold text-primary" style = "text-align: center">CLIENTS (Monthly)</h6>
                 </div>
-                <hr>
+                <div class="card-body">
+                    <div class="chart-bar" >
+                        <canvas id="graphCanvasA"></canvas>
+                    </div>
+                    <hr>
+                </div>
             </div>
         </div>
     </div>
 
-    <div class="container-fluid" style = "width:auto; height:600px;">
-        <div class="card shadow mb-4">
-            <div class="card-header py-3">
-                <h6 class="m-0 font-weight-bold text-primary" style = "text-align: center">CLIENTS (Fortnightly)</h6>
-            </div>
-            <div class="card-body">
-                <div class="chart-bar" >
-                    <canvas id="graphCanvasB"></canvas>
+    <div class="row justify-content-center">
+        <div class="col-xl-12 col-lg-12 col-md-12 mb-12">
+            <div class="card shadow mb-4">
+                <div class="card-header py-3">
+                    <h6 class="m-0 font-weight-bold text-primary" style = "text-align: center">CLIENTS (Fortnightly)</h6>
                 </div>
-                <hr>
+                <div class="card-body">
+                    <div class="chart-bar" >
+                        <canvas id="graphCanvasB"></canvas>
+                    </div>
+                    <hr>
+                </div>
             </div>
         </div>
     </div>
 
-    <div class="container-fluid" style = "width:auto; height:600px;">
-        <div class="card shadow mb-4">
-            <div class="card-header py-3">
-                <h6 class="m-0 font-weight-bold text-primary" style = "text-align: center">CLIENTS (By Postcode)</h6>
-            </div>
-            <div class="card-body">
-                <div class="chart-bar" >
-                    <canvas id="graphradar"></canvas>
+    <div class="row justify-content-center">
+        <div class="col-xl-12 col-lg-12 col-md-12 mb-12">
+            <div class="card shadow mb-4">
+                <div class="card-header py-3">
+                    <h6 class="m-0 font-weight-bold text-primary" style = "text-align: center">CLIENTS (By Postcode)</h6>
                 </div>
-                <hr>
+                <div class="card-body">
+                    <div class="chart-bar" >
+                        <canvas id="graphradar"></canvas>
+                    </div>
+                    <hr>
+                </div>
             </div>
         </div>
     </div>

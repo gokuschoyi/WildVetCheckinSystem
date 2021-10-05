@@ -33,6 +33,7 @@ $(document).ready(function() {
                 data: chartdata,
                 options: {
                     maintainAspectRatio: false,
+                    responsive: true,
                     layout: {
                         padding: {
                             left: 10,

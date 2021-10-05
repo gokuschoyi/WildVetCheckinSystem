@@ -40,7 +40,7 @@ if (isset($_POST['passwordRecovery'])) {
             $name = "$result[rFirstname]";
             //echo $to; echo $name;
             $subject = "Reset your password";
-            $msg = "Hi there, click on this <a href=http://localhost/WildVetCheckin/new_pass.php?token=" . $token . "\">link</a> to reset your password.";
+            $msg = "Hi there, click on this <a href=https://webprog.cs.latrobe.edu.au/~20306942/new_pass.php?token=" . $token . "\">link</a> to reset your password.";
             $msg = wordwrap($msg,70);
             
 
@@ -87,7 +87,7 @@ if (isset($_POST['receptionistCredentials'])) {
         echo $token;
         if ($new_pass !== $new_pass_c){
             $_SESSION['status'] = "Password do not match";
-            header('Location: http://localhost/WildVetCheckin/new_pass.php?token='.$token);
+            header('Location: https://webprog.cs.latrobe.edu.au/~20306942/new_pass.php?token='.$token);
         }
         else
         {
@@ -140,7 +140,7 @@ if (isset($_POST['usernameRecovery'])){
             $name = "$result[rFirstname]";
             //echo $to; echo $name;
             $subject = "Recover Your Username";
-            $msg = "Hi there, click on this <a href=http://localhost/WildVetCheckin/new_rusername.php?token=" . $token . "\">link</a> to view your username.";
+            $msg = "Hi there, click on this <a href=https://webprog.cs.latrobe.edu.au/~20306942/new_rusername.php?token=" . $token . "\">link</a> to view your username.";
             $msg = wordwrap($msg,70);
             
 
@@ -192,7 +192,7 @@ if (isset($_POST['receptionistPassword'])) {
             $result = $query->get_result()->fetch_assoc();
             $username = "$result[rUsername]";
             $_SESSION['usernamerecover'] = $username;
-            header('Location: http://localhost/WildVetCheckin/new_rusername.php?token='.$token);
+            header('Location: https://webprog.cs.latrobe.edu.au/~20306942/new_rusername.php?token='.$token);
         }
         else{
             $_SESSION['status'] = " no user exists";
@@ -233,7 +233,7 @@ if(isset($_POST['doctorPasswordRecovery'])){
             $name = "$result[dFname]";
             //echo $to; echo $name;
             $subject = "Reset your password";
-            $msg = "Hi there, click on this <a href=http://localhost/WildVetCheckin/new_docPassword.php?token=" . $token . "\">link</a> to reset your password.";
+            $msg = "Hi there, click on this <a href=https://webprog.cs.latrobe.edu.au/~20306942/new_docPassword.php?token=" . $token . "\">link</a> to reset your password.";
             $msg = wordwrap($msg,70);
             
 
@@ -279,7 +279,7 @@ if (isset($_POST['doctorCredentials'])) {
         echo $token;
         if ($new_pass !== $new_pass_c){
             $_SESSION['status'] = "Password do not match";
-            header('Location: http://localhost/WildVetCheckin/new_docPassword.php?token='.$token);
+            header('Location: https://webprog.cs.latrobe.edu.au/~20306942/new_docPassword.php?token='.$token);
         }
         else
         {

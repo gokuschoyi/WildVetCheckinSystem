@@ -209,10 +209,10 @@ include_once 'includes/dbConn.php';
 
         
         <div class="row justify-content-center ">
-            <div class="col-xl-4 col-lg-4">
+            <div class="col-xl-4 col-lg-4 col-md-4 mb-4">
                 <div class="card shadow mb-4">
                     <!-- Card Header - Dropdown -->
-                    <div class="card-header py-3 justify-content-center">
+                    <div class="card-header py-3">
                         <h6 class="m-0 font-weight-bold text-primary" style = "text-align: center">Snippet Sent</h6>
                     </div>
                     <!-- Card Body -->
@@ -224,7 +224,7 @@ include_once 'includes/dbConn.php';
                     </div>
                 </div>
             </div>
-            <div class="col-xl-4 col-lg-4">
+            <div class="col-xl-4 col-lg-4 col-md-4 mb-4">
                 <div class="card shadow mb-4">
                     <!-- Card Header - Dropdown -->
                     <div class="card-header py-3">
@@ -239,7 +239,7 @@ include_once 'includes/dbConn.php';
                     </div>
                 </div>
             </div>
-            <div class="col-xl-4 col-lg-4">
+            <div class="col-xl-4 col-lg-4 col-md-4 mb-4">
                 <div class="card shadow mb-4">
                     <!-- Card Header - Dropdown -->
                     <div class="card-header py-3">
@@ -258,7 +258,7 @@ include_once 'includes/dbConn.php';
         
         
         <div class="row justify-content-center ">
-            <div class="col-xl-12 col-lg-12">
+            <div class="col-xl-12 col-lg-12 col-md-12">
                 <div class="card shadow mb-4">
                     <div class="card-header py-3">
                         <h6 class="m-0 font-weight-bold text-primary" style = "text-align: center">Clients (Previous 7 Days)</h6>
