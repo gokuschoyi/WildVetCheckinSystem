@@ -5,7 +5,7 @@ use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 include_once 'includes/dbConn.php';
 include "simple_html_dom.php";
-require 'vendor/autoload.php';
+require 'allVendor/autoload.php';
 //error_reporting();
 $_SESSION['status'] = 0;
 
