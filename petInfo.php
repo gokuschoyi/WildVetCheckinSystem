@@ -315,6 +315,7 @@ if (isset($_POST['submit'])){
             die("unable to locate file");
 
         $mail = new PHPMailer();
+        $mail->  SMTPDebug=2;
         $mail->IsSMTP();
         $mail-> Host ='smtp.gmail.com';
         $mail->SMTPAuth = true;
