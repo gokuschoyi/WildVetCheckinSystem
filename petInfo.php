@@ -315,14 +315,14 @@ if (isset($_POST['submit'])){
             die("unable to locate file");
 
         $mail = new PHPMailer();
-        $mail->  SMTPDebug=2;
+        $mail->SMTPDebug=2;
         $mail->IsSMTP();
         $mail-> Host ='smtp.gmail.com';
         $mail->SMTPAuth = true;
         $mail->Username = 'thewildvetcheckin@gmail.com';
         $mail->Password = '123@wildvet';
         $mail->SMTPSecure ='tls';
-        $mail->Port = '587';
+        $mail->Port = '465';
         $mail->setFrom('thewildvetcheckin@gmail.com','Wild Vet Reception');
         $mail->addAddress('gokulsangamitrachoyi@gmail.com','Gokul');
         $mail->isHTML(true);
