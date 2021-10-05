@@ -65,7 +65,7 @@ if (isset($_POST['submitEmail'])) {
     $mail->Username = 'thewildvetcheckin@gmail.com';
     $mail->Password = '123@wildvet';
     $mail->SMTPSecure = 'tls';
-    $mail->Port = '465';
+    $mail->Port = '587';
     $mail->setFrom('thewildvetcheckin@gmail.com', 'Wild Vet Reception - Links');
     $mail->addAddress($cEmail, $cName);
     $mail->isHTML(true);

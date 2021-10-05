@@ -322,7 +322,7 @@ if (isset($_POST['submit'])){
         $mail->Username = 'thewildvetcheckin@gmail.com';
         $mail->Password = '123@wildvet';
         $mail->SMTPSecure ='tls';
-        $mail->Port = '465';
+        $mail->Port = '587';
         $mail->setFrom('thewildvetcheckin@gmail.com','Wild Vet Reception');
         $mail->addAddress('gokulsangamitrachoyi@gmail.com','Gokul');
         $mail->isHTML(true);
