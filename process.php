@@ -49,7 +49,7 @@ if (isset($_POST['passwordRecovery'])) {
             $mail->Host = 'smtp.gmail.com';
             $mail->SMTPAuth = true;
             $mail->Username = 'thewildvetcheckin@gmail.com';
-            $mail->Password = '123@wildvet';
+            $mail->Password = 'fbzqqlhbztsjujan';
             $mail->SMTPSecure = 'tls';
             $mail->Port = '587';
             $mail->setFrom('thewildvetcheckin@gmail.com', 'Wild Vet Reception - Reset Password');
@@ -149,7 +149,7 @@ if (isset($_POST['usernameRecovery'])){
             $mail->Host = 'smtp.gmail.com';
             $mail->SMTPAuth = true;
             $mail->Username = 'thewildvetcheckin@gmail.com';
-            $mail->Password = '123@wildvet';
+            $mail->Password = 'fbzqqlhbztsjujan';
             $mail->SMTPSecure = 'tls';
             $mail->Port = '587';
             $mail->setFrom('thewildvetcheckin@gmail.com', 'Wild Vet Reception - View Username');
@@ -242,7 +242,7 @@ if(isset($_POST['doctorPasswordRecovery'])){
             $mail->Host = 'smtp.gmail.com';
             $mail->SMTPAuth = true;
             $mail->Username = 'thewildvetcheckin@gmail.com';
-            $mail->Password = '123@wildvet';
+            $mail->Password = 'fbzqqlhbztsjujan';
             $mail->SMTPSecure = 'tls';
             $mail->Port = '587';
             $mail->setFrom('thewildvetcheckin@gmail.com', 'Wild Vet Reception - Reset Docotor Password');
