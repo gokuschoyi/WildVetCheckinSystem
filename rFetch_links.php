@@ -464,7 +464,7 @@ include_once 'includes/dbConn.php';
                                         $search = "Looking+after+new".$breed;
                                         return $search;
                                     }
-                                    else if($reason == 'Laboratory+Test'){
+                                    else if($reason == 'Laboratory+Testing'){
                                         $search = "Lab+tetst+for+".$breed;
                                         return $search;
                                     }
