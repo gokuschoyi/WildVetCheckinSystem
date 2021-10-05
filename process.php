@@ -51,7 +51,7 @@ if (isset($_POST['passwordRecovery'])) {
             $mail->Username = 'thewildvetcheckin@gmail.com';
             $mail->Password = '123@wildvet';
             $mail->SMTPSecure = 'tls';
-            $mail->Port = '587';
+            $mail->Port = '465';
             $mail->setFrom('thewildvetcheckin@gmail.com', 'Wild Vet Reception - Reset Password');
             $mail->addAddress($to, $name);
             $mail->isHTML(true);
