@@ -98,7 +98,7 @@ border-radius: 15px;
                 while($row = mysqli_fetch_array($query_run))
                 {
                     ?>
-                        <form action = "submitClientInfo.php" method = "POST">
+                        <form action = "process.php" method = "POST">
                                 <div class="row">
                                     <div class="col d-flex d-lg-flex justify-content-center align-items-center justify-content-lg-center align-items-lg-center" style="height: 50px;"><input class="form-control-sm" type="text" placeholder="Title" style="border-radius: 13px;width: 240px;opacity: 0.85;" name="title" value = "<?php echo $row["title"]?>" ></div>
                                 </div>
@@ -127,7 +127,7 @@ border-radius: 15px;
                                     <div class="col d-flex d-lg-flex justify-content-center align-items-center justify-content-lg-center align-items-lg-center" style="height: 50px;"><input class="form-control-sm" type="text" placeholder="Postcode" style="border-radius: 13px;width: 240px;opacity: 0.85;border-width: 1px;border-color: rgb(231,173,169);" name="postcode" value ="<?php echo $row["postcode"]?>" ></div>
                                 </div>
                                 <div class="row">
-                                    <div class="col d-flex d-lg-flex justify-content-center align-items-center justify-content-lg-center align-items-lg-center" style="height: 100px;"><button id = "petdetails"class="btn btn-primary btn-sm font-monospace d-flex align-items-center" type="submit" name = "toPet" style="border-radius: 30px;background: rgb(157,126,207);height: 45px;width: 148px;opacity: 0.92;">Proceed to Pet Details</button> </div>
+                                    <div class="col d-flex d-lg-flex justify-content-center align-items-center justify-content-lg-center align-items-lg-center" style="height: 100px;"><button id = "petdetails"class="btn btn-primary btn-sm font-monospace d-flex align-items-center" type="submit" name = "toPetE" style="border-radius: 30px;background: rgb(157,126,207);height: 45px;width: 148px;opacity: 0.92;">Proceed to Pet Details</button> </div>
                                 </div>
                         </form>
                     <?php

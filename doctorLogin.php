@@ -115,7 +115,7 @@
     <h4 class="font-monospace text-center d-flex d-lg-flex justify-content-center align-items-center justify-content-lg-center align-items-lg-center"
         style="height: 112px;font-weight: bold;opacity: 0.85;font-size: 28px;">Doctor Login</h4>
     <div class="d-flex d-lg-flex d-xl-flex justify-content-center align-items-start justify-content-sm-center align-items-sm-center justify-content-md-center align-items-md-center justify-content-lg-center align-items-lg-center justify-content-xl-center align-items-xl-center" style="height: 570px;">
-        <form method="POST" action="verifyDocLogin.php"
+        <form method="POST" action="process.php"
             style="background: transparent;border-radius: 26px;width: 240px;">
             <h2 class="visually-hidden">Login Form</h2>
             <div class="d-flex d-lg-flex d-xl-flex justify-content-center align-items-center justify-content-sm-center align-items-sm-center justify-content-md-center align-items-md-center justify-content-lg-center align-items-lg-center justify-content-xl-center align-items-xl-center illustration" style="height: 190px;">

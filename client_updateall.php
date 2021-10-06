@@ -1,7 +1,7 @@
 <?php
 session_start();
 include_once 'includes/dbConn.php';
-    if(isset($_POST['updateclient'])){
+    if(isset($_POST['updateAclient'])){
         $u_id = $_POST['cidd'];
         $u_mobile = $_POST['mobileUpdate'];
         $u_othContact = $_POST['otherContact'];
@@ -35,6 +35,5 @@ include_once 'includes/dbConn.php';
             $_SESSION['clientAllUpdated'] = 1;
         }
         header("Location: rAllclients.php");
-    }
-            
+    }          
 ?>

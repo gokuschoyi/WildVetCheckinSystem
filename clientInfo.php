@@ -1,28 +1,5 @@
 <?php session_start();
 include_once 'includes/dbConn.php';
-date_default_timezone_set('Australia/ACT'); 
-if (isset($_POST['toPet'])) {
-    $title = $_POST['title'];
-    $firstName = $_POST['firstName'];
-    $surName = $_POST['surName'];
-    $mobileNo = $_POST['mobileNo'];
-    $othContact = $_POST['othContact'];
-    $email = $_POST['email'];
-    $clientAddress = $_POST['address'];
-    $suburb = $_POST['suburb'];
-    $postcode = $_POST['postcode'];
-    $_SESSION['idEmail'] = $_POST['email'];
-    if ($conn->connect_error) {
-        die('Connection to DB failed : ' . $conn->connect_error);
-    }
-    else 
-    {
-        $stmt = $conn->prepare("INSERT INTO clientinfo (title, firstName, surName, mobileNo, othContact, email, clientAddress, suburb, postcode) VALUES (?,?,?,?,?,?,?,?,?)");
-        $stmt->bind_param("sssiisssi", $title, $firstName, $surName, $mobileNo, $othContact, $email, $clientAddress, $suburb, $postcode);
-        $stmt->execute();
-        header("Location: petInfo.php");
-    }
-}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -111,7 +88,7 @@ border-radius: 15px;
         </div>
     </nav>
     <div class = "container">
-        <form action="<?php echo htmlentities($_SERVER['PHP_SELF']); ?>" method="POST">
+        <form action="process.php?>" method="POST">
             <div>
                 <div class="row">
                     <div class="col d-flex d-lg-flex justify-content-center align-items-center justify-content-lg-center align-items-lg-center" style="height: 50px;border-radius: 13px;border-color: rgb(231,173,169);"><select class="form-select-sm" style="width: 240px;height: 31px;border-radius: 13px;opacity: 0.85;border-color: rgb(231,173,169);" name="title" required="">
@@ -148,7 +125,7 @@ border-radius: 15px;
                     <div class="col d-flex d-lg-flex justify-content-center align-items-center justify-content-lg-center align-items-lg-center" style="height: 50px;"><input class="form-control-sm" type="text" placeholder="Postcode" style="border-radius: 13px;width: 240px;opacity: 0.85;border-width: 1px;border-color: rgb(231,173,169);" name="postcode" required=""></div>
                 </div>
                 <div class="row">
-                    <div class="col d-flex d-lg-flex justify-content-center align-items-center justify-content-lg-center align-items-lg-center" style="height: 100px;"><button id="petdetails" class="btn btn-primary btn-sm font-monospace d-flex align-items-center" type="submit" name="toPet" style="border-radius: 30px;background: rgb(157,126,207);height: 45px;width: 148px;opacity: 0.92;">Proceed to Pet Details</button>
+                    <div class="col d-flex d-lg-flex justify-content-center align-items-center justify-content-lg-center align-items-lg-center" style="height: 100px;"><button id="petdetails" class="btn btn-primary btn-sm font-monospace d-flex align-items-center" type="submit" name="toPetC" style="border-radius: 30px;background: rgb(157,126,207);height: 45px;width: 148px;opacity: 0.92;">Proceed to Pet Details</button>
                     </div>
                 </div>
             </div>

@@ -1,47 +1,7 @@
 <?php
 include_once 'includes/dbConn.php';
 session_start();
-    $firstname = $_POST['dFname'];
-    $username = $_POST['username'];
-    $dEmail = $_POST['dEmail'];
-    $dPassword = $_POST['dPassword'];
-    $dCpassword = $_POST['dCpassword'];
-   
-    if ($conn->connect_error) {
-        die('Connection to DB failed : ' . $conn->connect_error);
-    } 
-    else{
-    $_SESSION['message']="";
-    $buttonFlag = false;
-    $query = $conn->prepare("SELECT * FROM doctor WHERE dEmail = '$dEmail'");
-    //$query->bind_param("s",$dEmail);
-    $query->execute();
-    $result = $query->get_result();
-        while( $row = $result->fetch_assoc()){
-            $qname = "$row[dFname]";
-            $qemail = "$row[dEmail]";
-            $qid = "$row[docId]";
-            $registered = "Yes";
-            if(($firstname == $qname) && ($dEmail == $qemail))
-            {
-                if($dPassword == $dCpassword){
-                $query = $conn->prepare("UPDATE doctor SET username = ?,dPassword = ?, registered = ? WHERE docId = ?");
-                $query->bind_param("sssi",$username, $dPassword, $registered, $qid);
-                $query->execute();
-                $_SESSION['message']= "Thank you for registering. You can now Log-In.";
-                $buttonFlag = true;
-                }
-                else{
-                $_SESSION['message']="Passwords do not match re-enter and try again. ";
-                }    
-            }
-            else{
-                $_SESSION['message']="The email and Name does not exist in our records. Contact Admin.";
-
-            }
-        }
-    }
-    ?>
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -155,10 +115,10 @@ session_start();
     </div>
     <div class="d-xl-flex justify-content-xl-center align-items-xl-center" style="height: 170px;">
         <?php 
-    if($buttonFlag == true){
+    if($_SESSION['$buttonFlag'] == true){
         echo '<form action = "doctorLogin.php" method = "POST" class = "d-flex d-lg-flex d-xl-flex justify-content-center align-items-center justify-content-sm-center align-items-sm-center justify-content-md-center align-items-md-center justify-content-lg-center align-items-lg-center justify-content-xl-center align-items-xl-center">
         <button class="btn btn-success" type="submit" name = "login">Log-In</button></form>';
-        $buttonFlag = false;
+        $_SESSION['$buttonFlag'] = false;
         }
     else {
         echo '<form action = "doctorRegister.php" method = "POST" class ="d-flex d-lg-flex d-xl-flex justify-content-center align-items-center justify-content-sm-center align-items-sm-center justify-content-md-center align-items-md-center justify-content-lg-center align-items-lg-center justify-content-xl-center align-items-xl-center">

@@ -92,7 +92,7 @@ include_once 'includes/dbConn.php';
             </ul>
 
         </nav>
-        <?php
+        <!-- <?php
         if(($_SESSION['clientUpdated']) == 1){
             echo '<div class="alert alert-success alert-dismissable" id="flash-msg">
             <button aria-hidden="true" data-dismiss="alert" class="close" type="button">×</button>
@@ -100,7 +100,7 @@ include_once 'includes/dbConn.php';
             </div>';
         }
             unset($_SESSION['clientUpdated']);
-        ?>
+        ?> -->
         <!-- End of Topbar -->
         <div  class="loader-wrapper">
             <div class="loader-inner"></div>
@@ -176,7 +176,7 @@ include_once 'includes/dbConn.php';
                                     {
                                         $options = $options."<option>$resu[0]</options>";
                                     }
-                                    echo $options;
+                                    //echo $options;
                                     
                                 date_default_timezone_set('Australia/ACT');
                                 $date = date("Y-m-d");
@@ -215,7 +215,7 @@ include_once 'includes/dbConn.php';
                                                 <button type="button" class="close" data-dismiss="modal"
                                                     aria-label="Close"><span aria-hidden="true">&times;</span></button>
                                             </div>
-                                            <form action="assignDoc.php" method="POST">
+                                            <form action="process.php" method="POST">
                                             <input type ="hidden" name="cidd" value=<?php echo $data[0] ?>>
                                                 <div class="modal-body">
                                                     <div class="form-group">

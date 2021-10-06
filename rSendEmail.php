@@ -182,7 +182,7 @@ if(isset($_POST['goback'])){
                                                 <?php if ($_SESSION['status'] == 1) { ?>
                                                 <div class='alert alert-success'>Email sent successfully.</div>
                                                 <?php } ?>
-                                                <form action="rsendingEmail.php" method="POST" >
+                                                <form action="process.php" method="POST" >
                                                     <div class="row">
                                                         <div class="col-6 mb-3">
                                                             <label for="sender_name" class="form-label">Sender Name</label>

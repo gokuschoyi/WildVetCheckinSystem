@@ -107,7 +107,7 @@ if(isset($_POST['docRegister'])){
     <h4 class="font-monospace text-center d-flex d-lg-flex justify-content-center align-items-center justify-content-lg-center align-items-lg-center"
         style="height: 133px;font-weight: bold;opacity: 0.85;font-size: 28.376px;">Doctor Register</h4>
     <div class="d-flex d-lg-flex d-xl-flex justify-content-center align-items-start justify-content-sm-center align-items-sm-center justify-content-md-center align-items-md-center justify-content-lg-center align-items-lg-center justify-content-xl-center align-items-xl-center" style="height: 582px;">
-        <form action="verifyDoc.php" method="POST" style="background: transparent;border-radius: 26px;max-width: 240px;width: 240px;">
+        <form action="process.php" method="POST" style="background: transparent;border-radius: 26px;max-width: 240px;width: 240px;">
             <h2 class="visually-hidden">Login Form</h2>
             <div class="d-flex d-lg-flex d-xl-flex justify-content-center align-items-center justify-content-sm-center align-items-sm-center justify-content-md-center align-items-md-center justify-content-lg-center align-items-lg-center justify-content-xl-center align-items-xl-center illustration" style="height: 130px;">
                 <img src="assets/img/password.png" style="width: 80px;"></div>

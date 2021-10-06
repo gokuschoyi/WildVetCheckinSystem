@@ -124,7 +124,7 @@ include_once 'includes/dbConn.php';
                                                         <span aria-hidden="true">&times;</span>
                                                     </button>
                                                 </div>
-                                                <form action="docCode.php" method="POST">
+                                                <form action="process.php" method="POST">
                                                     <div class="modal-body">
                                                         <div class="form-group">
                                                             <label> Firstname </label>
@@ -218,14 +218,7 @@ include_once 'includes/dbConn.php';
                 </div>
                 <!-- Content Row -->
             </div>
-            <div class="card-body">
-                <?php
-                    if (isset($_SESSION['status'])){
-                        echo '<h2>'.$_SESSION['status'].'</h2>';
-                        unset($_SESSION['status']);
-                    }
-                ?>
-            </div>
+
             <div class="row">
                 <!-- FORM for adding doctor -->
                 <div class="table-responsive table table-striped table-bordered table-hover">
@@ -262,7 +255,7 @@ include_once 'includes/dbConn.php';
                                         </form>
                                         </td>
                                         <td> 
-                                            <form action = "doc_delete.php" method = "POST">
+                                            <form action = "process.php" method = "POST">
                                             <input type = "hidden" name = "did" value ='.$data['docId'].'>
                                         <button type = "submit" name = "deletedoc" class = " btn btn-danger">DELETE</button> 
                                         </form>

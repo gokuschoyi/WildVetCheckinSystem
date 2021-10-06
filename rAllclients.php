@@ -175,7 +175,7 @@ include_once 'includes/dbConn.php';
                                         </form>
                                         </td>
                                         <td> 
-                                            <form action = "client_delete.php" method = "POST">
+                                            <form action = "process.php" method = "POST">
                                             <input type = "hidden" name = "cid" value ='.$data['clientId'].'>
                                             <button type = "submit" name = "deleteuser" class = " btn btn-success">DELETE</button> 
                                         </form>

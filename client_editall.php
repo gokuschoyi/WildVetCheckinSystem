@@ -173,7 +173,7 @@ include_once 'includes/dbConn.php';
                 $stmt = $query->get_result()->fetch_row();
             ?>
 
-        <form method="POST" action="client_updateall.php">
+        <form method="POST" action="process.php">
             <input type="hidden" name="cidd" value="<?php echo $stmt[0]?>">
             <div class="container-fluid">
                 <div class="row">
@@ -501,7 +501,7 @@ include_once 'includes/dbConn.php';
                     <div class="col-xl-4 col-md-6 mb-4">
                         <div class="card border-left-primary shadow h-100 py-2 align-items-center">
                             <div class="h5 mb-0 font-weight-bold text-gray-800  justify-content-center"><button
-                                    type="submit" name="updateclient" class=" btn btn-success">UPDATE</button></div>
+                                    type="submit" name="updateAclient" class=" btn btn-success">UPDATE</button></div>
                         </div>
                     </div>
                     <div class="col-xl-4 col-md-6 mb-4">

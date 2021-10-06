@@ -23,6 +23,8 @@
     <script type="text/javascript" charset="utf8" src="https://code.jquery.com/jquery-3.5.1.js"></script>
     <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.11.0/js/jquery.dataTables.min.js"></script>
     <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.25/js/dataTables.bootstrap5.min.js"></script>
+    <script src="allVendor/sweetalert2/dist/sweetalert2.min.js"></script>
+    <link rel="stylesheet" href="allVendor/sweetalert2/dist/sweetalert2.min.css">
     <script type="text/javascript" src="app.js"></script>
     <script type="text/javascript" src="appA.js"></script>
     <script type="text/javascript" src="appB.js"></script>
@@ -115,3 +117,19 @@
             });
         
     </script>
+
+    <?php
+        if((isset($_SESSION['status']) && $_SESSION['status']) !='')
+        {
+            ?>
+            <script>
+                Swal.fire({
+                icon: '<?php echo $_SESSION['status_code']?>',
+                title: '<?php echo $_SESSION['status']?>',
+                footer: '<a href="">Why do I have this issue?</a>'
+            })
+            </script>
+            <?php unset($_SESSION['status']);
+        }
+    ?>
+    

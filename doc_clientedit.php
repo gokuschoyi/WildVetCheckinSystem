@@ -453,7 +453,7 @@ include_once 'includes/dbConn.php';
 
             </div>
 
-            <form method="POST" action="doc_clientupdate.php">
+            <form method="POST" action="process.php">
                 <input type = "hidden" name="cidd" value="<?php echo $stmt[0]?>">
                 
                 <div class="container-fluid">

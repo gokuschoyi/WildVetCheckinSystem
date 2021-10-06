@@ -179,7 +179,7 @@ include_once 'includes/dbConn.php';
                 $stmt = $query->get_result()->fetch_row();
             ?>
 
-        <form method="POST" action="client_update.php">
+        <form method="POST" action="process.php">
             <input type="hidden" name="cidd" value="<?php echo $stmt[0]?>">
             <div class="container-fluid">
                 <div class="row">

@@ -145,7 +145,7 @@ include_once 'includes/dbConn.php';
             $stmt = $query->get_result()->fetch_row();
         ?>
 
-        <form method="POST" action="rProfileUpdate.php">
+        <form method="POST" action="process.php">
             <input type="hidden" name="rid" value="<?php echo $stmt[0]?>">
             <div class="container-fluid">
                 <div class="row">

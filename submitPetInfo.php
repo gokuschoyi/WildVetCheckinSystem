@@ -27,6 +27,7 @@ $mcDate =  date('Y-m-d',strtotime($_POST['mcDate']));
         $stmt->execute();  
     } 
 
+    
         echo " Pet Info saved to db...";
         session_destroy();
         header("Location: thankYou.php");

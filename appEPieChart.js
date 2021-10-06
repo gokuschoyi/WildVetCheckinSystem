@@ -16,7 +16,7 @@ $(document).ready(function() {
                 labels: day,
                 datasets: [{
                     label: 'Client Seen VS not',
-                    backgroundColor: ['#6d648b', '#6cbaab', '#f9a402'],
+                    backgroundColor: ['#6d648b', '#6cbaab', '#f9a402', '#c951e9', '#eb445c', '#cbeb44'],
                     borderColor: 'rgba(200, 200, 200, 0.75)',
                     hoverBackgroundColor: '#ebe0ff',
                     hoverBorderColor: 'rgba(200, 200, 200, 1)',
