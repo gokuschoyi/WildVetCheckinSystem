@@ -157,6 +157,8 @@
                             </div>
                             <div class="col-md-12 d-flex d-lg-flex d-xl-flex justify-content-center align-items-center justify-content-lg-center align-items-lg-center justify-content-xl-center align-items-xl-center">
                                 <div class="col d-flex d-lg-flex justify-content-center align-items-center justify-content-lg-center align-items-lg-center"style="height: 50px; padding-right:10px;">
+                                    <button class="btn btn-primary btn-sm font-monospace d-lg-flex d-flex justify-content-center align-items-center" type="submit" name = "dusernameRecovery"
+                                            style="border-radius: 30px;background: rgb(157,126,207);height: 31px;width: 100px;">Username</button>
                                     <button class="btn btn-primary btn-sm font-monospace d-lg-flex d-flex justify-content-center align-items-center" type="submit" name ="doctorPasswordRecovery"
                                         style="border-radius: 30px;background: rgb(157,126,207);height: 31px;width: 100px;">Password</button>
                                 </div>

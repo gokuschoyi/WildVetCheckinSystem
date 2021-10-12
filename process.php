@@ -11,7 +11,7 @@ require 'allVendor/autoload.php';
 ob_clean(); //Clear any previous output
 ob_start(); //Start new output buffer
 
-/* password recovery for receptionist */ #error pop-up done
+/* Password recovery for receptionist */ #error pop-up done
 if (isset($_POST['passwordRecovery'])) {
     $email = $_POST['rEmail'];
     // ensure that the user exists on our system
@@ -132,7 +132,7 @@ if (isset($_POST['receptionistCredentials'])) {
     }
 }
 
-//username recovery for receptionist #error pop-up done
+// Username recovery for receptionist #error pop-up done
 if (isset($_POST['usernameRecovery'])){
     $email = $_POST['rEmail'];
     if ($conn->connect_error) {
@@ -198,7 +198,7 @@ if (isset($_POST['usernameRecovery'])){
     }
 }
 
-//viewing username after entering password to link sent via email #error pop-up done
+// Viewing username after entering password to link sent via email #error pop-up done
 if (isset($_POST['receptionistPassword'])) {
     if ($conn->connect_error) {
         die('Connection to DB failed : ' . $conn->connect_error);
@@ -241,7 +241,7 @@ if (isset($_POST['receptionistPassword'])) {
                     $tokendelete = $conn->prepare("delete from passwordreset where token = ?");
                     $tokendelete->bind_param("s",$token);
                     $tokendelete->execute();
-                    header('Location: doctorLogin.php');
+                    header('Location: receptionistLogin.php');
                     exit();
                 }
                 else{
@@ -256,7 +256,7 @@ if (isset($_POST['receptionistPassword'])) {
     }
 }
 
-//password reset for doctor #error pop-up done
+// Password reset for doctor #error pop-up done
 if(isset($_POST['doctorPasswordRecovery'])){
     $email = $_POST['dEmail'];
     // ensure that the user exists on our system
@@ -324,7 +324,7 @@ if(isset($_POST['doctorPasswordRecovery'])){
     }
 }
 
-//Enter doctor password to reset , link sent via mail #error pop-up done
+// Enter doctor password to reset , link sent via mail #error pop-up done
 if (isset($_POST['doctorCredentials'])) {
     if ($conn->connect_error) {
         die('Connection to DB failed : ' . $conn->connect_error);
@@ -373,6 +373,130 @@ if (isset($_POST['doctorCredentials'])) {
                 }
             }
         }
+    }
+}
+
+// Username recovery for doctor.. forgotten username
+if(isset($_POST['dusernameRecovery'])){
+    $email = $_POST['dEmail'];
+    if ($conn->connect_error) {
+        die('Connection to DB failed : ' . $conn->connect_error);
+    } 
+    else
+    {
+        $query = $conn->prepare("SELECT dEmail , docId, username, dFname FROM doctor WHERE dEmail = ? ");
+        $query->bind_param("s", $email);
+        $query->execute();
+        $result = $query->get_result()->fetch_assoc();
+        
+        if($result == 0) {
+        $_SESSION['statusD'] = 'Sorry, no user exists on our system with that email';
+        $_SESSION['status_codeD'] = "error";
+        header("Location: recoverySelection.php");
+        exit();
+        }
+        $token = bin2hex(random_bytes(5));
+    
+        if ($result > 0) {
+        // store token in the password-reset database table against the user's email
+            $riD = "$result[docId]";
+            $query1 = $conn->prepare("INSERT INTO passwordreset(id, email, token) VALUES (?,?,?)");
+            $query1->bind_param("iss", $riD, $email, $token);
+            $query1->execute();
+
+        
+            // Send email to user with the token in a link they can click on
+            $to = $email;
+            $name = "$result[dFname]";
+            //echo $to; echo $name;
+            $subject = "Recover Your Username - Doctor";
+            $msg = "Hi there, click on this <a href=http://localhost/WildVetCheckin/new_dusername.php?token=". $token ."\">link</a> to view your username.";
+            $msg = wordwrap($msg,70);
+            
+
+            $mail = new PHPMailer();
+            $mail->IsSMTP();
+            $mail->Host = 'smtp.gmail.com';
+            $mail->SMTPAuth = true;
+            $mail->Username = 'thewildvetcheckin@gmail.com';
+            $mail->Password = 'fbzqqlhbztsjujan';
+            $mail->SMTPSecure = 'tls';
+            $mail->Port = '587';
+            $mail->setFrom('thewildvetcheckin@gmail.com', 'Wild Vet Reception - View Username');
+            $mail->addAddress($to, $name);
+            $mail->isHTML(true);
+            $mail->Subject = $subject;
+            $mail->Body = $msg;
+
+            try {
+                $mail->send();
+                $_SESSION['statusmail'] = 1;
+                
+            } catch (Exception $e) {
+                echo "error" . $mail->ErrorInfo;
+            }
+        }
+        if ($_SESSION['statusmail'] == 1) {
+            header('Location: emailConfirm.php?email='.$email);
+        }
+    }
+}
+
+// Viewing username for doctor.. forgotten username
+if(isset($_POST['doctorPassword'])){
+    if ($conn->connect_error) {
+        die('Connection to DB failed : ' . $conn->connect_error);
+    } 
+    else
+    {
+        $enteredPassword = $_POST['dPassword'];
+        $token = $_POST['token'];
+        $query2 = $conn->prepare("SELECT email FROM passwordreset WHERE token = ? LIMIT 1");
+        $query2->bind_param("s", $token);
+        $query2->execute();
+        $result = $query2->get_result()->fetch_assoc();
+        if($result == 0){
+            $_SESSION['statusD'] = "Sorry the link has expired. Try agian using the recovery.";
+            $_SESSION['status_codeD'] = "error";
+            $_SESSION['msg'] ="";
+            header('location: recoverySelection.php');
+            exit();
+        }
+        else{
+            $email = "$result[email]";
+            $query = $conn->prepare("SELECT dPassword, username FROM doctor WHERE dEmail = ?");
+            $query->bind_param("s", $email);
+            $query->execute();
+            if(!$query){
+                $_SESSION['statusD'] = "Oops, sowmthing went wrong. Try again after some time. user does not exist";
+                $_SESSION['status_codeD'] = "error";
+                $_SESSION['msg'] ="";
+                header('location: recoverySelection.php');
+                exit();
+            }
+            else{
+                $result = $query->get_result()->fetch_assoc();
+                $dPassword = "$result[dPassword]";
+                if($dPassword == $enteredPassword){
+                    $rusername = "$result[username]";
+                    $_SESSION['statusD'] = "Here is your user-name : ".$rusername;
+                    $_SESSION['status_codeD'] = "success";
+                    $_SESSION['msg'] = "This dialogue cannot be viewed again after closing.";
+                    $tokendelete = $conn->prepare("delete from passwordreset where token = ?");
+                    $tokendelete->bind_param("s",$token);
+                    $tokendelete->execute();
+                    header('Location: doctorLogin.php');
+                    exit();
+                }
+                else{
+                    $_SESSION['statusD'] = "Wrong password entered. Try again.";
+                    $_SESSION['status_codeD'] = "error";
+                    $_SESSION['msg'] ="";
+                    header('Location: http://localhost/WildVetCheckin/new_dusername.php?token='.$token);
+                    exit();
+                }
+            }
+        } 
     }
 }
 
@@ -757,7 +881,7 @@ if (isset($_POST['submitEmail'])) {
 //(11) Doctor Login verification #error pop-up done
 if(isset($_POST['logindoc']))
     {
-    $docEmail = $_POST['email'];
+    $docUname = $_POST['username'];
     $docPass = $_POST['password'];
     /* echo $docEmail;
     echo $docPass; */
@@ -765,25 +889,27 @@ if(isset($_POST['logindoc']))
         die('Connection to DB failed : ' . $conn->connect_error);
     } 
     else{
-        $query = $conn->prepare("SELECT username, dEmail, dPassword FROM doctor WHERE dEmail = ?");
-        $query->bind_param("s",$docEmail);
+        $query = $conn->prepare("SELECT username, dPassword, dFname, dLname, dEmail FROM doctor WHERE username = ?");
+        $query->bind_param("s",$docUname);
         $query->execute();
         $result = $query->get_result();
-        if(!$query){
-            $_SESSION['statusD'] = "Sowmething went Wrong. Try again later.";
+        if(mysqli_num_rows($result)==0){
+            $_SESSION['statusD'] = "The username is invalid, try again .";
             $_SESSION['status_codeD'] = "error";
             header("Location: doctorLogin.php");
             exit();
         }
-        else{
+        else {
             while($row = $result->fetch_assoc()){
-                $qemail = "$row[dEmail]";
                 $qpassword = "$row[dPassword]";
                 $username = "$row[username]";
+                $fname = "$row[dFname]";
+                $lname = "$row[dLname]";
+                $qemail = "$row[dEmail]";
             }
-            if(($docEmail == $qemail) && ($docPass == $qpassword))
+            if(($docUname == $username) && ($docPass == $qpassword))
             {
-                $_SESSION['status'] = "WELCOME ".$username.'.'." You have successfully logged in.";
+                $_SESSION['status'] = "WELCOME ".$fname." ".$lname.'.'." You have successfully logged in.";
                 $_SESSION['status_code'] = "success";
                 $_SESSION['loggedin'] = "success";
                 $_SESSION['docEmail'] = $qemail;
@@ -792,7 +918,7 @@ if(isset($_POST['logindoc']))
             }
             else if (($docEmail != $qemail) || ($docPass != $qpassword))
             {
-                $_SESSION['statusD'] = "Wrong email or password. Try again.";
+                $_SESSION['statusD'] = "Password is invalid, try again.";
                 $_SESSION['status_codeD'] = "error";
                 header("Location: doctorLogin.php");
                 exit();

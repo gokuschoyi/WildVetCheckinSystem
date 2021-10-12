@@ -1,4 +1,5 @@
-<?php session_start();?>
+<?php session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -51,6 +52,7 @@
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css?family=Courier+Prime:400,400i,700,700i&amp;subset=latin-ext&amp;display=swap">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=GFS+Neohellenic&amp;display=swap">
+    <link rel="stylesheet" href="assets/fonts/font-awesome.min.css">
     <link rel="stylesheet" href="assets/fonts/ionicons.min.css">
     <link rel="stylesheet" href="assets/css/Features-Blue.css">
     <link rel="stylesheet" href="assets/css/Features-Boxed.css">
@@ -62,76 +64,86 @@
     <link rel="stylesheet" href="allVendor/sweetalert2/dist/sweetalert2.min.css">
 </head>
 <style>
-@media screen and (max-width: 600px) {
+    @media screen and (max-width: 400px) {
     div.example {
     display: none;
     }
 }
-.navbar-collapse{
-    z-index: 1000;
-    
-}
-.navbar-nav{
-    border-radius: 10px;
-}
-.nav-link{
-    background-color:#f2f9ff;
-    border-radius:15px;
-}
 </style>
-<body style="background: url(&quot;assets/img/6677.jpg&quot;) center no-repeat;">
+<body style="height: 1020px;background: url(&quot;assets/img/6677.jpg&quot;) center no-repeat;">
     <nav class="navbar navbar-light navbar-expand-md navigation-clean" style="height: 150px;background: #c292fb;">
         <div class="container"><a class="navbar-brand font-monospace" href="index.php" style="font-size: 35px;">The Wild Vet</a>
-            <button data-bs-toggle="collapse" class="navbar-toggler" data-bs-target="#navcol-1">
-                <span class="visually-hidden">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
-            <div class="collapse navbar-collapse" id="navcol-1">
-            <ul class="navbar-nav ms-auto" style = "background:#c292fb;">
-                    <li class="nav-item"><a class="nav-link font-monospace" href="index.php">Home</a></li>
-                    <li class="nav-item"><a class="nav-link font-monospace" href="#">Services</a></li>
-                    <li class="nav-item"><a class="nav-link font-monospace" href="#">About</a></li>
-                    <li class="nav-item"><a class="nav-link font-monospace" href="#">Terms & Services</a></li>
-                    <li class="nav-item"><a class="nav-link font-monospace" href="#">Privacy Policy</a></li>
-                </ul>
-            </div>
-            <div class = "example">
-            <div class="col-md-12 d-flex d-xl-flex justify-content-center align-items-center justify-content-xl-center align-items-xl-center" style = 'width :100px; padding-left : 45px;'>
-                <img src="assets\img\logo.png" style="height: 80px;">
-            </div>
+        <div class = "example">
+                <div class="col-md-12 d-flex d-xl-flex justify-content-center align-items-center justify-content-xl-center align-items-xl-center" style = 'width :100px; '>
+                    <img src="assets\img\logo.png" style="height: 80px; padding-left : 45px;">
+                </div>
             </div>
         </div>
     </nav>
 
     <h4 class="font-monospace text-center d-flex d-lg-flex justify-content-center align-items-center justify-content-lg-center align-items-lg-center"
-        style="height: 112px;font-weight: bold;opacity: 0.85;font-size: 28px;">Doctor Login</h4>
-    <div class="d-flex d-lg-flex d-xl-flex justify-content-center align-items-start justify-content-sm-center align-items-sm-center justify-content-md-center align-items-md-center justify-content-lg-center align-items-lg-center justify-content-xl-center align-items-xl-center" style="height: 570px;">
-        <form method="POST" action="process.php"
-            style="background: transparent;border-radius: 26px;width: 240px;">
-            <h2 class="visually-hidden">Login Form</h2>
-            <div class="d-flex d-lg-flex d-xl-flex justify-content-center align-items-center justify-content-sm-center align-items-sm-center justify-content-md-center align-items-md-center justify-content-lg-center align-items-lg-center justify-content-xl-center align-items-xl-center illustration" style="height: 190px;">
-                <img src="assets/img/password.png" style="width: 80px;">
+        style="height: 133px;font-weight: bold;opacity: 0.85;font-size: 28.376px;">USERNAME RECOVERY
+    </h4>
+    <div class="container" style="height : 570px">
+        <div class="row d-md-flex d-lg-flex d-xl-flex justify-content-md-center align-items-md-center justify-content-lg-center align-items-lg-center justify-content-xl-center align-items-xl-center"style="height : 260px; padding-top:40px;">
+            <div class="col-md-6 col-lg-4 item" style="height: 184px;">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12 d-flex d-xl-flex justify-content-center align-items-center justify-content-xl-center align-items-xl-center">
+                            <img src="assets/img/receptionist.png" style="height: 60px;">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12" style="height: 70px;">
+                            <h2 class=" text-center font-monospace d-md-flex d-lg-flex d-xl-flex justify-content-md-center align-items-md-center justify-content-lg-center align-items-lg-center justify-content-xl-center align-items-xl-center"
+                                style="color: rgb(93,72,96);height: 60px;">DOCTOR</h2>
+                        </div>
+                        <div class="col-md-12" style = "background-color:antiquewhite;opacity:0.9;border-radius:15px;">
+                            <h4 class="text-center font-monospace d-md-flex d-lg-flex d-xl-flex justify-content-md-center align-items-md-center justify-content-lg-center align-items-lg-center justify-content-xl-center align-items-xl-center"
+                                style="color: rgb(93,72,96);height: 60px;">Enter your password to view your username</h4>
+                        </div>
+                    </div>
+                    <form method = "POST" action = "process.php">
+                        <div class="row">
+                            <div class="col-md-12 d-flex d-lg-flex d-xl-flex justify-content-center align-items-center justify-content-lg-center align-items-lg-center justify-content-xl-center align-items-xl-center">
+                                <div class="col d-flex d-lg-flex justify-content-center align-items-center justify-content-lg-center align-items-lg-center"style="height: 50px; padding-right:10px;">
+                                <input class="form-control-sm d-lg-flex justify-content-lg-center align-items-lg-center" type="text" placeholder="Enter Password" style="border-radius: 13px;width: 200px;border-width: 1px;border-color: rgb(231,173,169);"
+                                name="dPassword" required="" ></div>
+                            </div>
+                            <?php
+                                $token = $_GET['token'];
+                            ?>
+                            <input type="hidden" name="token" value = "<?php echo $token;?>">
+                            <div class="col-md-12 d-flex d-lg-flex d-xl-flex justify-content-center align-items-center justify-content-lg-center align-items-lg-center justify-content-xl-center align-items-xl-center" style = "padding-top :30px;">
+                                <button class="btn btn-primary btn-sm font-monospace d-lg-flex d-flex justify-content-center align-items-center" type="submit"  name="doctorPassword" 
+                                    style="border-radius: 30px;background: rgb(157,126,207);height: 31px;width: 100px;">Submit</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            
             </div>
-            <div class="mb-3"><input class="form-control" type="text" name="username" placeholder="Username"></div>
-            <div class="mb-3"><input class="form-control" type="password" name="password" placeholder="Password"></div>
-            <div class="d-xl-flex justify-content-xl-center align-items-xl-center mb-3">
-                <button class="btn btn-primary d-block w-100" name="logindoc" type="submit">Log In</button>
-            </div>
-                <a class="d-flex d-sm-flex d-md-flex d-lg-flex d-xl-flex justify-content-center align-items-center justify-content-sm-center align-items-sm-center justify-content-md-center align-items-md-center justify-content-lg-center align-items-lg-center justify-content-xl-center align-items-xl-center forgot" style = "padding-bottom:35px"; href="recoverySelection.php">Forgot Password</a>
-                <p class="d-flex d-sm-flex d-md-flex d-lg-flex d-xl-flex justify-content-center align-items-center justify-content-sm-center align-items-sm-center justify-content-md-center align-items-md-center justify-content-lg-center align-items-lg-center justify-content-xl-center align-items-xl-center forgot" style = "padding-top : 20px;">Haven't registered yet? </p>
-                <a class="d-flex d-sm-flex d-md-flex d-lg-flex d-xl-flex justify-content-center align-items-center justify-content-sm-center align-items-sm-center justify-content-md-center align-items-md-center justify-content-lg-center align-items-lg-center justify-content-xl-center align-items-xl-center forgot" href="doctorRegister.php">Register here</a>
-        </form>
+        </div>
+        <div class="row d-md-flex d-lg-flex d-xl-flex justify-content-md-center align-items-md-center justify-content-lg-center align-items-lg-center justify-content-xl-center align-items-xl-center"
+            style="height : 260px">
+            
+        </div>
     </div>
-    <footer class="footer-basic" style="height: 150px; padding-top:51px;">
-        <ul class="list-inline">
-            <li class="list-inline-item"><a href="index.php">Home</a></li>
-            <li class="list-inline-item"><a href="#">User Manual</a></li>
-            <li class="list-inline-item"><a href="#">About</a></li>
-            <li class="list-inline-item"><a href="#">Terms & Conditions</a></li>
-            <li class="list-inline-item"><a href="#">Privacy Policy</a></li>
-        </ul>
-        <p class="copyright" style = "font-size : 18px; font-weight: bold; padding-top:20px;">The Wild Vet © 2021</p>
-    </footer>
-    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
-    <script src="allVendor/sweetalert2/dist/sweetalert2.min.js"></script>
+    </form>
+        <footer class="footer-basic" style="height: 150px; padding-top:50px;">
+
+            <ul class="list-inline">
+                <li class="list-inline-item"><a href="index.php">Home</a></li>
+                <li class="list-inline-item"><a href="#">User Manual</a></li>
+                <li class="list-inline-item"><a href="#">About</a></li>
+                <li class="list-inline-item"><a href="#">Terms & Conditions</a></li>
+                <li class="list-inline-item"><a href="#">Privacy Policy</a></li>
+            </ul>
+            <p class="copyright" style="font-size : 18px; font-weight: bold; padding-top:20px;">The Wild Vet Check-In
+                System © 2021</p>
+        </footer>
+        <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+        <script src="allVendor/sweetalert2/dist/sweetalert2.min.js"></script>
     
     <?php
         if((isset($_SESSION['statusD']) && $_SESSION['statusD']) !='')
@@ -145,7 +157,7 @@
                 
             })
             </script>
-            <?php unset($_SESSION['statusD']);unset($_SESSION['msg']);
+            <?php unset($_SESSION['statusD']); unset($_SESSION['msg']);
         }
     ?>
 </body>

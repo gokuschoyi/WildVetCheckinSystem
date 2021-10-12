@@ -126,7 +126,7 @@ include_once 'includes/dbConn.php';
                                                 $result = $query1->get_result();
                                                 while($row = $result->fetch_assoc()){
                                                 $qname = "$row[dFname]";}
-                                                echo $qname;
+                                                //echo $qname;
                                                 $_SESSION['docname'] = $qname;
                                                     $viewed = "No";
                                                     date_default_timezone_set('Australia/ACT');
