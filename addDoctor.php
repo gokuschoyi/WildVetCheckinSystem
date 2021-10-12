@@ -229,9 +229,9 @@ include_once 'includes/dbConn.php';
                                 <th>First Name</th>
                                 <th>Last Name</th>
                                 <th>Email</th>
-                                <th>Password</th>
                                 <th>Registered</th>
                                 <th>EDIT DETAILS</th>
+                                <th>RESET</th>
                                 <th>DELETE RECORD</th>
                             </tr>
                         </thead>
@@ -246,13 +246,18 @@ include_once 'includes/dbConn.php';
                                         <td> '.$data['dFname'].'</td>
                                         <td> '.$data['dLname'].'</td>
                                         <td> '.$data['dEmail'].'</td>
-                                        <td> '.$data['dPassword'].'</td>
                                         <td> '.$data['registered'].'</td>
                                         <td> 
                                             <form action = "doc_edit.php" method = "POST">
                                             <input type = "hidden" name = "did" value ='.$data['docId'].'>
                                         <button type = "submit" name = "editdoc" class = " btn btn-success">Edit</button> 
                                         </form>
+                                        </td>
+                                        <td>
+                                        <form action = "process.php" method = "POST">
+                                            <input type = "hidden" name = "did" value ='.$data['docId'].'>
+                                            <button type = "submit" name = "reset" class = " btn btn-warning">RESET</button> 
+                                            </form>
                                         </td>
                                         <td> 
                                             <form action = "process.php" method = "POST">

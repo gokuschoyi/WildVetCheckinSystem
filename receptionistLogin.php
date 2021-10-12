@@ -60,6 +60,7 @@ session_start();
     <link rel="stylesheet" href="assets/css/Login-Form-Clean.css">
     <link rel="stylesheet" href="assets/css/Navigation-Clean.css">
     <link rel="stylesheet" href="assets/css/styles.css">
+    <link rel="stylesheet" href="allVendor/sweetalert2/dist/sweetalert2.min.css">
 </head>
 <style>
 @media screen and (max-width: 600px) {
@@ -101,13 +102,13 @@ session_start();
             </div>
         </div>
     </nav>
-    <?php
+    <!-- <?php
         if(isset($_SESSION['fail']))
         {
             echo '<h2 class = "bg-danger text-white text-align-center">'.$_SESSION['fail'].'</h2>';
             unset($_SESSION['fail']);
         } 
-    ?>
+    ?> -->
     <h4 class="font-monospace text-center d-flex d-lg-flex justify-content-center align-items-center justify-content-lg-center align-items-lg-center" style="height: 133px;font-weight: bold;opacity: 0.85;font-size: 28px;">Receptionist Login</h4>
     <div class="d-flex d-lg-flex d-xl-flex justify-content-center align-items-start justify-content-sm-center align-items-sm-center justify-content-md-center align-items-md-center justify-content-lg-center align-items-lg-center justify-content-xl-center align-items-xl-center" style="height: 570px;">
         <form method="post" action = "process.php" 
@@ -133,6 +134,21 @@ session_start();
         <p class="copyright">The Wild Vet © 2021</p>
     </footer>
     <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="allVendor/sweetalert2/dist/sweetalert2.min.js"></script>
+    <?php
+        if((isset($_SESSION['statusD']) && $_SESSION['statusD']) !='')
+        {
+            ?>
+            <script>
+                Swal.fire({
+                icon: '<?php echo $_SESSION['status_codeD']?>',
+                title: '<?php echo $_SESSION['statusD']?>',
+                
+            })
+            </script>
+            <?php unset($_SESSION['statusD']);
+        }
+    ?>
 </body>
 
 </html>

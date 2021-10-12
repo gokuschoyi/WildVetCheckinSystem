@@ -6,7 +6,11 @@ include_once 'includes/dbConn.php';
     {
         $cid = $_POST['did'];
         $space = " ";
-    }        
+    }
+    if((isset($_SESSION['docId'])) && $_SESSION['docId'] != ""){
+        $cid = $_SESSION['docId'];
+        $space = " ";
+    }     
 ?>
 <!-- Content Wrapper -->
 <div id="content-wrapper" class="d-flex flex-column">

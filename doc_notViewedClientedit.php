@@ -173,113 +173,6 @@ include_once 'includes/dbConn.php';
                 $stmt = $query->get_result()->fetch_row();
             ?>
 
-        
-            <div class="container-fluid">
-                <div class="row">
-                    <div class="col-xl-4 col-md-6 mb-4">
-                        <div class="card border-left-primary shadow h-100 py-2">
-                            <div class="card-body">
-                                <div class="row no-gutters align-items-center">
-                                    <div class="col mr-2">
-                                        <div class="text-xs font-weight-bold text-primary text-uppercase mb-1"
-                                            style="font-size:1.2vw;">MOBILE NUMBER</div>
-                                        <div class="h5 mb-0 font-weight-bold text-gray-800"><input type="text"
-                                                name="mobileUpdate" value="<?php echo $stmt[4]?>" class="form-control"
-                                                placeholder=" Mobile Number"></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-xl-4 col-md-6 mb-4">
-                        <div class="card border-left-primary shadow h-100 py-2">
-                            <div class="card-body">
-                                <div class="row no-gutters align-items-center">
-                                    <div class="col mr-2">
-                                        <div class="text-xs font-weight-bold text-primary text-uppercase mb-1"
-                                            style="font-size:1.2vw;">Other Contact</div>
-                                        <div class="h5 mb-0 font-weight-bold text-gray-800"><input type="text"
-                                                name="otherContact" value="<?php echo $stmt[5]?>" class="form-control"
-                                                placeholder=" Mobile Number"></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-xl-4 col-md-6 mb-4">
-                        <div class="card border-left-primary shadow h-100 py-2">
-                            <div class="card-body">
-                                <div class="row no-gutters align-items-center">
-                                    <div class="col mr-2">
-                                        <div class="text-xs font-weight-bold text-primary text-uppercase mb-1"
-                                            style="font-size:1.2vw;">Email</div>
-                                        <div class="h5 mb-0 font-weight-bold text-gray-800"><input type="text"
-                                                name="email" value="<?php echo $stmt[6]?>" class="form-control"
-                                                placeholder=" Mobile Number"></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-
-            <div class="container-fluid">
-                <div class="row">
-                    <div class="col-xl-4 col-md-6 mb-4">
-                        <div class="card border-left-primary shadow h-100 py-2">
-                            <div class="card-body">
-                                <div class="row no-gutters align-items-center">
-                                    <div class="col mr-2">
-                                        <div class="text-xs font-weight-bold text-primary text-uppercase mb-1"
-                                            style="font-size:1.2vw;">Address</div>
-                                        <div class="h5 mb-0 font-weight-bold text-gray-800"><input type="text"
-                                                name="address" value="<?php echo $stmt[7]?>" class="form-control"
-                                                placeholder="Address"></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-xl-4 col-md-6 mb-4">
-                        <div class="card border-left-primary shadow h-100 py-2">
-                            <div class="card-body">
-                                <div class="row no-gutters align-items-center">
-                                    <div class="col mr-2">
-                                        <div class="text-xs font-weight-bold text-primary text-uppercase mb-1"
-                                            style="font-size:1.2vw;">Suburb</div>
-                                        <div class="h5 mb-0 font-weight-bold text-gray-800"><input type="text"
-                                                name="suburb" value="<?php echo $stmt[8]?>" class="form-control"
-                                                placeholder="Suburb"></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-xl-4 col-md-6 mb-4">
-                        <div class="card border-left-primary shadow h-100 py-2">
-                            <div class="card-body">
-                                <div class="row no-gutters align-items-center">
-                                    <div class="col mr-2">
-                                        <div class="text-xs font-weight-bold text-primary text-uppercase mb-1"
-                                            style="font-size:1.2vw;">Postcode</div>
-                                        <div class="h5 mb-0 font-weight-bold text-gray-800"><input type="text"
-                                                name="postcode" value="<?php echo $stmt[9]?>" class="form-control"
-                                                placeholder="PostCode"></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-
-            </div>
 
             <div class="container-fluid">
                 <div class="d-sm-flex align-items-center justify-content-between mb-4">
@@ -496,7 +389,7 @@ include_once 'includes/dbConn.php';
             </div>
 
             <form method="POST" action="process.php">
-                <input  name="cidd" value="<?php echo $stmt[0]?>">
+                <input type = "hidden" name="cidd" value="<?php echo $stmt[0]?>">
                 
                 <div class="container-fluid">
                     <div class="row">

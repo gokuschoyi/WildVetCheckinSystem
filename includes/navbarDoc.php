@@ -102,13 +102,11 @@
                 </div>
                 <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
                 <div class="modal-footer">
-                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                    <a class="btn btn-primary" href="doctorLogin.php">Logout</a>
+                    <form method = "POST" action = "process.php">
+                        <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                        <button class="btn btn-primary" name = "logoutDoc">Logout</button>
+                    </form>
                 </div>
             </div>
         </div>
-        <php
-        unset($_SESSION["docname"]);
-        ob_end_clean();
-        ?>
     </div>

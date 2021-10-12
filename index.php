@@ -1,3 +1,4 @@
+<?php session_start();?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -59,6 +60,7 @@
     <link rel="stylesheet" href="assets/css/Login-Form-Clean.css">
     <link rel="stylesheet" href="assets/css/Navigation-Clean.css">
     <link rel="stylesheet" href="assets/css/styles.css">
+    <link rel="stylesheet" href="allVendor/sweetalert2/dist/sweetalert2.min.css">
 </head>
 <style>
     @media screen and (max-width: 600px) {
@@ -152,6 +154,22 @@ border-radius: 15px;
         <p class="copyright" style = "font-size : 18px; font-weight: bold; padding-top:20px;">The Wild Vet Check-In System © 2021</p>
     </footer>
     <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="allVendor/sweetalert2/dist/sweetalert2.min.js"></script>
+    
+    <?php
+        if((isset($_SESSION['statusD']) && $_SESSION['statusD']) !='')
+        {
+            ?>
+            <script>
+                Swal.fire({
+                icon: '<?php echo $_SESSION['status_codeD']?>',
+                title: '<?php echo $_SESSION['statusD']?>',
+                html: '<b><?php echo $_SESSION['msg']?></b>',
+            })
+            </script>
+            <?php unset($_SESSION['statusD']);
+        }
+    ?>
 </body>
 
 </html>

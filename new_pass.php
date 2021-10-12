@@ -61,6 +61,7 @@
     <link rel="stylesheet" href="assets/css/Login-Form-Clean.css">
     <link rel="stylesheet" href="assets/css/Navigation-Clean.css">
     <link rel="stylesheet" href="assets/css/styles.css">
+    <link rel="stylesheet" href="allVendor/sweetalert2/dist/sweetalert2.min.css">
 </head>
 
 <body style="height: 1020px;background: url(&quot;assets/img/6677.jpg&quot;) center no-repeat;">
@@ -70,15 +71,7 @@
                     class="visually-hidden">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
         </div>
     </nav>
-    <?php 
-        if(isset($_SESSION['status']))
-        {
-            echo '<div class="col d-flex d-lg-flex justify-content-center align-items-center justify-content-lg-center align-items-lg-center"style="height: 50px; padding-right:10px;">
-                        <h2 class = "bg-danger text-white text-align-center">'.$_SESSION['status'].'</h2>              
-                        </div>';
-        } 
-        
-    ?>
+
     <h4 class="font-monospace text-center d-flex d-lg-flex justify-content-center align-items-center justify-content-lg-center align-items-lg-center"
         style="height: 133px;font-weight: bold;opacity: 0.85;font-size: 28.376px;">Password Recovery
     </h4>
@@ -143,6 +136,22 @@
                 System © 2021</p>
         </footer>
         <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+        <script src="allVendor/sweetalert2/dist/sweetalert2.min.js"></script>
+    
+    <?php
+        if((isset($_SESSION['statusD']) && $_SESSION['statusD']) !='')
+        {
+            ?>
+            <script>
+                Swal.fire({
+                icon: '<?php echo $_SESSION['status_codeD']?>',
+                title: '<?php echo $_SESSION['statusD']?>',
+                footer: '<a href="">Why do I have this issue?</a>'
+            })
+            </script>
+            <?php unset($_SESSION['statusD']);
+        }
+    ?>
 </body>
 
 </html>

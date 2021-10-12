@@ -59,6 +59,7 @@
     <link rel="stylesheet" href="assets/css/Login-Form-Clean.css">
     <link rel="stylesheet" href="assets/css/Navigation-Clean.css">
     <link rel="stylesheet" href="assets/css/styles.css">
+    <link rel="stylesheet" href="allVendor/sweetalert2/dist/sweetalert2.min.css">
 </head>
 <style>
 @media screen and (max-width: 600px) {
@@ -99,19 +100,7 @@
             </div>
         </div>
     </nav>
-    <?php 
-        if(isset($_SESSION['fail']))
-        {
-            echo '<div class="col d-flex d-lg-flex justify-content-center align-items-center justify-content-lg-center align-items-lg-center"style="height: 50px; padding-right:10px;">
-                        <h2 class = "bg-danger text-white text-align-center">'.$_SESSION['fail'].'</h2>              
-                        </div>';
-        } 
-        if(isset($_SESSION['status'])){
-            echo '<div class="col d-flex d-lg-flex justify-content-center align-items-center justify-content-lg-center align-items-lg-center"style="height: 50px; padding-right:10px;">
-                        <h2 class = "bg-danger text-white text-align-center">'.$_SESSION['status'].'</h2>              
-                        </div>';
-        }
-    ?>
+
     <h4 class="font-monospace text-center d-flex d-lg-flex justify-content-center align-items-center justify-content-lg-center align-items-lg-center"
         style="height: 112px;font-weight: bold;opacity: 0.85;font-size: 28px;">Doctor Login</h4>
     <div class="d-flex d-lg-flex d-xl-flex justify-content-center align-items-start justify-content-sm-center align-items-sm-center justify-content-md-center align-items-md-center justify-content-lg-center align-items-lg-center justify-content-xl-center align-items-xl-center" style="height: 570px;">
@@ -121,7 +110,7 @@
             <div class="d-flex d-lg-flex d-xl-flex justify-content-center align-items-center justify-content-sm-center align-items-sm-center justify-content-md-center align-items-md-center justify-content-lg-center align-items-lg-center justify-content-xl-center align-items-xl-center illustration" style="height: 190px;">
                 <img src="assets/img/password.png" style="width: 80px;">
             </div>
-            <div class="mb-3"><input class="form-control" type="email" name="email" placeholder="Email"></div>
+            <div class="mb-3"><input class="form-control" type="text" name="username" placeholder="Username"></div>
             <div class="mb-3"><input class="form-control" type="password" name="password" placeholder="Password"></div>
             <div class="d-xl-flex justify-content-xl-center align-items-xl-center mb-3">
                 <button class="btn btn-primary d-block w-100" name="logindoc" type="submit">Log In</button>
@@ -142,6 +131,22 @@
         <p class="copyright" style = "font-size : 18px; font-weight: bold; padding-top:20px;">The Wild Vet © 2021</p>
     </footer>
     <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="allVendor/sweetalert2/dist/sweetalert2.min.js"></script>
+    
+    <?php
+        if((isset($_SESSION['statusD']) && $_SESSION['statusD']) !='')
+        {
+            ?>
+            <script>
+                Swal.fire({
+                icon: '<?php echo $_SESSION['status_codeD']?>',
+                title: '<?php echo $_SESSION['statusD']?>',
+                
+            })
+            </script>
+            <?php unset($_SESSION['statusD']);
+        }
+    ?>
 </body>
 
 </html>

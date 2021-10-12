@@ -126,10 +126,60 @@
                 Swal.fire({
                 icon: '<?php echo $_SESSION['status_code']?>',
                 title: '<?php echo $_SESSION['status']?>',
-                footer: '<a href="">Why do I have this issue?</a>'
+                
             })
             </script>
             <?php unset($_SESSION['status']);
         }
     ?>
+
+<?php
+        if((isset($_SESSION['statusDr']) && $_SESSION['statusDr']) !='')
+        {
+            ?>
+            <script>
+                Swal.fire({
+                icon: '<?php echo $_SESSION['status_codeDr']?>',
+                title: '<?php echo $_SESSION['statusDr']?>',
+                
+            })
+            </script>
+            <?php unset($_SESSION['statusDr']);
+        }
+    ?>
+
+<script>
+    $(document).ready(function(){
+        // updating the view with notifications using ajax
+        function load_unseen_notification(view = '')
+        {
+            $.ajax({
+            url:"dataNotification.php",
+            method:"POST",
+            data:{view:view},
+            dataType:"json",
+            success:function(data)
+            {
+            $('.dropdown-list').html(data.notification);
+            if(data.unseen_notification > 0)
+            {
+                $('.count').html(data.unseen_notification);
+                $ct = data.unseen_notification;
+            }
+            
+            }
+            });
+        }
+        
+        load_unseen_notification();
+        // load new notifications
+        $(document).on('click', '.dropdown-toggle', function(){
+            $('.count').html('');
+            load_unseen_notification('Yes');//Yes
+            });
+            setInterval(function(){
+            load_unseen_notification();;
+        }, 30000);
+        });
+</script>
     

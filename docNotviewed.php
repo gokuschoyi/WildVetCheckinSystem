@@ -204,7 +204,7 @@ include_once 'includes/dbConn.php';
                                 </form>
                             </td>
                             <td>
-                                <form action="doc_clientcheck.php" method="POST">
+                                <form action="process.php" method="POST">
                                     <input type="hidden" name="cid" value=<?php echo $data[0] ?>>
                                     <button type="notViewedsubmit" name="done" class=" btn btn-success">Done</button>
                                 </form>

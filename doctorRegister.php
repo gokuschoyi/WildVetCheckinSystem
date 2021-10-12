@@ -1,8 +1,6 @@
 <?php
 session_start();
-if(isset($_POST['docRegister'])){
-        header("Location: verifyDoc.php"); 
-}
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -64,6 +62,7 @@ if(isset($_POST['docRegister'])){
     <link rel="stylesheet" href="assets/css/Login-Form-Clean.css">
     <link rel="stylesheet" href="assets/css/Navigation-Clean.css">
     <link rel="stylesheet" href="assets/css/styles.css">
+    <link rel="stylesheet" href="allVendor/sweetalert2/dist/sweetalert2.min.css">
 </head>
 <style>
 @media screen and (max-width: 600px) {
@@ -85,7 +84,7 @@ if(isset($_POST['docRegister'])){
 </style>
 <body style="background: url(&quot;assets/img/6677.jpg&quot;) center no-repeat;">
     <nav class="navbar navbar-light navbar-expand-md navigation-clean" style="height: 150px;background: #c292fb;">
-        <div class="container"><a class="navbar-brand font-monospace" href="#" style="font-size: 35px;">The Wild
+        <div class="container"><a class="navbar-brand font-monospace" href="index.php" style="font-size: 35px;">The Wild
                 Vet</a><button data-bs-toggle="collapse" class="navbar-toggler" data-bs-target="#navcol-1"><span
                     class="visually-hidden">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
             <div class="collapse navbar-collapse" id="navcol-1">
@@ -140,6 +139,22 @@ if(isset($_POST['docRegister'])){
         <p class="copyright">The Wild Vet © 2021</p>
     </footer>
     <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="allVendor/sweetalert2/dist/sweetalert2.min.js"></script>
+    
+    <?php
+        if((isset($_SESSION['statusD']) && $_SESSION['statusD']) !='')
+        {
+            ?>
+            <script>
+                Swal.fire({
+                icon: '<?php echo $_SESSION['status_codeD']?>',
+                title: '<?php echo $_SESSION['statusD']?>',
+                footer: '<a href="">Why do I have this issue?</a>'
+            })
+            </script>
+            <?php unset($_SESSION['statusD']);
+        }
+    ?>
 </body>
 
 </html>

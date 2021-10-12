@@ -1,10 +1,8 @@
 <?php
 ob_start();
 session_start();
+include 'includes/dSecurity.php';
 $_SESSION['docname'] = $_SESSION['docEmail'];
-if(!isset($_SESSION['docEmail'])){
-    header("Location: doctorLogin.php");
-}
 
 ?>
 <!DOCTYPE html>

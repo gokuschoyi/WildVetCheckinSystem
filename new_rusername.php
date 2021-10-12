@@ -61,6 +61,7 @@
     <link rel="stylesheet" href="assets/css/Login-Form-Clean.css">
     <link rel="stylesheet" href="assets/css/Navigation-Clean.css">
     <link rel="stylesheet" href="assets/css/styles.css">
+    <link rel="stylesheet" href="allVendor/sweetalert2/dist/sweetalert2.min.css">
 </head>
 <style>
     @media screen and (max-width: 400px) {
@@ -79,16 +80,7 @@
             </div>
         </div>
     </nav>
-    <!-- <?php 
-        if(isset($_SESSION['usernamerecover']))
-        {
-            echo '<div class="col d-flex d-lg-flex justify-content-center align-items-center justify-content-lg-center align-items-lg-center"style="height: 50px; padding-right:10px;">
-                        <h2 class = "bg-danger text-white text-align-center">'.$_SESSION['usernamerecover'].'</h2>              
-                        </div>';
-        } 
-        else echo session_unset();
-        
-    ?> -->
+
     <h4 class="font-monospace text-center d-flex d-lg-flex justify-content-center align-items-center justify-content-lg-center align-items-lg-center"
         style="height: 133px;font-weight: bold;opacity: 0.85;font-size: 28.376px;">USERNAME RECOVERY
     </h4>
@@ -129,15 +121,7 @@
                         </div>
                     </form>
                 </div>
-                <?php
-                    if(isset($_SESSION['usernamerecover']))
-                    {
-                        echo '<div class="col d-flex d-lg-flex justify-content-center align-items-center justify-content-lg-center align-items-lg-center"style="height: 50px; padding-right:10px;">
-                        <h2 class = "bg-danger text-white text-align-center">'.$_SESSION['usernamerecover'].'</h2>              
-                        </div>';
-                    } 
-                    else session_destroy();
-                ?>
+            
             </div>
         </div>
         <div class="row d-md-flex d-lg-flex d-xl-flex justify-content-md-center align-items-md-center justify-content-lg-center align-items-lg-center justify-content-xl-center align-items-xl-center"
@@ -159,6 +143,23 @@
                 System © 2021</p>
         </footer>
         <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+        <script src="allVendor/sweetalert2/dist/sweetalert2.min.js"></script>
+    
+    <?php
+        if((isset($_SESSION['statusD']) && $_SESSION['statusD']) !='')
+        {
+            ?>
+            <script>
+                Swal.fire({
+                icon: '<?php echo $_SESSION['status_codeD']?>',
+                title: '<?php echo $_SESSION['statusD']?>',
+                html: '<b><?php echo $_SESSION['msg']?></b>',
+                
+            })
+            </script>
+            <?php unset($_SESSION['statusD']); unset($_SESSION['msg']);
+        }
+    ?>
 </body>
 
 </html>

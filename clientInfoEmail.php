@@ -1,5 +1,5 @@
 <?php session_start();
-    $_SESSION["entEmail"] = $_POST['enteredEmail'];
+    $_SESSION["entEmail"] = $_SESSION['enteEmail'];
     $_SESSION["idEmail"] = $_SESSION["entEmail"];
     include_once 'includes/dbConn.php';
     //echo $_SESSION["entEmail"];
@@ -76,6 +76,7 @@ border-radius: 15px;
         <link rel="stylesheet" href="assets/css/Login-Form-Clean.css">
         <link rel="stylesheet" href="assets/css/Navigation-Clean.css">
         <link rel="stylesheet" href="assets/css/styles.css">
+        <link rel="stylesheet" href="allVendor/sweetalert2/dist/sweetalert2.min.css">
     </head>
     <body style="background: url(&quot;assets/img/Home%20BG.jpg&quot;) top;">
         <nav class="navbar navbar-light navbar-expand-md navigation-clean" style="height: 190px; background :transparent ;">
@@ -135,21 +136,7 @@ border-radius: 15px;
             }
         ?>
     </div>
-        <?php
-        $query_run = mysqli_query($conn,$query);
-        $count = $query_run->num_rows;
-        if($count<=0)
-        {
-            ?>
-            <div class="container d-flex d-xl-flex justify-content-center align-items-center justify-content-xl-center align-items-xl-center" style = "height:150px;"><img src="assets/img/report.png" style="height: 80px;"></div>
-                <div class="row">
-                    <div class="col d-flex d-xl-flex justify-content-center align-items-center justify-content-xl-center align-items-xl-center" style = "height : 320px;">
-                        <p class="font-monospace text-center d-flex d-md-flex justify-content-center align-items-center justify-content-md-center align-items-md-center" style="font-size: 26px;color: rgb(109,134,163);width: 550px;">The Email you have entered does not esist in our database. Kindly go back to the check-In page and Check-in as  new client. Thank You.</p>
-                    </div>
-                </div> 
-                <?php
-        }
-            ?>
+    
         <div class="container">
         <footer class="footer-basic" style="background:#f2f9ff; opacity:0.80;padding-top:20px ">
             <div class="d-xl-flex justify-content-xl-center align-items-xl-center social"><a class="d-xl-flex justify-content-xl-center align-items-xl-center" href="https://www.instagram.com/thewildvetclinic/"><i class="icon ion-social-instagram"></i></a><a href="https://www.facebook.com/thewildvetclinic/"><i class="icon ion-social-facebook"></i></a></div>
@@ -162,6 +149,22 @@ border-radius: 15px;
         </footer>
     </div>
         <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+        <script src="allVendor/sweetalert2/dist/sweetalert2.min.js"></script>
+    
+    <?php
+        if((isset($_SESSION['statusD']) && $_SESSION['statusD']) !='')
+        {
+            ?>
+            <script>
+                Swal.fire({
+                icon: '<?php echo $_SESSION['status_codeD']?>',
+                title: '<?php echo $_SESSION['statusD']?>',
+                
+            })
+            </script>
+            <?php unset($_SESSION['statusD']);
+        }
+    ?>
     </body>
 </html>
 <!-- <div class="container"style = "background:#8cc1bf;"> -->

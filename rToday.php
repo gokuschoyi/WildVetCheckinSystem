@@ -130,7 +130,7 @@ include_once 'includes/dbConn.php';
                                     <?php
                                                 date_default_timezone_set('Australia/ACT');
                                                 $date = date("Y-m-d");
-                                                $query = $conn->prepare("SELECT COUNT(checkinDate) FROM clientinfo WHERE checkinDate = ?");
+                                                $query = $conn->prepare("SELECT COUNT(clientinfo.checkinDate) FROM clientinfo JOIN petinfo ON clientinfo.clientId = petinfo.petKey WHERE clientinfo.checkinDate = ?");
                                                 $query->bind_param("s",$date);
                                                 $query->execute();
                                                 $stmt = $query->get_result()->fetch_row();

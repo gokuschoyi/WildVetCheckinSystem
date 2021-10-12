@@ -71,6 +71,7 @@ include_once('allVendor/tecnickcom/tcpdf/tcpdf.php'); */
     <link rel="stylesheet" href="assets/css/Login-Form-Clean.css">
     <link rel="stylesheet" href="assets/css/Navigation-Clean.css">
     <link rel="stylesheet" href="assets/css/styles.css">
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 </head>
 <style>
     .navbar-nav{
@@ -107,7 +108,7 @@ include_once('allVendor/tecnickcom/tcpdf/tcpdf.php'); */
                 <div class="col d-flex d-lg-flex justify-content-center align-items-center justify-content-lg-center align-items-lg-center"
                     style="height: 50px;">
                     <select class="form-select-sm d-lg-flex justify-content-lg-center align-items-lg-center" style="width: 240px;height: 33px;border-radius: 13px;border-width: 1px;border-color: rgb(231,173,169);opacity: 0.85;" name="reason" required="">
-                        <option value="General" selected="">Reason for Visit</option>
+                        <option value="General" selected="">Select one option *</option>
                         <option value="Health Check">Health Check</option>
                         <option value="Nail Clipping">Nail Clipping</option>
                         <option value="Microchipping">Microchipping</option>
@@ -120,15 +121,31 @@ include_once('allVendor/tecnickcom/tcpdf/tcpdf.php'); */
                         <option value="Medicine">Medicine</option>
                         <option value="Behavioural Advice">Behavioural Advice</option>
                         <option value="Nutritional Advice">Nutritional Advice</option>
-                    </select></div>
+                    </select>
+                    <div class="bd-example tooltip-demo">
+                        <a href="#" class="d-inline-block" data-bs-toggle="tooltip" data-bs-placement="right" title="Reason for your visit today. If you are not sure leave it as it is.">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 100 100">
+                            <circle cx="50" cy="50" r="30" fill="#e35fe5"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
             </div>
             <div class="row">
                 <div class="col d-flex d-lg-flex justify-content-center align-items-center justify-content-lg-center align-items-lg-center"
                     style="height: 50px;"><input
                         class="form-control-sm d-lg-flex justify-content-lg-center align-items-lg-center" type="text"
-                        placeholder="Pet Name"
-                        style="border-radius: 13px;width: 240px;border-width: 1px;border-color: rgb(231,173,169);"
-                        name="petName" required="" autocomplete="on"></div>
+                        placeholder="Pet Name *"
+                        style="border-radius: 13px;width: 240px;border-width: 1px;border-color: rgb(231,173,169); opacity: 0.85;"
+                        name="petName" required="" autocomplete="on">
+                        <div class="bd-example tooltip-demo">
+                            <a href="#" class="d-inline-block" data-bs-toggle="tooltip" data-bs-placement="right" title="Enter your pet name.">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 100 100">
+                                <circle cx="50" cy="50" r="30" fill="#e35fe5"/>
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
             </div>
             <div class="row">
                 <div class="col d-flex d-lg-flex justify-content-center align-items-center justify-content-lg-center align-items-lg-center"
@@ -136,7 +153,7 @@ include_once('allVendor/tecnickcom/tcpdf/tcpdf.php'); */
                         class="form-select-sm d-lg-flex justify-content-lg-center align-items-lg-center"
                         style="width: 240px;height: 33px;border-radius: 13px;border-width: 1px;border-color: rgb(231,173,169);opacity: 0.85;"
                         name="petType" required="">
-                        <option value="No Pet Selected" selected="">Select type of pet</option>
+                        <option value="No Pet Selected" selected="">Select type of pet *</option>
                         <option value="Canine">Canine</option>
                         <option value="Feline">Feline</option>
                         <option value="Reptile">Reptile</option>
@@ -145,100 +162,187 @@ include_once('allVendor/tecnickcom/tcpdf/tcpdf.php'); */
                         <option value="Rabbit">Rabbit</option>
                         <option value="Rodent">Rodent</option>
                         <option value="Ferret">Ferret</option>
-                    </select></div>
+                    </select>
+                    <div class="bd-example tooltip-demo">
+                        <a href="#" class="d-inline-block" data-bs-toggle="tooltip" data-bs-placement="right" title="Select the type of your pet">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 100 100">
+                            <circle cx="50" cy="50" r="30" fill="#e35fe5"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
             </div>
             <div class="row">
                 <div class="col d-flex d-lg-flex justify-content-center align-items-center justify-content-lg-center align-items-lg-center"
                     style="height: 50px;"><input
                         class="form-control-sm d-lg-flex justify-content-lg-center align-items-lg-center" type="text"
-                        placeholder="Breed"
-                        style="border-radius: 13px;width: 240px;border-width: 1px;border-color: rgb(231,173,169);"
-                        name="breed" required="" autocomplete="on"></div>
+                        placeholder="Breed *"
+                        style="border-radius: 13px;width: 240px;border-width: 1px;border-color: rgb(231,173,169);opacity: 0.85;"
+                        name="breed" required="" autocomplete="on">
+                        <div class="bd-example tooltip-demo">
+                        <a href="#" class="d-inline-block" data-bs-toggle="tooltip" data-bs-placement="right" title="Select the breed of your pet.">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 100 100">
+                            <circle cx="50" cy="50" r="30" fill="#e35fe5"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
             </div>
             <div class="row">
                 <div class="col d-flex d-lg-flex justify-content-center align-items-center justify-content-lg-center align-items-lg-center"
                     style="height: 50px;"><select
                         class="form-select-sm d-lg-flex justify-content-lg-center align-items-lg-center"
-                        style="width: 240px;border-radius: 13px;height: 31px;border-color: rgb(231,173,169);opacity: .85;"
+                        style="width: 240px;border-radius: 13px;height: 31px;border-color: rgb(231,173,169);opacity: 0.85;"
                         name="sex" required="">
-                        <option value="None Selected" selected="">Select sex</option>
+                        <option value="None Selected" selected="">Select sex *</option>
                         <option value="Male Entire">Male Entire</option>
                         <option value="Male Neutered">Male Neutered</option>
                         <option value="Female Entire">Female Entire</option>
                         <option value="Female Spayed">Female Spayed</option>
                         <option value="Unknown">Unknown</option>
-                    </select></div>
+                    </select>
+                    <div class="bd-example tooltip-demo">
+                        <a href="#" class="d-inline-block" data-bs-toggle="tooltip" data-bs-placement="right" title="Select the sex of your pet.">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 100 100">
+                            <circle cx="50" cy="50" r="30" fill="#e35fe5"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
             </div>
             <div class="row">
                 <div class="col d-flex d-lg-flex justify-content-center align-items-center justify-content-lg-center align-items-lg-center"
                     style="height: 50px;"><input
                         class="form-control-sm d-lg-flex justify-content-lg-center align-items-lg-center" type="text"
                         placeholder="Color"
-                        style="border-radius: 13px;width: 240px;border-width: 1px;border-color: rgb(231,173,169);"
-                        name="color" required="" autocomplete="on"></div>
+                        style="border-radius: 13px;width: 240px;border-width: 1px;border-color: rgb(231,173,169);opacity: 0.85;"
+                        name="color"  autocomplete="on">
+                        <div class="bd-example tooltip-demo">
+                        <a href="#" class="d-inline-block" data-bs-toggle="tooltip" data-bs-placement="right" title="What color is your pet?">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 100 100">
+                            <circle cx="50" cy="50" r="30" fill="#e35fe5"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
             </div>
             <div class="row">
                 <div class="col d-flex d-lg-flex justify-content-center align-items-center justify-content-lg-center align-items-lg-center"
                     style="height: 50px;"><input
                         class="form-control-sm d-lg-flex justify-content-lg-center align-items-lg-center" type="text"
-                        placeholder="Age"
-                        style="border-radius: 13px;width: 240px;border-width: 1px;border-color: rgb(231,173,169);"
-                        name="age" required="" autocomplete="on"></div>
+                        placeholder="Age *"
+                        style="border-radius: 13px;width: 240px;border-width: 1px;border-color: rgb(231,173,169);opacity: 0.85;"
+                        name="age" required="" autocomplete="on">
+                        <div class="bd-example tooltip-demo">
+                        <a href="#" class="d-inline-block" data-bs-toggle="tooltip" data-bs-placement="right" title="Enter age">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 100 100">
+                            <circle cx="50" cy="50" r="30" fill="#e35fe5"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
             </div>
             <div class="row">
                 <div class="col d-flex d-lg-flex justify-content-center align-items-center justify-content-lg-center align-items-lg-center"
                     style="height: 50px;"><input
                         class="form-control-sm d-lg-flex justify-content-lg-center align-items-lg-center" type="text"
-                        placeholder="Weight (Kg)"
-                        style="border-radius: 13px;width: 240px;border-width: 1px;border-color: rgb(231,173,169);"
-                        name="petWeight" required="" autocomplete="on"></div>
+                        placeholder="Weight (Kg) *"
+                        style="border-radius: 13px;width: 240px;border-width: 1px;border-color: rgb(231,173,169);opacity: 0.85;"
+                        name="petWeight" required="" autocomplete="on">
+                        <div class="bd-example tooltip-demo">
+                        <a href="#" class="d-inline-block" data-bs-toggle="tooltip" data-bs-placement="right" title="Enter your pet's weight.">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 100 100">
+                            <circle cx="50" cy="50" r="30" fill="#e35fe5"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
             </div>
             <div class="row">
                 <div class="col d-flex d-lg-flex justify-content-center align-items-center justify-content-lg-center align-items-lg-center"
                     style="height: 50px;"><select
                         class="form-select-sm d-lg-flex justify-content-lg-center align-items-lg-center"
-                        style="width: 240px;border-radius: 13px;height: 31px;border-color: rgb(231,173,169);opacity: .85;"
+                        style="width: 240px;border-radius: 13px;height: 31px;border-color: rgb(231,173,169);opacity: 0.85;"
                         name="microchip" required="">
-                        <option value="None Selected" selected="">Microchip</option>
+                        <option value="None Selected" selected="">Microchip *</option>
                         <option value="Yes">Yes</option>
                         <option value="No">No</option>
-                    </select></div>
+                    </select>
+                <div class="bd-example tooltip-demo">
+                        <a href="#" class="d-inline-block" data-bs-toggle="tooltip" data-bs-placement="right" title="Select Yes if your pet is microchipped.">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 100 100">
+                            <circle cx="50" cy="50" r="30" fill="#e35fe5"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
             </div>
             <div class="row">
                 <div class="col d-flex d-lg-flex justify-content-center align-items-center justify-content-lg-center align-items-lg-center"
                     style="height: 50px;"><select
                         class="form-select-sm d-lg-flex justify-content-lg-center align-items-lg-center"
-                        style="width: 240px;border-radius: 13px;height: 31px;border-color: rgb(231,173,169);opacity: .85;"
+                        style="width: 240px;border-radius: 13px;height: 31px;border-color: rgb(231,173,169);opacity: 0.85;"
                         name="insurance" required="">
-                        <option value="None Selected" selected="">Insurance</option>
+                        <option value="None Selected" selected="">Insurance *</option>
                         <option value="Yes">Yes</option>
                         <option value="No">No</option>
-                    </select></div>
+                    </select>
+                    <div class="bd-example tooltip-demo">
+                        <a href="#" class="d-inline-block" data-bs-toggle="tooltip" data-bs-placement="right" title="Select Yes if you have pet insurance.">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 100 100">
+                            <circle cx="50" cy="50" r="30" fill="#e35fe5"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
             </div>
             <div class="row">
                 <div class="col d-flex d-lg-flex justify-content-center align-items-center justify-content-lg-center align-items-lg-center"
                     style="height: 50px;"><input
                         class="form-control-sm d-lg-flex justify-content-lg-center align-items-lg-center" type="text"
                         placeholder="Medication (If Any)"
-                        style="border-radius: 13px;border-color: rgb(231,173,169);width: 240px;" name="medication"
-                        required="" autocomplete="on"></div>
+                        style="border-radius: 13px;width: 240px;border-width: 1px; opacity: 0.85; border-color: rgb(231,173,169);width: 240px;" name="medication"
+                        autocomplete="on">
+                        <div class="bd-example tooltip-demo">
+                        <a href="#" class="d-inline-block" data-bs-toggle="tooltip" data-bs-placement="right" title="Give the name of any medication your pet is on, if any.">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 100 100">
+                            <circle cx="50" cy="50" r="30" fill="#e35fe5"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
             </div>
             <div class="row">
                 <div class="col d-flex d-lg-flex justify-content-center align-items-center justify-content-lg-center align-items-lg-center"
-                    style="height: 50px;"><select
+                    style="height: 50px;"><select onchange="mcyesno(this);"
                         class="form-select-sm d-lg-flex justify-content-lg-center align-items-lg-center"
-                        style="width: 240px;border-radius: 13px;height: 31px;border-color: rgb(231,173,169);opacity: .85;"
+                        style="width: 240px;border-radius: 13px;height: 31px;border-color: rgb(231,173,169);opacity: 0.85;"
                         name="parasiteControl" required="">
-                        <option value="None Selected" selected="">Parasite Control</option>
-                        <option value="Yes">Yes</option>
+                        <option value="No" selected="">Parasite Control *</option>
                         <option value="No">No</option>
-                    </select></div>
+                        <option value="Yes">Yes</option>
+                    </select>
+                    <div class="bd-example tooltip-demo">
+                        <a href="#" class="d-inline-block" data-bs-toggle="tooltip" data-bs-placement="right" title="Has your pet taken any parasite control medication?">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 100 100">
+                            <circle cx="50" cy="50" r="30" fill="#e35fe5"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
             </div>
-            <div class="row">
-                <div class="col d-flex d-lg-flex justify-content-center align-items-center" style="height: 50px;"><input
-                        class="form-control-sm d-lg-flex justify-content-lg-center align-items-lg-center" type="date"
-                        style="border-radius: 13px;width: 240px;border-width: 1px;border-color: rgb(231,173,169);opacity: 0.85;"
-                        name="mcDate" required=""></div>
+            <div class="row" id ="date">
+                <div class="col d-flex d-lg-flex justify-content-center align-items-center justify-content-lg-center align-items-lg-center" style="height: 50px;">
+                <input class="datepicker" type="text" style="border-radius: 13px;width: 240px;border-width: 1px;border-color: rgb(231,173,169);opacity: 0.85;"
+                        name="mcDate" placeholder=" Select date">
+                        <div class="bd-example tooltip-demo">
+                            <a href="#" class="d-inline-block" data-bs-toggle="tooltip" data-bs-placement="right" title="Select the date of parasite contol.">
+                                <svg src="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 100 100">
+                                <circle cx="50" cy="50" r="30" fill="#e35fe5"/>
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
             </div>
             <div class="row">
                 <div class="col d-flex d-lg-flex justify-content-center align-items-center justify-content-lg-center align-items-lg-center"
@@ -272,9 +376,46 @@ include_once('allVendor/tecnickcom/tcpdf/tcpdf.php'); */
             <p class="copyright" style="font-size : 18px; font-weight: bold; color: rgb(40,33,33);">The Wild Vet© 2021</p>
         </footer>
     </div>
-    <script src="assets/bootstrap/js/bootstrap.min.js">
-</script>
+    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script src="assets/bootstrap/js/bootstrap.bundle.min.js.map"></script>
+    <script src="js/fontawesome-free/css/all.min.css"></script>
+<script>
+    $(document).ready(function () {
+        var today = new Date();
+        $('.datepicker').datepicker({
+            format: 'yyyy-mm-dd',
+            autoclose:true,
+            endDate: "today",
+            maxDate: today
+        }).on('changeDate', function (ev) {
+                $(this).datepicker('hide');
+            });
 
+
+        $('.datepicker').keyup(function () {
+            if (this.value.match(/[^0-9]/g)) {
+                this.value = this.value.replace(/[^0-9^-]/g, '');
+            }
+        });
+    });
+    var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
+    var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+    return new bootstrap.Tooltip(tooltipTriggerEl)
+    })
+
+    function mcyesno(that){
+        if(that.value == "Yes"){
+            document.getElementById("date").style.display = "block";
+        }
+        else{
+            document.getElementById("date").defaultValue = "";
+            document.getElementById("date").style.display = "none";
+        }
+    }
+
+</script>
 </body>
 
 </html>

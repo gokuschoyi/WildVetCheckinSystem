@@ -59,6 +59,7 @@
     <link rel="stylesheet" href="assets/css/Login-Form-Clean.css">
     <link rel="stylesheet" href="assets/css/Navigation-Clean.css">
     <link rel="stylesheet" href="assets/css/styles.css">
+    <link rel="stylesheet" href="allVendor/sweetalert2/dist/sweetalert2.min.css">
 </head>
 <style>
 .navbar-nav{
@@ -93,14 +94,14 @@ border-radius: 15px;
             <div class="container" style="background-color:#dfebfb; opacity: 0.90; border-radius:20px; height : 100px; ">
                 <p class="lead text-center  d-flex d-lg-flex justify-content-center align-items-center justify-content-lg-center align-items-lg-center" style=" opacity: 1;background: transparent;height: 85px;font-family: 'Courier Prime', monospace;font-size: 16px;color: rgb(33, 37, 41);"><strong>If you have checked in before using this App, enter your email and click the submit button.</strong><br></p>
             </div>
-            <form action="clientInfoEmail.php" method="POST"> 
+            <form action="process.php" method="POST"> 
                 <div class="row">
                     <div class="col d-flex d-xl-flex justify-content-center align-items-center justify-content-xl-center align-items-xl-center" style="height: 50px;">
-                    <input class="form-control-sm d-xl-flex justify-content-xl-center align-items-xl-center" type="email" placeholder="Enter your email" style="border-radius: 30px;width: 228px;" name=" enteredEmail" required=""></div>
+                    <input class="form-control-sm d-xl-flex justify-content-xl-center align-items-xl-center" type="email" placeholder="Enter your email" style="border-radius: 30px;width: 228px;" name="enteredEmail" required=""></div>
                 </div>
                 <div class="row">
                     <div class="col d-flex d-xl-flex justify-content-center align-items-center justify-content-xl-center align-items-xl-center" style="height: 50px;">
-                        <button id="checkinemail" class="btn btn-primary font-monospace d-xl-flex justify-content-xl-center align-items-xl-center" type="submit" name="searchEmail" style="border-radius: 30px;height: 38px;background: rgb(160,120,227);">Submit</button>       
+                        <button class="btn btn-primary font-monospace d-xl-flex justify-content-xl-center align-items-xl-center" type="submit" name="searchEmail" style="border-radius: 30px;height: 38px;background: rgb(160,120,227);">Submit</button>       
                     </div>
                 </div>
             </form>
@@ -135,9 +136,22 @@ border-radius: 15px;
         <p class="copyright" style="font-size : 18px; font-weight: bold; padding-top:20px; color: rgb(40,33,33);">The Wild Vet© 2021</p>
     </footer> 
     <script src="assets/bootstrap/js/bootstrap.min.js"></script>
-    <!-- <?php 
-    echo $_SESSION['entEmail'];
-    ?> -->
+    <script src="allVendor/sweetalert2/dist/sweetalert2.min.js"></script>
+    
+    <?php
+        if((isset($_SESSION['statusD']) && $_SESSION['statusD']) !='')
+        {
+            ?>
+            <script>
+                Swal.fire({
+                icon: '<?php echo $_SESSION['status_codeD']?>',
+                title: '<?php echo $_SESSION['statusD']?>',
+                
+            })
+            </script>
+            <?php unset($_SESSION['statusD']);
+        }
+    ?>
 </body>
 
 </html>

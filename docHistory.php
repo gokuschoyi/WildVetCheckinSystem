@@ -173,7 +173,7 @@ include_once 'includes/dbConn.php';
                                     {
                                         $options = $options."<option>$resu[0]</options>";
                                     }
-                                    echo $options;
+                                    //echo $options;
                                     
                                 date_default_timezone_set('Australia/ACT');
                                 
@@ -202,7 +202,7 @@ include_once 'includes/dbConn.php';
                                 </form>
                             </td>
                             <td>
-                                <form action="doc_clientcheck.php" method="POST">
+                                <form action="process.php" method="POST">
                                     <input type="hidden" name="cid" value=<?php echo $data[0] ?>>
                                     <button type="submit" name="undo" class=" btn btn-success">Undo</button>
                                 </form>

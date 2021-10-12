@@ -1,14 +1,13 @@
 <?php
 ob_start();
 session_start();
-
+include 'includes/rSecurity.php';
 if(isset($_SESSION['rName'])){
     $_SESSION['username'] = $_SESSION['rName'];
 }
 if(isset($_SESSION['rNameU'])){
     $_SESSION['username'] = $_SESSION['rNameU'];
 }
-
 ?>
 <!DOCTYPE html>
 <html lang="en">

@@ -95,7 +95,7 @@ include_once 'includes/dbConn.php';
                     </ul>
 
                 </nav>
-                <?php
+                <!-- <?php
                 if((isset($_SESSION['snippetSent'])) == 1){
                         echo '<div class="alert alert-success alert-dismissable" id="flash-msg">
                         <button aria-hidden="true" data-dismiss="alert" class="close" type="button">×</button>
@@ -103,7 +103,7 @@ include_once 'includes/dbConn.php';
                         </div>';
                 }
                     unset($_SESSION['snippetSent']);
-                ?>
+                ?> -->
                 <!-- End of Topbar -->
                 <div  class="loader-wrapper">
                     <div class="loader-inner"></div>
