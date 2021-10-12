@@ -56,5 +56,5 @@ jobs:
         with:
           app-name: 'wildvetcheckin'
           slot-name: 'Production'
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_B17C83E9193C4B58ABD2B4EEB478326C }}
+          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_6B15121F5773481EA42CABF5000ACF86 }}
           package: .
