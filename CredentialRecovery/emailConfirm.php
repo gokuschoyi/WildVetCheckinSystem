@@ -87,7 +87,7 @@ include('process.php');
             </div>
         </div>
     </div>
-    <form action="receptionistLogin.php" method="POST" class ="d-flex d-md-flex justify-content-center align-items-center justify-content-md-center align-items-md-cente" style = "padding-top:70px; padding-bottom:100px;" >
+    <form action="../Receptionist/receptionistLogin.php" method="POST" class ="d-flex d-md-flex justify-content-center align-items-center justify-content-md-center align-items-md-cente" style = "padding-top:70px; padding-bottom:100px;" >
         <button type="submit" name="done" class=" btn btn-success">Login</button>
     </form>
     <div class="container">

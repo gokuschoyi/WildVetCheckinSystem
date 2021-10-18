@@ -4,6 +4,7 @@ error_reporting();
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 include('../includes/dbConn.php');
+include('../includes/gmailCredentials.php');
 include('../allVendor/simple_html_dom.php');
 include ('../allVendor/phpmailer/phpmailer/src/PHPMailer.php');
 include ('../allVendor/tecnickcom/tcpdf/tcpdf.php');
@@ -29,9 +30,12 @@ if(isset($_POST['toPetC'])) {
     }
     else 
     {
-        $stmt = $conn->prepare("INSERT INTO clientinfo (title, firstName, surName, mobileNo, othContact, email, clientAddress, suburb, postcode) VALUES (?,?,?,?,?,?,?,?,?)");
-        $stmt->bind_param("sssiisssi", $title, $firstName, $surName, $mobileNo, $othContact, $email, $clientAddress, $suburb, $postcode);
+        $date = date('Y/m/d');
+        $time = date("h:i:s");
+        $stmt = $conn->prepare("INSERT INTO clientinfo (title, firstName, surName, mobileNo, othContact, email, clientAddress, suburb, postcode, checkinDate, checkinTime) VALUES (?,?,?,?,?,?,?,?,?,?,?)");
+        $stmt->bind_param("sssiisssiss", $title, $firstName, $surName, $mobileNo, $othContact, $email, $clientAddress, $suburb, $postcode, $date, $time);
         $stmt->execute();
+        $_SESSION['cEmail'] = $email;
         header("Location: petInfo.php");
         exit();
     }
@@ -39,6 +43,7 @@ if(isset($_POST['toPetC'])) {
 
 //(2) Saving existing client info entered via email to database
 if(isset($_POST['toPetE'])){
+    date_default_timezone_set('Australia/ACT');
     $title = $_POST['title'];
     $firstName = $_POST['firstName'];
     $surName = $_POST['surName'];
@@ -55,12 +60,14 @@ if(isset($_POST['toPetE'])){
     }
     
     else{
+        $time = date("h:i:s");
         $date = date('Y/m/d');
-        $stmt = $conn->prepare("INSERT INTO clientinfo (title, firstName, surName, mobileNo, othContact, email, clientAddress, suburb, postcode, checkinDate) 
-        VALUES (?,?,?,?,?,?,?,?,?,?)");
-        $stmt->bind_param("sssiisssis", $title, $firstName, $surName, $mobileNo, $othContact, $email, $clientAddress, $suburb, $postcode, $date);
+        $stmt = $conn->prepare("INSERT INTO clientinfo (title, firstName, surName, mobileNo, othContact, email, clientAddress, suburb, postcode, checkinDate, checkinTime) 
+        VALUES (?,?,?,?,?,?,?,?,?,?,?)");
+        $stmt->bind_param("sssiisssiss", $title, $firstName, $surName, $mobileNo, $othContact, $email, $clientAddress, $suburb, $postcode, $date, $time);
         $stmt->execute();
         echo " Client Info saved to db...";
+        $_SESSION['cEmail'] = $email;
         header("Location: petInfo.php");
     } 
 }
@@ -372,17 +379,20 @@ if(isset($_POST['submitPet'])){
         else
             die("unable to locate file");
 
+        $toEmail = $_SESSION['cEmail'];
+        $gusername = $gmailUsername;
+        $gpassword = $gmailPassword;
         $mail = new PHPMailer();
         $mail->SMTPDebug=2;
         $mail->IsSMTP();
         $mail-> Host ='smtp.gmail.com';
         $mail->SMTPAuth = true;
-        $mail->Username = 'thewildvetcheckin@gmail.com';
-        $mail->Password = 'fbzqqlhbztsjujan';
+        $mail->Username = $gusername;
+        $mail->Password = $gpassword;
         $mail->SMTPSecure ='tls';
         $mail->Port = '587';
         $mail->setFrom('thewildvetcheckin@gmail.com','Wild Vet Reception');
-        $mail->addAddress('gokulsangamitrachoyi@gmail.com','Gokul');
+        $mail->addAddress($toEmail, $firstName);
         $mail->isHTML(true);
         $mail->Subject = "Checkin Information Test Server"; 
         $mail->Body = $message;

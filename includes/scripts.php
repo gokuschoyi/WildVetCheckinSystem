@@ -96,7 +96,7 @@
                 "scrollY": "680px",
                 "scrollX": true,
                 "paging": true,
-
+                "pageLength": 20,
                 "columnDefs": [{
                     "targets": [1],
                     "visible": false,

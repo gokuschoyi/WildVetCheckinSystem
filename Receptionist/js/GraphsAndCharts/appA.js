@@ -1,6 +1,6 @@
 $(document).ready(function() {
     $.ajax({
-        url: "http://localhost/WildVetCheckin/DataFetch/dataA.php",
+        url: "js/GraphsAndCharts/dataA.php",
         method: "GET",
         success: function(data) {
             console.log(data);

@@ -146,7 +146,6 @@ border-radius: 15px;
     <footer class="footer-basic" style="height: 130px; padding-top:30px;">
         <ul class="list-inline">
             <li class="list-inline-item"><a href="index.php">Home</a></li>
-            <li class="list-inline-item"><a href="#">User Manual</a></li>
             <li class="list-inline-item"><a href="about.php">About</a></li>
             <li class="list-inline-item"><a href="terms&conditions.php">Terms & Conditions</a></li>
             <li class="list-inline-item"><a href="#">Privacy Policy</a></li>

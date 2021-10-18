@@ -1,4 +1,6 @@
 <?php session_start();
+$cemail = $_SESSION['cEmail'];
+echo $cemail;
 ?>
 <!DOCTYPE html>
 <html lang="en">

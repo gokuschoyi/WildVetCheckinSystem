@@ -98,75 +98,29 @@ include_once '../includes/dbConn.php';
 
             <!-- Page Heading -->
             <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                <h1 class="h3 mb-0 text-gray-800">MAILING LIST</h1>
-                <form method = "POST" action = "process.php">
-                <button type="submit" name="downloadCSV" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-download fa-sm text-white-50"></i> Download CSV FIle</Button>
-                </form>
+                <h1 class="h3 mb-0 text-gray-800">ABOUT</h1>
+                <button type="button"  onclick="location.href='rDashboard.php'" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-alt-left-arrow fa-sm text-white-50"></i> GO BACK </Button>
+                
             </div>
             <!-- Content Row -->
             <div class="row">
 
                 <!-- Earnings (Monthly) Card Example -->
-                <div class="col-xl-3 col-md-6 mb-4">
-                    <div class="card border-left-primary shadow h-100 py-2">
-                        <div class="card-body">
-                            <div class="row no-gutters align-items-center">
-                                <div class="col mr-2">
-                                    <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
-                                        TOTAL</div>
-                                    <?php
-                                        $value = "Yes";
-                                        $query = $conn->prepare("SELECT COUNT(newsletter) FROM clientinfo WHERE newsletter = ?");
-                                        $query->bind_param("s",$value);
-                                        $query->execute();
-                                        $stmt = $query->get_result()->fetch_row();
-                                        ?>
-                                    <div class="h5 mb-0 font-weight-bold text-gray-800"><?php echo $stmt[0]?></div>
+                
+            </div>
+            <div class="card shadow mb-4">
+                                <div class="card-header py-3">
+                                    <h6 class="m-0 font-weight-bold text-primary">Basic Card Example</h6>
                                 </div>
-                                <div class="col-auto">
-                                    <i class="fas fa-inbox fa-2x text-gray-300"></i>
+                                <div class="card-body" style = "font-size:24px">
+                                The aim of the system is to develop a check-in system for new or existing customers of the Wild Vet. 
+                                The system will work along with their existing systems to reduce the check-in time and reduce the paper waste. 
+                                The check-in will be made available on web browser, android and IOs. 
+                                The primary function of the check-in is to allow easier check-in digitally where the client can input the pet details either at their home, by filling the form online, or via scanning a QR code at the VET clinic. 
+                                The system also allows for the receptionist and doctors to view the client information and send relevant links related to pet to the clients.
                                 </div>
                             </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
 
-            <div class="table-responsive table table-striped table-bordered table-hover">
-                <table id="clients" class="display" style="width : 100%">
-                    <thead>
-                        <tr>
-                            <th>Cid</th>
-                            <th>Check-In Date</th>
-                            <th>Client Name</th>
-                            <th>Mobile</th>
-                            <th>Email</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <?php
-                                $value = "Yes";
-                                $query = $conn->prepare("SELECT  clientinfo.clientId, clientinfo.checkinDate, clientinfo.title, clientinfo.firstName, clientinfo.surName,  clientinfo.mobileNo, clientinfo.email, clientinfo.newsletter
-                                FROM clientinfo  WHERE clientinfo.newsletter = ?");
-                                $query->bind_param("s",$value);
-                                $query->execute();
-                                $result = $query->get_result();
-                                while( $data = $result-> fetch_assoc()){
-                                    echo '
-                                    <tr>
-                                        <td> '.$data['clientId'].'</td>
-                                        <td> '.$data['checkinDate'].'</td>
-                                        <td> '.$data['title'].' '.$data['firstName'].' '.$data['surName'].'</td>
-                                        <td> '.$data['mobileNo'].'</td>
-                                        <td> '.$data['email'].'</td>
-                                    </tr>
-                                    ';
-                                }
-                                ?>
-
-                    </tbody>
-                </table>
-            </div>
             <div class="container-fluid ">
                     <div class="row justify-content-center">
                         <div class="col-xl-4 col-md-6 mb-4">

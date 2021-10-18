@@ -62,7 +62,7 @@ session_start();
     <link rel="stylesheet" href="assets/css/Login-Form-Clean.css">
     <link rel="stylesheet" href="assets/css/Navigation-Clean.css">
     <link rel="stylesheet" href="assets/css/styles.css">
-    <link rel="stylesheet" href="allVendor/sweetalert2/dist/sweetalert2.min.css">
+    <link rel="stylesheet" href="../allVendor/sweetalert2/dist/sweetalert2.min.css">
 </head>
 <style>
 @media screen and (max-width: 600px) {
@@ -139,7 +139,7 @@ session_start();
         <p class="copyright">The Wild Vet © 2021</p>
     </footer>
     <script src="assets/bootstrap/js/bootstrap.min.js"></script>
-    <script src="allVendor/sweetalert2/dist/sweetalert2.min.js"></script>
+    <script src="../allVendor/sweetalert2/dist/sweetalert2.min.js"></script>
     
     <?php
         if((isset($_SESSION['statusD']) && $_SESSION['statusD']) !='')

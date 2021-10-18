@@ -3,10 +3,10 @@ include '../includes/header.php';
 include '../includes/navbar.php';
 include 'simple_html_dom.php';
 use PHPMailer\PHPMailer\PHPMailer;
-require 'allVendor/autoload.php';
-include 'allVendor/phpmailer/phpmailer/src/PHPMailer.php';
+require '../allVendor/autoload.php';
+include '../allVendor/phpmailer/phpmailer/src/PHPMailer.php';
 include_once '../includes/dbConn.php';
-if(isset($_POST['submitEmail']))
+/* if(isset($_POST['submitEmail']))
     {
         $cName = $_POST['sender_name'];
         $cEmail = $_POST['recipient'];
@@ -14,7 +14,7 @@ if(isset($_POST['submitEmail']))
         $cAttachment = $_FILES['attachments']['name'];
         $cBody = $_POST['body'];
         $_SESSION['id']= $_POST['cid']; 
-    }
+    } */
 if(isset($_POST['goback'])){
     $_SESSION['id']= $_POST['cid'];
 }
@@ -94,10 +94,7 @@ if(isset($_POST['goback'])){
                             <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
                             Add/Edit Doctor
                         </a>
-                        <a class="dropdown-item" href="#">
-                            <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
-                            Activity Log
-                        </a>
+                        
                         <div class="dropdown-divider"></div>
                         <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
                             <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
@@ -182,7 +179,7 @@ if(isset($_POST['goback'])){
                                                 <?php if ($_SESSION['status'] == 1) { ?>
                                                 <div class='alert alert-success'>Email sent successfully.</div>
                                                 <?php } ?>
-                                                <form action="process.php" method="POST" >
+                                                <form action="process.php" method="POST" enctype="multipart/form-data">
                                                     <div class="row">
                                                         <div class="col-6 mb-3">
                                                             <label for="sender_name" class="form-label">Sender Name</label>
@@ -194,8 +191,8 @@ if(isset($_POST['goback'])){
                                                         </div>
                                                     </div>
                                                     <div class="col-12">
-                                                        <label for="attachments" class="form-label">Attachments (Multiple)</label>
-                                                        <input type="file" class="form-control" multiple id="attachments" name="attachments[]" placeholder="name@example.com">
+                                                        <label for="attachments" class="form-label">Attachments (FORMATS : jpg, png, jpeg, gif, pdf )</label>
+                                                        <input type="file" class="form-control"  name="files[]" multiple >
                                                     </div>
                                                     <div class="mb-3">
                                                         <label for="recipient" class="form-label">Recipient Emails</label>

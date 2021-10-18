@@ -88,7 +88,7 @@ border-radius: 15px;
         </div>
     </nav>
     <div class = "container">
-        <form action="$_SERVER['DOCUMENT_ROOT'].'/WildVetCheckin/AllProcess/process.php" method="POST">
+        <form action="process.php" method="POST">
             <div>
                 <div class="row">
                     <div class="col d-flex d-lg-flex justify-content-center align-items-center justify-content-lg-center align-items-lg-center" style="height: 50px;border-radius: 13px;border-color: rgb(231,173,169);"><select class="form-select-sm" style="width: 240px;height: 31px;border-radius: 13px;opacity: 0.85;border-color: rgb(231,173,169);" name="title" required="">
@@ -101,10 +101,10 @@ border-radius: 15px;
                         </select></div>
                 </div>
                 <div class="row">
-                    <div class="col d-flex d-lg-flex justify-content-center align-items-center justify-content-lg-center align-items-lg-center" style="height: 50px;"><input class="form-control-sm" type="text" placeholder="First Name" data-placeholder="First Name" style="border-radius: 13px;width: 240px;opacity: 0.85;" name="firstName" required="" pattern="^[a-zA-Z0-9.-]*$"></div>
+                    <div class="col d-flex d-lg-flex justify-content-center align-items-center justify-content-lg-center align-items-lg-center" style="height: 50px;"><input class="form-control-sm" type="text" placeholder="First Name" data-placeholder="First Name" style="border-radius: 13px;width: 240px;opacity: 0.85;" name="firstName" required="" ></div>
                 </div>
                 <div class="row">
-                    <div class="col d-flex d-lg-flex justify-content-center align-items-center justify-content-lg-center align-items-lg-center" style="height: 50px;"><input class="form-control-sm" type="text" placeholder="Surname" style="border-radius: 13px;width: 240px;opacity: 0.85;border-width: 1px;border-color: rgb(231,173,169);" name="surName" required="" pattern="^[a-zA-Z0-9.-]*$"></div>
+                    <div class="col d-flex d-lg-flex justify-content-center align-items-center justify-content-lg-center align-items-lg-center" style="height: 50px;"><input class="form-control-sm" type="text" placeholder="Surname" style="border-radius: 13px;width: 240px;opacity: 0.85;border-width: 1px;border-color: rgb(231,173,169);" name="surName" required="" ></div>
                 </div>
                 <div class="row">
                     <div class="col d-flex d-lg-flex justify-content-center align-items-center justify-content-lg-center align-items-lg-center" style="height: 50px;"><input class="form-control-sm" type="tel" placeholder="Mobile Number" style="border-radius: 13px;width: 240px;opacity: 0.85;border-width: 1px;border-color: rgb(231,173,169);" name="mobileNo" required="" maxlength="10" minlength="10"></div>

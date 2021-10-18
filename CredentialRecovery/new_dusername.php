@@ -61,7 +61,7 @@
     <link rel="stylesheet" href="assets/css/Login-Form-Clean.css">
     <link rel="stylesheet" href="assets/css/Navigation-Clean.css">
     <link rel="stylesheet" href="assets/css/styles.css">
-    <link rel="stylesheet" href="allVendor/sweetalert2/dist/sweetalert2.min.css">
+    <link rel="stylesheet" href="../allVendor/sweetalert2/dist/sweetalert2.min.css">
 </head>
 <style>
     @media screen and (max-width: 400px) {
@@ -107,7 +107,7 @@
                         <div class="row">
                             <div class="col-md-12 d-flex d-lg-flex d-xl-flex justify-content-center align-items-center justify-content-lg-center align-items-lg-center justify-content-xl-center align-items-xl-center">
                                 <div class="col d-flex d-lg-flex justify-content-center align-items-center justify-content-lg-center align-items-lg-center"style="height: 50px; padding-right:10px;">
-                                <input class="form-control-sm d-lg-flex justify-content-lg-center align-items-lg-center" type="text" placeholder="Enter Password" style="border-radius: 13px;width: 200px;border-width: 1px;border-color: rgb(231,173,169);"
+                                <input class="form-control-sm d-lg-flex justify-content-lg-center align-items-lg-center" type="password" placeholder="Enter Password" style="border-radius: 13px;width: 200px;border-width: 1px;border-color: rgb(231,173,169);"
                                 name="dPassword" required="" ></div>
                             </div>
                             <?php
@@ -134,7 +134,6 @@
 
             <ul class="list-inline">
                 <li class="list-inline-item"><a href="../index.php">Home</a></li>
-                <li class="list-inline-item"><a href="#">User Manual</a></li>
                 <li class="list-inline-item"><a href="#">About</a></li>
                 <li class="list-inline-item"><a href="#">Terms & Conditions</a></li>
                 <li class="list-inline-item"><a href="#">Privacy Policy</a></li>
@@ -143,7 +142,7 @@
                 System © 2021</p>
         </footer>
         <script src="assets/bootstrap/js/bootstrap.min.js"></script>
-        <script src="allVendor/sweetalert2/dist/sweetalert2.min.js"></script>
+        <script src="../allVendor/sweetalert2/dist/sweetalert2.min.js"></script>
     
     <?php
         if((isset($_SESSION['statusD']) && $_SESSION['statusD']) !='')

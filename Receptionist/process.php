@@ -4,6 +4,7 @@ error_reporting();
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 include_once '../includes/dbConn.php';
+include('../includes/gmailCredentials.php');
 include "../allVendor/simple_html_dom.php";
 include '../allVendor/phpmailer/phpmailer/src/PHPMailer.php';
 include '../allVendor/tecnickcom/tcpdf/tcpdf.php';
@@ -239,7 +240,65 @@ if(isset($_POST['updatereception'])){
 //(8) Sending snippet email to client #error pop-up done
 if (isset($_POST['submitEmail'])) {
     $_SESSION['status'] = 0;
-
+    $mail = new PHPMailer();
+    $upload_dir = 'C:\xampp\htdocs\WildVetCheckin\Receptionist\attachments'.DIRECTORY_SEPARATOR;
+    $allowed_types = array('jpg', 'png', 'jpeg', 'gif', 'pdf');
+    // Define maxsize for files i.e 20MB
+    $maxsize = 20 * 1024 * 1024;
+    // Checks if user sent an empty form
+    if(!empty(array_filter($_FILES['files']['name']))) {
+        // Loop through each file in files[] array
+        foreach ($_FILES['files']['tmp_name'] as $key => $value) {
+            $file_tmpname = $_FILES['files']['tmp_name'][$key];
+            $file_name = $_FILES['files']['name'][$key];
+            $file_size = $_FILES['files']['size'][$key];
+            $file_ext = pathinfo($file_name, PATHINFO_EXTENSION);
+            // Set upload file path
+            $filepath = $upload_dir.$file_name;
+            // Check file type is allowed or not
+            if(in_array(strtolower($file_ext), $allowed_types)) {
+                // Verify file size - 2MB max
+                if ($file_size > $maxsize){
+                    $_SESSION['status'] = 'Error: File size is larger than the allowed limit.';  
+                    $_SESSION['status_code'] = "error";
+                    header("Location: rSendEmail.php");
+                }     
+                // If file with name already exist then append time in
+                // front of name of the file to avoid overwriting of file
+                if(file_exists($filepath)) {
+                    $filepath = $upload_dir.time().$file_name; 
+                    if( move_uploaded_file($file_tmpname, $filepath)) {
+                        $mail->addAttachment("attachments/".$file_name);
+                        echo "{$file_name} successfully uploaded <br />";
+                    }
+                    else{  
+                        $_SESSION['status'] = 'Error uploading {$file_name} <br />';  
+                        $_SESSION['status_code'] = "error";
+                        header("Location: rSendEmail.php");
+                    }
+                }
+                else {
+                    if( move_uploaded_file($file_tmpname, $filepath)) {
+                        echo "{$file_name} successfully uploaded <br />";
+                    }
+                    else {                    
+                        echo "Error uploading {$file_name} <br />";
+                    }
+                }
+            }
+            else {
+                // If file extension not valid
+                $_SESSION['status'] = 'Error uploading {$file_name} {$file_ext} file type is not allowed)<br / >';  
+                $_SESSION['status_code'] = "error";
+                header("Location: rSendEmail.php");
+            }
+        }
+    }
+    else {
+        // If no files selected
+        echo "No files selected.";
+    }
+    //fetching template file
     $template = "./template.php";
     if (file_exists($template))
         $message = file_get_contents($template);
@@ -249,6 +308,7 @@ if (isset($_POST['submitEmail'])) {
     $selectedCount = $_POST['selectedCount'];
     $selectedLinks = $_POST['selected'];
     
+    //adding the selected links to the template file
     function addExtraLinks($count, $message, $sLinks)
     {
         $htmlDom = new DOMDocument;
@@ -276,26 +336,28 @@ if (isset($_POST['submitEmail'])) {
         }
         return $htmlDom->saveHTML();
     }
+        //composing the email 
         $msg = addExtraLinks($selectedCount, $message, $selectedLinks);
-
+        $gusername = $gmailUsername;
+        $gpassword = $gmailPassword;
         $cName = $_POST['sender_name'];
         $cEmail = $_POST['recipient'];
         $cSubject = $_POST['subject'];
-        //$cAttachment = $_FILES['attachments']['name'];
         $cBody = $msg;
 
-        $mail = new PHPMailer();
+        
         $mail->IsSMTP();
         $mail->Host = 'smtp.gmail.com';
         $mail->SMTPAuth = true;
-        $mail->Username = 'thewildvetcheckin@gmail.com';
-        $mail->Password = 'fbzqqlhbztsjujan';
+        $mail->Username = $gusername;
+        $mail->Password = $gpassword;
         $mail->SMTPSecure = 'tls';
         $mail->Port = '587';
         $mail->setFrom('thewildvetcheckin@gmail.com', 'Wild Vet Reception - Links');
         $mail->addAddress($cEmail, $cName);
         $mail->isHTML(true);
         $mail->Subject = $cSubject;
+        
         $mail->Body = $cBody;
 
         try {

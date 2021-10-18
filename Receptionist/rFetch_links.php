@@ -82,10 +82,7 @@ include_once '../includes/dbConn.php';
                             <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
                             Add/Edit Doctor
                         </a>
-                        <a class="dropdown-item" href="#">
-                            <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
-                            Activity Log
-                        </a>
+                        
                         <div class="dropdown-divider"></div>
                         <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
                             <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
@@ -320,7 +317,7 @@ include_once '../includes/dbConn.php';
                                     <th>Links</th>
                                     <th>Title</th>
                                     <th>Page Preview</th>
-
+                                    <th>Article Link</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -513,9 +510,17 @@ include_once '../includes/dbConn.php';
                                         <td> <?php echo $a[0] ?></td>
                                         <td style = "font-size : 16px;"> <?php echo $a[1] ?></td>
                                         <td>
-                                            <button type = "button" class="btn btn-primary justify-content-center" data-toggle="modal" data-target="#previewpage<?php echo $count;?>">Preview Page</button>
-
-                                            <div id="previewpage<?php echo $count; $count++;?>" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                            <p><a
+                                                href="<?php echo $a[0]?>"
+                                                target="PromoteFirefoxWindow"
+                                                onclick="openRequestedPopup(this.href, this.target); return false;"
+                                                title="This link will create a new window or will re-use an already opened one">Preview Link
+                                            </a></p>
+                                        </td>
+                                        <td>
+                                            <input id="input" class="form-control" type="text" value ="<?php echo $a[0] ?>" />
+                                            <!-- <button id="execCopy" type = "button" class="btn btn-primary justify-content-center">Copy Link</button> -->
+                                            <!-- <div id="previewpage<?php echo $count; $count++;?>" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                                 <div class="modal-dialog modal-xl" role="document">
                                                     <div class="modal-content">
                                                         <div class="modal-header">
@@ -530,7 +535,8 @@ include_once '../includes/dbConn.php';
                                                                 <input type = "hidden" name="links" value = <?php echo $a[0] ?> class="form-control">
                                                             </div>
                                                             <div>
-                                                            <iframe style = "height : 600px; width : 1100px;" src="<?php echo $a[0] ?>"></iframe>
+                                                                <a href ="<?php echo $a[0] ?>" target = "iframe">CLICK TO LOAD PAGE</a>
+                                                                <iframe id = "iframe" name = "iframe" style = "height : 600px; width : 1100px;" src="<?php echo $a[0] ?>"></iframe>
                                                             </div>
                                                         </div>
                                                         <div class="modal-footer">
@@ -539,7 +545,7 @@ include_once '../includes/dbConn.php';
                                                         </div>
                                                     </div>
                                                 </div>
-                                            </div>
+                                            </div> -->
                                         </td>
                                     </tr>
                                     <?php
@@ -553,7 +559,7 @@ include_once '../includes/dbConn.php';
                                 <div class="col-xl-4 col-md-6 mb-4">
                                     <div class="card border-left-primary shadow h-100 py-2 align-items-center">
                                         <div class="h5 mb-0 font-weight-bold text-gray-800  justify-content-center">
-                                        <button type="submit" name = "sendEmail" class=" btn btn-success justify-content-center" method = "POST" action = "">PREVIEW EMAIL</button>
+                                        <button type="submit" name = "sendEmail" class=" btn btn-success justify-content-center">PREVIEW EMAIL</button>
                                         <input type = "hidden" name = "cid" value = "<?php echo $_SESSION['id']?>">
                                         </div>
                                     </div>
@@ -595,13 +601,31 @@ include_once '../includes/dbConn.php';
     $(window).on('load', function () {
         setTimeout(removeLoader, 2000);
     });
-function removeLoader(){
-    $( "#loading" ).fadeOut(500, function() {
-      // fadeOut complete. Remove the loading div
-      $( "#loading" ).remove(); //makes page more lightweight 
-  });  
-}
+    function removeLoader(){
+        $( "#loading" ).fadeOut(500, function() {
+        // fadeOut complete. Remove the loading div
+        $( "#loading" ).remove(); //makes page more lightweight 
+        });  
+    }
+
+    document.getElementById('execCopy').addEventListener('click', execCopy);
+        function execCopy() {
+        document.querySelector("#input").select();
+        document.execCommand("copy");
+    }
+
+
 </script>
+<script type="text/javascript">
+    var windowObjectReference = null; // global variable
+    function openRequestedPopup(url, windowName) {
+        if(windowObjectReference == null || windowObjectReference.closed) {
+            windowObjectReference = window.open(url, windowName,
+                "resizable,scrollbars,status");
+        } else {
+            windowObjectReference.focus();
+        };
+        }
 </script>
 
 <?php

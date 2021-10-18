@@ -3,13 +3,13 @@ header('Content-Type: application/json');
 header("Access-Control-Allow-Origin: *");
 header("Access-Control-Allow-Methods: PUT, GET, POST");
 header("Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Accept");
-include('../includes/dbConn.php');
+include('../../../includes/dbConn.php');
 date_default_timezone_set('Australia/ACT');
 $dateT = date("Y-m-d");
 $date = date_create($dateT);
-//date_sub($date, date_interval_create_from_date_string('7 days'));
+date_sub($date, date_interval_create_from_date_string('7 days'));
 $DateF = date_format($date, 'Y-m-d');
-$sqlQuery = "SELECT assignedDoc as ad, count(assignedDoc) AS adc FROM clientinfo  GROUP BY assignedDoc";
+$sqlQuery = "SELECT postcode as pc, count(postcode) AS pcc FROM clientinfo GROUP BY postcode";
 
 $result = $conn->query($sqlQuery);
 
@@ -22,3 +22,4 @@ mysqli_close($conn);
 
 echo json_encode($data);
 ?>
+

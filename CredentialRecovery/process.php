@@ -1,5 +1,6 @@
 <?php
 include('../includes/dbConn.php');
+include('../includes/gmailCredentials.php');
 session_start();
 error_reporting();
 use PHPMailer\PHPMailer\PHPMailer;
@@ -45,9 +46,12 @@ if (isset($_POST['passwordRecovery'])) {
             // Send email to user with the token in a link they can click on
             $to = $email;
             $name = "$result[rFirstname]";
+            $httphost = "http://".$_SERVER['HTTP_HOST'];
+            $requesturl = "/WildVetCheckin/CredentialRecovery/new_pass.php?token=".$token;
+            $link = $httphost.$requesturl;
             //echo $to; echo $name;
-            $subject = "Reset your password";
-            $msg = "Hi there, click on this <a href=http://localhost/WildVetCheckin/CredentialRecovery/new_pass.php?token=". $token ."\">link</a> to reset your password.";
+            $subject = "Reset your password - Receptionist";
+            $msg = "Hi there, click on this <a href=$link>link</a> to reset your password.";
             $msg = wordwrap($msg,70);
             
 
@@ -55,8 +59,8 @@ if (isset($_POST['passwordRecovery'])) {
             $mail->IsSMTP();
             $mail->Host = 'smtp.gmail.com';
             $mail->SMTPAuth = true;
-            $mail->Username = 'thewildvetcheckin@gmail.com';
-            $mail->Password = 'fbzqqlhbztsjujan';
+            $mail->Username = $gmailUsername;
+            $mail->Password = $gmailPassword;
             $mail->SMTPSecure = 'tls';
             $mail->Port = '587';
             $mail->setFrom('thewildvetcheckin@gmail.com', 'Wild Vet Reception - Reset Password');
@@ -104,7 +108,10 @@ if (isset($_POST['receptionistCredentials'])) {
             if($new_pass != $new_pass_c){
                 $_SESSION['statusD'] = "Passwords do not match. Re-Enter again.";
                 $_SESSION['status_codeD'] = "error";
-                header('location: http://localhost/WildVetCheckin/CredentialRecovery/new_pass.php?token='.$token);
+                $httphost = "http://".$_SERVER['HTTP_HOST'];
+                $requesturl = "/WildVetCheckin/CredentialRecovery/new_pass.php?token=".$token;
+                $link = $httphost.$requesturl;
+                header("location: $link");
                 exit();
             }
             else{
@@ -118,6 +125,7 @@ if (isset($_POST['receptionistCredentials'])) {
                     $tokendelete->execute();
                     $_SESSION['statusD'] = "Password has been update.";
                     $_SESSION['status_codeD'] = "success";
+                    $_SESSION['msg'] = "";
                     header('location: ../Receptionist/receptionistLogin.php');
                     exit();
                 }
@@ -163,10 +171,13 @@ if (isset($_POST['usernameRecovery'])){
         
             // Send email to user with the token in a link they can click on
             $to = $email;
+            $httphost = "http://".$_SERVER['HTTP_HOST'];
+            $requesturl = "/WildVetCheckin/CredentialRecovery/new_rusername.php?token=".$token;
+            $link = $httphost.$requesturl;
             $name = "$result[rFirstname]";
             //echo $to; echo $name;
             $subject = "Recover Your Username";
-            $msg = "Hi there, click on this <a href=http://localhost/WildVetCheckin/CredentialRecovery/new_rusername.php?token=". $token ."\">link</a> to view your username.";
+            $msg = "Hi there, click on this <a href=$link>link</a> to view your username.";
             $msg = wordwrap($msg,70);
             
 
@@ -174,8 +185,8 @@ if (isset($_POST['usernameRecovery'])){
             $mail->IsSMTP();
             $mail->Host = 'smtp.gmail.com';
             $mail->SMTPAuth = true;
-            $mail->Username = 'thewildvetcheckin@gmail.com';
-            $mail->Password = 'fbzqqlhbztsjujan';
+            $mail->Username = $gmailUsername;
+            $mail->Password = $gmailPassword;
             $mail->SMTPSecure = 'tls';
             $mail->Port = '587';
             $mail->setFrom('thewildvetcheckin@gmail.com', 'Wild Vet Reception - View Username');
@@ -248,7 +259,10 @@ if (isset($_POST['receptionistPassword'])) {
                     $_SESSION['statusD'] = "Wrong password entered. Try again.";
                     $_SESSION['status_codeD'] = "error";
                     $_SESSION['msg'] ="";
-                    header('Location: http://localhost/WildVetCheckin/CredentialRecovery/new_rusername.php?token='.$token);
+                    $httphost = "http://".$_SERVER['HTTP_HOST'];
+                    $requesturl = "/WildVetCheckin/CredentialRecovery/new_rusername.php?token=".$token;
+                    $link = $httphost.$requesturl;
+                    header("Location: $link");
                     exit();
                 }
             }
@@ -289,10 +303,13 @@ if(isset($_POST['doctorPasswordRecovery'])){
         
             // Send email to user with the token in a link they can click on
             $to = $email;
+            $httphost = "http://".$_SERVER['HTTP_HOST'];
+            $requesturl = "/WildVetCheckin/CredentialRecovery/new_docPassword.php?token=".$token;
+            $link = $httphost.$requesturl;
             $name = "$result[dFname]";
             //echo $to; echo $name;
             $subject = "Reset your password";
-            $msg = "Hi there, click on this <a href=http://localhost/WildVetCheckin/CredentialRecovery/new_docPassword.php?token=". $token . "\">link</a> to reset your password.";
+            $msg = "Hi there, click on this <a href=$link>link</a> to reset your password.";
             $msg = wordwrap($msg,70);
             
 
@@ -300,8 +317,8 @@ if(isset($_POST['doctorPasswordRecovery'])){
             $mail->IsSMTP();
             $mail->Host = 'smtp.gmail.com';
             $mail->SMTPAuth = true;
-            $mail->Username = 'thewildvetcheckin@gmail.com';
-            $mail->Password = 'fbzqqlhbztsjujan';
+            $mail->Username = $gmailUsername;
+            $mail->Password = $gmailPassword;
             $mail->SMTPSecure = 'tls';
             $mail->Port = '587';
             $mail->setFrom('thewildvetcheckin@gmail.com', 'Wild Vet Reception - Reset Docotor Password');
@@ -348,7 +365,11 @@ if (isset($_POST['doctorCredentials'])) {
             if($new_pass != $new_pass_c){
                 $_SESSION['statusD'] = "Passwords do not match. Re-Enter again.";
                 $_SESSION['status_codeD'] = "error";
-                header('location: http://localhost/WildVetCheckin/CredentialRecovery/new_docPassword.php?token='.$token);
+                $_SESSION['msg'] = "";
+                $httphost = "http://".$_SERVER['HTTP_HOST'];
+                $requesturl = "/WildVetCheckin/CredentialRecovery/new_docPassword.php?token=".$token;
+                $link = $httphost.$requesturl;
+                header("location: $link");
                 exit();
             }
             else{
@@ -362,6 +383,7 @@ if (isset($_POST['doctorCredentials'])) {
                     $tokendelete->execute();
                     $_SESSION['statusD'] = "Password has been update.";
                     $_SESSION['status_codeD'] = "success";
+                    $_SESSION['msg'] = "";
                     header('location: ../Doctor/doctorLogin.php');
                     exit();
                 }
@@ -407,10 +429,13 @@ if(isset($_POST['dusernameRecovery'])){
         
             // Send email to user with the token in a link they can click on
             $to = $email;
+            $httphost = "http://".$_SERVER['HTTP_HOST'];
+            $requesturl = "/WildVetCheckin/CredentialRecovery/new_dusername.php?token=".$token;
+            $link = $httphost.$requesturl;
             $name = "$result[dFname]";
             //echo $to; echo $name;
             $subject = "Recover Your Username - Doctor";
-            $msg = "Hi there, click on this <a href=http://localhost/WildVetCheckin/CredentialRecovery/new_dusername.php?token=". $token ."\">link</a> to view your username.";
+            $msg = "Hi there, click on this <a href=$link>link</a> to view your username.";
             $msg = wordwrap($msg,70);
             
 
@@ -418,8 +443,8 @@ if(isset($_POST['dusernameRecovery'])){
             $mail->IsSMTP();
             $mail->Host = 'smtp.gmail.com';
             $mail->SMTPAuth = true;
-            $mail->Username = 'thewildvetcheckin@gmail.com';
-            $mail->Password = 'fbzqqlhbztsjujan';
+            $mail->Username = $gmailUsername;
+            $mail->Password = $gmailPassword;
             $mail->SMTPSecure = 'tls';
             $mail->Port = '587';
             $mail->setFrom('thewildvetcheckin@gmail.com', 'Wild Vet Reception - View Username');
@@ -492,7 +517,10 @@ if(isset($_POST['doctorPassword'])){
                     $_SESSION['statusD'] = "Wrong password entered. Try again.";
                     $_SESSION['status_codeD'] = "error";
                     $_SESSION['msg'] ="";
-                    header('Location: http://localhost/WildVetCheckin/CredentialRecovery/new_dusername.php?token='.$token);
+                    $httphost = "http://".$_SERVER['HTTP_HOST'];
+                    $requesturl = "/WildVetCheckin/CredentialRecovery/new_dusername.php?token=".$token;
+                    $link = $httphost.$requesturl;
+                    header("Location: $link");
                     exit();
                 }
             }
