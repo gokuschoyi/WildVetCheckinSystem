@@ -241,7 +241,7 @@ if(isset($_POST['updatereception'])){
 if (isset($_POST['submitEmail'])) {
     $_SESSION['status'] = 0;
     $mail = new PHPMailer();
-    $upload_dir = 'C:\xampp\htdocs\WildVetCheckin\Receptionist\attachments'.DIRECTORY_SEPARATOR;
+    $upload_dir =dirname(__FILE__).'/attachments'.DIRECTORY_SEPARATOR;
     $allowed_types = array('jpg', 'png', 'jpeg', 'gif', 'pdf');
     // Define maxsize for files i.e 20MB
     $maxsize = 20 * 1024 * 1024;
@@ -262,24 +262,26 @@ if (isset($_POST['submitEmail'])) {
                     $_SESSION['status'] = 'Error: File size is larger than the allowed limit.';  
                     $_SESSION['status_code'] = "error";
                     header("Location: rSendEmail.php");
+                    exit();
                 }     
                 // If file with name already exist then append time in
                 // front of name of the file to avoid overwriting of file
                 if(file_exists($filepath)) {
                     $filepath = $upload_dir.time().$file_name; 
                     if( move_uploaded_file($file_tmpname, $filepath)) {
-                        $mail->addAttachment("attachments/".$file_name);
                         echo "{$file_name} successfully uploaded <br />";
                     }
                     else{  
                         $_SESSION['status'] = 'Error uploading {$file_name} <br />';  
                         $_SESSION['status_code'] = "error";
                         header("Location: rSendEmail.php");
+                        exit();
                     }
                 }
                 else {
                     if( move_uploaded_file($file_tmpname, $filepath)) {
-                        echo "{$file_name} successfully uploaded <br />";
+                        $mail->addAttachment(dirname(__FILE__)."/attachments/".$file_name);
+                        //echo "{$file_name} successfully uploaded <br />";
                     }
                     else {                    
                         echo "Error uploading {$file_name} <br />";
@@ -291,6 +293,7 @@ if (isset($_POST['submitEmail'])) {
                 $_SESSION['status'] = 'Error uploading {$file_name} {$file_ext} file type is not allowed)<br / >';  
                 $_SESSION['status_code'] = "error";
                 header("Location: rSendEmail.php");
+                exit();
             }
         }
     }
