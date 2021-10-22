@@ -1,8 +1,10 @@
-<?php 
-include('process.php');                                      
+<!-- Page that loades after the recovery link is sent to the user -->
+<?php
+include('process.php');
 ?>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
@@ -75,19 +77,20 @@ include('process.php');
             </div>
         </div>
     </nav>
-    <div class="container d-flex d-xl-flex justify-content-center align-items-center justify-content-xl-center align-items-xl-center" style = "padding-bottom:10px"><img src="assets/img/check.png" style="height: 130px; ;"></div>
-        <div class="row" style = "padding-top:50px">
-            <div class="col d-flex d-xl-flex justify-content-center align-items-center justify-content-xl-center align-items-xl-center">
-                <p class="font-monospace text-center d-flex d-md-flex justify-content-center align-items-center justify-content-md-center align-items-md-center" style="font-size: 20px;color: rgb(109,134,163);width: 550px;">We sent an email to <?php echo $_GET['email'] ?> to help you recover your account. </p>
-            </div>
-        </div>
-        <div class="row" style = "padding-top:30px">
-            <div class="col d-flex d-xl-flex justify-content-center align-items-center justify-content-xl-center align-items-xl-center">
-                <p class="font-monospace text-center d-flex d-md-flex justify-content-center align-items-center justify-content-md-center align-items-md-center" style="font-size: 20px;color: rgb(109,134,163);width: 550px;">Please login into your email account and click on the link we sent to reset your password</p></p>
-            </div>
+    <div class="container d-flex d-xl-flex justify-content-center align-items-center justify-content-xl-center align-items-xl-center" style="padding-bottom:10px"><img src="assets/img/check.png" style="height: 130px; ;"></div>
+    <div class="row" style="padding-top:50px">
+        <div class="col d-flex d-xl-flex justify-content-center align-items-center justify-content-xl-center align-items-xl-center">
+            <p class="font-monospace text-center d-flex d-md-flex justify-content-center align-items-center justify-content-md-center align-items-md-center" style="font-size: 20px;color: rgb(109,134,163);width: 550px;">We sent an email to <?php echo $_GET['email'] ?> to help you recover your account. </p>
         </div>
     </div>
-    <form action="../Receptionist/receptionistLogin.php" method="POST" class ="d-flex d-md-flex justify-content-center align-items-center justify-content-md-center align-items-md-cente" style = "padding-top:70px; padding-bottom:100px;" >
+    <div class="row" style="padding-top:30px">
+        <div class="col d-flex d-xl-flex justify-content-center align-items-center justify-content-xl-center align-items-xl-center">
+            <p class="font-monospace text-center d-flex d-md-flex justify-content-center align-items-center justify-content-md-center align-items-md-center" style="font-size: 20px;color: rgb(109,134,163);width: 550px;">Please login into your email account and click on the link we sent to reset your password</p>
+            </p>
+        </div>
+    </div>
+    </div>
+    <form action="../Receptionist/receptionistLogin.php" method="POST" class="d-flex d-md-flex justify-content-center align-items-center justify-content-md-center align-items-md-cente" style="padding-top:70px; padding-bottom:100px;">
         <button type="submit" name="done" class=" btn btn-success">Login</button>
     </form>
     <div class="container">

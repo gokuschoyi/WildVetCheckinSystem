@@ -1,3 +1,4 @@
+<!-- Database connection variables -->
 <?php
 $dbServername = "pk1l4ihepirw9fob.cbetxkdyhwsb.us-east-1.rds.amazonaws.com";
 $dbUsername = "sn4abkagkvz8sd1n";

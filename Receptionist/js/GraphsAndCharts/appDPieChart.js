@@ -1,3 +1,5 @@
+/* layout for the doughnut chart doctor viewed count */
+
 $(document).ready(function() {
     $.ajax({
         url: "js/GraphsAndCharts/dataDPieChart.php",

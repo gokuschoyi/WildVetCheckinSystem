@@ -1,3 +1,4 @@
+<!-- Receptionst login page -->
 <?php
 session_start();
 ?>
@@ -63,23 +64,27 @@ session_start();
     <link rel="stylesheet" href="../allVendor/sweetalert2/dist/sweetalert2.min.css">
 </head>
 <style>
-@media screen and (max-width: 600px) {
-    div.example {
-    display: none;
+    @media screen and (max-width: 600px) {
+        div.example {
+            display: none;
+        }
     }
-}
-.navbar-collapse{
-    z-index: 1000;
-    
-}
-.navbar-nav{
-    border-radius: 10px;
-}
-.nav-link{
-    background-color:#f2f9ff;
-    border-radius:15px;
-}
+
+    .navbar-collapse {
+        z-index: 1000;
+
+    }
+
+    .navbar-nav {
+        border-radius: 10px;
+    }
+
+    .nav-link {
+        background-color: #f2f9ff;
+        border-radius: 15px;
+    }
 </style>
+
 <body style="background: url(&quot;assets/img/6677.jpg&quot;) center no-repeat;">
     <nav class="navbar navbar-light navbar-expand-md navigation-clean" style="height: 150px;background: #c292fb;">
         <div class="container"><a class="navbar-brand font-monospace" href="../index.php" style="font-size: 35px;">The Wild Vet</a>
@@ -87,7 +92,7 @@ session_start();
                 <span class="visually-hidden">Toggle navigation</span><span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navcol-1">
-                <ul class="navbar-nav ms-auto" style = "background:#c292fb;">
+                <ul class="navbar-nav ms-auto" style="background:#c292fb;">
                     <li class="nav-item"><a class="nav-link font-monospace" href="../index.php">Home</a></li>
                     <li class="nav-item"><a class="nav-link font-monospace" href="#">Services</a></li>
                     <li class="nav-item"><a class="nav-link font-monospace" href="../about.php">About</a></li>
@@ -95,25 +100,26 @@ session_start();
                     <li class="nav-item"><a class="nav-link font-monospace" href="#">Privacy Policy</a></li>
                 </ul>
             </div>
-            <div class = "example">
-            <div class="col-md-12 d-flex d-xl-flex justify-content-center align-items-center justify-content-xl-center align-items-xl-center" style = 'width :100px; padding-left : 45px;'>
-                <img src="assets\img\logo.png" style="height: 80px;">
-            </div>
+            <div class="example">
+                <div class="col-md-12 d-flex d-xl-flex justify-content-center align-items-center justify-content-xl-center align-items-xl-center" style='width :100px; padding-left : 45px;'>
+                    <img src="assets\img\logo.png" style="height: 80px;">
+                </div>
             </div>
         </div>
     </nav>
     <h4 class="font-monospace text-center d-flex d-lg-flex justify-content-center align-items-center justify-content-lg-center align-items-lg-center" style="height: 133px;font-weight: bold;opacity: 0.85;font-size: 28px;">Receptionist Login</h4>
     <div class="d-flex d-lg-flex d-xl-flex justify-content-center align-items-start justify-content-sm-center align-items-sm-center justify-content-md-center align-items-md-center justify-content-lg-center align-items-lg-center justify-content-xl-center align-items-xl-center" style="height: 570px;">
-        <form method="post" action = "process.php" 
-            style="background: transparent;border-radius: 26px;width: 240px; height:460px;">
+        <form method="post" action="process.php" style="background: transparent;border-radius: 26px;width: 240px; height:460px;">
             <h2 class="visually-hidden">Login Form</h2>
             <div class="d-flex d-lg-flex d-xl-flex justify-content-center align-items-center justify-content-sm-center align-items-sm-center justify-content-md-center align-items-md-center justify-content-lg-center align-items-lg-center justify-content-xl-center align-items-xl-center illustration" style="height: 190px;">
-                <img class="d-flex justify-content-center align-items-center" src="assets\img\password.png" style="width: 80px;" /></div>
+                <img class="d-flex justify-content-center align-items-center" src="assets\img\password.png" style="width: 80px;" />
+            </div>
             <div class="mb-3"><input type="text" class="form-control" name="username" placeholder="Username" /></div>
             <div class="mb-3"><input type="password" class="form-control" name="password" placeholder="Password" /></div>
             <div class="d-xl-flex justify-content-xl-center align-items-xl-center mb-3">
-                <button class="btn btn-primary d-block w-100" type="submit" name = "rLogin">Log In</button></div>
-            <a class="d-flex d-sm-flex d-md-flex d-lg-flex d-xl-flex justify-content-center align-items-center justify-content-sm-center align-items-sm-center justify-content-md-center align-items-md-center justify-content-lg-center align-items-lg-center justify-content-xl-center align-items-xl-center forgot" style = "padding-top : 30px;" href="../CredentialRecovery/recoverySelection.php">Forgot password?</a>
+                <button class="btn btn-primary d-block w-100" type="submit" name="rLogin">Log In</button>
+            </div>
+            <a class="d-flex d-sm-flex d-md-flex d-lg-flex d-xl-flex justify-content-center align-items-center justify-content-sm-center align-items-sm-center justify-content-md-center align-items-md-center justify-content-lg-center align-items-lg-center justify-content-xl-center align-items-xl-center forgot" style="padding-top : 30px;" href="../CredentialRecovery/recoverySelection.php">Forgot password?</a>
         </form>
     </div>
     <footer class="footer-basic" style="height: 130px; padding-top:30px;">
@@ -128,18 +134,17 @@ session_start();
     <script src="assets/bootstrap/js/bootstrap.min.js"></script>
     <script src="../allVendor/sweetalert2/dist/sweetalert2.min.js"></script>
     <?php
-        if((isset($_SESSION['statusD']) && $_SESSION['statusD']) !='')
-        {
-            ?>
-            <script>
-                Swal.fire({
-                icon: '<?php echo $_SESSION['status_codeD']?>',
-                title: '<?php echo $_SESSION['statusD']?>',
-                html: '<b><?php echo $_SESSION['msg']?></b>',
+    if ((isset($_SESSION['statusD']) && $_SESSION['statusD']) != '') {
+    ?>
+        <script>
+            Swal.fire({
+                icon: '<?php echo $_SESSION['status_codeD'] ?>',
+                title: '<?php echo $_SESSION['statusD'] ?>',
+                html: '<b><?php echo $_SESSION['msg'] ?></b>',
             })
-            </script>
-            <?php unset($_SESSION['statusD']);
-        }
+        </script>
+    <?php unset($_SESSION['statusD']);
+    }
     ?>
 </body>
 

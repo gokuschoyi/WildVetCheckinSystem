@@ -1,3 +1,4 @@
+<!-- This fetches information about new checkins and notifies the receptionist. It also adds the content to the notification dropdown -->
 <?php
 header('Content-Type: application/json');
 header("Access-Control-Allow-Origin: *");
@@ -8,7 +9,6 @@ if (isset($_POST['view'])) {
     if ($_POST["view"] != '') {
         $update_query = $conn->prepare("UPDATE clientinfo SET cNotification = 1 WHERE cNotification = 0");
         $update_query->execute();
-        
     }
     date_default_timezone_set('Australia/ACT');
     $dateT = date("Y-m-d");
@@ -20,7 +20,7 @@ if (isset($_POST['view'])) {
     $result = $query->get_result();
     $output = '';
     if (mysqli_num_rows($result) > 0) {
-        while ($row = mysqli_fetch_array($result)) {//d='.$id.'
+        while ($row = mysqli_fetch_array($result)) { //d='.$id.'
             $output .= '
             <a class="dropdown-item d-flex align-items-center" i href="#">
             <div class="mr-3">
@@ -29,17 +29,16 @@ if (isset($_POST['view'])) {
             </div>
             </div>
             <div>
-            <div class="small text-gray-500" id = '.$row["clientId"].'>'.$row["checkinDate"].' Client ID  = '.$row["clientId"].' </div>
-            <span class="font-weight-bold">'.$row["title"].' '.' '.$row["firstName"].', '.'  has checked in.</span>
+            <div class="small text-gray-500" id = ' . $row["clientId"] . '>' . $row["checkinDate"] . ' Client ID  = ' . $row["clientId"] . ' </div>
+            <span class="font-weight-bold">' . $row["title"] . ' ' . ' ' . $row["firstName"] . ', ' . '  has checked in.</span>
             </div>
             </a>
             ';
         }
         $prepend = '<h6 class="dropdown-header">Alerts Center</h6>';
         $footer = '<a class="dropdown-item text-center small text-gray-500" href="#">New Check-In</a>';
-        $output = $prepend.$output.$footer;
-    }
-    else{
+        $output = $prepend . $output . $footer;
+    } else {
         date_default_timezone_set('Australia/ACT');
         $dateT = date("Y-m-d");
         $date = date_create($dateT);
@@ -50,7 +49,7 @@ if (isset($_POST['view'])) {
         $result = $query->get_result();
         if (mysqli_num_rows($result) > 0) {
             while ($row = mysqli_fetch_array($result)) {
-            $output .= '
+                $output .= '
             <a class="dropdown-item d-flex align-items-center" i href="#">
             <div class="mr-3">
             <div class="icon-circle bg-warning">
@@ -58,29 +57,28 @@ if (isset($_POST['view'])) {
             </div>
             </div>
             <div>
-            <div class="small text-gray-500" id = '.$row["clientId"].'>'.$row["checkinDate"].' Client ID  = '.$row["clientId"].' </div>
-            <span class="font-weight-bold">'.$row["title"].' '.' '.$row["firstName"].', '.'  has checked in.</span>
+            <div class="small text-gray-500" id = ' . $row["clientId"] . '>' . $row["checkinDate"] . ' Client ID  = ' . $row["clientId"] . ' </div>
+            <span class="font-weight-bold">' . $row["title"] . ' ' . ' ' . $row["firstName"] . ', ' . '  has checked in.</span>
             </div>
             </a>
             ';
+            }
+            $prepend = '<h6 class="dropdown-header">Alerts Center</h6>';
+            $footer = '<a class="dropdown-item text-center small text-gray-500" href="#">OLD NOTIFICATIONS</a>';
+            $output = $prepend . $output . $footer;
         }
-        $prepend = '<h6 class="dropdown-header">Alerts Center</h6>';
-        $footer = '<a class="dropdown-item text-center small text-gray-500" href="#">OLD NOTIFICATIONS</a>';
-        $output = $prepend.$output.$footer;
     }
-}
-        $status_query = $conn->prepare("SELECT  clientId FROM clientinfo WHERE cNotification = 0 AND checkinDate = ?");
-        $status_query->bind_param("s", $DateF);
-        $status_query->execute();
-        $resultc = $status_query->get_result();
-        $count = mysqli_num_rows($resultc);
-        //echo $count;
-        $data = array(
-            'notification' => $output,
-            'unseen_notification'  => $count
-        );
+    $status_query = $conn->prepare("SELECT  clientId FROM clientinfo WHERE cNotification = 0 AND checkinDate = ?");
+    $status_query->bind_param("s", $DateF);
+    $status_query->execute();
+    $resultc = $status_query->get_result();
+    $count = mysqli_num_rows($resultc);
+    //echo $count;
+    $data = array(
+        'notification' => $output,
+        'unseen_notification'  => $count
+    );
     mysqli_close($conn);
     echo json_encode($data);
-
 }
 ?>

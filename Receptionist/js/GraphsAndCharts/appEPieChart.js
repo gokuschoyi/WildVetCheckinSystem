@@ -1,3 +1,4 @@
+/* layout for the doughnut chart assigned doc count */
 $(document).ready(function() {
     $.ajax({
         url: "js/GraphsAndCharts/dataEPieChart.php",

@@ -1,3 +1,4 @@
+/* layout for the doughnut chart snippets */
 $(document).ready(function() {
     $.ajax({
         url: "js/GraphsAndCharts/dataCPieChart.php",

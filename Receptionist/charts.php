@@ -1,3 +1,4 @@
+<!-- This page displays the various charts and graphs made based on the data from the database. -->
 <?php
 include '../includes/header.php';
 include '../includes/navbar.php';
@@ -19,37 +20,19 @@ include '../includes/navbar.php';
                 <i class="fa fa-bars"></i>
             </button>
 
-            <!-- Topbar Search -->
-            <!-- <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
-                <div class="input-group">
-                    <input type="text" id = "quickSearch" class="form-control bg-light border-0 small" placeholder="Quick Search..."
-                        aria-label="Search" aria-describedby="basic-addon2">
-                        <div id="display"></div>
-                    <div class="input-group-append">
-                        <button class="btn btn-primary" type="button">
-                            <i class="fas fa-search fa-sm"></i>
-                        </button>
-                    </div>
-                    
-                </div>
-            </form> -->
-
             <!-- Topbar Navbar -->
             <ul class="navbar-nav ml-auto">
 
                 <!-- Nav Item - Search Dropdown (Visible Only XS) -->
                 <li class="nav-item dropdown no-arrow d-sm-none">
-                    <a class="nav-link dropdown-toggle" href="#" id="searchDropdown" role="button"
-                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <a class="nav-link dropdown-toggle" href="#" id="searchDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <i class="fas fa-search fa-fw"></i>
                     </a>
                     <!-- Dropdown - Messages -->
-                    <div class="dropdown-menu dropdown-menu-right p-3 shadow animated--grow-in"
-                        aria-labelledby="searchDropdown">
+                    <div class="dropdown-menu dropdown-menu-right p-3 shadow animated--grow-in" aria-labelledby="searchDropdown">
                         <form class="form-inline mr-auto w-100 navbar-search">
                             <div class="input-group">
-                                <input type="text" class="form-control bg-light border-0 small"
-                                    placeholder="Quick Search..." aria-label="Search" aria-describedby="basic-addon2">
+                                <input type="text" class="form-control bg-light border-0 small" placeholder="Quick Search..." aria-label="Search" aria-describedby="basic-addon2">
                                 <div class="input-group-append">
                                     <button class="btn btn-primary" type="button">
                                         <i class="fas fa-search fa-sm"></i>
@@ -62,16 +45,14 @@ include '../includes/navbar.php';
 
                 <div class="topbar-divider d-none d-sm-block"></div>
 
-                <!-- Nav Item - User Information -->
+                <!-- Nav Item - User Name-->
                 <li class="nav-item dropdown no-arrow">
-                    <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown"
-                        aria-haspopup="true" aria-expanded="false">
-                        <span class="mr-2 d-none d-lg-inline text-gray-600 small"><?php echo $_SESSION['username'];?></span>
+                    <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <span class="mr-2 d-none d-lg-inline text-gray-600 small"><?php echo $_SESSION['username']; ?></span>
                         <img class="img-profile rounded-circle" src="assets\img\receptionist.png">
                     </a>
                     <!-- Dropdown - User Information -->
-                    <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
-                        aria-labelledby="userDropdown">
+                    <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
                         <a class="dropdown-item" href="rProfile.php">
                             <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                             Profile
@@ -80,7 +61,7 @@ include '../includes/navbar.php';
                             <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
                             Add/Edit Doctor
                         </a>
-                        
+
                         <div class="dropdown-divider"></div>
                         <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
                             <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
@@ -104,64 +85,59 @@ include '../includes/navbar.php';
                         class="fas fa-download fa-sm text-white-50"></i> Generate Report</a> -->
             </div>
 
-            <!-- Content Row -->
-            
-
-            <!-- Content Row -->
-
         </div>
-        
-    <div class="row justify-content-center">
-        <div class="col-xl-12 col-lg-12 col-md-12 mb-12">
-            <div class="card shadow mb-4">
-                <div class="card-header py-3">
-                    <h6 class="m-0 font-weight-bold text-primary" style = "text-align: center">CLIENTS (Monthly)</h6>
-                </div>
-                <div class="card-body">
-                    <div class="chart-bar" >
-                        <canvas id="graphCanvasA"></canvas>
+
+        <div class="row justify-content-center">
+            <div class="col-xl-12 col-lg-12 col-md-12 mb-12">
+                <div class="card shadow mb-4">
+                    <div class="card-header py-3">
+                        <h6 class="m-0 font-weight-bold text-primary" style="text-align: center">CLIENTS (Monthly)</h6>
                     </div>
-                    <hr>
+                    <div class="card-body">
+                        <div class="chart-bar">
+                            <canvas id="graphCanvasA"></canvas>
+                        </div>
+                        <hr>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
 
-    <div class="row justify-content-center">
-        <div class="col-xl-12 col-lg-12 col-md-12 mb-12">
-            <div class="card shadow mb-4">
-                <div class="card-header py-3">
-                    <h6 class="m-0 font-weight-bold text-primary" style = "text-align: center">CLIENTS (Fortnightly)</h6>
-                </div>
-                <div class="card-body">
-                    <div class="chart-bar" >
-                        <canvas id="graphCanvasB"></canvas>
+        <div class="row justify-content-center">
+            <div class="col-xl-12 col-lg-12 col-md-12 mb-12">
+                <div class="card shadow mb-4">
+                    <div class="card-header py-3">
+                        <h6 class="m-0 font-weight-bold text-primary" style="text-align: center">CLIENTS (Fortnightly)</h6>
                     </div>
-                    <hr>
+                    <div class="card-body">
+                        <div class="chart-bar">
+                            <canvas id="graphCanvasB"></canvas>
+                        </div>
+                        <hr>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
 
-    <div class="row justify-content-center">
-        <div class="col-xl-12 col-lg-12 col-md-12 mb-12">
-            <div class="card shadow mb-4">
-                <div class="card-header py-3">
-                    <h6 class="m-0 font-weight-bold text-primary" style = "text-align: center">CLIENTS (By Postcode)</h6>
-                </div>
-                <div class="card-body">
-                    <div class="chart-bar" >
-                        <canvas id="graphradar"></canvas>
+        <div class="row justify-content-center">
+            <div class="col-xl-12 col-lg-12 col-md-12 mb-12">
+                <div class="card shadow mb-4">
+                    <div class="card-header py-3">
+                        <h6 class="m-0 font-weight-bold text-primary" style="text-align: center">CLIENTS (By Postcode)</h6>
                     </div>
-                    <hr>
+                    <div class="card-body">
+                        <div class="chart-bar">
+                            <canvas id="graphradar"></canvas>
+                        </div>
+                        <hr>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-        
+
     </div>
     <!-- End of Main Content -->
-        <?php 
+    <?php
     include '../includes/scripts.php';
     include '../includes/footer.php';
     ?>

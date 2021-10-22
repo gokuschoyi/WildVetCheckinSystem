@@ -2,6 +2,7 @@
 ob_start();
 session_start();
 include 'dSecurity.php';
+/* setting session name for the curent user (Doctor)*/
 $_SESSION['docname'] = $_SESSION['docEmail'];
 
 ?>

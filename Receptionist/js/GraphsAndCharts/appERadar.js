@@ -1,3 +1,4 @@
+/* layout for the doughnut chart for postcode count  */
 $(document).ready(function() {
     $.ajax({
         url: "js/GraphsAndCharts/dataERadar.php",

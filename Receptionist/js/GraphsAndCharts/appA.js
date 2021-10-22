@@ -1,3 +1,4 @@
+/* to display the bar chart for clients (past 30 days) */
 $(document).ready(function() {
     $.ajax({
         url: "js/GraphsAndCharts/dataA.php",

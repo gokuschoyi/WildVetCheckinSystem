@@ -1,3 +1,4 @@
+<!-- Page where the clients enters their personal details -->
 <?php session_start();
 include('../includes/dbConn.php');
 ?>
@@ -63,22 +64,25 @@ include('../includes/dbConn.php');
     <link rel="stylesheet" href="assets/css/styles.css">
 </head>
 <style>
-.navbar-nav{
-border-radius: 15px;
-}
-.nav-item{
-    text-align: center;
-}
-.nav-link{
-    background-color:#f2f9ff;
-    border-radius:15px;
-}
+    .navbar-nav {
+        border-radius: 15px;
+    }
+
+    .nav-item {
+        text-align: center;
+    }
+
+    .nav-link {
+        background-color: #f2f9ff;
+        border-radius: 15px;
+    }
 </style>
+
 <body style="background: url(&quot;assets/img/Home%20BG.jpg&quot;) top;">
     <nav class="navbar navbar-light navbar-expand-md navigation-clean" style="height: 190px; background :transparent ;">
         <div class="container"><a class="navbar-brand font-monospace" href="#" style="font-size: 28px;">Wild Vet Check-In</a><button data-bs-toggle="collapse" class="navbar-toggler" data-bs-target="#navcol-1"><span class="visually-hidden">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
             <div class="collapse navbar-collapse" id="navcol-1">
-                <ul class="navbar-nav ms-auto" style = "background:#8cc1bf;">
+                <ul class="navbar-nav ms-auto" style="background:#8cc1bf;">
                     <li class="nav-item"><a class="nav-link font-monospace" href="services.php">Services</a></li>
                     <li class="nav-item"></li>
                     <li class="nav-item"><a class="nav-link font-monospace" href="contactUs.php">Contact Us</a></li>
@@ -87,7 +91,7 @@ border-radius: 15px;
             </div>
         </div>
     </nav>
-    <div class = "container">
+    <div class="container">
         <form action="process.php" method="POST">
             <div>
                 <div class="row">
@@ -101,10 +105,10 @@ border-radius: 15px;
                         </select></div>
                 </div>
                 <div class="row">
-                    <div class="col d-flex d-lg-flex justify-content-center align-items-center justify-content-lg-center align-items-lg-center" style="height: 50px;"><input class="form-control-sm" type="text" placeholder="First Name" data-placeholder="First Name" style="border-radius: 13px;width: 240px;opacity: 0.85;" name="firstName" required="" ></div>
+                    <div class="col d-flex d-lg-flex justify-content-center align-items-center justify-content-lg-center align-items-lg-center" style="height: 50px;"><input class="form-control-sm" type="text" placeholder="First Name" data-placeholder="First Name" style="border-radius: 13px;width: 240px;opacity: 0.85;" name="firstName" required=""></div>
                 </div>
                 <div class="row">
-                    <div class="col d-flex d-lg-flex justify-content-center align-items-center justify-content-lg-center align-items-lg-center" style="height: 50px;"><input class="form-control-sm" type="text" placeholder="Surname" style="border-radius: 13px;width: 240px;opacity: 0.85;border-width: 1px;border-color: rgb(231,173,169);" name="surName" required="" ></div>
+                    <div class="col d-flex d-lg-flex justify-content-center align-items-center justify-content-lg-center align-items-lg-center" style="height: 50px;"><input class="form-control-sm" type="text" placeholder="Surname" style="border-radius: 13px;width: 240px;opacity: 0.85;border-width: 1px;border-color: rgb(231,173,169);" name="surName" required=""></div>
                 </div>
                 <div class="row">
                     <div class="col d-flex d-lg-flex justify-content-center align-items-center justify-content-lg-center align-items-lg-center" style="height: 50px;"><input class="form-control-sm" type="tel" placeholder="Mobile Number" style="border-radius: 13px;width: 240px;opacity: 0.85;border-width: 1px;border-color: rgb(231,173,169);" name="mobileNo" required="" maxlength="10" minlength="10"></div>

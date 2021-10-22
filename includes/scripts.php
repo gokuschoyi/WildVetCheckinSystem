@@ -33,6 +33,7 @@
     <script type="text/javascript" src="js/GraphsAndCharts/appEPieChart.js"></script>
     <script type="text/javascript" src="js/GraphsAndCharts/appERadar.js"></script>
     <script>
+        /* datatable layout settings for clients (TODAY) */
         $(document).ready(function() {
             var table = $('#clients').DataTable({
                 "dom": '<"row"<"col-6"<"d-flex justify-content-left justify-content-left"<""l>>><"col-6"<"d-flex justify-content-end"<""f>>>>tp<"ml-4"i>',
@@ -61,7 +62,7 @@
                 column.visible(!column.visible());
             });
         });
-
+        /* datatable layout settings for all clients (TOTAL CLIENTS) */
         $(document).ready(function() {
             var table = $('#allclients').DataTable({
                 "dom": '<"row"<"col-6"<"d-flex justify-content-left justify-content-left"<""l>>><"col-6"<"d-flex justify-content-end"<""f>>>>tp<"ml-4"i>',
@@ -89,7 +90,7 @@
                 column.visible(!column.visible());
             });
         });
-
+        /* datatable layout settings for Links table(Link selection) */
         $(document).ready(function() {
             var table = $('#linktable').DataTable({
                 "dom": '<"row"<"col-6"<"d-flex justify-content-left justify-content-left"<""l>>><"col-6"<"d-flex justify-content-end"<""f>>>>tp<"ml-4"i>',
@@ -109,7 +110,7 @@
 
         });
 
-        
+            /* custom loader for the pages */
             $(window).on('load',function(){
                 setTimeout(function(){ // allowing 3 secs to fade out loader
                 $('.loader-wrapper').fadeOut('slow');
@@ -117,7 +118,7 @@
             });
         
     </script>
-
+    <!-- sweet alert settings for all the pop up messages -->
     <?php
         if((isset($_SESSION['status']) && $_SESSION['status']) !='')
         {
@@ -172,7 +173,7 @@
         }
         
         load_unseen_notification();
-        // load new notifications
+        // load new notifications every 30 seconds
         $(document).on('click', '.dropdown-toggle', function(){
             $('.count').html('');
             load_unseen_notification('Yes');//Yes

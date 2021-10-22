@@ -1,3 +1,5 @@
+/* to display the bar chart for clients (past 14 days) */
+
 $(document).ready(function() {
     $.ajax({
         url: "js/GraphsAndCharts/dataB.php",

@@ -1,3 +1,5 @@
+<!-- This page shows the list of all the cients that have checked in on the presnt day -->
+
 <?php
 include '../includes/header.php';
 include '../includes/navbar.php';
@@ -18,35 +20,19 @@ include_once '../includes/dbConn.php';
                 <i class="fa fa-bars"></i>
             </button>
 
-            <!-- Topbar Search -->
-            <!-- <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
-                <div class="input-group">
-                    <input type="text" class="form-control bg-light border-0 small" placeholder="Quick Search..."
-                        aria-label="Search" aria-describedby="basic-addon2">
-                    <div class="input-group-append">
-                        <button class="btn btn-primary" type="button">
-                            <i class="fas fa-search fa-sm"></i>
-                        </button>
-                    </div>
-                </div>
-            </form> -->
-
             <!-- Topbar Navbar -->
             <ul class="navbar-nav ml-auto">
 
                 <!-- Nav Item - Search Dropdown (Visible Only XS) -->
                 <li class="nav-item dropdown no-arrow d-sm-none">
-                    <a class="nav-link dropdown-toggle" href="#" id="searchDropdown" role="button"
-                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <a class="nav-link dropdown-toggle" href="#" id="searchDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <i class="fas fa-search fa-fw"></i>
                     </a>
                     <!-- Dropdown - Messages -->
-                    <div class="dropdown-menu dropdown-menu-right p-3 shadow animated--grow-in"
-                        aria-labelledby="searchDropdown">
+                    <div class="dropdown-menu dropdown-menu-right p-3 shadow animated--grow-in" aria-labelledby="searchDropdown">
                         <form class="form-inline mr-auto w-100 navbar-search">
                             <div class="input-group">
-                                <input type="text" class="form-control bg-light border-0 small"
-                                    placeholder="Quick Search..." aria-label="Search" aria-describedby="basic-addon2">
+                                <input type="text" class="form-control bg-light border-0 small" placeholder="Quick Search..." aria-label="Search" aria-describedby="basic-addon2">
                                 <div class="input-group-append">
                                     <button class="btn btn-primary" type="button">
                                         <i class="fas fa-search fa-sm"></i>
@@ -61,14 +47,12 @@ include_once '../includes/dbConn.php';
 
                 <!-- Nav Item - User Information -->
                 <li class="nav-item dropdown no-arrow">
-                    <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown"
-                        aria-haspopup="true" aria-expanded="false">
-                        <span class="mr-2 d-none d-lg-inline text-gray-600 small"><?php echo $_SESSION['username'];?></span>
+                    <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <span class="mr-2 d-none d-lg-inline text-gray-600 small"><?php echo $_SESSION['username']; ?></span>
                         <img class="img-profile rounded-circle" src="assets\img\receptionist.png">
                     </a>
                     <!-- Dropdown - User Information -->
-                    <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
-                        aria-labelledby="userDropdown">
+                    <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
                         <a class="dropdown-item" href="rProfile.php">
                             <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                             Profile
@@ -77,7 +61,7 @@ include_once '../includes/dbConn.php';
                             <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
                             Add/Edit Doctor
                         </a>
-                        
+
                         <div class="dropdown-divider"></div>
                         <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
                             <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
@@ -90,7 +74,7 @@ include_once '../includes/dbConn.php';
 
         </nav>
         <!-- End of Topbar -->
-        <div  class="loader-wrapper">
+        <div class="loader-wrapper">
             <div class="loader-inner"></div>
         </div>
         <!-- Begin Page Content -->
@@ -99,9 +83,9 @@ include_once '../includes/dbConn.php';
             <!-- Page Heading -->
             <div class="d-sm-flex align-items-center justify-content-between mb-4">
                 <h1 class="h3 mb-0 text-gray-800">CLIENTS TODAY
-                    <?php date_default_timezone_set('Australia/ACT');  echo date("j/M/y") ?> </h1>
-                <a href="rDashboard.php" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
-                        class="fas fa-long-arrow-alt-left fa-sm text-white-50"></i> GO BACK</a>
+                    <?php date_default_timezone_set('Australia/ACT');
+                    echo date("j/M/y") ?> </h1>
+                <a href="rDashboard.php" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-long-arrow-alt-left fa-sm text-white-50"></i> GO BACK</a>
             </div>
 
             <!-- Content Row -->
@@ -116,15 +100,15 @@ include_once '../includes/dbConn.php';
                                     <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
                                         CLIENTS TODAY</div>
                                     <?php
-                                                date_default_timezone_set('Australia/ACT');
-                                                $date = date("Y-m-d");
-                                                $query = $conn->prepare("SELECT COUNT(DISTINCT clientinfo.clientId) FROM clientinfo JOIN petinfo ON clientinfo.clientId = petinfo.petKey WHERE clientinfo.checkinDate = ?");
-                                                $query->bind_param("s",$date);
-                                                $query->execute();
-                                                $stmt = $query->get_result()->fetch_row();
-                                                
-                                                ?>
-                                    <div class="h5 mb-0 font-weight-bold text-gray-800"><?php echo $stmt[0]?></div>
+                                    date_default_timezone_set('Australia/ACT');
+                                    $date = date("Y-m-d");
+                                    $query = $conn->prepare("SELECT COUNT(DISTINCT clientinfo.clientId) FROM clientinfo JOIN petinfo ON clientinfo.clientId = petinfo.petKey WHERE clientinfo.checkinDate = ?");
+                                    $query->bind_param("s", $date);
+                                    $query->execute();
+                                    $stmt = $query->get_result()->fetch_row();
+
+                                    ?>
+                                    <div class="h5 mb-0 font-weight-bold text-gray-800"><?php echo $stmt[0] ?></div>
                                 </div>
                                 <div class="col-auto">
                                     <i class="fas fa-calendar fa-2x text-gray-300"></i>
@@ -154,82 +138,78 @@ include_once '../includes/dbConn.php';
                     </thead>
                     <tbody>
                         <?php
-                                $registered = "Yes";
-                                $stmt = $conn->prepare("SELECT dFname FROM doctor WHERE registered = ?");
-                                $stmt->bind_param("s",$registered);
-                                $stmt->execute();
-                                $res = $stmt->get_result();
-                                $options = "";
-                                    while($resu = mysqli_fetch_array($res))
-                                    {
-                                        $options = $options."<option>$resu[0]</options>";
-                                    }
-                                    //echo $options;
-                                    
-                                date_default_timezone_set('Australia/ACT');
-                                $date = date("Y-m-d");
+                        $registered = "Yes";
+                        $stmt = $conn->prepare("SELECT dFname FROM doctor WHERE registered = ?");
+                        $stmt->bind_param("s", $registered);
+                        $stmt->execute();
+                        $res = $stmt->get_result();
+                        $options = "";
+                        while ($resu = mysqli_fetch_array($res)) {
+                            $options = $options . "<option>$resu[0]</options>";
+                        }
+                        //echo $options;
 
-                                $query = $conn->prepare("SELECT  DISTINCT clientinfo.clientId, clientinfo.title, clientinfo.firstName, clientinfo.surName, clientinfo.checkinDate, clientinfo.mobileNo, petinfo.reason ,petinfo.petKey, petinfo.petName, petinfo.petType, clientinfo.snippet, clientinfo.assignedDoc 
+                        date_default_timezone_set('Australia/ACT');
+                        $date = date("Y-m-d");
+
+                        $query = $conn->prepare("SELECT  DISTINCT clientinfo.clientId, clientinfo.title, clientinfo.firstName, clientinfo.surName, clientinfo.checkinDate, clientinfo.mobileNo, petinfo.reason ,petinfo.petKey, petinfo.petName, petinfo.petType, clientinfo.snippet, clientinfo.assignedDoc 
                                 FROM clientinfo JOIN petinfo ON clientinfo.clientId=petinfo.petKey WHERE clientinfo.checkinDate = ? ");
-                                $query->bind_param("s",$date);
-                                $query->execute();
-                                $result = $query->get_result();
-                                while( $data =  mysqli_fetch_array( $result)){
-                                    $name = $data[1]." ".$data[2]." ".$data[3];
-                                    ?>
-                        <tr>
-                            <td> <?php echo $data[0] ?></td>
-                            <td> <?php echo $name ?> </td>
-                            <td> <?php echo $data[5] ?></td>
-                            <td> <?php echo $data[6] ?></td>
-                            <td> <?php echo $data[8] ?></td>
-                            <td> <?php echo $data[9] ?></td>
-                            <td> <?php $val = $data[10]; if($val == "Yes") echo "Snippet Sent"; else echo "Snippet not Sent";  ?></td>
-                            <td>
-                                <form action="client_edit.php" method="POST">
-                                    <input type="hidden" name="cid" value=<?php echo $data[0] ?>>
-                                    <input type="hidden" name="cname" value=<?php echo $data[2] ?>>
-                                    <button type="submit" name="edituser" class=" btn btn-success">View/Edit</button>
-                                </form>    
-                            </td>
-                            <td> <?php echo $data[11] ?></td>
-                            <td><?php $idvalue = $data[0]; ?>
-                                <div class="modal fade" id="message<?php echo $data[0];?>" tabindex="-1" role="dialog"
-                                    aria-labelledby="assignDoc" aria-hidden="true">
-                                    <div class="modal-dialog" role="document">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                                <h5 class="modal-title" id="assignDoc">SELECT DOCTOR</h5>
-                                                <button type="button" class="close" data-dismiss="modal"
-                                                    aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                                            </div>
-                                            <form action="process.php" method="POST">
-                                            <input type ="hidden" name="cidd" value=<?php echo $data[0] ?>>
-                                                <div class="modal-body">
-                                                    <div class="form-group">
-                                                        <label> DOCTOR </label>
-                                                        <select id=select name = "option" class="form-control">
-                                                            <?php echo $options;?>
-                                                        </select>
+                        $query->bind_param("s", $date);
+                        $query->execute();
+                        $result = $query->get_result();
+                        while ($data =  mysqli_fetch_array($result)) {
+                            $name = $data[1] . " " . $data[2] . " " . $data[3];
+                        ?>
+                            <tr>
+                                <td> <?php echo $data[0] ?></td>
+                                <td> <?php echo $name ?> </td>
+                                <td> <?php echo $data[5] ?></td>
+                                <td> <?php echo $data[6] ?></td>
+                                <td> <?php echo $data[8] ?></td>
+                                <td> <?php echo $data[9] ?></td>
+                                <td> <?php $val = $data[10];
+                                        if ($val == "Yes") echo "Snippet Sent";
+                                        else echo "Snippet not Sent";  ?></td>
+                                <td>
+                                    <form action="client_edit.php" method="POST">
+                                        <input type="hidden" name="cid" value=<?php echo $data[0] ?>>
+                                        <input type="hidden" name="cname" value=<?php echo $data[2] ?>>
+                                        <button type="submit" name="edituser" class=" btn btn-success">View/Edit</button>
+                                    </form>
+                                </td>
+                                <td> <?php echo $data[11] ?></td>
+                                <td><?php $idvalue = $data[0]; ?>
+                                    <div class="modal fade" id="message<?php echo $data[0]; ?>" tabindex="-1" role="dialog" aria-labelledby="assignDoc" aria-hidden="true">
+                                        <div class="modal-dialog" role="document">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title" id="assignDoc">SELECT DOCTOR</h5>
+                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                                </div>
+                                                <form action="process.php" method="POST">
+                                                    <input type="hidden" name="cidd" value=<?php echo $data[0] ?>>
+                                                    <div class="modal-body">
+                                                        <div class="form-group">
+                                                            <label> DOCTOR </label>
+                                                            <select id=select name="option" class="form-control">
+                                                                <?php echo $options; ?>
+                                                            </select>
+                                                        </div>
                                                     </div>
-                                                </div>
-                                                <div class="modal-footer">
-                                                    <button type="button" class="btn btn-secondary"
-                                                        data-dismiss="modal">Close</button>
-                                                    <button type="submit" name="assigndoc"
-                                                        class="btn btn-primary">Assign Doctor</button>
-                                                </div>
-                                            </form>
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                                        <button type="submit" name="assigndoc" class="btn btn-primary">Assign Doctor</button>
+                                                    </div>
+                                                </form>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                                <button type="button" class="btn btn-primary" data-toggle="modal"
-                                    data-target="#message<?php echo $data[0];?>">ASSIGN DOCTOR</button>
-                            </td>
-                        </tr>
-                        <?php   
-                                }
-                                ?>
+                                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#message<?php echo $data[0]; ?>">ASSIGN DOCTOR</button>
+                                </td>
+                            </tr>
+                        <?php
+                        }
+                        ?>
 
                     </tbody>
                 </table>
@@ -239,7 +219,7 @@ include_once '../includes/dbConn.php';
         <!-- /.container-fluid -->
     </div>
     <!-- End of Main Content -->
-    <?php 
+    <?php
     include '../includes/scripts.php';
     include '../includes/footer.php';
     ?>

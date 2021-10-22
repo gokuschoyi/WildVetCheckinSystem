@@ -1,3 +1,4 @@
+<!-- Thank you page for the client after submitting the pet info. Also with the option to sign up for newsletter -->
 <?php session_start();
 include('../includes/dbConn.php');
 /* echo $_SESSION['idEmail'];
@@ -5,14 +6,15 @@ echo $_SESSION['ID']; */
 $id = $_SESSION['ID'];
 /* echo $_SESSION['first']; */
 $newsletter = "Yes";
-    if(isset($_POST['newsletter'])){
-        $stmt = $conn->prepare("UPDATE clientinfo SET newsletter = ? WHERE clientid = ?");
-        $stmt->bind_param("si",$newsletter,$id);
-        $stmt->execute();
-    }                                      
+if (isset($_POST['newsletter'])) {
+    $stmt = $conn->prepare("UPDATE clientinfo SET newsletter = ? WHERE clientid = ?");
+    $stmt->bind_param("si", $newsletter, $id);
+    $stmt->execute();
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
@@ -72,17 +74,20 @@ $newsletter = "Yes";
     <link rel="stylesheet" href="assets/css/styles.css">
 </head>
 <style>
-.navbar-nav{
-border-radius: 15px;
-}
-.nav-item{
-    text-align: center;
-}
-.nav-link{
-    background-color:#b5d6f3;
-    border-radius:15px;
-}
+    .navbar-nav {
+        border-radius: 15px;
+    }
+
+    .nav-item {
+        text-align: center;
+    }
+
+    .nav-link {
+        background-color: #b5d6f3;
+        border-radius: 15px;
+    }
 </style>
+
 <body>
     <nav class="navbar navbar-light navbar-expand-md d-flex justify-content-center align-items-center navigation-clean" style="height: 190px;">
         <div class="container"><a class="navbar-brand font-monospace d-lg-flex justify-content-lg-center align-items-lg-center" href="clientCheckin.php" style="font-size: 28px;">Wild Vet</a><button data-bs-toggle="collapse" class="navbar-toggler" data-bs-target="#navcol-1"><span class="visually-hidden">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
@@ -111,26 +116,23 @@ border-radius: 15px;
                     <div class="card-body">
                         <div class="row no-gutters align-items-center">
                             <div class="col mr-2">
-                                <form method = "POST">
-                                <div class="font-monospace text-xs  text-uppercase mb-1 text-center" style="color: rgb(109,134,163);font-size: 18px;">WILD VET NEWSLETTER</div>  
-                                <div class="font-monospace h6 mb-0 font-weight-bold text-gray-800 text-center ">Would you like to subscribe to our newsletter to stay informed on the latest news </div>
-                                <div class="col d-flex d-lg-flex justify-content-center align-items-center justify-content-lg-center align-items-lg-center" style="height: 50px;"><button type = "submit" name = "newsletter" class = " btn btn-success" style="border-radius: 30px;" >YES</button></div>
+                                <form method="POST">
+                                    <div class="font-monospace text-xs  text-uppercase mb-1 text-center" style="color: rgb(109,134,163);font-size: 18px;">WILD VET NEWSLETTER</div>
+                                    <div class="font-monospace h6 mb-0 font-weight-bold text-gray-800 text-center ">Would you like to subscribe to our newsletter to stay informed on the latest news </div>
+                                    <div class="col d-flex d-lg-flex justify-content-center align-items-center justify-content-lg-center align-items-lg-center" style="height: 50px;"><button type="submit" name="newsletter" class=" btn btn-success" style="border-radius: 30px;">YES</button></div>
                                 </form>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>   
+            </div>
         </div>
     </div>
 
     <div class="container">
         <footer class="footer-basic" style="background: transparent;">
-        <div class="d-xl-flex justify-content-xl-center align-items-xl-center social"><a
-                    class="d-xl-flex justify-content-xl-center align-items-xl-center"
-                    href="https://www.instagram.com/thewildvetclinic/"><i class="icon ion-social-instagram"></i></a><a
-                    href="https://www.facebook.com/thewildvetclinic/"><i class="icon ion-social-facebook"></i></a>
-                </div>
+            <div class="d-xl-flex justify-content-xl-center align-items-xl-center social"><a class="d-xl-flex justify-content-xl-center align-items-xl-center" href="https://www.instagram.com/thewildvetclinic/"><i class="icon ion-social-instagram"></i></a><a href="https://www.facebook.com/thewildvetclinic/"><i class="icon ion-social-facebook"></i></a>
+            </div>
             <ul class="list-inline">
                 <li class="list-inline-item"><a href="services.php">Services</a></li>
                 <li class="list-inline-item"><a href="contactUs.php">Contact-Us</a></li>
@@ -139,8 +141,8 @@ border-radius: 15px;
             <p class="copyright" style="font-size : 18px; font-weight: bold; color: rgb(40,33,33);">The Wild Vet© 2021</p>
         </footer>
     </div>
-<script src="assets/bootstrap/js/bootstrap.min.js">
-</script>
+    <script src="assets/bootstrap/js/bootstrap.min.js">
+    </script>
 </body>
 
 </html>
