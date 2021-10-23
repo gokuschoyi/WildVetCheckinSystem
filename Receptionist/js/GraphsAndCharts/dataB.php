@@ -1,4 +1,3 @@
-<!-- fetching data for the bar graph (clients for past 14 days) -->
 <?php
 header('Content-Type: application/json');
 header("Access-Control-Allow-Origin: *");

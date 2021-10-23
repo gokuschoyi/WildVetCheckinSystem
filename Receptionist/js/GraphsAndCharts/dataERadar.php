@@ -1,5 +1,3 @@
-<!-- fetching data for coutn of postcode grouped by postcode -->
-
 <?php
 header('Content-Type: application/json');
 header("Access-Control-Allow-Origin: *");

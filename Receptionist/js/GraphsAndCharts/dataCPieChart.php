@@ -1,4 +1,3 @@
-<!-- fetching data for snippet count -->
 <?php
 header('Content-Type: application/json');
 header("Access-Control-Allow-Origin: *");
