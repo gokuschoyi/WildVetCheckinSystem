@@ -86,7 +86,7 @@ border-radius: 15px;
                 <span class="visually-hidden">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
             <div class="collapse navbar-collapse" id="navcol-1">
             <ul class="navbar-nav ms-auto" style = "background:#c292fb;">
-                <li class="nav-item"><a class="nav-link font-monospace" href="recoverySelection.php">Forgot Username/Password</a></li>
+                <li class="nav-item"><a class="nav-link font-monospace" href="CredentialRecovery/recoverySelection.php">Forgot Username/Password</a></li>
                 </ul>
             </div>
             <div class = "example">
@@ -112,7 +112,7 @@ border-radius: 15px;
                     </div>
                     <div class="row">
                         <div class="col-md-12 d-flex d-lg-flex d-xl-flex justify-content-center align-items-center justify-content-lg-center align-items-lg-center justify-content-xl-center align-items-xl-center">
-                            <a class="btn btn-primary" role="button" style="border-radius: 30px;" href="receptionistLogin.php">Login</a>
+                            <a class="btn btn-primary" role="button" style="border-radius: 30px;" href="Receptionist/receptionistLogin.php">Login</a>
                         </div>
                     </div>
                 </div>
@@ -135,7 +135,7 @@ border-radius: 15px;
                     </div>
                     <div class="row">
                         <div class="col-md-12 d-flex d-lg-flex d-xl-flex justify-content-center align-items-center justify-content-lg-center align-items-lg-center justify-content-xl-center align-items-xl-center">
-                            <a class="btn btn-primary" role="button" style="border-radius: 30px;" href="doctorLogin.php">Login</a>
+                            <a class="btn btn-primary" role="button" style="border-radius: 30px;" href="Doctor/doctorLogin.php">Login</a>
                         </div>
                     </div>
                 </div>
@@ -146,9 +146,8 @@ border-radius: 15px;
     <footer class="footer-basic" style="height: 130px; padding-top:30px;">
         <ul class="list-inline">
             <li class="list-inline-item"><a href="index.php">Home</a></li>
-            <li class="list-inline-item"><a href="#">User Manual</a></li>
-            <li class="list-inline-item"><a href="#">About</a></li>
-            <li class="list-inline-item"><a href="#">Terms & Conditions</a></li>
+            <li class="list-inline-item"><a href="about.php">About</a></li>
+            <li class="list-inline-item"><a href="terms&conditions.php">Terms & Conditions</a></li>
             <li class="list-inline-item"><a href="#">Privacy Policy</a></li>
         </ul>
         <p class="copyright" style = "font-size : 18px; font-weight: bold; padding-top:20px;">The Wild Vet Check-In System © 2021</p>

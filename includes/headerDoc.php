@@ -1,7 +1,8 @@
 <?php
 ob_start();
 session_start();
-include 'includes/dSecurity.php';
+include 'dSecurity.php';
+/* setting session name for the curent user (Doctor)*/
 $_SESSION['docname'] = $_SESSION['docEmail'];
 
 ?>
@@ -23,7 +24,7 @@ $_SESSION['docname'] = $_SESSION['docEmail'];
     <link href="js/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
     <link href="https://cdn.datatables.net/1.11.0/css/jquery.dataTables.min.css">
-    <link href="css/sb-admin-2.css" rel="stylesheet">
+    <link href="assets/css/sb-admin-2.css" rel="stylesheet">
     <style>
         td,th{
             text-align: center;

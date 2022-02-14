@@ -1,56 +1,66 @@
-<!DOCTYPE html>
-<html>
-<head>
-<title>Page Title</title>
-</head>
-<body>
-
-<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-
-<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
-<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-<script>
-    $(document).ready(function () {
-        var today = new Date();
-        $('.datepicker').datepicker({
-            format: 'yyyy-mm-dd',
-            autoclose:true,
-            endDate: "today",
-            maxDate: today
-        }).on('changeDate', function (ev) {
-                $(this).datepicker('hide');
-            });
-
-
-        $('.datepicker').keyup(function () {
-            if (this.value.match(/[^0-9]/g)) {
-                this.value = this.value.replace(/[^0-9^-]/g, '');
-            }
-        });
-    });
-</script>
-<form method = "POST" >
-<p>Select Date: <input type="text" name  = "date" placeholder="Select Date" class="datepicker form-control-sm d-lg-flex justify-content-lg-center align-items-lg-center"></p>
-<button class="btn btn primary" name = "btn">click me</button>
-</form>
 <?php
-if(isset($_POST['btn'])){
-    $mcDate =  date('Y-m-d', strtotime($_POST['date']));
-    echo $mcDate;
+include 'Receptionist/simple_html_dom.php';
+function returnGoogleTitleLinks($searchF){
+    $arrayLinks = array();
+    $arrayTitle = array();
+    $search = 'https://www.google.com/search?q=';
+    $start = "&start=";
+    $searchF = $search.$searchF.$start;
+
+    for($i=0;$i<4;$i++){
+    
+        $searchF = $searchF.$i."0";
+        $curl = curl_init();
+        curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, FALSE);
+        curl_setopt($curl, CURLOPT_HEADER, false);
+        curl_setopt($curl, CURLOPT_FOLLOWLOCATION, true);
+        curl_setopt($curl, CURLOPT_URL, $searchF);
+        curl_setopt($curl, CURLOPT_REFERER, $searchF);
+        curl_setopt($curl, CURLOPT_RETURNTRANSFER, TRUE);
+        $str = curl_exec($curl);
+        curl_close($curl);
+        try {
+            if($str == null)
+            {
+                throw new exception("0");
+            }
+        }
+        catch (exception $e){
+            return $e->getMessage();
+        }
+
+        $htmlDom = new simple_html_dom();
+        $htmlDom->load($str);
+        echo '<br>';
+        foreach($htmlDom->find("div.kCrYT") as $h){
+            foreach($h->find('a[href^=/url?q]') as $links){
+                $li = $links->getAttribute('href');
+                if(strlen(trim($li)) == 0){
+                    continue;
+                }
+                if($li[1] == 'u'){
+                    $count = 0;
+                    $cutRes = "";
+                    while($li[$count] != '&'){
+                        $count++;
+                        $cutRes = substr($li, 7, $count-7);
+                    }
+                    array_push($arrayLinks,$cutRes);
+                }
+            } 
+            foreach($h->find("h3.zBAuLc") as $title){
+                $title->find('.BNeawe UPmit AP7Wnd');
+                array_push($arrayTitle, $title->plaintext); 
+            }
+        }   
+    }
+    $it = new MultipleIterator();
+    $it->attachIterator(new ArrayIterator($arrayLinks));
+    $it->attachIterator(new ArrayIterator($arrayTitle));
+    return $it;
+} 
+$vlal = ReturnGoogleTitleLinks("dog+breeds");
+foreach ($vlal as $val){
+    echo $val[0]."<br>";
 }
-$fname = "gokul";
-$tname = "gokul";
-if($fname == $tname){
-    echo "true test";
-}
-$loop_expiry = time()+5;
-$t=time();
-echo($t . "<br>");
-echo($loop_expiry . "<br>");
-/* echo(date("Y-m-d",$t)); */
-/* while($loop_expiry>time()){
-    echo $loop_expiry."  ".time();
-} */
 ?>
-</body>
-</html>
